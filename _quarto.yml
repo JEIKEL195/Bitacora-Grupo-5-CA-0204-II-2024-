@@ -9,6 +9,8 @@ book:
   author: "Jeikel Navarro Solis, Gabriel Valverde, Erick Venegas"
   date: today
   site-url: google.com # Vacío por el momento
+  repo-actions: [edit]
+  downloads: [pdf, epub]
   chapters:
     - "index.qmd"
 
