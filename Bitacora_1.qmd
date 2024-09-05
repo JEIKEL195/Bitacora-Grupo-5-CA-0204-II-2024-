@@ -219,6 +219,10 @@ Entre las posibles combinaciones de palabras clave se se pueden encontrar:
 
 ### Conceptos básicos
 
+Como hemos estado hablando a lo largo del trabajo, la calificación de riesgo es de suma importancia, por lo que el estudio posee como objetivo determinar una relación fuerte de las variables, para aproximar un método empírico de una calificación de riesgo, pues ya vimos que las empresas por lo general no comparten esta información.
+
+Por otro lado, la gestión de riesgo y la incertidumbre se vuelven esenciales a lo largo del trabajo, pues son conceptos que son base para el estudio posterior. El riesgo de impago también se vuelve un concepto a tener en cuenta, el cual vamos a entender como la incapacidad de cumplir una obligación financiera.
+
 ### Principios y teorías
 
 Para llevar a cabo la investigación en estas etapas preliminares hemos hecho estudio bibliográfico de lo que son los análisis de calificación financiera, que es justo el tema y variable objetivo de nuestro estudio. También se incorpora la teoría de la gestión de riesgos, que a su vez hace uso de técnicas de probabilidad pues dentro de su corpus la idea principal es maximizar una ganancia en eventos que presentan incertidumbre, de ahí la estrecha relación que tiene con Probabilidad.
