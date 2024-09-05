@@ -203,7 +203,11 @@ Para la siguiente vamos a tomar el nombre las variables, las cuales dejaremos en
 
 ### Conceptos básicos
 
-### Principios y teorías 
+### Principios y teorías
+
+Para llevar a cabo la investigación en estas etapas preliminares hemos hecho estudio bibliográfico de lo que son los análisis de calificación financiera, que es justo el tema y variable objetivo de nuestro estudio. También se incorpora la teoría de la gestión de riesgos, que a su vez hace uso de técnicas de probabilidad pues dentro de su corpus la idea principal es maximizar una ganancia en eventos que presentan incertidumbre, de ahí la estrecha relación que tiene con Probabilidad.
+
+Por otro lado, utilizar los conceptos de la valoración de riesgos financieros, sirve de base para entender cómo funciona el mercado financiero, y cuáles son los impactos directos de poseer una calificación de riesgos, y que el impacto es de hecho, para todos los participantes.
 
 ## Parte de escritura
 
