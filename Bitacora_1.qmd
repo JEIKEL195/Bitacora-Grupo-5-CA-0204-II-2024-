@@ -9,9 +9,21 @@ La idea principal de este trabajo es analizar una tabla de datos y extraer infor
 
 El tema es de interés, pues tenemos una base de datos con una cantidad considerable de variables, que se prestan para hacer un análisis exhaustivo. En adición, los datos que posee la base de datos son datos financieros, que sin duda son de interés bajo el contexto de la carrera. Al realizar un análisis previo de la bibliografía, observamos quela información es realmente abundante, pues el tema de riesgos financieros es un tópico de suma importancia para las empresas.
 
+### Conceptualización de la idea
+“Verificar una relación entre la calificación de riesgo con las variables Nivel de educación, Ingresos, Monto del préstamo” De la pregunta anterior, nos interesa conceptualizar dicha idea, por lo que, buscando la definición de las palabras que conforman la idea, en la RAE, encontramos lo siguiente:
+
+*Relación: Conexión, correspondencia. 
+*Nivel: Medida de una cantidad con referencia a una escala determinada.
+*Educación: Acción y efecto de educar, instrucción por medio de la acción docente.
+*Ingresos: Caudal que entra en poder de alguien, y que le es de cargo en las cuentas.
+*Calificación: Puntuación obtenida en un examen o en cualquier tipo de prueba.
+*Riesgo: Contingencia o proximidad de un daño.
+
 
 ### Identificación de tensiones
+Como mencionamos en el apartado anterior, el trabajo se centra más en el estudio de las herramientas utilizadas, que en la información del trabajo per se. Sin embargo, vamos a desarrollar la teoría de manera satisfactoria con el hecho de crear un trabajo bien estructurado. Dicho lo anterior, es claro que la calificación de riesgo es un fenómeno que depende de muchas más variables, un ejemplo de ello puede ser la cultura de la sociedad en la cual se ve inmersa la persona que solicita el préstamo, como la entidad que lo desembolsa. Por ello, el origen de los datos de esta tabla de datos es de suma importancia, pues la cultura de las personas que arrojaron estos datos puede influir de manera sustancial en la salida de los datos. 
 
+Otro factor a tomar en cuenta es por supuesto, la tabla de datos, pues podría contener información errónea, o datos que no estén correctamente digitados, además de que la tabla de datos tiene que ser convertida a información más trabajable, es decir, muchas de las variables son categóricas, por lo que una conversión a datos de diferente especie, podría provocar que haya errores en la nueva tabla que se va a manipular. 
 
 
 ### Reformulación de la idea en modo preguntas
