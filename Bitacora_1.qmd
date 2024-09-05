@@ -215,7 +215,7 @@ Entre las posibles combinaciones de palabras clave se se pueden encontrar:
 * Resumen en un párrafo: Este trabajo busca exponer a través de las investigaciones que se han centrado en la evaluación del riesgo de crédito en las Instituciones de Microfinanzas, aquella teoría relacionada con el riesgo presente en los microcréditos, además busca analizar todos aquellos factores que llegan a ser determinantes en el riesgo de que haya algún tipo de impago., por lo que este estudio también ofrece ciertas técnicas que generan una mayor consistencia y trasparencia en la evaluación y seguimiento de los clientes y su perfil. 
 
 
-## Construcción de la UVE de Godwin
+## Construcción de la UVE de Gowin
 
 ![V de Gowin](imagenes/v-gowin.jpeg)
 
