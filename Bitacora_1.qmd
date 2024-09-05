@@ -97,6 +97,49 @@ La subjetividad de esta pregunta, no es ni buena ni mala, esta depende su contex
 
 ### Argumentación a través de datos
 
+La base de datos utilizada en este trabajo se toma de la base de datos de Kaggle. Sin embargo, el autor de la base de datos no publica la información de cuándo es sacada la información. La información fue de fácil acceso pues está disponible en la de datos de Kaggle. La muestra observada son personas entre las edades de 18 a 69 años, de donde toman muchas variables, las cuales veremos más adelante. La unidad estadística estudiada para este trabajo son individuos que buscan obtener un préstamo.
+
+Para la siguiente vamos a tomar el nombre las variables, las cuales dejaremos en el idioma original y vamos a dar la descripción de ellas, las cuales viene a su vez con la tabla de datos. 
+
+* Age: La edad del individuo, una variable continua que influye en la estabilidad financiera.
+
+* Gender: Género del individuo, categorizado en Masculino, Femenino y No binario.
+
+* Education Level: Nivel de educación alcanzado, que varía desde la Secundaria hasta el Doctorado.
+
+* Marital Status: Estado civil actual, categorizado como Soltero, Casado, Divorciado o Viudo.
+
+* Income: Ingreso anual en USD, que representa la capacidad de ganancia del individuo.
+
+* Credit Score: Valor numérico que indica la solvencia crediticia, que varía de 600 a 800.
+
+* Loan Amount: La cantidad de préstamo solicitada por el individuo, que representa las necesidades financieras.
+
+* Loan Purpose: El propósito del préstamo, categorizado en Vivienda, Auto, Personal o Negocios.
+
+* Employment Status: Situación laboral del individuo, incluyendo Empleado, Desempleado o Autónomo.
+
+* Years at Current Job: Duración del empleo en el trabajo actual, que refleja la estabilidad laboral. 
+
+* Payment History: Desempeño histórico de pagos, categorizado como Excelente, Bueno, Regular o Malo.
+
+* Debt-to-Income Ratio: Relación entre deuda e ingreso, que indica el apalancamiento financiero y el riesgo.
+
+* Assets Value: Valor total de los activos poseídos por el individuo.
+
+* Number of Dependents: Número de dependientes a cargo del individuo, que afecta las responsabilidades financieras.
+
+* City: Ciudad en la que reside el individuo, proporcionando contexto geográfico.
+
+* State: Estado en el que reside el individuo, proporcionando más detalles geográficos.
+
+* Country: País de residencia, añadiendo una perspectiva global.
+
+* Previous Defaults: Número de incumplimientos de préstamos anteriores, indicando el riesgo financiero histórico.
+
+* Marital Status: Número de cambios en el estado civil, reflejando cambios en la vida personal.
+
+* Risk Rating: Columna objetivo que categoriza el riesgo financiero en Bajo, Medio o Alto.  
 
 ## Revisión bibliográfica 
 
