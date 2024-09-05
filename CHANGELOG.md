@@ -1,4 +1,4 @@
-## [unreleased]
+## Anexo 1 (CHANGELOG)
 
 ### Chore
 
@@ -7,10 +7,6 @@
 - Agrega cambios en docs/
 - Modifica la carpeta docs
 - Modifica la carpeta docs
-- Modifica la carpeta docs
-
-### Chose
-
 - Modifica la carpeta docs
 
 ### Feat
