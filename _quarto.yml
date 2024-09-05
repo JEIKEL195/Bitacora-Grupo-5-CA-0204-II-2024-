@@ -16,6 +16,8 @@ book:
     - "bitacora_1.qmd"
 
 bibliography: references.bib
+cite-method: citeproc  # Indica que use citeproc para procesar las citas
+
 
 format:
   html:
@@ -24,12 +26,11 @@ format:
       # los oscuros porque no entiende nada.
     theme: cosmo
     toc: true          # Activa la TOC para HTML
-    toc-depth: 2       # Número de niveles de encabezado que se muestran en la TOC
+    
   pdf:
-    documentclass: scrreprt
     toc: true          # Activa la TOC para PDF
-    toc-depth: 2       # Número de niveles de encabezado que se muestran en la TOC
-
+    documentclass: scrreprt
+    
 execute:
   freeze: auto
   cache: true

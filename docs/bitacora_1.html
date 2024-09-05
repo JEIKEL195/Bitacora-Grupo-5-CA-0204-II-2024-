@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -129,10 +149,26 @@ ul.task-list li input[type="checkbox"] {
         <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Tabla de contenidos</h2>
    
+  <ul>
+  <li><a href="#parte-de-planificación" id="toc-parte-de-planificación" class="nav-link active" data-scroll-target="#parte-de-planificación"><span class="header-section-number">1.1</span> Parte de planificación</a>
   <ul class="collapse">
-  <li><a href="#parte-de-planificación" id="toc-parte-de-planificación" class="nav-link active" data-scroll-target="#parte-de-planificación"><span class="header-section-number">1.1</span> Parte de planificación</a></li>
-  <li><a href="#revisión-bibliográfica" id="toc-revisión-bibliográfica" class="nav-link" data-scroll-target="#revisión-bibliográfica"><span class="header-section-number">1.2</span> Revisión bibliográfica</a></li>
-  <li><a href="#construcción-de-la-uve-de-godwin" id="toc-construcción-de-la-uve-de-godwin" class="nav-link" data-scroll-target="#construcción-de-la-uve-de-godwin"><span class="header-section-number">1.3</span> Construcción de la UVE de Godwin</a></li>
+  <li><a href="#definión-de-la-idea" id="toc-definión-de-la-idea" class="nav-link" data-scroll-target="#definión-de-la-idea"><span class="header-section-number">1.1.1</span> Definión de la idea</a></li>
+  <li><a href="#conceptualización-de-la-idea" id="toc-conceptualización-de-la-idea" class="nav-link" data-scroll-target="#conceptualización-de-la-idea"><span class="header-section-number">1.1.2</span> Conceptualización de la idea</a></li>
+  <li><a href="#identificación-de-tensiones" id="toc-identificación-de-tensiones" class="nav-link" data-scroll-target="#identificación-de-tensiones"><span class="header-section-number">1.1.3</span> Identificación de tensiones</a></li>
+  <li><a href="#reformulación-de-la-idea-en-modo-preguntas" id="toc-reformulación-de-la-idea-en-modo-preguntas" class="nav-link" data-scroll-target="#reformulación-de-la-idea-en-modo-preguntas"><span class="header-section-number">1.1.4</span> Reformulación de la idea en modo preguntas</a></li>
+  <li><a href="#argumentación-de-las-preguntas" id="toc-argumentación-de-las-preguntas" class="nav-link" data-scroll-target="#argumentación-de-las-preguntas"><span class="header-section-number">1.1.5</span> Argumentación de las preguntas</a></li>
+  <li><a href="#argumentación-a-través-de-datos" id="toc-argumentación-a-través-de-datos" class="nav-link" data-scroll-target="#argumentación-a-través-de-datos"><span class="header-section-number">1.1.6</span> Argumentación a través de datos</a></li>
+  </ul></li>
+  <li><a href="#revisión-bibliográfica" id="toc-revisión-bibliográfica" class="nav-link" data-scroll-target="#revisión-bibliográfica"><span class="header-section-number">1.2</span> Revisión bibliográfica</a>
+  <ul class="collapse">
+  <li><a href="#búsqueda-de-bibliografía" id="toc-búsqueda-de-bibliografía" class="nav-link" data-scroll-target="#búsqueda-de-bibliografía"><span class="header-section-number">1.2.1</span> Búsqueda de bibliografía</a></li>
+  <li><a href="#fichas-de-literatura" id="toc-fichas-de-literatura" class="nav-link" data-scroll-target="#fichas-de-literatura"><span class="header-section-number">1.2.2</span> Fichas de literatura</a></li>
+  </ul></li>
+  <li><a href="#construcción-de-la-uve-de-godwin" id="toc-construcción-de-la-uve-de-godwin" class="nav-link" data-scroll-target="#construcción-de-la-uve-de-godwin"><span class="header-section-number">1.3</span> Construcción de la UVE de Godwin</a>
+  <ul class="collapse">
+  <li><a href="#conceptos-básicos" id="toc-conceptos-básicos" class="nav-link" data-scroll-target="#conceptos-básicos"><span class="header-section-number">1.3.1</span> Conceptos básicos</a></li>
+  <li><a href="#principios-y-teorías" id="toc-principios-y-teorías" class="nav-link" data-scroll-target="#principios-y-teorías"><span class="header-section-number">1.3.2</span> Principios y teorías</a></li>
+  </ul></li>
   <li><a href="#parte-de-escritura" id="toc-parte-de-escritura" class="nav-link" data-scroll-target="#parte-de-escritura"><span class="header-section-number">1.4</span> Parte de escritura</a></li>
   <li><a href="#referencias-bibliográfica" id="toc-referencias-bibliográfica" class="nav-link" data-scroll-target="#referencias-bibliográfica"><span class="header-section-number">1.5</span> Referencias bibliográfica</a></li>
   </ul>
@@ -160,7 +196,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><expliquen en="" consiste="" su="" trabajo="" y="" cómo="" piensan="" resolverlo=""></expliquen></p>
 <section id="parte-de-planificación" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="parte-de-planificación"><span class="header-section-number">1.1</span> Parte de planificación</h2>
 <section id="definión-de-la-idea" class="level3" data-number="1.1.1">
@@ -170,8 +205,15 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="conceptualización-de-la-idea" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="conceptualización-de-la-idea"><span class="header-section-number">1.1.2</span> Conceptualización de la idea</h3>
-<p>“Verificar una relación entre la calificación de riesgo con las variables Nivel de educación, Ingresos, Monto del préstamo” De la pregunta anterior, nos interesa conceptualizar dicha idea, por lo que, buscando la definición de las palabras que conforman la idea, en la RAE, encontramos lo siguiente:</p>
-<p><em>Relación: Conexión, correspondencia. </em>Nivel: Medida de una cantidad con referencia a una escala determinada. <em>Educación: Acción y efecto de educar, instrucción por medio de la acción docente. </em>Ingresos: Caudal que entra en poder de alguien, y que le es de cargo en las cuentas. <em>Calificación: Puntuación obtenida en un examen o en cualquier tipo de prueba. </em>Riesgo: Contingencia o proximidad de un daño.</p>
+<p>“Verificar una relación entre la calificación de riesgo con las variables Nivel de educación, Ingresos, Monto del préstamo”. De la pregunta anterior, nos interesa conceptualizar dicha idea, por lo que, buscando la definición de las palabras que conforman la idea, en la RAE, encontramos lo siguiente:</p>
+<ul>
+<li><p>Relación: Conexión, correspondencia.</p></li>
+<li><p>Nivel: Medida de una cantidad con referencia a una escala determinada.</p></li>
+<li><p>Educación: Acción y efecto de educar, instrucción por medio de la acción docente.</p></li>
+<li><p>Ingresos: Caudal que entra en poder de alguien, y que le es de cargo en las cuentas.</p></li>
+<li><p>Calificación: Puntuación obtenida en un examen o en cualquier tipo de prueba.</p></li>
+<li><p>Riesgo: Contingencia o proximidad de un daño.</p></li>
+</ul>
 </section>
 <section id="identificación-de-tensiones" class="level3" data-number="1.1.3">
 <h3 data-number="1.1.3" class="anchored" data-anchor-id="identificación-de-tensiones"><span class="header-section-number">1.1.3</span> Identificación de tensiones</h3>
@@ -186,41 +228,41 @@ ul.task-list li input[type="checkbox"] {
 <section id="argumentación-de-las-preguntas" class="level3" data-number="1.1.5">
 <h3 data-number="1.1.5" class="anchored" data-anchor-id="argumentación-de-las-preguntas"><span class="header-section-number">1.1.5</span> Argumentación de las preguntas</h3>
 <p>Estas preguntas deben poseer una argumentación detrás de ellas, pues es necesario tener una idea de qué es lo que queremos realizar con estas preguntas o dicho de otra forma, cuál es el problema que potencialmente podemos resolver o la incógnita a contestar.8</p>
-<ol type="1">
-<li><strong>¿Cuáles son las variables que influyen más en la calificación de riesgo?</strong></li>
-</ol>
+<section id="cuáles-son-las-variables-que-influyen-más-en-la-calificación-de-riesgo" class="level4" data-number="1.1.5.1">
+<h4 data-number="1.1.5.1" class="anchored" data-anchor-id="cuáles-son-las-variables-que-influyen-más-en-la-calificación-de-riesgo"><span class="header-section-number">1.1.5.1</span> ¿Cuáles son las variables que influyen más en la calificación de riesgo?</h4>
 <p><strong>Contraargumentos</strong></p>
 <p>Las variables que se toman son realmente las correctas, cuál es el método que se utiliza para determinar que las variables que se están tomando son mejores para un resultado que otras. Al ser una calificación de riesgo, que facilita el préstamo a personas o no, las personas podrían tener intenciones perversas a siempre manipular su información para obtener buenas calificaciones. Por otro lado, son muchas las variables contempladas en la base de datos, hacer uso de un par de variables, podría influir de manera considerable en buscar una relación entre las variables.</p>
 <p><strong>Argumentos</strong></p>
 <p>Al realizar un análisis previo de la tabla de datos, podríamos determinar cuáles son las variables con mayor impacto en esta calificación, y así simplificar el modelo y darle un mayor énfasis en estas variables que afectan de manera considerable en la calificación.</p>
 <p><strong>Concluya</strong></p>
 <p>Al ser una calificación de riesgo, las empresas deben considerar varios factores, para ver si sus clientes son ideales para el préstamo o no. Por otro lado, concentrarnos en las variables que tienen mayor peso, podría ayudar a un mejor entendimiento de la calificación de riesgo.</p>
-<ol start="2" type="1">
-<li><strong>¿Existe una correlación positiva entre las variables de interés y la calificación de riesgo?</strong></li>
-</ol>
+</section>
+<section id="existe-una-correlación-positiva-entre-las-variables-de-interés-y-la-calificación-de-riesgo" class="level4" data-number="1.1.5.2">
+<h4 data-number="1.1.5.2" class="anchored" data-anchor-id="existe-una-correlación-positiva-entre-las-variables-de-interés-y-la-calificación-de-riesgo"><span class="header-section-number">1.1.5.2</span> ¿Existe una correlación positiva entre las variables de interés y la calificación de riesgo?</h4>
 <p><strong>Contraargumentos</strong> Una relación positiva no implica que haya una mejor calificación, pues pueden existir variables con relación negativa, que tengan un efecto positivo sobre la calificación de riesgo, por pura intuición, podemos pensar en las personas que tienen un récord crediticio limpio, esto implicaría que esta variable debería tener un valor nulo para mejorar la calificación de riesgo. Otra variable que podría afectar es las veces que la persona ha caído en impago, pues entre más suba este valor, la calificación de riesgo, debería ser menor.</p>
 <p><strong>Argumentos</strong></p>
 <p>Las relaciones que buscamos no tienen por qué ser positivas, desde un tipo de vista de coeficiente de correlación, sino desde un tipo de vista de mejoría, es decir, variables que en ausencia contribuyan a una mejor calificación, nos son de interés para el trabajo. Como hemos mencionado encontrar las relaciones más contribuyentes, son de utilidad, pues favorecen a simplificar el modelo y obtener a cambio una mejor interpretación del estudio.</p>
 <p><strong>Concluya</strong></p>
 <p>Todas las relaciones son de importancia, hasta donde no existe relación, pues sirven para delimitar el modelo y determinar cuáles son las verdaderas variables que si influyen.</p>
-<ol start="3" type="1">
-<li><strong>¿Es la calificación de riesgo un buen calificador de las variables que la determinan?</strong></li>
-</ol>
+</section>
+<section id="es-la-calificación-de-riesgo-un-buen-calificador-de-las-variables-que-la-determinan" class="level4" data-number="1.1.5.3">
+<h4 data-number="1.1.5.3" class="anchored" data-anchor-id="es-la-calificación-de-riesgo-un-buen-calificador-de-las-variables-que-la-determinan"><span class="header-section-number">1.1.5.3</span> <strong>¿Es la calificación de riesgo un buen calificador de las variables que la determinan?</strong></h4>
 <p><strong>Contraargumentos</strong></p>
 <p>Esta pregunta, no es del todo objetiva, pues dependerá de lo que la empresa quiera detectar en estas evaluaciones, es decir, un factor que determina en gran medida a la calificación de riesgo, en otra empresa no tiene por qué ser así, pues dependerá del público objetivo de la empresa. Un buen calificador de riesgo depende tanto de las variables que se toman en cuenta, como del contexto de la empresa.</p>
 <p><strong>Argumentos</strong></p>
 <p>Desde el punto de vista de la empresa, la calificación de riesgo es una herramienta que sirve para determinar en gran medida si un préstamo se realiza o no, por ello, saber si su calificación de riesgo logra captar la información deseada de las variables utilizadas, entonces se podría considerar un buen factor, pues, aunque las empresas deban tener cuidado a quiénes otorgan los préstamos, también es un hecho, que si no lo hacen, se quedan sin negocio</p>
 <p><strong>Concluya</strong></p>
 <p>Si la calificación de riesgo logra simplificar y consolidar la información, entonces podríamos conjeturar que se comporta como una buena calificación.</p>
-<ol start="4" type="1">
-<li><strong>¿Cómo se mide la calificación de riesgo dadas las variables consideradas?</strong></li>
-</ol>
+</section>
+<section id="cómo-se-mide-la-calificación-de-riesgo-dadas-las-variables-consideradas" class="level4" data-number="1.1.5.4">
+<h4 data-number="1.1.5.4" class="anchored" data-anchor-id="cómo-se-mide-la-calificación-de-riesgo-dadas-las-variables-consideradas"><span class="header-section-number">1.1.5.4</span> <strong>¿Cómo se mide la calificación de riesgo dadas las variables consideradas?</strong></h4>
 <p><strong>Contraargumentos</strong></p>
 <p>La pregunta es más compleja que las hechas anteriormente, pues estamos entrando a un método de calificación, es decir, hacer un análisis de la medición, como mencionamos como un contraargumento en la pregunta anterior, esto no tiene por qué ser universal en las empresas, esto puede variar, por lo que dependerá del contexto en el cual se realice la pregunta.</p>
 <p><strong>Argumentos</strong></p>
 <p>En realidad que sea una pregunta que depende de sus variables, podría ser beneficioso, pues si existen varias metodologías, podríamos tener una mejor cartera de préstamos, es decir, dado cierto tipo de cliente, se podrían realizar cierto tipo de préstamos.</p>
 <p><strong>Concluya</strong></p>
 <p>La subjetividad de esta pregunta, no es ni buena ni mala, esta depende su contexto, si es aplicada de una buena forma, podría ser beneficioso tanto para la empresa, por ampliar su mercado, como para el cliente, al recibir el préstamo deseado.</p>
+</section>
 </section>
 <section id="argumentación-a-través-de-datos" class="level3" data-number="1.1.6">
 <h3 data-number="1.1.6" class="anchored" data-anchor-id="argumentación-a-través-de-datos"><span class="header-section-number">1.1.6</span> Argumentación a través de datos</h3>
@@ -252,6 +294,20 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="revisión-bibliográfica" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="revisión-bibliográfica"><span class="header-section-number">1.2</span> Revisión bibliográfica</h2>
+<section id="búsqueda-de-bibliografía" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="búsqueda-de-bibliografía"><span class="header-section-number">1.2.1</span> Búsqueda de bibliografía</h3>
+<p>Entre las posibles combinaciones de palabras clave se se pueden encontrar:</p>
+<ul>
+<li><p>Ingreso + situación laboral + solvencia crediticia</p></li>
+<li><p>Prestamo + incumplimiento de préstamos + riesgo financiero</p></li>
+<li><p>Ciudad + propósito del prestamo + ingreso</p></li>
+<li><p>Situacion laboral + duración de empleo + historico de pagos</p></li>
+<li><p>Historico de pagos + incumplimiento de prestamos + categoria de riesgo</p></li>
+<li><p>Valor de activos + prestamo + relación entre deuda e ingreso</p></li>
+</ul>
+</section>
+<section id="fichas-de-literatura" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="fichas-de-literatura"><span class="header-section-number">1.2.2</span> Fichas de literatura</h3>
 <p><strong>Título: La valoración del riesgo financiero.</strong></p>
 <ul>
 <li><p>Autor: Dorina Chicu.</p></li>
@@ -280,11 +336,6 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Problema con el argumento o el tema: Aunque el tema principal gire en torno a la valoración de riesgos financieros, el trabajo queda falente de varios detalles que, si pudieran ser notorios a la hora de hacer un análisis más exhaustivo, además de la falta de ejemplos u aplicaciones de estos, quedan solo como algo teórico.</p></li>
 <li><p>Resumen en un párrafo: Este trabajo busca exponer a través de las investigaciones que se han centrado en la evaluación del riesgo de crédito en las Instituciones de Microfinanzas, aquella teoría relacionada con el riesgo presente en los microcréditos, además busca analizar todos aquellos factores que llegan a ser determinantes en el riesgo de que haya algún tipo de impago., por lo que este estudio también ofrece ciertas técnicas que generan una mayor consistencia y trasparencia en la evaluación y seguimiento de los clientes y su perfil.</p></li>
 </ul>
-<section id="búsqueda-de-bibliografía" class="level3" data-number="1.2.1">
-<h3 data-number="1.2.1" class="anchored" data-anchor-id="búsqueda-de-bibliografía"><span class="header-section-number">1.2.1</span> Búsqueda de bibliografía</h3>
-</section>
-<section id="fichas-de-literatura" class="level3" data-number="1.2.2">
-<h3 data-number="1.2.2" class="anchored" data-anchor-id="fichas-de-literatura"><span class="header-section-number">1.2.2</span> Fichas de literatura</h3>
 </section>
 </section>
 <section id="construcción-de-la-uve-de-godwin" class="level2" data-number="1.3">
@@ -294,15 +345,28 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="principios-y-teorías" class="level3" data-number="1.3.2">
 <h3 data-number="1.3.2" class="anchored" data-anchor-id="principios-y-teorías"><span class="header-section-number">1.3.2</span> Principios y teorías</h3>
+<p>Para llevar a cabo la investigación en estas etapas preliminares hemos hecho estudio bibliográfico de lo que son los análisis de calificación financiera, que es justo el tema y variable objetivo de nuestro estudio. También se incorpora la teoría de la gestión de riesgos, que a su vez hace uso de técnicas de probabilidad pues dentro de su corpus la idea principal es maximizar una ganancia en eventos que presentan incertidumbre, de ahí la estrecha relación que tiene con Probabilidad.</p>
+<p>Por otro lado, utilizar los conceptos de la valoración de riesgos financieros, sirve de base para entender cómo funciona el mercado financiero, y cuáles son los impactos directos de poseer una calificación de riesgos, y que el impacto es de hecho, para todos los participantes.</p>
 </section>
 </section>
 <section id="parte-de-escritura" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="parte-de-escritura"><span class="header-section-number">1.4</span> Parte de escritura</h2>
-<p>El problema que se va a tratar en el presente trabajo es de determinar la relación existente entre las variables de ingresos, nivel de educación y Monto del préstamo con la calificación de riesgo. Desde el punto de vista teórico, el autor Palacios (2012), menciona que “La principal función que radica en las calificaciones crediticias es la evaluación de la mayor o menor probabilidad de pago de la deuda y los intereses, proporcionando indicadores que sirvan de referencia a los inversores con el fin de que puedan tener conocimiento del riesgo crediticio de una forma simple y accesible”. Desde este punto de vista, hay un apoyo en la investigación que tratamos de realizar, pues la calificación de riesgo es de suma importancia en el mundo financiero. Este mismo autor menciona que “Su importancia deriva de su implantación dentro de la regulación, lo que afecta a todo el entramado institucional, y sectores clave de la sociedad como son el bancario y las agencias de seguros y reaseguros”, podemos ver entonces que la teoría respalda la importancia que hemos estado conjeturando en esta presente bitácora (Entiéndase conjeturando, porque aún no hemos realizado el análisis de la tabla de datos).</p>
-<p>El estudio del análisis financiero es de suma importancia en la actualidad, ya que las transacciones de los flujos de dinero cada vez son mayores, es decir, vender deuda para obtener financiamiento en el corto plazo es una de las estrategias más aplicadas, por ello tanto inversores como prestatarios, según Palacios (2012), “Los inversores hacen uso de las calificaciones crediticias como un indicador de la probabilidad de recuperar su dinero. Adicionalmente, los prestatarios pueden beneficiarse de tener calificada su deuda, con el objetivo de colocarla con mayor facilidad y eliminar las dudas que haya relación a ellos.” Por ello, ambas parten obtienen beneficio de que exista este rating en el mundo de la información financiera. Y desde el punto de vista del inversor, como menciona la autora Chicu (2020), “…a la hora de analizar una inversión, debemos valorar la rentabilidad esperada, así como la liquidez que perdemos y el riesgo que estamos dispuestos a sumir”. Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. En adición, haciendo referencia a esta misma autora “…la gestión de riesgos tiene un lugar cada vez que un inversor analiza e intenta cuantificar las pérdidas potenciales en una inversión y luego toma las medidas apropiadas, considerando sus objetivos de inversión y su tolerancia al riesgo.” Esto último viene de la mano con lo que son las proyecciones, pues le permite al inversionista hacer un mejor análisis y una gestión de riesgos adecuada, que podemos definir según Chicu como “El proceso de identificación, análisis e incorporación de la incertidumbre en las decisiones de inversión” (2020). Reforzando lo que menciona Chicu, la autora Herrera (2008), menciona en adición a la gestión de riesgos “el contexto de incertidumbre genera inevitablemente un riesgo, y es ahí cuando la institución financiera debe preservar su valor económico y la integridad de los recursos confiados por los depositantes y socios.” Y añadiendo la definición de esta misma autora tenemos que la gestión de riesgos es “la denominación que se utiliza para el conjunto de técnicas y herramientas que pretenden maximizar el valor económico de la institución financiera, en un contexto de incertidumbre”. Concluyendo, la gestión de riesgos depende íntimamente de la calificación de riesgo, pues permite tener un parámetro ante la incertidumbre que representa invertir.</p>
+<p>El problema que se va a tratar en el presente trabajo es de determinar la relación existente entre las variables de ingresos, nivel de educación y Monto del préstamo con la calificación de riesgo. Desde el punto de vista teórico, el autor <span class="citation" data-cites="palacios2012">(<a href="#ref-palacios2012" role="doc-biblioref">Palacios 2012</a>)</span>, menciona que “La principal función que radica en las calificaciones crediticias es la evaluación de la mayor o menor probabilidad de pago de la deuda y los intereses, proporcionando indicadores que sirvan de referencia a los inversores con el fin de que puedan tener conocimiento del riesgo crediticio de una forma simple y accesible”. Desde este punto de vista, hay un apoyo en la investigación que tratamos de realizar, pues la calificación de riesgo es de suma importancia en el mundo financiero. Este mismo autor menciona que “Su importancia deriva de su implantación dentro de la regulación, lo que afecta a todo el entramado institucional, y sectores clave de la sociedad como son el bancario y las agencias de seguros y reaseguros”, podemos ver entonces que la teoría respalda la importancia que hemos estado conjeturando en esta presente bitácora (Entiéndase conjeturando, porque aún no hemos realizado el análisis de la tabla de datos).</p>
+<p>El estudio del análisis financiero es de suma importancia en la actualidad, ya que las transacciones de los flujos de dinero cada vez son mayores, es decir, vender deuda para obtener financiamiento en el corto plazo es una de las estrategias más aplicadas, por ello tanto inversores como prestatarios, según <span class="citation" data-cites="palacios2012">(<a href="#ref-palacios2012" role="doc-biblioref">Palacios 2012</a>)</span>, “Los inversores hacen uso de las calificaciones crediticias como un indicador de la probabilidad de recuperar su dinero. Adicionalmente, los prestatarios pueden beneficiarse de tener calificada su deuda, con el objetivo de colocarla con mayor facilidad y eliminar las dudas que haya relación a ellos.” Por ello, ambas parten obtienen beneficio de que exista este rating en el mundo de la información financiera. Y desde el punto de vista del inversor, como menciona la autora <span class="citation" data-cites="chicu2020">(<a href="#ref-chicu2020" role="doc-biblioref">Chicu 2020</a>)</span>, “…a la hora de analizar una inversión, debemos valorar la rentabilidad esperada, así como la liquidez que perdemos y el riesgo que estamos dispuestos a sumir”. Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. En adición, haciendo referencia a esta misma autora “…la gestión de riesgos tiene un lugar cada vez que un inversor analiza e intenta cuantificar las pérdidas potenciales en una inversión y luego toma las medidas apropiadas, considerando sus objetivos de inversión y su tolerancia al riesgo.” Esto último viene de la mano con lo que son las proyecciones, pues le permite al inversionista hacer un mejor análisis y una gestión de riesgos adecuada, que podemos definir según Chicu como “El proceso de identificación, análisis e incorporación de la incertidumbre en las decisiones de inversión” <span class="citation" data-cites="chicu2020">(<a href="#ref-chicu2020" role="doc-biblioref">Chicu 2020</a>)</span>. Reforzando lo que menciona Chicu, la autora <span class="citation" data-cites="herrera2008">(<a href="#ref-herrera2008" role="doc-biblioref">Maria de los Ángeles Herrera 2024</a>)</span>, menciona en adición a la gestión de riesgos “el contexto de incertidumbre genera inevitablemente un riesgo, y es ahí cuando la institución financiera debe preservar su valor económico y la integridad de los recursos confiados por los depositantes y socios.” Y añadiendo la definición de esta misma autora tenemos que la gestión de riesgos es “la denominación que se utiliza para el conjunto de técnicas y herramientas que pretenden maximizar el valor económico de la institución financiera, en un contexto de incertidumbre”. Concluyendo, la gestión de riesgos depende íntimamente de la calificación de riesgo, pues permite tener un parámetro ante la incertidumbre que representa invertir.</p>
 </section>
 <section id="referencias-bibliográfica" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="referencias-bibliográfica"><span class="header-section-number">1.5</span> Referencias bibliográfica</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-chicu2020" class="csl-entry" role="listitem">
+Chicu, Dorina. 2020. <span>«La valoración del riesgo financiero»</span>. 2020. <a href="https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf">https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf</a>.
+</div>
+<div id="ref-herrera2008" class="csl-entry" role="listitem">
+Maria de los Ángeles Herrera, Juan Terán. 2024. <span>«Conceptualización del riesgo de los mercados financieros»</span>. 2024. <a href="https://www.redalyc.org/pdf/900/90075920006.pdf">https://www.redalyc.org/pdf/900/90075920006.pdf</a>.
+</div>
+<div id="ref-palacios2012" class="csl-entry" role="listitem">
+Palacios, Alberto. 2012. <span>«Calificación de riesgo: definición e influencia en la última década»</span>. 2012. <a href="https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1">https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1</a>.
+</div>
+</div>
 
 
 </section>

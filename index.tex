@@ -91,6 +91,39 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 \KOMAoption{captions}{tableheading}
 \makeatletter
@@ -176,7 +209,7 @@
 \renewcommand*\contentsname{Tabla de contenidos}
 {
 \hypersetup{linkcolor=}
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 \tableofcontents
 }
 
@@ -215,17 +248,28 @@ es un tópico de suma importancia para las empresas.
 idea}\label{conceptualizaciuxf3n-de-la-idea}
 
 ``Verificar una relación entre la calificación de riesgo con las
-variables Nivel de educación, Ingresos, Monto del préstamo'' De la
+variables Nivel de educación, Ingresos, Monto del préstamo''. De la
 pregunta anterior, nos interesa conceptualizar dicha idea, por lo que,
 buscando la definición de las palabras que conforman la idea, en la RAE,
 encontramos lo siguiente:
 
-\emph{Relación: Conexión, correspondencia. }Nivel: Medida de una
-cantidad con referencia a una escala determinada. \emph{Educación:
-Acción y efecto de educar, instrucción por medio de la acción docente.
-}Ingresos: Caudal que entra en poder de alguien, y que le es de cargo en
-las cuentas. \emph{Calificación: Puntuación obtenida en un examen o en
-cualquier tipo de prueba. }Riesgo: Contingencia o proximidad de un daño.
+\begin{itemize}
+\item
+  Relación: Conexión, correspondencia.
+\item
+  Nivel: Medida de una cantidad con referencia a una escala determinada.
+\item
+  Educación: Acción y efecto de educar, instrucción por medio de la
+  acción docente.
+\item
+  Ingresos: Caudal que entra en poder de alguien, y que le es de cargo
+  en las cuentas.
+\item
+  Calificación: Puntuación obtenida en un examen o en cualquier tipo de
+  prueba.
+\item
+  Riesgo: Contingencia o proximidad de un daño.
+\end{itemize}
 
 \subsection{Identificación de
 tensiones}\label{identificaciuxf3n-de-tensiones}
@@ -273,13 +317,9 @@ necesario tener una idea de qué es lo que queremos realizar con estas
 preguntas o dicho de otra forma, cuál es el problema que potencialmente
 podemos resolver o la incógnita a contestar.8
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  \textbf{¿Cuáles son las variables que influyen más en la calificación
-  de riesgo?}
-\end{enumerate}
+\subsubsection{¿Cuáles son las variables que influyen más en la
+calificación de
+riesgo?}\label{cuuxe1les-son-las-variables-que-influyen-muxe1s-en-la-calificaciuxf3n-de-riesgo}
 
 \textbf{Contraargumentos}
 
@@ -307,14 +347,9 @@ factores, para ver si sus clientes son ideales para el préstamo o no.
 Por otro lado, concentrarnos en las variables que tienen mayor peso,
 podría ayudar a un mejor entendimiento de la calificación de riesgo.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{1}
-\tightlist
-\item
-  \textbf{¿Existe una correlación positiva entre las variables de
-  interés y la calificación de riesgo?}
-\end{enumerate}
+\subsubsection{¿Existe una correlación positiva entre las variables de
+interés y la calificación de
+riesgo?}\label{existe-una-correlaciuxf3n-positiva-entre-las-variables-de-interuxe9s-y-la-calificaciuxf3n-de-riesgo}
 
 \textbf{Contraargumentos} Una relación positiva no implica que haya una
 mejor calificación, pues pueden existir variables con relación negativa,
@@ -341,14 +376,9 @@ Todas las relaciones son de importancia, hasta donde no existe relación,
 pues sirven para delimitar el modelo y determinar cuáles son las
 verdaderas variables que si influyen.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  \textbf{¿Es la calificación de riesgo un buen calificador de las
-  variables que la determinan?}
-\end{enumerate}
+\subsubsection{\texorpdfstring{\textbf{¿Es la calificación de riesgo un
+buen calificador de las variables que la
+determinan?}}{¿Es la calificación de riesgo un buen calificador de las variables que la determinan?}}\label{es-la-calificaciuxf3n-de-riesgo-un-buen-calificador-de-las-variables-que-la-determinan}
 
 \textbf{Contraargumentos}
 
@@ -375,14 +405,9 @@ Si la calificación de riesgo logra simplificar y consolidar la
 información, entonces podríamos conjeturar que se comporta como una
 buena calificación.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\setcounter{enumi}{3}
-\tightlist
-\item
-  \textbf{¿Cómo se mide la calificación de riesgo dadas las variables
-  consideradas?}
-\end{enumerate}
+\subsubsection{\texorpdfstring{\textbf{¿Cómo se mide la calificación de
+riesgo dadas las variables
+consideradas?}}{¿Cómo se mide la calificación de riesgo dadas las variables consideradas?}}\label{cuxf3mo-se-mide-la-calificaciuxf3n-de-riesgo-dadas-las-variables-consideradas}
 
 \textbf{Contraargumentos}
 
@@ -486,6 +511,29 @@ las cuales viene a su vez con la tabla de datos.
 
 \section{Revisión bibliográfica}\label{revisiuxf3n-bibliogruxe1fica}
 
+\subsection{Búsqueda de
+bibliografía}\label{buxfasqueda-de-bibliografuxeda}
+
+Entre las posibles combinaciones de palabras clave se se pueden
+encontrar:
+
+\begin{itemize}
+\item
+  Ingreso + situación laboral + solvencia crediticia
+\item
+  Prestamo + incumplimiento de préstamos + riesgo financiero
+\item
+  Ciudad + propósito del prestamo + ingreso
+\item
+  Situacion laboral + duración de empleo + historico de pagos
+\item
+  Historico de pagos + incumplimiento de prestamos + categoria de riesgo
+\item
+  Valor de activos + prestamo + relación entre deuda e ingreso
+\end{itemize}
+
+\subsection{Fichas de literatura}\label{fichas-de-literatura}
+
 \textbf{Título: La valoración del riesgo financiero.}
 
 \begin{itemize}
@@ -567,11 +615,6 @@ de microfinanzas: estado del arte. }
   perfil.
 \end{itemize}
 
-\subsection{Búsqueda de
-bibliografía}\label{buxfasqueda-de-bibliografuxeda}
-
-\subsection{Fichas de literatura}\label{fichas-de-literatura}
-
 \section{Construcción de la UVE de
 Godwin}\label{construcciuxf3n-de-la-uve-de-godwin}
 
@@ -579,12 +622,26 @@ Godwin}\label{construcciuxf3n-de-la-uve-de-godwin}
 
 \subsection{Principios y teorías}\label{principios-y-teoruxedas}
 
+Para llevar a cabo la investigación en estas etapas preliminares hemos
+hecho estudio bibliográfico de lo que son los análisis de calificación
+financiera, que es justo el tema y variable objetivo de nuestro estudio.
+También se incorpora la teoría de la gestión de riesgos, que a su vez
+hace uso de técnicas de probabilidad pues dentro de su corpus la idea
+principal es maximizar una ganancia en eventos que presentan
+incertidumbre, de ahí la estrecha relación que tiene con Probabilidad.
+
+Por otro lado, utilizar los conceptos de la valoración de riesgos
+financieros, sirve de base para entender cómo funciona el mercado
+financiero, y cuáles son los impactos directos de poseer una
+calificación de riesgos, y que el impacto es de hecho, para todos los
+participantes.
+
 \section{Parte de escritura}\label{parte-de-escritura}
 
 El problema que se va a tratar en el presente trabajo es de determinar
 la relación existente entre las variables de ingresos, nivel de
 educación y Monto del préstamo con la calificación de riesgo. Desde el
-punto de vista teórico, el autor Palacios (2012), menciona que ``La
+punto de vista teórico, el autor (Palacios 2012), menciona que ``La
 principal función que radica en las calificaciones crediticias es la
 evaluación de la mayor o menor probabilidad de pago de la deuda y los
 intereses, proporcionando indicadores que sirvan de referencia a los
@@ -604,14 +661,14 @@ El estudio del análisis financiero es de suma importancia en la
 actualidad, ya que las transacciones de los flujos de dinero cada vez
 son mayores, es decir, vender deuda para obtener financiamiento en el
 corto plazo es una de las estrategias más aplicadas, por ello tanto
-inversores como prestatarios, según Palacios (2012), ``Los inversores
+inversores como prestatarios, según (Palacios 2012), ``Los inversores
 hacen uso de las calificaciones crediticias como un indicador de la
 probabilidad de recuperar su dinero. Adicionalmente, los prestatarios
 pueden beneficiarse de tener calificada su deuda, con el objetivo de
 colocarla con mayor facilidad y eliminar las dudas que haya relación a
 ellos.'' Por ello, ambas parten obtienen beneficio de que exista este
 rating en el mundo de la información financiera. Y desde el punto de
-vista del inversor, como menciona la autora Chicu (2020), ``\ldots a la
+vista del inversor, como menciona la autora (Chicu 2020), ``\ldots a la
 hora de analizar una inversión, debemos valorar la rentabilidad
 esperada, así como la liquidez que perdemos y el riesgo que estamos
 dispuestos a sumir''. Por lo tanto, poseer la información de rating es
@@ -625,20 +682,38 @@ lo que son las proyecciones, pues le permite al inversionista hacer un
 mejor análisis y una gestión de riesgos adecuada, que podemos definir
 según Chicu como ``El proceso de identificación, análisis e
 incorporación de la incertidumbre en las decisiones de inversión''
-(2020). Reforzando lo que menciona Chicu, la autora Herrera (2008),
-menciona en adición a la gestión de riesgos ``el contexto de
-incertidumbre genera inevitablemente un riesgo, y es ahí cuando la
-institución financiera debe preservar su valor económico y la integridad
-de los recursos confiados por los depositantes y socios.'' Y añadiendo
-la definición de esta misma autora tenemos que la gestión de riesgos es
-``la denominación que se utiliza para el conjunto de técnicas y
-herramientas que pretenden maximizar el valor económico de la
+(Chicu 2020). Reforzando lo que menciona Chicu, la autora (Maria de los
+Ángeles Herrera 2024), menciona en adición a la gestión de riesgos ``el
+contexto de incertidumbre genera inevitablemente un riesgo, y es ahí
+cuando la institución financiera debe preservar su valor económico y la
+integridad de los recursos confiados por los depositantes y socios.'' Y
+añadiendo la definición de esta misma autora tenemos que la gestión de
+riesgos es ``la denominación que se utiliza para el conjunto de técnicas
+y herramientas que pretenden maximizar el valor económico de la
 institución financiera, en un contexto de incertidumbre''. Concluyendo,
 la gestión de riesgos depende íntimamente de la calificación de riesgo,
 pues permite tener un parámetro ante la incertidumbre que representa
 invertir.
 
 \section{Referencias bibliográfica}\label{referencias-bibliogruxe1fica}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-chicu2020}
+Chicu, Dorina. 2020. {«La valoración del riesgo financiero»}. 2020.
+\url{https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf}.
+
+\bibitem[\citeproctext]{ref-herrera2008}
+Maria de los Ángeles Herrera, Juan Terán. 2024. {«Conceptualización del
+riesgo de los mercados financieros»}. 2024.
+\url{https://www.redalyc.org/pdf/900/90075920006.pdf}.
+
+\bibitem[\citeproctext]{ref-palacios2012}
+Palacios, Alberto. 2012. {«Calificación de riesgo: definición e
+influencia en la última década»}. 2012.
+\url{https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1}.
+
+\end{CSLReferences}
 
 
 
