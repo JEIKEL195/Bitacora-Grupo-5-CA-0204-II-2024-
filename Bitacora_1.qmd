@@ -36,9 +36,63 @@ La idea principal de este trabajo es: “Verificar una relación entre la califi
 *¿Cómo se mide la calificación de riesgo dadas las variables consideradas?
 
 
-
 ### Argumentación de las preguntas 
 
+Estas preguntas deben poseer una argumentación detrás de ellas, pues es necesario tener una idea de qué es lo que queremos realizar con estas preguntas o dicho de otra forma, cuál es el problema que potencialmente podemos resolver o la incógnita a contestar.8
+
+1. **¿Cuáles son las variables que influyen más en la calificación de riesgo?**
+
+**Contraargumentos** 
+
+Las variables que se toman son realmente las correctas, cuál es el método que se utiliza para determinar que las variables que se están tomando son mejores para un resultado que otras. Al ser una calificación de riesgo, que facilita el préstamo a personas o no, las personas podrían tener intenciones perversas a siempre manipular su información para obtener buenas calificaciones. Por otro lado, son muchas las variables contempladas en la base de datos, hacer uso de un par de variables, podría influir de manera considerable en buscar una relación entre las variables.
+
+**Argumentos** 
+
+Al realizar un análisis previo de la tabla de datos, podríamos determinar cuáles son las variables con mayor impacto en esta calificación, y así simplificar el modelo y darle un mayor énfasis en estas variables que afectan de manera considerable en la calificación. 
+
+**Concluya**
+
+Al ser una calificación de riesgo, las empresas deben considerar varios factores, para ver si sus clientes son ideales para el préstamo o no. Por otro lado, concentrarnos en las variables que tienen mayor peso, podría ayudar a un mejor entendimiento de la calificación de riesgo.
+
+2. **¿Existe una correlación positiva entre las variables de interés y la calificación de riesgo?**
+
+**Contraargumentos** Una relación positiva no implica que haya una mejor calificación, pues pueden existir variables con relación negativa, que tengan un efecto positivo sobre la calificación de riesgo, por pura intuición, podemos pensar en las personas que tienen un récord crediticio limpio, esto implicaría que esta variable debería tener un valor nulo para mejorar la calificación de riesgo. Otra variable que podría afectar es las veces que la persona ha caído en impago, pues entre más suba este valor, la calificación de riesgo, debería ser menor. 
+
+**Argumentos**
+
+Las relaciones que buscamos no tienen por qué ser positivas, desde un tipo de vista de coeficiente de correlación, sino desde un tipo de vista de mejoría, es decir, variables que en ausencia contribuyan a una mejor calificación, nos son de interés para el trabajo. Como hemos mencionado encontrar las relaciones más contribuyentes, son de utilidad, pues favorecen a simplificar el modelo y obtener a cambio una mejor interpretación del estudio.
+
+**Concluya** 
+
+Todas las relaciones son de importancia, hasta donde no existe relación, pues sirven para delimitar el modelo y determinar cuáles son las verdaderas variables que si influyen. 
+
+3. **¿Es la calificación de riesgo un buen calificador de las variables que la determinan?**
+
+**Contraargumentos** 
+
+Esta pregunta, no es del todo objetiva, pues dependerá de lo que la empresa quiera detectar en estas evaluaciones, es decir, un factor que determina en gran medida a la calificación de riesgo, en otra empresa no tiene por qué ser así, pues dependerá del público objetivo de la empresa. Un buen calificador de riesgo depende tanto de las variables que se toman en cuenta, como del contexto de la empresa.
+
+**Argumentos** 
+
+Desde el punto de vista de la empresa, la calificación de riesgo es una herramienta que sirve para determinar en gran medida si un préstamo se realiza o no, por ello, saber si su calificación de riesgo logra captar la información deseada de las variables utilizadas, entonces se podría considerar un buen factor, pues, aunque las empresas deban tener cuidado a quiénes otorgan los préstamos, también es un hecho, que si no lo hacen, se quedan sin negocio
+
+**Concluya** 
+
+Si la calificación de riesgo logra simplificar y consolidar la información, entonces podríamos conjeturar que se comporta como una buena calificación.
+
+4. **¿Cómo se mide la calificación de riesgo dadas las variables consideradas?**
+
+**Contraargumentos** 
+
+La pregunta es más compleja que las hechas anteriormente, pues estamos entrando a un método de calificación, es decir, hacer un análisis de la medición, como mencionamos como un contraargumento en la pregunta anterior, esto no tiene por qué ser universal en las empresas, esto puede variar, por lo que dependerá del contexto en el cual se realice la pregunta.
+
+**Argumentos** 
+
+En realidad que sea una pregunta que depende de sus variables, podría ser beneficioso, pues si existen varias metodologías, podríamos tener una mejor cartera de préstamos, es decir, dado cierto tipo de cliente, se podrían realizar cierto tipo de préstamos.
+
+**Concluya** 
+
+La subjetividad de esta pregunta, no es ni buena ni mala, esta depende su contexto, si es aplicada de una buena forma, podría ser beneficioso tanto para la empresa, por ampliar su mercado, como para el cliente, al recibir el préstamo deseado.
 
 
 ### Argumentación a través de datos
