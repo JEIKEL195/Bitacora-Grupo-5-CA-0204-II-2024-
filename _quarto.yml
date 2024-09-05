@@ -10,7 +10,7 @@ book:
   date: today
   site-url: google.com # Vacío por el momento
   repo-actions: [edit]
-  downloads: [pdf, epub]
+  downloads: [pdf]
   chapters:
     - "index.qmd"
     - "bitacora_1.qmd"

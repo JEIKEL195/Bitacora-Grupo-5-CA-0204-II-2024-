@@ -143,6 +143,54 @@ Para la siguiente vamos a tomar el nombre las variables, las cuales dejaremos en
 
 ## Revisión bibliográfica 
 
+**Título: La valoración del riesgo financiero.**
+
+* Autor: Dorina Chicu.
+
+* Año: 2020.
+
+* Nombre del tema: Métodos para medir el riesgo.
+
+* Cronología: 2020.
+
+* Metodología: Recolección de datos.
+
+* Temática: Estudios económicos.
+
+* Teórica: Valoración de riesgos.
+
+* Resumen en una oración: Distintos riesgos existentes y algunas formas de medirlos.
+
+* Argumento central: Analizar algunos de los distintos métodos existentes para medir los riesgos financieros. 
+
+* Problema con el argumento o el tema: Aunque el tema principal gire en torno a la valoración de riesgos financieros, el trabajo queda falente de varios detalles que, si pudieran ser notorios a la hora de hacer un análisis más exhaustivo, además de la falta de ejemplos u aplicaciones de estos, quedan solo como algo teórico.
+
+* Resumen en un párrafo: El estudio busca centrarse en uno de los tres componentes de la inversión el cual es el riesgo financiero, de manera que se sabe que el objetivo principal de una empresa es maximizar sus beneficios, tal que llegue a asegurar la máxima rentabilidad posible. Por tanto, lo que se quiere brindar son los distintos métodos existentes que sirven para medir o valorar el riesgo, lo cual lleva a que sea posible generar una estrategia que permita mitigar los mismos.
+
+
+**Título: La evaluación del riesgo de crédito en las instituciones de microfinanzas: estado del arte. **
+
+* Autor: María Seijas, Milagro Vivel, Rubén Lado, Sara Fernández.
+
+* Año: 2017.
+
+* Nombre del tema: Riesgos en los microcréditos.
+
+* Cronología: 2015 - 2017.
+
+* Metodología: Recolección y comparación de datos.
+
+* Temática: Estudios económicos.
+
+* Teórica: Valoración de riesgos. 
+
+* Resumen en una oración: medición del riesgo de los microcréditos y análisis de los clientes.
+
+* Argumento central: Explorar la diversa teoría existente al riesgo de crédito de las instituciones financieras.
+
+* Problema con el argumento o el tema: Aunque el tema principal gire en torno a la valoración de riesgos financieros, el trabajo queda falente de varios detalles que, si pudieran ser notorios a la hora de hacer un análisis más exhaustivo, además de la falta de ejemplos u aplicaciones de estos, quedan solo como algo teórico.
+
+* Resumen en un párrafo: Este trabajo busca exponer a través de las investigaciones que se han centrado en la evaluación del riesgo de crédito en las Instituciones de Microfinanzas, aquella teoría relacionada con el riesgo presente en los microcréditos, además busca analizar todos aquellos factores que llegan a ser determinantes en el riesgo de que haya algún tipo de impago., por lo que este estudio también ofrece ciertas técnicas que generan una mayor consistencia y trasparencia en la evaluación y seguimiento de los clientes y su perfil. 
 
 
 ### Búsqueda de bibliografía
