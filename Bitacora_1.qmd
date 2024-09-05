@@ -215,3 +215,4 @@ Reforzando lo que menciona Chicu, la autora Herrera (2008), menciona en adición
 
 ## Referencias bibliográfica
 
+`r bibliography()`
