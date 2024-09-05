@@ -1,3 +1,4 @@
 # Introducción {.unnumbered}
 
-<Expliquen en consiste su trabajo y cómo piensan resolverlo>
+Este estudio utiliza una base de datos de riesgos financieros en el cual  se toman en cuanta variables como lo son la edad, genero,  pais en el que vive y estado marital de las personas, esto con el fin de realizar un perfil descriptivo de los prestatario, asi como tambien se toman variables cuantitativas como los ingresos, activos y deuda de la persona en cuestion. De manera que la base contiene un total de 15000 casos y 20 variables. El objetivo es generar empiricamente un metodo que basado en las variables permita crear una calificación de riesgo, tal que se puedan relacionar las variables cuantitativas y cualitativas de modo tal se logre llegar a algún resultado satisfactorio a partir de estos datos. Por estas razones, la investigación se basa en un marco teorico y empirico donde los autores buscan salir de la norma y explorar mas factores que solo la parte economica de los prestatarios.
+ 

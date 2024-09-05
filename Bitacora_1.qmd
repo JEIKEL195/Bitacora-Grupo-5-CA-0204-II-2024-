@@ -1,5 +1,4 @@
 # Bitacora 1
-<Expliquen en consiste su trabajo y cómo piensan resolverlo> 
 
 ## Parte de planificación
 
@@ -10,14 +9,19 @@ La idea principal de este trabajo es analizar una tabla de datos y extraer infor
 El tema es de interés, pues tenemos una base de datos con una cantidad considerable de variables, que se prestan para hacer un análisis exhaustivo. En adición, los datos que posee la base de datos son datos financieros, que sin duda son de interés bajo el contexto de la carrera. Al realizar un análisis previo de la bibliografía, observamos quela información es realmente abundante, pues el tema de riesgos financieros es un tópico de suma importancia para las empresas.
 
 ### Conceptualización de la idea
-“Verificar una relación entre la calificación de riesgo con las variables Nivel de educación, Ingresos, Monto del préstamo” De la pregunta anterior, nos interesa conceptualizar dicha idea, por lo que, buscando la definición de las palabras que conforman la idea, en la RAE, encontramos lo siguiente:
+“Verificar una relación entre la calificación de riesgo con las variables Nivel de educación, Ingresos, Monto del préstamo”. De la pregunta anterior, nos interesa conceptualizar dicha idea, por lo que, buscando la definición de las palabras que conforman la idea, en la RAE, encontramos lo siguiente:
 
-*Relación: Conexión, correspondencia. 
-*Nivel: Medida de una cantidad con referencia a una escala determinada.
-*Educación: Acción y efecto de educar, instrucción por medio de la acción docente.
-*Ingresos: Caudal que entra en poder de alguien, y que le es de cargo en las cuentas.
-*Calificación: Puntuación obtenida en un examen o en cualquier tipo de prueba.
-*Riesgo: Contingencia o proximidad de un daño.
+* Relación: Conexión, correspondencia.
+
+* Nivel: Medida de una cantidad con referencia a una escala determinada.
+
+* Educación: Acción y efecto de educar, instrucción por medio de la acción docente.
+
+* Ingresos: Caudal que entra en poder de alguien, y que le es de cargo en las cuentas.
+
+* Calificación: Puntuación obtenida en un examen o en cualquier tipo de prueba.
+
+* Riesgo: Contingencia o proximidad de un daño.
 
 
 ### Identificación de tensiones
@@ -40,7 +44,7 @@ La idea principal de este trabajo es: “Verificar una relación entre la califi
 
 Estas preguntas deben poseer una argumentación detrás de ellas, pues es necesario tener una idea de qué es lo que queremos realizar con estas preguntas o dicho de otra forma, cuál es el problema que potencialmente podemos resolver o la incógnita a contestar.8
 
-1. **¿Cuáles son las variables que influyen más en la calificación de riesgo?**
+#### ¿Cuáles son las variables que influyen más en la calificación de riesgo?
 
 **Contraargumentos** 
 
@@ -54,7 +58,7 @@ Al realizar un análisis previo de la tabla de datos, podríamos determinar cuá
 
 Al ser una calificación de riesgo, las empresas deben considerar varios factores, para ver si sus clientes son ideales para el préstamo o no. Por otro lado, concentrarnos en las variables que tienen mayor peso, podría ayudar a un mejor entendimiento de la calificación de riesgo.
 
-2. **¿Existe una correlación positiva entre las variables de interés y la calificación de riesgo?**
+#### ¿Existe una correlación positiva entre las variables de interés y la calificación de riesgo?
 
 **Contraargumentos** Una relación positiva no implica que haya una mejor calificación, pues pueden existir variables con relación negativa, que tengan un efecto positivo sobre la calificación de riesgo, por pura intuición, podemos pensar en las personas que tienen un récord crediticio limpio, esto implicaría que esta variable debería tener un valor nulo para mejorar la calificación de riesgo. Otra variable que podría afectar es las veces que la persona ha caído en impago, pues entre más suba este valor, la calificación de riesgo, debería ser menor. 
 
@@ -66,7 +70,7 @@ Las relaciones que buscamos no tienen por qué ser positivas, desde un tipo de v
 
 Todas las relaciones son de importancia, hasta donde no existe relación, pues sirven para delimitar el modelo y determinar cuáles son las verdaderas variables que si influyen. 
 
-3. **¿Es la calificación de riesgo un buen calificador de las variables que la determinan?**
+#### **¿Es la calificación de riesgo un buen calificador de las variables que la determinan?**
 
 **Contraargumentos** 
 
@@ -80,7 +84,7 @@ Desde el punto de vista de la empresa, la calificación de riesgo es una herrami
 
 Si la calificación de riesgo logra simplificar y consolidar la información, entonces podríamos conjeturar que se comporta como una buena calificación.
 
-4. **¿Cómo se mide la calificación de riesgo dadas las variables consideradas?**
+#### **¿Cómo se mide la calificación de riesgo dadas las variables consideradas?**
 
 **Contraargumentos** 
 
@@ -223,12 +227,13 @@ Por otro lado, utilizar los conceptos de la valoración de riesgos financieros, 
 
 ## Parte de escritura
 
-El problema que se va a tratar en el presente trabajo es de determinar la relación existente entre las variables de ingresos, nivel de educación y Monto del préstamo con la calificación de riesgo. Desde el punto de vista teórico, el autor Palacios (2012), menciona que “La principal función que radica en las calificaciones crediticias es la evaluación de la mayor o menor probabilidad de pago de la deuda y los intereses, proporcionando indicadores que sirvan de referencia a los inversores con el fin de que puedan tener conocimiento del riesgo crediticio de una forma simple y accesible”.  Desde este punto de vista, hay un apoyo en la investigación que tratamos de realizar, pues la calificación de riesgo es de suma importancia en el mundo financiero.  Este mismo autor menciona que “Su importancia deriva de su implantación dentro de la regulación, lo que afecta a todo el entramado institucional, y sectores clave de la sociedad como son el bancario y las agencias de seguros y reaseguros”, podemos ver entonces que la teoría respalda la importancia que hemos estado conjeturando en esta presente bitácora (Entiéndase conjeturando, porque aún no hemos realizado el análisis de la tabla de datos).
+El problema que se va a tratar en el presente trabajo es de determinar la relación existente entre las variables de ingresos, nivel de educación y Monto del préstamo con la calificación de riesgo. Desde el punto de vista teórico, el autor [@palacios2012], menciona que “La principal función que radica en las calificaciones crediticias es la evaluación de la mayor o menor probabilidad de pago de la deuda y los intereses, proporcionando indicadores que sirvan de referencia a los inversores con el fin de que puedan tener conocimiento del riesgo crediticio de una forma simple y accesible”.  Desde este punto de vista, hay un apoyo en la investigación que tratamos de realizar, pues la calificación de riesgo es de suma importancia en el mundo financiero.  Este mismo autor menciona que “Su importancia deriva de su implantación dentro de la regulación, lo que afecta a todo el entramado institucional, y sectores clave de la sociedad como son el bancario y las agencias de seguros y reaseguros”, podemos ver entonces que la teoría respalda la importancia que hemos estado conjeturando en esta presente bitácora (Entiéndase conjeturando, porque aún no hemos realizado el análisis de la tabla de datos).
 
-El estudio del análisis financiero es de suma importancia en la actualidad, ya que las transacciones de los flujos de dinero cada vez son mayores, es decir, vender deuda para obtener financiamiento en el corto plazo es una de las estrategias más aplicadas, por ello tanto inversores como prestatarios, según Palacios (2012), “Los inversores hacen uso de las calificaciones crediticias como un indicador de la probabilidad de recuperar su dinero. Adicionalmente, los prestatarios pueden beneficiarse de tener calificada su deuda, con el objetivo de colocarla con mayor facilidad y eliminar las dudas que haya relación a ellos.” Por ello, ambas parten obtienen beneficio de que exista este rating en el mundo de la información financiera.  Y desde el punto de vista del inversor, como menciona la autora Chicu (2020), “…a la hora de analizar una inversión, debemos valorar la rentabilidad esperada, así como la liquidez que perdemos y el riesgo que estamos dispuestos a sumir”.
-Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. En adición, haciendo referencia a esta misma autora “…la gestión de riesgos tiene un lugar cada vez que un inversor analiza e intenta cuantificar las pérdidas potenciales en una inversión y luego toma las medidas apropiadas, considerando sus objetivos de inversión y su tolerancia al riesgo.” Esto último viene de la mano con lo que son las proyecciones, pues le permite al inversionista hacer un mejor análisis y una gestión de riesgos adecuada, que podemos definir según Chicu como “El proceso de identificación, análisis e incorporación de la incertidumbre en las decisiones de inversión” (2020). 
-Reforzando lo que menciona Chicu, la autora Herrera (2008), menciona en adición a la gestión de riesgos “el contexto de incertidumbre genera inevitablemente un riesgo, y es ahí cuando la institución financiera debe preservar su valor económico y la integridad de los recursos confiados por los depositantes y socios.” Y añadiendo la definición de esta misma autora tenemos que la gestión de riesgos es “la denominación que se utiliza para el conjunto de técnicas y herramientas que pretenden maximizar el valor económico de la institución financiera, en un contexto de incertidumbre”.  Concluyendo, la gestión de riesgos depende íntimamente de la calificación de riesgo, pues permite tener un parámetro ante la incertidumbre que representa invertir.
+El estudio del análisis financiero es de suma importancia en la actualidad, ya que las transacciones de los flujos de dinero cada vez son mayores, es decir, vender deuda para obtener financiamiento en el corto plazo es una de las estrategias más aplicadas, por ello tanto inversores como prestatarios, según [@palacios2012], “Los inversores hacen uso de las calificaciones crediticias como un indicador de la probabilidad de recuperar su dinero. Adicionalmente, los prestatarios pueden beneficiarse de tener calificada su deuda, con el objetivo de colocarla con mayor facilidad y eliminar las dudas que haya relación a ellos.” Por ello, ambas parten obtienen beneficio de que exista este rating en el mundo de la información financiera.  Y desde el punto de vista del inversor, como menciona la autora [@chicu2020], “…a la hora de analizar una inversión, debemos valorar la rentabilidad esperada, así como la liquidez que perdemos y el riesgo que estamos dispuestos a sumir”.
+Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. En adición, haciendo referencia a esta misma autora “…la gestión de riesgos tiene un lugar cada vez que un inversor analiza e intenta cuantificar las pérdidas potenciales en una inversión y luego toma las medidas apropiadas, considerando sus objetivos de inversión y su tolerancia al riesgo.” Esto último viene de la mano con lo que son las proyecciones, pues le permite al inversionista hacer un mejor análisis y una gestión de riesgos adecuada, que podemos definir según Chicu como “El proceso de identificación, análisis e incorporación de la incertidumbre en las decisiones de inversión” [@chicu2020]. 
+Reforzando lo que menciona Chicu, la autora [@herrera2008], menciona en adición a la gestión de riesgos “el contexto de incertidumbre genera inevitablemente un riesgo, y es ahí cuando la institución financiera debe preservar su valor económico y la integridad de los recursos confiados por los depositantes y socios.” Y añadiendo la definición de esta misma autora tenemos que la gestión de riesgos es “la denominación que se utiliza para el conjunto de técnicas y herramientas que pretenden maximizar el valor económico de la institución financiera, en un contexto de incertidumbre”.  Concluyendo, la gestión de riesgos depende íntimamente de la calificación de riesgo, pues permite tener un parámetro ante la incertidumbre que representa invertir.
 
 ## Referencias bibliográfica
 
-`r bibliography()`
+::: {#refs}
+:::
