@@ -28,6 +28,13 @@ Otro factor a tomar en cuenta es por supuesto, la tabla de datos, pues podría c
 
 ### Reformulación de la idea en modo preguntas
 
+La idea principal de este trabajo es: “Verificar una relación entre la calificación de riesgo con las variables Nivel de educación, Ingresos, Monto del préstamo”, por lo que para etsa parte del trabajo, vamos a formular la idea de diferentes formas, esto con el fin de formular una pregunta de investigación que sea clara.
+
+*¿Cuáles son las variables que influyen más en la calificación de riesgo?
+*¿Existe una correlación positiva entre las variables de interés y la calificación de riesgo?
+*¿Es la calificación de riesgo un buen calificador de las variables que la determinan?
+*¿Cómo se mide la calificación de riesgo dadas las variables consideradas?
+
 
 
 ### Argumentación de las preguntas 
