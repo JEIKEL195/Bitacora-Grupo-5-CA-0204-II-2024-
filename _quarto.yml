@@ -15,7 +15,7 @@ book:
     - "index.qmd"
     - "bitacora_1.qmd"
 
-#bibliography: references.bib
+bibliography: references.bib
 
 format:
   html:
@@ -23,8 +23,12 @@ format:
       # https://quarto.org/docs/output-formats/html-themes.html a excepción de
       # los oscuros porque no entiende nada.
     theme: cosmo
+    toc: true          # Activa la TOC para HTML
+    toc-depth: 2       # Número de niveles de encabezado que se muestran en la TOC
   pdf:
     documentclass: scrreprt
+    toc: true          # Activa la TOC para PDF
+    toc-depth: 2       # Número de niveles de encabezado que se muestran en la TOC
 
 execute:
   freeze: auto
