@@ -243,3 +243,11 @@ Reforzando lo que menciona Chicu, la autora [@herrera2008], menciona en adición
 
 ::: {#refs}
 :::
+
+## Anexo 1 (CHANGELOG.md)
+
+{{< include CHANGELOG.md >}}
+
+## Anexo 2 (Participacion)
+
+{{< resumen.txt >}}
