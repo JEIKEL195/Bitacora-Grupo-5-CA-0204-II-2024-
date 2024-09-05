@@ -217,6 +217,8 @@ Entre las posibles combinaciones de palabras clave se se pueden encontrar:
 
 ## Construcción de la UVE de Godwin
 
+![V de Gowin](imagenes/v-gowin.jpeg)
+
 ### Conceptos básicos
 
 Como hemos estado hablando a lo largo del trabajo, la calificación de riesgo es de suma importancia, por lo que el estudio posee como objetivo determinar una relación fuerte de las variables, para aproximar un método empírico de una calificación de riesgo, pues ya vimos que las empresas por lo general no comparten esta información.
