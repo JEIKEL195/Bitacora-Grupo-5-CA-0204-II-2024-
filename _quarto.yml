@@ -14,6 +14,8 @@ book:
   chapters:
     - "index.qmd"
     - "bitacora_1.qmd"
+    - "bitacora_2.qmd"
+    
 
 bibliography: references.bib
 cite-method: citeproc  # Indica que use citeproc para procesar las citas

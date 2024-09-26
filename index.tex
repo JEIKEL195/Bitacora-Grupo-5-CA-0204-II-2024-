@@ -66,6 +66,46 @@
 \fi
 \makeatother
 
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
 
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
@@ -201,7 +241,7 @@
 
 \title{Bitácoras Grupo \#5, CA-204 (II-2024)}
 \author{Jeikel Navarro Solis, Gabriel Valverde, Erick Venegas}
-\date{2024-09-05}
+\date{2024-09-26}
 
 \begin{document}
 \maketitle
@@ -844,6 +884,72 @@ influencia en la última década»}. 2012.
 \section{Anexo 2 (Participacion)}\label{anexo-2-participacion}
 
 Puedes descargar el resumen de cambios \href{resumen.txt}{aquí}.
+
+\bookmarksetup{startatroot}
+
+\chapter{Bitácora 2}\label{bituxe1cora-2}
+
+\section{Parte de Planificación}\label{parte-de-planificaciuxf3n-1}
+
+\subsection{Ordenamiento de la
+Literatura}\label{ordenamiento-de-la-literatura}
+
+\section{Enlaces de la Literatura}\label{enlaces-de-la-literatura}
+
+\section{Análisis Estadístico}\label{anuxe1lisis-estaduxedstico}
+
+Como base para realizar este análisis estadístico, nos estamos guíando
+con la guía del curso de Herramientas de Ciencias de Datos, el cual
+adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y
+también estamos utilizando el libro escrito por Wickham, el cual también
+adjuntamos el link https://r4ds.hadley.nz/.
+
+A modo de introducción, el análisis estadístico consiste en un conjunto
+de herramientas o técnias que se utilizan para la recolección, el
+análisis e interpretación de datos. Para este trabajo es imprescindible
+contar con este set de herramientas.
+
+\subsection{Análisis Descriptivo}\label{anuxe1lisis-descriptivo}
+
+La base de datos ya se encuentra en formato en tidy, recordemos que el
+formato tidy fue popularizado por el autor Hadley Wickham, donde indican
+que cada variable debe tener su propia columna y cada observación su
+propia fila. Nuestra base de datos cumple con estar en formato tidy.
+
+Vamos a llamar a nuestra base de datos, la cual vamos a utilizar durante
+el trabajo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{base\_financial\_risk\_assessment }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"base{-}financial{-}risk{-}assessment.csv"}\NormalTok{, }
+    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 15000 Columns: 20
+-- Column specification --------------------------------------------------------
+Delimiter: ";"
+chr (10): Gender, Education Level, Marital Status, Loan Purpose, Employment ...
+dbl (10): Age, Income, Credit Score, Loan Amount, Years at Current Job, Debt...
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(base\_financial\_risk\_assessment)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(base\_financial\_risk\_assessment)}
+\end{Highlighting}
+\end{Shaded}
+
 
 
 
