@@ -28,8 +28,8 @@ format:
     toc: true          # Activa la TOC para HTML
     
   pdf:
+    #documentclass: scrreprt
     toc: true          # Activa la TOC para PDF
-    documentclass: scrreprt
     
 execute:
   freeze: auto
