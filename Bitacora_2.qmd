@@ -1,0 +1,21 @@
+# Bitácora 2
+
+## Parte de Planificación 
+
+### Ordenamiento de la Literatura 
+
+## Enlaces de la Literatura
+
+## Análisis Estadístico
+
+Como base para realizar este análisis estadístico, nos estamos guíando con la guía del curso de Herramientas de Ciencias de Datos, el cual adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y también estamos utilizando el libro escrito por Wickham, el cual también adjuntamos el link https://r4ds.hadley.nz/. 
+
+A modo de introducción, el análisis estadístico consiste en un conjunto de herramientas o técnias que se utilizan para la recolección, el análisis e interpretación de datos. Para este trabajo es imprescindible contar con este set de herramientas. 
+
+### Análisis Descriptivo 
+La base de datos ya se encuentra en formato en tidy, recordemos que el formato tidy fue popularizado por el autor Hadley Wickham, donde indican que cada variable debe tener su propia columna y cada observación su propia fila. Nuestra base de datos cumple con estar en formato tidy. 
+
+
+
+
+
