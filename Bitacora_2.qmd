@@ -16,6 +16,18 @@ A modo de introducción, el análisis estadístico consiste en un conjunto de he
 La base de datos ya se encuentra en formato en tidy, recordemos que el formato tidy fue popularizado por el autor Hadley Wickham, donde indican que cada variable debe tener su propia columna y cada observación su propia fila. Nuestra base de datos cumple con estar en formato tidy. 
 
 
+Vamos a llamar a nuestra base de datos, la cual vamos a utilizar durante el trabajo.
+
+```{r}
+library(readr)
+base_financial_risk_assessment <- read_delim("base-financial-risk-assessment.csv", 
+    delim = ";", escape_double = FALSE, trim_ws = TRUE)
+View(base_financial_risk_assessment)
+```
+
+```{r}
+View(base_financial_risk_assessment)
+```
 
 
 
