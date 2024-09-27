@@ -177,6 +177,25 @@ ggplot(Base_limpia, aes(x = `Loan Amount`, fill = `Education Level`)) +
   theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
         axis.text.x = element_text(angle = 45, hjust = 1))  #Rotamos el texto
 ```
+Por otro lado, ahora queremos ver el gráfico de la variable propósito del préstamo en relación con el grado académico, al ser ambas variables categóricas, lo recomendado es utilizar una geometría que se adapte a esto, Sin embargo, al ser medidas que están muy cercanas, casi no se aprecia la diferencia, por lo que se decide adaptarlo a un gráfico de barras y apreciar mejor la diferencias de manera visual, también recurrimos al uso de colores, para identificar las variables. 
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+# Contar las combinaciones de Education Level y Loan Purpose
+Base_count <- Base_limpia %>%
+  group_by(`Education Level`, `Loan Purpose`) %>%
+  summarise(Count = n(), .groups = 'drop')
+
+# Gráfico de barras para visualizar el conteo
+ggplot(Base_count, aes(x = `Education Level`, y = Count, fill = `Loan Purpose`)) +
+  geom_bar(stat = "identity", position = "dodge") +  # Usa barras para mostrar el conteo
+  labs(x = "Nivel Educativo", y = "Conteo", title = "Conteo del Propósito del Préstamo por Nivel Educativo") +
+  scale_fill_manual(values = c("Business" = "blue", "Personal" = "purple", "Home" = "green", "Auto" = "yellow")) +
+  theme_minimal()
+
+```
 
 
 
