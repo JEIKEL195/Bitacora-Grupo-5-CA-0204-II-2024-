@@ -197,5 +197,18 @@ ggplot(Base_count, aes(x = `Education Level`, y = Count, fill = `Loan Purpose`))
 
 ```
 
+Para terminar esta sección, vamos a graficar con la variable objetivo de interés, la cual es la Calificación de riesgo, para ello, lo vamos a comparar a través de diversos gráficos con las variables de nivel educativo, ingresos, monto del préstamo, edad y género. Es importante mencionar, que las variables en conjunto afectan a esta calificación, al menos así es de manera teórica. En este apartado nos vamos a centrar en estos gráficos, en secciones posteriores nos ecargaremos de hacer la conexión entre la teoría, nuestras hipótesis y los datos obtenidos. 
+
+Para comenzar, nos interesa observar cómo se comporta la variable de Calificación de Riesgo, con respecto a la edad:
+
+```{r}
+library(ggplot2)
+ggplot(Base_limpia, aes(x = Age, fill = `Risk Rating`)) +
+  geom_bar() +  
+  labs(x = "Edad", y = "Conteo", title = "Distribución de Calificación de Riesgo por Edad") + 
+  theme_minimal() +  
+  scale_fill_brewer(palette = "Set1")  
+```
+
 
 
