@@ -102,5 +102,19 @@ resultado$max_monto_prestamo
 ```
 
 
+Ahora vamos analizar cómo es la distribución que siguen los géneros de nuestra base de datos, esto es solamente por sondear cómo es nuestra población. Al ser una variable categórica, lo recomendado es realizar un gráfico de barras.
+
+```{r}
+library(ggplot2)
+# Gráfico con las distribuciones del género
+ggplot(Base_limpia, aes(x = Gender, fill = Gender)) +
+  geom_bar() +
+  scale_fill_manual(values = c("Male" = "blue", "Female" = "pink", "Non-binary" = "gray")) +
+  labs(x = "Distribución de Géneros", y = "Frecuencia")
+
+```
+
+
+
 
 
