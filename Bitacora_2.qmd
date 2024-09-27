@@ -146,5 +146,37 @@ ggplot(Base_limpia, aes(x = Income)) +
 ```
 
 
+Otras variables a tener en cuenta aparte de las anteriores mencionadas con respecto al riesgo de crédito, son el monto del préstamos y el propósito del préstamo. Vamos analizar primero el Monto del préstamo, nos interesa ver qué distribución en general tiene.
+
+```{r}
+library(ggplot2)
+
+ggplot(Base_limpia, aes(x = `Loan Amount`, fill = Gender)) +  
+  geom_histogram(binwidth = 5000, color = "black", position = "identity") +  
+  scale_fill_manual(values = c("Male" = "darkblue", "Female" = "purple", "Non-binary" = "green")) +  
+  facet_wrap(~ Gender) +  
+  labs(x = "Monto del Préstamo", y = "Frecuencia", title = "Distribución del Monto de Préstamo por Género") + 
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
+        axis.text.x = element_text(angle = 45, hjust = 1))  #Rotamos el texto
+
+
+```
+
+Haremos lo mismo, pero esta vez vamos a ver cómo se comportan los salarios cuando cambiamos la variable y utilizamos por ejemplo el grado académico.
+
+```{r}
+library(ggplot2)
+
+ggplot(Base_limpia, aes(x = `Loan Amount`, fill = `Education Level`)) +  
+  geom_histogram(binwidth = 5000, color = "black", position = "identity") +  
+  scale_fill_manual(values = c("Bachelor's" = "darkblue", "High School" = "purple", "Master's" = "green", "PhD" = "red")) +  
+  facet_wrap(~ `Education Level`) +  
+  labs(x = "Monto del Préstamo", y = "Frecuencia", title = "Distribución del Monto de Préstamo por Nivel Educativo") + 
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
+        axis.text.x = element_text(angle = 45, hjust = 1))  #Rotamos el texto
+```
+
 
 
