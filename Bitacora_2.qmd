@@ -123,7 +123,14 @@ ggplot(Base_limpia, aes(x = Income)) +
   labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos")
 ```
 
+Además decidimos realizar un facet en esta misma variable con respecto a la variable "Education Level", con el fin de visualizar la distribución en cada categoría, esto porque queremos descartar o validar que de alguna forma el nivel educativo tiene relación con nuestra variable objetivo, la cual es la calificación de riesgo.
 
 
-
+```{r}
+library(ggplot2)
+ggplot(Base_limpia, aes(x = Income)) + 
+  geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
+  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") +
+  facet_wrap(~ `Education Level`)  # Facet por nivel educativo
+```
 
