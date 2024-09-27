@@ -114,6 +114,15 @@ ggplot(Base_limpia, aes(x = Gender, fill = Gender)) +
 
 ```
 
+Por otro lado, la variable "Income", es una variable continua, por lo que lo recomendado para visualizar la distribución de estos datos de una manera rápida es a través de los histogramas, por lo que adjuntamos el gráfico correspondiente:
+
+```{r}
+library(ggplot2)
+ggplot(Base_limpia, aes(x = Income)) + 
+  geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
+  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos")
+```
+
 
 
 
