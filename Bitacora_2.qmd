@@ -26,7 +26,79 @@ View(base_financial_risk_assessment)
 ```
 
 ```{r}
-View(base_financial_risk_assessment)
+head(base_financial_risk_assessment)
+```
+
+Antes de aplicar cualquier gráfico o análisis de datos a nuestra base de datos, es importante eliminar las variables que no aportan al estudio, por ello, vamos a eliminar los valores NA que vengan en nuestra base de datos.
+
+```{r}
+Base_limpia <- na.omit(base_financial_risk_assessment)
+head(Base_limpia)
+```
+
+Con la base de datos limpia, ya podemos hacer un análisis estadístico, para ello vamos a calcular estadísticos base, como lo son la media, la varianza, el mínimo, el máximo de las variable numéricas, además de calcular la moda, para las variables que no sean numéricas. 
+
+```{r, echo= FALSE}
+library(dplyr)
+resultado <- Base_limpia %>% 
+  summarise(
+    
+    # calculamos los estadísticos de interés para la variable edad/Age
+    media_edad = mean(Age),
+    varianza_edad = var(Age),
+    min_edad = min(Age),
+    max_edad = max(Age),
+    
+    # Calculamos los estadísticos de interés para la variable ingreso/Income
+    media_ingresos = mean(Income),
+    varianza_ingresos = var(Income),
+    min_ingresos = min(Income),
+    max_ingresos = max(Income),
+    
+    # Calculamos los estadísticos de interés para la variable record_crediticio/ Credit Score
+    media_record_crediticio = mean(`Credit Score`),
+    varianza_record_crediticio = var(`Credit Score`),
+    min_record_crediticio = min(`Credit Score`),
+    max_record_crediticio = max(`Credit Score`),
+    
+    # Calculamos los estadísticos de interés para la variable monto del préstamo/ Loan Amount
+    media_monto_prestamo = mean(`Loan Amount`),
+    varianza_monto_prestamo = var(`Loan Amount`),
+    min_monto_prestamo = min(`Loan Amount`),
+    max_monto_prestamo = max(`Loan Amount`),
+    
+    # Calculamos los estadísticos de interés para variable anyos_trabajo / Years at current job
+    media_anyos_trabajo = mean(`Years at Current Job`),
+    varianza_anyos_trabajo = var(`Years at Current Job`),
+    min_anyos_trabajo = min(`Years at Current Job`),
+    max_anyos_trabajo = max(`Years at Current Job`),
+  )
+```
+
+Estos son los datos resumidos de la variable edad.
+
+```{r}
+resultado$media_edad
+resultado$min_edad
+resultado$max_edad
+```
+
+Estos son los datos resumidos de la variable Ingresos 
+
+```{r}
+resultado$media_ingresos
+resultado$varianza_ingresos
+resultado$min_ingresos
+resultado$max_ingresos
+```
+
+Estos son los datos resumidos de la variable Monto del Préstamo
+
+```{r}
+resultado$media_monto_prestamo
+resultado$varianza_monto_prestamo
+resultado$min_monto_prestamo
+resultado$max_monto_prestamo
 ```
 
 
