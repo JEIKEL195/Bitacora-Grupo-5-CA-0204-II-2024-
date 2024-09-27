@@ -134,3 +134,17 @@ ggplot(Base_limpia, aes(x = Income)) +
   facet_wrap(~ `Education Level`)  # Facet por nivel educativo
 ```
 
+Adjuntamos un gráfico más de los ingresos, pero esta vez por género, con la misma curiosidad de observar cómo es la distribución de estos dada la mencionada variable.
+
+
+```{r}
+library(ggplot2)
+ggplot(Base_limpia, aes(x = Income)) + 
+  geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
+  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") +
+  facet_wrap(~ Gender)  # Facet Género
+```
+
+
+
+
