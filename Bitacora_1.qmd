@@ -212,6 +212,32 @@ Entre las posibles combinaciones de palabras clave se se pueden encontrar:
 
 * Resumen en un párrafo: Este trabajo busca exponer a través de las investigaciones que se han centrado en la evaluación del riesgo de crédito en las Instituciones de Microfinanzas, aquella teoría relacionada con el riesgo presente en los microcréditos, además busca analizar todos aquellos factores que llegan a ser determinantes en el riesgo de que haya algún tipo de impago., por lo que este estudio también ofrece ciertas técnicas que generan una mayor consistencia y trasparencia en la evaluación y seguimiento de los clientes y su perfil. 
 
+**Título: Modelos para otorgamiento y seguimiento en la gestión del riesgo de crédito. **
+
+* Autor: Millán Solarte, Julio César; Cerezo, Edinson Caicedo.
+
+* Año: 2018. 
+
+* Nombre del tema: Riesgo de crédito. 
+
+* Cronología: 2018. 
+
+* Metodología: Análisis cuantitativa.
+
+* Temática: Estudios económicos. 
+
+* Teórica: Valoración de riesgos. 
+
+* Resumen en una oración: Riesgos financieros y análisis en la gestión del riesgo de crédito.
+
+* Argumento central: Explorar maneras de gestionar el riesgo financiero a través del análisis de las solicitudes.
+
+* Problema con el argumento o el tema: Uno de los posibles problemas que se destacan en este estudio es que no se llega a profundizar en las posibles limitaciones que se pueden llegar a presentar a la hora de usar las técnicas que se narran y exploran, así como no se toma en cuenta que varias de las variables llegan a ser muy volátiles a lo largo del tiempo, además de los comportamientos de mercado que puedan incidir en el incumplimiento de pago.
+
+* Resumen en un párrafo: Este trabajo habla acerca del riesgo financiero, más específicamente en el riesgo de crédito el cual se refiere a las perdidas derivadas del incumplimiento de obligaciones financieras, de manera que las instituciones financieras buscan gestionar este tipo de riesgos a través del análisis de las solicitudes por medio del sistema de scoring de crédito, dónde se evalúan variables como la situación financiera e historial de pagos del solicitante para diferenciar entre los buenos y malos clientes.
+
+
+
 
 ## Construcción de la UVE de Gowin
 
