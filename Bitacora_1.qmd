@@ -236,8 +236,29 @@ Entre las posibles combinaciones de palabras clave se se pueden encontrar:
 
 * Resumen en un párrafo: Este trabajo habla acerca del riesgo financiero, más específicamente en el riesgo de crédito el cual se refiere a las perdidas derivadas del incumplimiento de obligaciones financieras, de manera que las instituciones financieras buscan gestionar este tipo de riesgos a través del análisis de las solicitudes por medio del sistema de scoring de crédito, dónde se evalúan variables como la situación financiera e historial de pagos del solicitante para diferenciar entre los buenos y malos clientes.
 
+**Título: Variables determinantes de la probabilidad de incumplimiento de un microcrédito en una entidad microfinanciera del Perú, una aproximación bajo el modelo de regresión logística binaria. **
 
+* Autor: María Calixto, Luis Casaverde
 
+* Año: 2011. 
+
+* Nombre del tema: Incumplimiento de un microcrédito.
+
+* Cronología: 2011.
+
+* Metodología: Recolección y comparación de datos. 
+
+* Temática: Estudios económicos. 
+
+* Teórica: Valoración de riesgos. 
+
+* Resumen en una oración: Medición del riesgo de los microcréditos y el incumplimiento de pago.
+
+* Argumento central: Explorar la probabilidad de incumplimiento de pago de los clientes a través del modelo de la regresión logística binaria.
+
+* Problema con el argumento o el tema: La mayor problemática es que solo se enfoca en el modelo predictivo, de manera que no se llegan a abordar las posibles causas estructurales que al final terminan por inducir que hayan morosidades, de tal forma que los modelos como lo son la regresión logística binaria se va a ver muy limitada para lograr el propósito de reducir las morosidades.
+
+* Resumen en un párrafo: Esta investigación gira entorno a los microcréditos y el incumplimiento de pago en estos, de manera que se busca identificar los factores que influyen en que exista mayor probabilidad de incumplimiento de los clientes, donde se utilizan modelos predictivos que permiten evaluar tanto variables cuantitativas como cualitativas relacionadas con las personas prestatarias, para ello se toman en cuenta factores socio-demográficos, económicos y financieros que lleguen a ser determinantes para el incumplimiento de pago.
 
 ## Construcción de la UVE de Gowin
 
