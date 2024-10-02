@@ -110,7 +110,7 @@ library(ggplot2)
 ggplot(Base_limpia, aes(x = Gender, fill = Gender)) +
   geom_bar() +
   scale_fill_manual(values = c("Male" = "blue", "Female" = "pink", "Non-binary" = "gray")) +
-  labs(x = "Distribución de Géneros", y = "Frecuencia")
+  labs(x = "Distribución de Géneros", y = "Frecuencia") + theme_minimal()
 
 ```
 
@@ -120,7 +120,8 @@ Por otro lado, la variable "Income", es una variable continua, por lo que lo rec
 library(ggplot2)
 ggplot(Base_limpia, aes(x = Income)) + 
   geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
-  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos")
+  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") +
+ theme_minimal()
 ```
 
 Además decidimos realizar un facet en esta misma variable con respecto a la variable "Education Level", con el fin de visualizar la distribución en cada categoría, esto porque queremos descartar o validar que de alguna forma el nivel educativo tiene relación con nuestra variable objetivo, la cual es la calificación de riesgo.
@@ -130,7 +131,7 @@ Además decidimos realizar un facet en esta misma variable con respecto a la var
 library(ggplot2)
 ggplot(Base_limpia, aes(x = Income)) + 
   geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
-  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") +
+  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") + theme_minimal() +
   facet_wrap(~ `Education Level`)  # Facet por nivel educativo
 ```
 
@@ -141,7 +142,7 @@ Adjuntamos un gráfico más de los ingresos, pero esta vez por género, con la m
 library(ggplot2)
 ggplot(Base_limpia, aes(x = Income)) + 
   geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
-  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") +
+  labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") + theme_minimal() +
   facet_wrap(~ Gender)  # Facet Género
 ```
 
@@ -211,4 +212,21 @@ ggplot(Base_limpia, aes(x = Age, fill = `Risk Rating`)) +
 ```
 
 
+Por otro lado, vamos a ver cómo se comporta la distribución de la calificación de riesgo, haciendo un facet con la categoría Nivel Educativo. Al ser dos variables categóricas las que estamos comparando, lo recomendado es utilizar un gráfico de barras. 
+
+
+```{r}
+library(ggplot2)
+
+ggplot(Base_limpia, aes(x = `Risk Rating`, fill = `Education Level`)) +  
+  geom_bar(color = "black", position = "identity") +  
+  scale_fill_manual(values = c("Bachelor's" = "darkblue", "High School" = "purple", "Master's" = "green", "PhD" = "red")) +  
+  facet_wrap(~ `Education Level`) +  
+  labs(x = "Calificación de Riesgo", y = "Frecuencia", title = "Distribución de la Calificación de Riesgo por Nivel Educativo") + 
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
+        axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto
+
+
+```
 
