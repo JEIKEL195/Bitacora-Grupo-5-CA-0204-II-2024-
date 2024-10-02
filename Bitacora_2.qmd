@@ -230,3 +230,19 @@ ggplot(Base_limpia, aes(x = `Risk Rating`, fill = `Education Level`)) +
 
 ```
 
+
+A su vez, nos interesa observar cómo se ve el gráifco de la variable calificación de riesgo con la variable contra la variable ingreso. Para este gráfico, vamos a utilizar el recomendado en las notas del profesor Maikol Solís, el cual indica que usar diagramas de cajas es útil para comparar las distribuciones. 
+
+```{r}
+library(ggplot2)
+
+ggplot(Base_limpia, aes(x = `Risk Rating`, y = Income, fill = `Risk Rating`)) +  
+  geom_boxplot(color = "black") +  
+  scale_fill_manual(values = c("Low" = "green", "Medium" = "yellow", "High" = "red", "Very High" = "purple")) +  
+  labs(x = "Calificación de Riesgo", y = "Ingreso", title = "Comparación de la Calificación de Riesgo con el Ingreso") + 
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
+        axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto
+
+```
+
