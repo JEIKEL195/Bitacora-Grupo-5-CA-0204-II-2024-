@@ -246,3 +246,20 @@ ggplot(Base_limpia, aes(x = `Risk Rating`, y = Income, fill = `Risk Rating`)) +
 
 ```
 
+Otra de las variables de interés, es la calificación de riesgo contra el propósito del préstamo. 
+
+```{r}
+library(ggplot2)
+
+ggplot(Base_limpia, aes(x = `Loan Purpose`, fill = `Risk Rating`)) +  
+  geom_bar(position = "fill", color = "black") +  
+  scale_fill_manual(values = c("Low" = "green", "Medium" = "yellow", "High" = "red", "Very High" = "purple")) +  
+  labs(x = "Propósito del Préstamo", y = "Proporción", title = "Distribución de la Calificación de Riesgo según el Propósito del Préstamo") + 
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto para mejorar la legibilidad
+
+```
+
+
+
+
