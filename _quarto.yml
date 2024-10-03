@@ -36,7 +36,7 @@ format:
     #documentclass: scrreprt
     toc: true          # Activa la TOC para PDF
     number-sections: true
-    
+    prefer-html: true
 execute:
   freeze: auto
   cache: true

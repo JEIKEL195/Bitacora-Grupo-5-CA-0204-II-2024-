@@ -588,13 +588,13 @@ theme(plot.caption = element_text(hjust = 0.5))
 
 se utilizan los gráficos, como ayuda en las distribuciones de las variables, con el fin de observar su comportamiento. Sin embargo, hay que hacer un análisis más a profundidad, para ello utilizamos el coeficiente de correlación de Pearson, que fue justo el que utilizamos para crear nuestra matriz de correlación, a continuación enunciamos el proceso teórico de dicho procedimiento.
 
-Como menciona el autor [@Edgar2022] "Los análisis de correlación son métodos estadísticos descriptivos utilizados en investigación de nivel relacional, con los que estima la magnitud y define la tendencia de la relación entre variables.". Como queremos encontrar alguna relación en nuestra variables de interés, entonces queremos utilizar esta metodología para encontrar dicha relación. Según este mismo autor "el método de correlación de Pearson es una técnica bivariada que emplea en circunstancia multivariada para la explicación de diversos fenómenos relacionados en el campo animal y vegetal. En la correlación de Pearson, los procedimientos guardan relación con la naturaleza de las variables utilizadas.". Como podemos observar el método nos sirve para este estudio, pues tenemos muchas variables, pero el índice sale de comparar dos a dos las variables, para obtener la correlación entre ellas, lo que luego acomodamos en una matriz para tener una mejor observación de ellas. 
+Como menciona el autor [@edgar2022] "Los análisis de correlación son métodos estadísticos descriptivos utilizados en investigación de nivel relacional, con los que estima la magnitud y define la tendencia de la relación entre variables.". Como queremos encontrar alguna relación en nuestra variables de interés, entonces queremos utilizar esta metodología para encontrar dicha relación. Según este mismo autor "el método de correlación de Pearson es una técnica bivariada que emplea en circunstancia multivariada para la explicación de diversos fenómenos relacionados en el campo animal y vegetal. En la correlación de Pearson, los procedimientos guardan relación con la naturaleza de las variables utilizadas.". Como podemos observar el método nos sirve para este estudio, pues tenemos muchas variables, pero el índice sale de comparar dos a dos las variables, para obtener la correlación entre ellas, lo que luego acomodamos en una matriz para tener una mejor observación de ellas. 
 
 R ya posee una librería que calcula automáticamente este coeficiente, sin embargo, la manera teórica de hacerlo es mediante la fórmula:
 
 $\rho = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}$
 
-En donde $\rho$ recibe el nombre de Coeficiente de correlación de Pearson y además tiene que ocurrir que $-1 \leq \rho \leq 1$. Según el autor [@Edgar2022] "... se deduce la magnitud de la relación lineal entre variables, los que pueden ser calificados como: Correlación Nula (0), Muy baja (0.01 a 0.1), Débil (0.11 a 0.5), Media (0.51 a 0.75), considerable (0.76 a 0.9), Muy fuerte (0.91 a 0.99) y Perfecta(1)". Otro aspecto importante a decir acerca de nuestro estudio y que tiene relación con lo que este mismo autor afirma y es que "\rho = 0.000, no necesariamente implica que no exista relación entre las varables, sino que la relación podría ser no lineal". Esto de hecho es un buen punto en vista de los resultados que arrojó nuestra matriz de correlación. Además, algo que deberíamos de tomar en cuenta, es que estamos trabajando con variables categóricas, a la hora de la conversión puede haber fuga de información, por ello hay que tener cuidado con solo ver una cifra y animarse a dar una conclusión, cuando en realidad hay que analizar a detalle qué es lo que está pasando. 
+En donde $\rho$ recibe el nombre de Coeficiente de correlación de Pearson y además tiene que ocurrir que $-1 \leq \rho \leq 1$. Según el autor [@edgar2022] "... se deduce la magnitud de la relación lineal entre variables, los que pueden ser calificados como: Correlación Nula (0), Muy baja (0.01 a 0.1), Débil (0.11 a 0.5), Media (0.51 a 0.75), considerable (0.76 a 0.9), Muy fuerte (0.91 a 0.99) y Perfecta(1)". Otro aspecto importante a decir acerca de nuestro estudio y que tiene relación con lo que este mismo autor afirma y es que "\rho = 0.000, no necesariamente implica que no exista relación entre las varables, sino que la relación podría ser no lineal". Esto de hecho es un buen punto en vista de los resultados que arrojó nuestra matriz de correlación. Además, algo que deberíamos de tomar en cuenta, es que estamos trabajando con variables categóricas, a la hora de la conversión puede haber fuga de información, por ello hay que tener cuidado con solo ver una cifra y animarse a dar una conclusión, cuando en realidad hay que analizar a detalle qué es lo que está pasando. 
 
 ## Construcción de Fichas de Resultados
 
@@ -602,12 +602,13 @@ En donde $\rho$ recibe el nombre de Coeficiente de correlación de Pearson y ade
 
 
 ```{r}
-if (!require(kableExtra)) {
+# Cargar la librería si no está instalada
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
   install.packages("kableExtra")
 }
 library(kableExtra)
 
-# Creamos el data frame, donde vamos a poner la información.
+# Crear el data frame
 data <- data.frame(
   Encabezado = c("Nombre de Su hallazgo", 
                  "Resumen en una Oración", 
@@ -619,36 +620,59 @@ data <- data.frame(
                 "Al utilizar el índice de correlación de Pearson, hay que utilizar variables numéricas, por lo que se utiliza una conversión de las variables categóricas a variables numéricas para poder realizar dicho cálculo, sin embargo se encuentra que las variables no están teniendo una relación, al menos de manera lineal que es lo que calcula dicho índice.")
 )
 
-# Creamos la tabla con la información.
-kable(data, col.names = c("Encabezado", "Contenido"), 
-      format = "html", 
-      escape = FALSE) %>%
-  kable_styling(full_width = FALSE) %>%
-  add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)  
+# Crear la tabla con la información, adaptándose al formato de salida
+if (knitr::is_html_output()) {
+  # Si el formato es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si el formato es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
 ```
 
 
 ```{r}
-if (!require(kableExtra)) {
+# Cargar la librería si no está instalada
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
   install.packages("kableExtra")
 }
 library(kableExtra)
 
-# Creamos el data frame, donde vamos a poner la información.
+# Crear el data frame con la información
 data <- data.frame(
   Encabezado = c("Nombre de Su hallazgo", 
                  "Resumen en una Oración", 
                  "Problemas o Posibles Desafíos", 
                  "Resumen en un párrafo"),
-  Contenido = c("Datos muy Iguales","A la hora de graficar las variables se puede observar que los datos tienen distribuciones muy similares","Este problema se puede estar ocasionando debido a que las variables de la base de datos se parecen mucho.","Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias.")
+  Contenido = c("Datos muy Iguales", 
+                "A la hora de graficar las variables se puede observar que los datos tienen distribuciones muy similares", 
+                "Este problema se puede estar ocasionando debido a que las variables de la base de datos se parecen mucho.", 
+                "Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias.")
 )
 
-# Creamos la tabla con la información.
-kable(data, col.names = c("Encabezado", "Contenido"), 
-      format = "html", 
-      escape = FALSE) %>%
-  kable_styling(full_width = FALSE) %>%
-  add_header_above(c("Hallazgo de Resultado 2" = 2), bold = TRUE)  
+# Crear la tabla con la información, adaptándose al formato de salida
+if (knitr::is_html_output()) {
+  # Si el formato es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 2" = 2), bold = TRUE)
+} else {
+  # Si el formato es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position")) %>%
+    add_header_above(c("Hallazgo de Resultado 2" = 2), bold = TRUE)
+}
 ```
 
 Para la siguiente ficha, es de importancia hacer la acotación, que este curso evalúa el tratamiento de datos, más que el tema de la investigación, pues es un curso de herramientas de datos, por ello, se nos hace pertinente mencionar que el tratamiento de las variables categóricas con variables numéricas puede llevar a problemas, sino se hace un buen tratamiento, además como mencionamos anteriormente en la metodología, que las variables presenten poca correlación, se puede deber a que la relación entre ellas no es lineal o al menos no es cuantifificable, pero a la hora de trabajar o de interpretarlas, si tiene sentido hacerlo o existe un cuerpo teórico que lo apoya. A continuación el cuadro del hallazgo:
@@ -656,26 +680,40 @@ Para la siguiente ficha, es de importancia hacer la acotación, que este curso e
 
 
 ```{r}
-if (!require(kableExtra)) {
+# Cargar la librería si no está instalada
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
   install.packages("kableExtra")
 }
 library(kableExtra)
 
-# Creamos el data frame, donde vamos a poner la información.
+# Crear el data frame con la información
 data <- data.frame(
   Encabezado = c("Nombre de Su hallazgo", 
                  "Resumen en una Oración", 
                  "Problemas o Posibles Desafíos", 
                  "Resumen en un párrafo"),
-  Contenido = c("Dificultad a la hora de trabajar con variables categóricas y numéricas.", "Buscar correlaciones en variables que no son del mismo tipo puede ocasionar problemas.", "A la hora de tratar variables categóricas con variables numéricas, se puede estar perdiendo información, debido a que muchas de las técnicas normalmente utilizadas son para variables numéricas.", "Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas.")
+  Contenido = c("Dificultad a la hora de trabajar con variables categóricas y numéricas.", 
+                "Buscar correlaciones en variables que no son del mismo tipo puede ocasionar problemas.", 
+                "A la hora de tratar variables categóricas con variables numéricas, se puede estar perdiendo información, debido a que muchas de las técnicas normalmente utilizadas son para variables numéricas.", 
+                "Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas.")
 )
 
-# Creamos la tabla con la información.
-kable(data, col.names = c("Encabezado", "Contenido"), 
-      format = "html", 
-      escape = FALSE) %>%
-  kable_styling(full_width = FALSE) %>%
-  add_header_above(c("Hallazgo de Resultado 3" = 2), bold = TRUE) 
+# Crear la tabla con la información, adaptándose al formato de salida
+if (knitr::is_html_output()) {
+  # Si el formato es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 3" = 2), bold = TRUE)
+} else {
+  # Si el formato es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position")) %>%
+    add_header_above(c("Hallazgo de Resultado 3" = 2), bold = TRUE)
+}
 ```
 
 

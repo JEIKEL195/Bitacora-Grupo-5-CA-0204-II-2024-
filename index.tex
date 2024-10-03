@@ -165,6 +165,20 @@
 \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
@@ -1107,13 +1121,24 @@ tiene nada que aportar.
 definir mejor qué queremos estudiar de manera más específica y cómo
 utilizar ciertos conceptos de mejor manera.
 
+\bookmarksetup{startatroot}
+
+\chapter{Bitácora 2}\label{bituxe1cora-2-1}
+
+\section{Parte de Planificación}\label{parte-de-planificaciuxf3n-2}
+
+\subsection{Ordenamiento de la
+Literatura}\label{ordenamiento-de-la-literatura-1}
+
+\section{Enlaces de la Literatura}\label{enlaces-de-la-literatura-1}
+
 \section{Análisis Estadístico}\label{anuxe1lisis-estaduxedstico}
 
 Como base para realizar este análisis estadístico, nos estamos guíando
 con la guía del curso de Herramientas de Ciencias de Datos, el cual
-adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y
-también estamos utilizando el libro escrito por Wickham, el cual también
-adjuntamos el link https://r4ds.hadley.nz/.
+adjuntamos el link a dicha guía (Solis 2024) y también estamos
+utilizando el libro escrito por Wickham, el cual también adjuntamos el
+link (Hadley Wickham 2019).
 
 A modo de introducción, el análisis estadístico consiste en un conjunto
 de herramientas o técnias que se utilizan para la recolección, el
@@ -1130,14 +1155,6 @@ propia fila. Nuestra base de datos cumple con estar en formato tidy.
 Vamos a llamar a nuestra base de datos, la cual vamos a utilizar durante
 el trabajo.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(readr)}
-\NormalTok{base\_financial\_risk\_assessment }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"base{-}financial{-}risk{-}assessment.csv"}\NormalTok{, }
-    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{verbatim}
 Rows: 15000 Columns: 20
 -- Column specification --------------------------------------------------------
@@ -1148,12 +1165,6 @@ dbl (10): Age, Income, Credit Score, Loan Amount, Years at Current Job, Debt...
 i Use `spec()` to retrieve the full column specification for this data.
 i Specify the column types or set `show_col_types = FALSE` to quiet this message.
 \end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{View}\NormalTok{(base\_financial\_risk\_assessment)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1209,10 +1220,17 @@ datos.
 #   `Marital Status Change` <dbl>, `Risk Rating` <chr>
 \end{verbatim}
 
-Con la base de datos limpia, ya podemos hacer un análisis estadístico,
-para ello vamos a calcular estadísticos base, como lo son la media, la
-varianza, el mínimo, el máximo de las variable numéricas, además de
-calcular la moda, para las variables que no sean numéricas.
+Ahora hacemos un análisis estadístico de nuestra base de datos, de todas
+las variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Instalar kableExtra si no lo tienes}
+\CommentTok{\# install.packages("kableExtra") }
+
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
 
 \begin{verbatim}
 
@@ -1231,7 +1249,175 @@ The following objects are masked from 'package:base':
     intersect, setdiff, setequal, union
 \end{verbatim}
 
-Estos son los datos resumidos de la variable edad.
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyr)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+Adjuntando el paquete: 'kableExtra'
+\end{verbatim}
+
+\begin{verbatim}
+The following object is masked from 'package:dplyr':
+
+    group_rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Como nuestras variables no son del todo numéricas, hay que hacerlo para las variables que son numéricas y para las variables que son categóricas. }
+
+\CommentTok{\# Primero hacemos las variables numéricas.}
+\NormalTok{resumen\_numericas }\OtherTok{\textless{}{-}}\NormalTok{ Base\_limpia }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}
+    \AttributeTok{Edad\_Media =} \FunctionTok{mean}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Edad\_Minima =} \FunctionTok{min}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Edad\_Maxima =} \FunctionTok{max}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Ingreso\_Medio =} \FunctionTok{mean}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Ingreso\_Varianza =} \FunctionTok{var}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Ingreso\_Minimo =} \FunctionTok{min}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Ingreso\_Maximo =} \FunctionTok{max}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Prestamo\_Medio =} \FunctionTok{mean}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Prestamo\_Varianza =} \FunctionTok{var}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Prestamo\_Minimo =} \FunctionTok{min}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{Prestamo\_Maximo =} \FunctionTok{max}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  )}
+
+\CommentTok{\# Variables Categóricas}
+\NormalTok{resumen\_categoricas }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}
+  \AttributeTok{Variable =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nivel de Educación"}\NormalTok{, }\StringTok{"Género"}\NormalTok{, }\StringTok{"Estado Civil"}\NormalTok{),}
+  \AttributeTok{Frecuencia =} \FunctionTok{c}\NormalTok{(}
+    \FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(}\FunctionTok{table}\NormalTok{(Base\_limpia}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)), }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{),}
+    \FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(}\FunctionTok{table}\NormalTok{(Base\_limpia}\SpecialCharTok{$}\NormalTok{Gender)), }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{),}
+    \FunctionTok{paste}\NormalTok{(}\FunctionTok{names}\NormalTok{(}\FunctionTok{table}\NormalTok{(Base\_limpia}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Marital Status}\StringTok{\textasciigrave{}}\NormalTok{)), }\AttributeTok{collapse =} \StringTok{", "}\NormalTok{)}
+\NormalTok{  )}
+\NormalTok{)}
+
+\CommentTok{\# Luego resumimos la información en un cuadro, para presentarlo mejor.}
+\NormalTok{tabla\_resumen }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Variable =} \FunctionTok{c}\NormalTok{(}\StringTok{"Edad"}\NormalTok{, }\StringTok{"Ingresos"}\NormalTok{, }\StringTok{"Monto del Préstamo"}\NormalTok{, resumen\_categoricas}\SpecialCharTok{$}\NormalTok{Variable),}
+  \AttributeTok{Media =} \FunctionTok{c}\NormalTok{(resumen\_numericas}\SpecialCharTok{$}\NormalTok{Edad\_Media, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Ingreso\_Medio, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Prestamo\_Medio, }\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{)),}
+  \AttributeTok{Varianza =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Ingreso\_Varianza, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Prestamo\_Varianza, }\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{)),}
+\NormalTok{  Mínimo }\OtherTok{=} \FunctionTok{c}\NormalTok{(resumen\_numericas}\SpecialCharTok{$}\NormalTok{Edad\_Minima, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Ingreso\_Minimo, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Prestamo\_Minimo, }\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{)),}
+\NormalTok{  Máximo }\OtherTok{=} \FunctionTok{c}\NormalTok{(resumen\_numericas}\SpecialCharTok{$}\NormalTok{Edad\_Maxima, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Ingreso\_Maximo, resumen\_numericas}\SpecialCharTok{$}\NormalTok{Prestamo\_Maximo, }\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{)),}
+  \AttributeTok{Frecuencia =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\ConstantTok{NA}\NormalTok{, }\DecValTok{3}\NormalTok{), resumen\_categoricas}\SpecialCharTok{$}\NormalTok{Frecuencia)}
+\NormalTok{)}
+
+\CommentTok{\# Mostrar la tabla con la descripción}
+\NormalTok{tabla\_resumen\_kable }\OtherTok{\textless{}{-}} \FunctionTok{kable}\NormalTok{(tabla\_resumen, }\AttributeTok{caption =} \StringTok{"Resumen de Variables Numéricas y Categóricas"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{" "} \OtherTok{=} \DecValTok{1}\NormalTok{, }\StringTok{"Resumen"} \OtherTok{=} \DecValTok{5}\NormalTok{)) }
+\NormalTok{tabla\_resumen\_kable }\OtherTok{\textless{}{-}}\NormalTok{ tabla\_resumen\_kable }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{footnote}\NormalTok{(}\AttributeTok{general =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{)}
+\NormalTok{tabla\_resumen\_kable}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lrrrrl}
+\caption{Resumen de Variables Numéricas y Categóricas}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Resumen} \\
+\cmidrule(l{3pt}r{3pt}){2-6}
+Variable & Media & Varianza & Mínimo & Máximo & Frecuencia\\
+\midrule
+Edad & 43.5817 & NA & 18 & 69 & NA\\
+Ingresos & 70190.3585 & 849685113 & 20014 & 119978 & NA\\
+Monto del Préstamo & 27577.0679 & 168240584 & 5001 & 49978 & NA\\
+Nivel de Educación & NA & NA & NA & NA & Bachelor's, High School, Master's, PhD\\
+Género & NA & NA & NA & NA & Female, Male, Non-binary\\
+\addlinespace
+Estado Civil & NA & NA & NA & NA & Divorced, Married, Single, Widowed\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Fuente: Elaboración propia utilizando la base de datos de Kaggle}\\
+\end{longtable}
+
+Presentamos las variables de más importancia en nuestro estudio
+
+\begin{longtable}[t]{lrrrrl}
+\caption{Resumen de Variables Numéricas y Categóricas}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Resumen} \\
+\cmidrule(l{3pt}r{3pt}){2-6}
+Variable & Media & Varianza & Mínimo & Máximo & Frecuencia\\
+\midrule
+Edad & 43.5817 & NA & 18 & 69 & NA\\
+Ingresos & 70190.3585 & 849685113 & 20014 & 119978 & NA\\
+Monto del Préstamo & 27577.0679 & 168240584 & 5001 & 49978 & NA\\
+Nivel de Educación & NA & NA & NA & NA & Bachelor's, High School, Master's, PhD\\
+Género & NA & NA & NA & NA & Female, Male, Non-binary\\
+\addlinespace
+Estado Civil & NA & NA & NA & NA & Divorced, Married, Single, Widowed\\
+\bottomrule
+\multicolumn{6}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{6}{l}{\rule{0pt}{1em}Fuente: Elaboración propia utilizando la base de datos de Kaggle}\\
+\end{longtable}
+
+Con nuestra base de datos limpia, vanmos a proceder a calcular algunos
+estadísticos importantes, por separado. Estos son los datos resumidos de
+la variable edad.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Calculamos las estadísticas de interés para las variables y las almacenamos en un solo data.frame}
+\NormalTok{resultado }\OtherTok{\textless{}{-}}\NormalTok{ Base\_limpia }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}
+    \CommentTok{\# Estadísticos para la variable edad/Age}
+    \AttributeTok{media\_edad =} \FunctionTok{mean}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{varianza\_edad =} \FunctionTok{var}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{min\_edad =} \FunctionTok{min}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{max\_edad =} \FunctionTok{max}\NormalTok{(Age, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    
+    \CommentTok{\# Estadísticos para la variable ingreso/Income}
+    \AttributeTok{media\_ingresos =} \FunctionTok{mean}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{varianza\_ingresos =} \FunctionTok{var}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{min\_ingresos =} \FunctionTok{min}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{max\_ingresos =} \FunctionTok{max}\NormalTok{(Income, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    
+    \CommentTok{\# Estadísticos para la variable record\_crediticio/Credit Score}
+    \AttributeTok{media\_record\_crediticio =} \FunctionTok{mean}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Credit Score}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{varianza\_record\_crediticio =} \FunctionTok{var}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Credit Score}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{min\_record\_crediticio =} \FunctionTok{min}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Credit Score}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{max\_record\_crediticio =} \FunctionTok{max}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Credit Score}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    
+    \CommentTok{\# Estadísticos para la variable monto del préstamo/Loan Amount}
+    \AttributeTok{media\_monto\_prestamo =} \FunctionTok{mean}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{varianza\_monto\_prestamo =} \FunctionTok{var}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{min\_monto\_prestamo =} \FunctionTok{min}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{max\_monto\_prestamo =} \FunctionTok{max}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    
+    \CommentTok{\# Estadísticos para la variable años de trabajo/Years at Current Job}
+    \AttributeTok{media\_anyos\_trabajo =} \FunctionTok{mean}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Years at Current Job}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{varianza\_anyos\_trabajo =} \FunctionTok{var}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Years at Current Job}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{min\_anyos\_trabajo =} \FunctionTok{min}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Years at Current Job}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{),}
+    \AttributeTok{max\_anyos\_trabajo =} \FunctionTok{max}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Years at Current Job}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  )}
+
+\CommentTok{\# Imprimimos el resultado}
+\FunctionTok{print}\NormalTok{(resultado)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 1 x 20
+  media_edad varianza_edad min_edad max_edad media_ingresos varianza_ingresos
+       <dbl>         <dbl>    <dbl>    <dbl>          <dbl>             <dbl>
+1       43.6          218.       18       69         70190.        849685113.
+# i 14 more variables: min_ingresos <dbl>, max_ingresos <dbl>,
+#   media_record_crediticio <dbl>, varianza_record_crediticio <dbl>,
+#   min_record_crediticio <dbl>, max_record_crediticio <dbl>,
+#   media_monto_prestamo <dbl>, varianza_monto_prestamo <dbl>,
+#   min_monto_prestamo <dbl>, max_monto_prestamo <dbl>,
+#   media_anyos_trabajo <dbl>, varianza_anyos_trabajo <dbl>,
+#   min_anyos_trabajo <dbl>, max_anyos_trabajo <dbl>
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1241,6 +1427,16 @@ Estos son los datos resumidos de la variable edad.
 
 \begin{verbatim}
 [1] 43.5817
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{varianza\_edad}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 217.7303
 \end{verbatim}
 
 \begin{Shaded}
@@ -1347,10 +1543,114 @@ Estos son los datos resumidos de la variable Monto del Préstamo
 [1] 49978
 \end{verbatim}
 
-Ahora vamos analizar cómo es la distribución que siguen los géneros de
-nuestra base de datos, esto es solamente por sondear cómo es nuestra
-población. Al ser una variable categórica, lo recomendado es realizar un
-gráfico de barras.
+Resumimos la información obtenida en un cuadro, para una mejor
+visualización de ellos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+
+\CommentTok{\# Creamos una tabla para resumir la información obtenida}
+\NormalTok{tabla\_resumen }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Variable =} \FunctionTok{c}\NormalTok{(}\StringTok{"Edad"}\NormalTok{, }\StringTok{"Ingresos"}\NormalTok{, }\StringTok{"Monto del Préstamo"}\NormalTok{),}
+  \AttributeTok{Media =} \FunctionTok{c}\NormalTok{(resultado}\SpecialCharTok{$}\NormalTok{media\_edad, resultado}\SpecialCharTok{$}\NormalTok{media\_ingresos, resultado}\SpecialCharTok{$}\NormalTok{media\_monto\_prestamo),}
+  \AttributeTok{Varianza =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{, resultado}\SpecialCharTok{$}\NormalTok{varianza\_ingresos, resultado}\SpecialCharTok{$}\NormalTok{varianza\_monto\_prestamo),}
+\NormalTok{  Mínimo }\OtherTok{=} \FunctionTok{c}\NormalTok{(resultado}\SpecialCharTok{$}\NormalTok{min\_edad, resultado}\SpecialCharTok{$}\NormalTok{min\_ingresos, resultado}\SpecialCharTok{$}\NormalTok{min\_monto\_prestamo),}
+\NormalTok{  Máximo }\OtherTok{=} \FunctionTok{c}\NormalTok{(resultado}\SpecialCharTok{$}\NormalTok{max\_edad, resultado}\SpecialCharTok{$}\NormalTok{max\_ingresos, resultado}\SpecialCharTok{$}\NormalTok{max\_monto\_prestamo)}
+\NormalTok{)}
+
+\CommentTok{\# Mostramos la tabla con la descripción}
+\NormalTok{tabla\_resumen\_kable }\OtherTok{\textless{}{-}} \FunctionTok{kable}\NormalTok{(tabla\_resumen, }\AttributeTok{caption =} \StringTok{"Resumen de Variables: Edad, Ingresos y Monto del Préstamo"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{()}
+
+\NormalTok{tabla\_resumen\_kable }\OtherTok{\textless{}{-}}\NormalTok{ tabla\_resumen\_kable }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  kableExtra}\SpecialCharTok{::}\FunctionTok{footnote}\NormalTok{(}\AttributeTok{general =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{)}
+
+\NormalTok{tabla\_resumen\_kable}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{lrrrr}
+\caption{Resumen de Variables: Edad, Ingresos y Monto del Préstamo}\\
+\toprule
+Variable & Media & Varianza & Mínimo & Máximo\\
+\midrule
+Edad & 43.5817 & NA & 18 & 69\\
+Ingresos & 70190.3585 & 849685113 & 20014 & 119978\\
+Monto del Préstamo & 27577.0679 & 168240584 & 5001 & 49978\\
+\bottomrule
+\multicolumn{5}{l}{\rule{0pt}{1em}\textit{Note: }}\\
+\multicolumn{5}{l}{\rule{0pt}{1em}Fuente: Elaboración propia utilizando la base de datos de Kaggle}\\
+\end{longtable}
+
+Por último, vamos a realizar una matriz de correlación de los datos,
+esto porque queremos observar la relación que tienen las variables, solo
+tomaremos las variables de interés, la justificación de dicha escogencia
+viene del lado teórico, pues son las variables que históricamente más se
+toman en los estudios de calificación de riesgo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(corrplot)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+corrplot 0.94 loaded
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Escogemos las variables que nos interesan para la matriz de correlación.}
+\NormalTok{Base\_correlacion }\OtherTok{\textless{}{-}}\NormalTok{ Base\_limpia }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{, Income, }\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, Age, }\StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)}
+
+\CommentTok{\# Como hay variables categóricas, entonces vamos a convertir las variables a numérico, para poder hacer la correlación.}
+\NormalTok{Base\_correlacion}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(Base\_correlacion}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{Base\_correlacion}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(Base\_correlacion}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}}\NormalTok{))}
+\NormalTok{Base\_correlacion}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}} \OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(}\FunctionTok{as.factor}\NormalTok{(Base\_correlacion}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{))}
+
+\CommentTok{\# Calculamos la matriz de correlación}
+\NormalTok{matriz\_correlacion }\OtherTok{\textless{}{-}} \FunctionTok{cor}\NormalTok{(Base\_correlacion, }\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{, }\AttributeTok{method =} \StringTok{"pearson"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(matriz\_correlacion)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+                 Risk Rating       Income  Loan Amount          Age
+Risk Rating      1.000000000  0.013528536 -0.015100412  0.003258428
+Income           0.013528536  1.000000000 -0.008137282  0.005019572
+Loan Amount     -0.015100412 -0.008137282  1.000000000 -0.011121494
+Age              0.003258428  0.005019572 -0.011121494  1.000000000
+Loan Purpose    -0.015622201  0.014753633  0.006311870 -0.013760821
+Education Level -0.013449909  0.019406630  0.010511349  0.011114696
+                Loan Purpose Education Level
+Risk Rating      -0.01562220     -0.01344991
+Income            0.01475363      0.01940663
+Loan Amount       0.00631187      0.01051135
+Age              -0.01376082      0.01111470
+Loan Purpose      1.00000000      0.01934448
+Education Level   0.01934448      1.00000000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creamos el gráfico de la matriz de correlación}
+\FunctionTok{corrplot}\NormalTok{(matriz\_correlacion, }\AttributeTok{method =} \StringTok{"color"}\NormalTok{, }\AttributeTok{addCoef.col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{tl.col =} \StringTok{"black"}\NormalTok{, }\AttributeTok{tl.cex =} \FloatTok{0.8}\NormalTok{)}
+
+\FunctionTok{mtext}\NormalTok{(}\StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{, }\AttributeTok{side =} \DecValTok{1}\NormalTok{, }\AttributeTok{line =} \DecValTok{4}\NormalTok{, }\AttributeTok{adj =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.8}\NormalTok{, }\AttributeTok{outer =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-11-1.pdf}
+
+Ahora vamos a comenzar a ver los gráficos que se forman de nuestra base
+de datos. Para ello vamos analizar cómo es la distribución que siguen
+los géneros de nuestra base de datos, esto es solamente por sondear cómo
+es nuestra población. Al ser una variable categórica, lo recomendado es
+realizar un gráfico de barras.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1359,11 +1659,13 @@ gráfico de barras.
 \FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender, }\AttributeTok{fill =}\NormalTok{ Gender)) }\SpecialCharTok{+}
   \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"Female"} \OtherTok{=} \StringTok{"pink"}\NormalTok{, }\StringTok{"Non{-}binary"} \OtherTok{=} \StringTok{"gray"}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Distribución de Géneros"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Distribución de Géneros"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-8-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 Por otro lado, la variable ``Income'', es una variable continua, por lo
 que lo recomendado para visualizar la distribución de estos datos de una
@@ -1376,11 +1678,13 @@ gráfico correspondiente:
 \FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Income)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Ingresos"}\NormalTok{) }\SpecialCharTok{+}
- \FunctionTok{theme\_minimal}\NormalTok{()}
+ \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-9-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-13-1.pdf}
 
 Además decidimos realizar un facet en esta misma variable con respecto a
 la variable ``Education Level'', con el fin de visualizar la
@@ -1394,11 +1698,13 @@ variable objetivo, la cual es la calificación de riesgo.
 \FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Income)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Ingresos"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)  }\CommentTok{\# Facet por nivel educativo}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{+} \CommentTok{\# Facet por nivel educativo}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-10-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-14-1.pdf}
 
 Adjuntamos un gráfico más de los ingresos, pero esta vez por género, con
 la misma curiosidad de observar cómo es la distribución de estos dada la
@@ -1410,11 +1716,13 @@ mencionada variable.
 \FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Income)) }\SpecialCharTok{+} 
   \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Ingresos"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender)  }\CommentTok{\# Facet Género}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender) }\SpecialCharTok{+} \CommentTok{\# Facet Género}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-11-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-15-1.pdf}
 
 Otras variables a tener en cuenta aparte de las anteriores mencionadas
 con respecto al riesgo de crédito, son el monto del préstamos y el
@@ -1432,11 +1740,13 @@ nos interesa ver qué distribución en general tiene.
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Monto del Préstamo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución del Monto de Préstamo por Género"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
-        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\#Rotamos el texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\#Rotamos el texto}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-12-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-16-1.pdf}
 
 Haremos lo mismo, pero esta vez vamos a ver cómo se comportan los
 salarios cuando cambiamos la variable y utilizamos por ejemplo el grado
@@ -1453,11 +1763,13 @@ académico.
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Monto del Préstamo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución del Monto de Préstamo por Nivel Educativo"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
-        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\#Rotamos el texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\#Rotamos el texto}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-13-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-17-1.pdf}
 
 Por otro lado, ahora queremos ver el gráfico de la variable propósito
 del préstamo en relación con el grado académico, al ser ambas variables
@@ -1482,11 +1794,13 @@ recurrimos al uso de colores, para identificar las variables.
   \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}  \CommentTok{\# Usa barras para mostrar el conteo}
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Nivel Educativo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Conteo"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Conteo del Propósito del Préstamo por Nivel Educativo"}\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Business"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"Personal"} \OtherTok{=} \StringTok{"purple"}\NormalTok{, }\StringTok{"Home"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"Auto"} \OtherTok{=} \StringTok{"yellow"}\NormalTok{)) }\SpecialCharTok{+}
-  \FunctionTok{theme\_minimal}\NormalTok{()}
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-14-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-18-1.pdf}
 
 Para terminar esta sección, vamos a graficar con la variable objetivo de
 interés, la cual es la Calificación de riesgo, para ello, lo vamos a
@@ -1507,11 +1821,13 @@ Calificación de Riesgo, con respecto a la edad:
   \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}  
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Edad"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Conteo"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Calificación de Riesgo por Edad"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}  
-  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{)  }
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{)  }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-15-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-19-1.pdf}
 
 Por otro lado, vamos a ver cómo se comporta la distribución de la
 calificación de riesgo, haciendo un facet con la categoría Nivel
@@ -1529,11 +1845,13 @@ lo recomendado es utilizar un gráfico de barras.
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Calificación de Riesgo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de la Calificación de Riesgo por Nivel Educativo"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
-        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\# Rotamos el texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\# Rotamos el texto}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-16-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-20-1.pdf}
 
 A su vez, nos interesa observar cómo se ve el gráifco de la variable
 calificación de riesgo con la variable contra la variable ingreso. Para
@@ -1551,11 +1869,13 @@ comparar las distribuciones.
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Calificación de Riesgo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Comparación de la Calificación de Riesgo con el Ingreso"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
   \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
-        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\# Rotamos el texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\SpecialCharTok{+}\CommentTok{\# Rotamos el texto}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-17-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-21-1.pdf}
 
 Otra de las variables de interés, es la calificación de riesgo contra el
 propósito del préstamo.
@@ -1569,11 +1889,259 @@ propósito del préstamo.
   \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"Medium"} \OtherTok{=} \StringTok{"yellow"}\NormalTok{, }\StringTok{"High"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Very High"} \OtherTok{=} \StringTok{"purple"}\NormalTok{)) }\SpecialCharTok{+}  
   \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Propósito del Préstamo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Proporción"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de la Calificación de Riesgo según el Propósito del Préstamo"}\NormalTok{) }\SpecialCharTok{+} 
   \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
-  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\# Rotamos el texto para mejorar la legibilidad}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{)) }\SpecialCharTok{+} \CommentTok{\# Rotamos el texto para mejorar la legibilidad}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-18-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-22-1.pdf}
+
+Por último, vamos a ver la distribución que existe de la variable
+calificación de riesgo cuando la comparamos contra el monto del
+préstamo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{y =} \StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"Medium"} \OtherTok{=} \StringTok{"yellow"}\NormalTok{, }\StringTok{"High"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Very High"} \OtherTok{=} \StringTok{"purple"}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Calificación de Riesgo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Monto del Préstamo"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Comparación de la Calificación de Riesgo con el Monto del Préstamo"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\SpecialCharTok{+} \CommentTok{\# Rotamos el texto }
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{caption =} \StringTok{"Fuente: Elaboración propia utilizando la base de datos de Kaggle"}\NormalTok{) }\SpecialCharTok{+}
+\FunctionTok{theme}\NormalTok{(}\AttributeTok{plot.caption =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{hjust =} \FloatTok{0.5}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-23-1.pdf}
+
+\section{Propuesta Metodológica}\label{propuesta-metodoluxf3gica}
+
+se utilizan los gráficos, como ayuda en las distribuciones de las
+variables, con el fin de observar su comportamiento. Sin embargo, hay
+que hacer un análisis más a profundidad, para ello utilizamos el
+coeficiente de correlación de Pearson, que fue justo el que utilizamos
+para crear nuestra matriz de correlación, a continuación enunciamos el
+proceso teórico de dicho procedimiento.
+
+Como menciona el autor (Edgar Apaza 2022) ``Los análisis de correlación
+son métodos estadísticos descriptivos utilizados en investigación de
+nivel relacional, con los que estima la magnitud y define la tendencia
+de la relación entre variables.''. Como queremos encontrar alguna
+relación en nuestra variables de interés, entonces queremos utilizar
+esta metodología para encontrar dicha relación. Según este mismo autor
+``el método de correlación de Pearson es una técnica bivariada que
+emplea en circunstancia multivariada para la explicación de diversos
+fenómenos relacionados en el campo animal y vegetal. En la correlación
+de Pearson, los procedimientos guardan relación con la naturaleza de las
+variables utilizadas.''. Como podemos observar el método nos sirve para
+este estudio, pues tenemos muchas variables, pero el índice sale de
+comparar dos a dos las variables, para obtener la correlación entre
+ellas, lo que luego acomodamos en una matriz para tener una mejor
+observación de ellas.
+
+R ya posee una librería que calcula automáticamente este coeficiente,
+sin embargo, la manera teórica de hacerlo es mediante la fórmula:
+
+\(\rho = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}\)
+
+En donde \(\rho\) recibe el nombre de Coeficiente de correlación de
+Pearson y además tiene que ocurrir que \(-1 \leq \rho \leq 1\). Según el
+autor (Edgar Apaza 2022) ``\ldots{} se deduce la magnitud de la relación
+lineal entre variables, los que pueden ser calificados como: Correlación
+Nula (0), Muy baja (0.01 a 0.1), Débil (0.11 a 0.5), Media (0.51 a
+0.75), considerable (0.76 a 0.9), Muy fuerte (0.91 a 0.99) y
+Perfecta(1)''. Otro aspecto importante a decir acerca de nuestro estudio
+y que tiene relación con lo que este mismo autor afirma y es que
+``\rho = 0.000, no necesariamente implica que no exista relación entre
+las varables, sino que la relación podría ser no lineal''. Esto de hecho
+es un buen punto en vista de los resultados que arrojó nuestra matriz de
+correlación. Además, algo que deberíamos de tomar en cuenta, es que
+estamos trabajando con variables categóricas, a la hora de la conversión
+puede haber fuga de información, por ello hay que tener cuidado con solo
+ver una cifra y animarse a dar una conclusión, cuando en realidad hay
+que analizar a detalle qué es lo que está pasando.
+
+\section{Construcción de Fichas de
+Resultados}\label{construcciuxf3n-de-fichas-de-resultados}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cargar la librería si no está instalada}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+  \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+
+\CommentTok{\# Crear el data frame}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Encabezado =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nombre de Su hallazgo"}\NormalTok{, }
+                 \StringTok{"Resumen en una Oración"}\NormalTok{, }
+                 \StringTok{"Problemas o Posibles Desafíos"}\NormalTok{, }
+                 \StringTok{"Resumen en un párrafo"}\NormalTok{),}
+  \AttributeTok{Contenido =} \FunctionTok{c}\NormalTok{(}\StringTok{"Poca Correlación entre las variables."}\NormalTok{, }
+                \StringTok{"Encontramos que las variables a utilizar no presentan una correlación fuerte, según el índice de Pearson."}\NormalTok{, }
+                \StringTok{"La conversión de variable categórica a variable numérica puede estar afectando al resultado. Además, podría ser que la relación entre las variables en realidad no es lineal."}\NormalTok{, }
+                \StringTok{"Al utilizar el índice de correlación de Pearson, hay que utilizar variables numéricas, por lo que se utiliza una conversión de las variables categóricas a variables numéricas para poder realizar dicho cálculo, sin embargo se encuentra que las variables no están teniendo una relación, al menos de manera lineal que es lo que calcula dicho índice."}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Crear la tabla con la información, adaptándose al formato de salida}
+\ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
+  \CommentTok{\# Si el formato es HTML}
+  \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
+        \AttributeTok{format =} \StringTok{"html"}\NormalTok{, }
+        \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 1"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# Si el formato es PDF}
+  \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
+        \AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }
+        \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{latex\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hold\_position"}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ll}
+\toprule
+Encabezado & Contenido\\
+\midrule
+\cellcolor{gray!10}{Nombre de Su hallazgo} & \cellcolor{gray!10}{Poca Correlación entre las variables.}\\
+Resumen en una Oración & Encontramos que las variables a utilizar no presentan una correlación fuerte, según el índice de Pearson.\\
+\cellcolor{gray!10}{Problemas o Posibles Desafíos} & \cellcolor{gray!10}{La conversión de variable categórica a variable numérica puede estar afectando al resultado. Además, podría ser que la relación entre las variables en realidad no es lineal.}\\
+Resumen en un párrafo & Al utilizar el índice de correlación de Pearson, hay que utilizar variables numéricas, por lo que se utiliza una conversión de las variables categóricas a variables numéricas para poder realizar dicho cálculo, sin embargo se encuentra que las variables no están teniendo una relación, al menos de manera lineal que es lo que calcula dicho índice.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cargar la librería si no está instalada}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+  \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+
+\CommentTok{\# Crear el data frame con la información}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Encabezado =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nombre de Su hallazgo"}\NormalTok{, }
+                 \StringTok{"Resumen en una Oración"}\NormalTok{, }
+                 \StringTok{"Problemas o Posibles Desafíos"}\NormalTok{, }
+                 \StringTok{"Resumen en un párrafo"}\NormalTok{),}
+  \AttributeTok{Contenido =} \FunctionTok{c}\NormalTok{(}\StringTok{"Datos muy Iguales"}\NormalTok{, }
+                \StringTok{"A la hora de graficar las variables se puede observar que los datos tienen distribuciones muy similares"}\NormalTok{, }
+                \StringTok{"Este problema se puede estar ocasionando debido a que las variables de la base de datos se parecen mucho."}\NormalTok{, }
+                \StringTok{"Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias."}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Crear la tabla con la información, adaptándose al formato de salida}
+\ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
+  \CommentTok{\# Si el formato es HTML}
+  \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
+        \AttributeTok{format =} \StringTok{"html"}\NormalTok{, }
+        \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 2"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# Si el formato es PDF}
+  \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
+        \AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }
+        \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{latex\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hold\_position"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 2"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\multicolumn{2}{c}{\textbf{Hallazgo de Resultado 2}} \\
+\cmidrule(l{3pt}r{3pt}){1-2}
+Encabezado & Contenido\\
+\midrule
+\cellcolor{gray!10}{Nombre de Su hallazgo} & \cellcolor{gray!10}{Datos muy Iguales}\\
+Resumen en una Oración & A la hora de graficar las variables se puede observar que los datos tienen distribuciones muy similares\\
+\cellcolor{gray!10}{Problemas o Posibles Desafíos} & \cellcolor{gray!10}{Este problema se puede estar ocasionando debido a que las variables de la base de datos se parecen mucho.}\\
+Resumen en un párrafo & Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias.\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Para la siguiente ficha, es de importancia hacer la acotación, que este
+curso evalúa el tratamiento de datos, más que el tema de la
+investigación, pues es un curso de herramientas de datos, por ello, se
+nos hace pertinente mencionar que el tratamiento de las variables
+categóricas con variables numéricas puede llevar a problemas, sino se
+hace un buen tratamiento, además como mencionamos anteriormente en la
+metodología, que las variables presenten poca correlación, se puede
+deber a que la relación entre ellas no es lineal o al menos no es
+cuantifificable, pero a la hora de trabajar o de interpretarlas, si
+tiene sentido hacerlo o existe un cuerpo teórico que lo apoya. A
+continuación el cuadro del hallazgo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Cargar la librería si no está instalada}
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+  \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+
+\CommentTok{\# Crear el data frame con la información}
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Encabezado =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nombre de Su hallazgo"}\NormalTok{, }
+                 \StringTok{"Resumen en una Oración"}\NormalTok{, }
+                 \StringTok{"Problemas o Posibles Desafíos"}\NormalTok{, }
+                 \StringTok{"Resumen en un párrafo"}\NormalTok{),}
+  \AttributeTok{Contenido =} \FunctionTok{c}\NormalTok{(}\StringTok{"Dificultad a la hora de trabajar con variables categóricas y numéricas."}\NormalTok{, }
+                \StringTok{"Buscar correlaciones en variables que no son del mismo tipo puede ocasionar problemas."}\NormalTok{, }
+                \StringTok{"A la hora de tratar variables categóricas con variables numéricas, se puede estar perdiendo información, debido a que muchas de las técnicas normalmente utilizadas son para variables numéricas."}\NormalTok{, }
+                \StringTok{"Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas."}\NormalTok{)}
+\NormalTok{)}
+
+\CommentTok{\# Crear la tabla con la información, adaptándose al formato de salida}
+\ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
+  \CommentTok{\# Si el formato es HTML}
+  \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
+        \AttributeTok{format =} \StringTok{"html"}\NormalTok{, }
+        \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 3"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# Si el formato es PDF}
+  \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
+        \AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }
+        \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{latex\_options =} \FunctionTok{c}\NormalTok{(}\StringTok{"striped"}\NormalTok{, }\StringTok{"hold\_position"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 3"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[!h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\multicolumn{2}{c}{\textbf{Hallazgo de Resultado 3}} \\
+\cmidrule(l{3pt}r{3pt}){1-2}
+Encabezado & Contenido\\
+\midrule
+\cellcolor{gray!10}{Nombre de Su hallazgo} & \cellcolor{gray!10}{Dificultad a la hora de trabajar con variables categóricas y numéricas.}\\
+Resumen en una Oración & Buscar correlaciones en variables que no son del mismo tipo puede ocasionar problemas.\\
+\cellcolor{gray!10}{Problemas o Posibles Desafíos} & \cellcolor{gray!10}{A la hora de tratar variables categóricas con variables numéricas, se puede estar perdiendo información, debido a que muchas de las técnicas normalmente utilizadas son para variables numéricas.}\\
+Resumen en un párrafo & Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas.\\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \bookmarksetup{startatroot}
 
@@ -1861,6 +2429,17 @@ A partir del foro consideramos todas las sugerencias:
 Chicu, Dorina. 2020. {«La valoración del riesgo financiero»}. 2020.
 \url{https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf}.
 
+\bibitem[\citeproctext]{ref-edgar2022}
+Edgar Apaza, César Condori, Samuel Cazorla. 2022. {«La Correlación de
+Pearson o de Spearman en caracteres físicos y textiles de la fibra de
+alpacas»}. 2022.
+\url{http://www.scielo.org.pe/pdf/rivep/v33n3/1609-9117-rivep-33-03-e22908.pdf}.
+
+\bibitem[\citeproctext]{ref-hadley2018}
+Hadley Wickham, Garrett Grolemund. 2019. {«R for Data Science (2nd
+ed.)»}. 2019.
+\url{https://digitallibrary.tsu.ge/book/2019/september/books/R-for-Data-Science.pdf}.
+
 \bibitem[\citeproctext]{ref-herrera2008}
 Maria de los Ángeles Herrera, Juan Terán. 2024. {«Conceptualización del
 riesgo de los mercados financieros»}. 2024.
@@ -1870,6 +2449,10 @@ riesgo de los mercados financieros»}. 2024.
 Palacios, Alberto. 2012. {«Calificación de riesgo: definición e
 influencia en la última década»}. 2012.
 \url{https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1}.
+
+\bibitem[\citeproctext]{ref-maikol2024}
+Solis, Maikol. 2024. {«Guía del curso: Herramienta para Ciencia de
+Datos»}. 2024. \url{https://maikolsolis.com/libros/hpcd/}.
 
 \end{CSLReferences}
 
