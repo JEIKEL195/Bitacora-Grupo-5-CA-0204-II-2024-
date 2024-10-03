@@ -651,6 +651,32 @@ kable(data, col.names = c("Encabezado", "Contenido"),
   add_header_above(c("Hallazgo de Resultado 2" = 2), bold = TRUE)  
 ```
 
+Para la siguiente ficha, es de importancia hacer la acotación, que este curso evalúa el tratamiento de datos, más que el tema de la investigación, pues es un curso de herramientas de datos, por ello, se nos hace pertinente mencionar que el tratamiento de las variables categóricas con variables numéricas puede llevar a problemas, sino se hace un buen tratamiento, además como mencionamos anteriormente en la metodología, que las variables presenten poca correlación, se puede deber a que la relación entre ellas no es lineal o al menos no es cuantifificable, pero a la hora de trabajar o de interpretarlas, si tiene sentido hacerlo o existe un cuerpo teórico que lo apoya. A continuación el cuadro del hallazgo:
+
+
+
+```{r}
+if (!require(kableExtra)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+# Creamos el data frame, donde vamos a poner la información.
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Dificultad a la hora de trabajar con variables categóricas y numéricas.", "Buscar correlaciones en variables que no son del mismo tipo puede ocasionar problemas.", "A la hora de tratar variables categóricas con variables numéricas, se puede estar perdiendo información, debido a que muchas de las técnicas normalmente utilizadas son para variables numéricas.", "Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas.")
+)
+
+# Creamos la tabla con la información.
+kable(data, col.names = c("Encabezado", "Contenido"), 
+      format = "html", 
+      escape = FALSE) %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c("Hallazgo de Resultado 3" = 2), bold = TRUE) 
+```
 
 
 
