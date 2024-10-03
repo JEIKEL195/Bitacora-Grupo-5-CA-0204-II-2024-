@@ -27,6 +27,39 @@ Metodológica & Correlación y Análisis de datos & Clasificación de perfiles b
 \normalsize
 \newpage
 
+
+```{r, eval = knitr::opts_knit$get("rmarkdown.pandoc.to") == "html"}
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+data <- data.frame(
+  Tipo = rep("Metodológica", 4),
+  Tema_General = rep("Correlación y Análisis de datos", 4),
+  Tema_Especifico = c("Análisis del perfil de los prestatarios", 
+                      "Relevancia del scoring de crédito", 
+                      "Relación variables cuantitativas y cualitativas en el incumplimiento de pago", 
+                      "Clasificación de perfiles basándose en variables cualitativas"),
+  Título = c("La evaluación del riesgo de crédito en las instituciones de microfinanzas: estado del arte", 
+             "Modelos para el otorgamiento y seguimiento en la gestión del riesgo crediticio", 
+             "Variables determinantes de la probabilidad de incumplimiento de un microcrédito", 
+             "Credit Scoring en Costa Rica y la probabilidad de clasificación de créditos personales"),
+  Año = c(2017, 2018, 2011, 2013),
+  Autor = c("María Seijas, Milagro Vivel, Rubén Lado, Sara Fernández",
+            "Millan Solarte, Julio Cesar, Edinson Caicedo",
+            "María Calixto, Luis Casaverde",
+            "Patricia Hernández, José Montoya, Allan Villareal")
+)
+
+
+kable(data, format = "html", escape = FALSE, 
+      col.names = c("Tipo", "Tema General", "Tema Específico", "Título", "Año", "Autor(es)")) %>%
+  kable_styling(full_width = FALSE, position = "left") 
+```
+
+
+
 ## Enlaces de la Literatura
 
 **Título:** *La valoración del riesgo financiero*.
@@ -77,15 +110,6 @@ Metodológica & Correlación y Análisis de datos & Clasificación de perfiles b
 
 **Comentario Propio:** Gracias a estas definiciones, hemos logrado definir mejor qué queremos estudiar de manera más específica y cómo utilizar ciertos conceptos de mejor manera.
 
-
-
-# Bitácora 2
-
-## Parte de Planificación 
-
-### Ordenamiento de la Literatura 
-
-## Enlaces de la Literatura
 
 ## Análisis Estadístico
 
@@ -602,13 +626,13 @@ En donde $\rho$ recibe el nombre de Coeficiente de correlación de Pearson y ade
 
 
 ```{r}
-# Cargar la librería si no está instalada
+
 if (!requireNamespace("kableExtra", quietly = TRUE)) {
   install.packages("kableExtra")
 }
 library(kableExtra)
 
-# Crear el data frame
+
 data <- data.frame(
   Encabezado = c("Nombre de Su hallazgo", 
                  "Resumen en una Oración", 
@@ -620,16 +644,16 @@ data <- data.frame(
                 "Al utilizar el índice de correlación de Pearson, hay que utilizar variables numéricas, por lo que se utiliza una conversión de las variables categóricas a variables numéricas para poder realizar dicho cálculo, sin embargo se encuentra que las variables no están teniendo una relación, al menos de manera lineal que es lo que calcula dicho índice.")
 )
 
-# Crear la tabla con la información, adaptándose al formato de salida
+
 if (knitr::is_html_output()) {
-  # Si el formato es HTML
+  # Si es HTML
   kable(data, col.names = c("Encabezado", "Contenido"), 
         format = "html", 
         escape = FALSE) %>%
     kable_styling(full_width = FALSE) %>%
     add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
 } else {
-  # Si el formato es PDF
+  # Si es PDF
   kable(data, col.names = c("Encabezado", "Contenido"), 
         format = "latex", 
         booktabs = TRUE) %>%
@@ -639,13 +663,13 @@ if (knitr::is_html_output()) {
 
 
 ```{r}
-# Cargar la librería si no está instalada
+
 if (!requireNamespace("kableExtra", quietly = TRUE)) {
   install.packages("kableExtra")
 }
 library(kableExtra)
 
-# Crear el data frame con la información
+
 data <- data.frame(
   Encabezado = c("Nombre de Su hallazgo", 
                  "Resumen en una Oración", 
@@ -657,16 +681,16 @@ data <- data.frame(
                 "Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias.")
 )
 
-# Crear la tabla con la información, adaptándose al formato de salida
+
 if (knitr::is_html_output()) {
-  # Si el formato es HTML
+  # Si es HTML
   kable(data, col.names = c("Encabezado", "Contenido"), 
         format = "html", 
         escape = FALSE) %>%
     kable_styling(full_width = FALSE) %>%
     add_header_above(c("Hallazgo de Resultado 2" = 2), bold = TRUE)
 } else {
-  # Si el formato es PDF
+  # Si es PDF
   kable(data, col.names = c("Encabezado", "Contenido"), 
         format = "latex", 
         booktabs = TRUE) %>%
@@ -680,13 +704,13 @@ Para la siguiente ficha, es de importancia hacer la acotación, que este curso e
 
 
 ```{r}
-# Cargar la librería si no está instalada
+
 if (!requireNamespace("kableExtra", quietly = TRUE)) {
   install.packages("kableExtra")
 }
 library(kableExtra)
 
-# Crear el data frame con la información
+
 data <- data.frame(
   Encabezado = c("Nombre de Su hallazgo", 
                  "Resumen en una Oración", 
@@ -698,16 +722,16 @@ data <- data.frame(
                 "Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas.")
 )
 
-# Crear la tabla con la información, adaptándose al formato de salida
+
 if (knitr::is_html_output()) {
-  # Si el formato es HTML
+  # Si es HTML
   kable(data, col.names = c("Encabezado", "Contenido"), 
         format = "html", 
         escape = FALSE) %>%
     kable_styling(full_width = FALSE) %>%
     add_header_above(c("Hallazgo de Resultado 3" = 2), bold = TRUE)
 } else {
-  # Si el formato es PDF
+  # Si es PDF
   kable(data, col.names = c("Encabezado", "Contenido"), 
         format = "latex", 
         booktabs = TRUE) %>%

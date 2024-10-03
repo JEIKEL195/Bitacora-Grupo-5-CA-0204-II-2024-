@@ -263,7 +263,7 @@
 \subtitle{Análisis de las variables cualitativas en relación al riesgo
 crediticio alrededor del mundo}
 \author{Jeikel Navarro Solis, Gabriel Valverde, Erick Venegas}
-\date{2024-10-02}
+\date{2024-10-03}
 
 \begin{document}
 \maketitle
@@ -953,6 +953,38 @@ Metodológica & Correlación y Análisis de datos & Clasificación de perfiles b
 \normalsize
 \newpage
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
+  \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
+\NormalTok{\}}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Tipo =} \FunctionTok{rep}\NormalTok{(}\StringTok{"Metodológica"}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+  \AttributeTok{Tema\_General =} \FunctionTok{rep}\NormalTok{(}\StringTok{"Correlación y Análisis de datos"}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+  \AttributeTok{Tema\_Especifico =} \FunctionTok{c}\NormalTok{(}\StringTok{"Análisis del perfil de los prestatarios"}\NormalTok{, }
+                      \StringTok{"Relevancia del scoring de crédito"}\NormalTok{, }
+                      \StringTok{"Relación variables cuantitativas y cualitativas en el incumplimiento de pago"}\NormalTok{, }
+                      \StringTok{"Clasificación de perfiles basándose en variables cualitativas"}\NormalTok{),}
+\NormalTok{  Título }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"La evaluación del riesgo de crédito en las instituciones de microfinanzas: estado del arte"}\NormalTok{, }
+             \StringTok{"Modelos para el otorgamiento y seguimiento en la gestión del riesgo crediticio"}\NormalTok{, }
+             \StringTok{"Variables determinantes de la probabilidad de incumplimiento de un microcrédito"}\NormalTok{, }
+             \StringTok{"Credit Scoring en Costa Rica y la probabilidad de clasificación de créditos personales"}\NormalTok{),}
+\NormalTok{  Año }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{2017}\NormalTok{, }\DecValTok{2018}\NormalTok{, }\DecValTok{2011}\NormalTok{, }\DecValTok{2013}\NormalTok{),}
+  \AttributeTok{Autor =} \FunctionTok{c}\NormalTok{(}\StringTok{"María Seijas, Milagro Vivel, Rubén Lado, Sara Fernández"}\NormalTok{,}
+            \StringTok{"Millan Solarte, Julio Cesar, Edinson Caicedo"}\NormalTok{,}
+            \StringTok{"María Calixto, Luis Casaverde"}\NormalTok{,}
+            \StringTok{"Patricia Hernández, José Montoya, Allan Villareal"}\NormalTok{)}
+\NormalTok{)}
+
+
+\FunctionTok{kable}\NormalTok{(data, }\AttributeTok{format =} \StringTok{"html"}\NormalTok{, }\AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{, }
+      \AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Tipo"}\NormalTok{, }\StringTok{"Tema General"}\NormalTok{, }\StringTok{"Tema Específico"}\NormalTok{, }\StringTok{"Título"}\NormalTok{, }\StringTok{"Año"}\NormalTok{, }\StringTok{"Autor(es)"}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{position =} \StringTok{"left"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
 \section{Enlaces de la Literatura}\label{enlaces-de-la-literatura}
 
 \textbf{Título:} \emph{La valoración del riesgo financiero}.
@@ -1121,17 +1153,6 @@ tiene nada que aportar.
 definir mejor qué queremos estudiar de manera más específica y cómo
 utilizar ciertos conceptos de mejor manera.
 
-\bookmarksetup{startatroot}
-
-\chapter{Bitácora 2}\label{bituxe1cora-2-1}
-
-\section{Parte de Planificación}\label{parte-de-planificaciuxf3n-2}
-
-\subsection{Ordenamiento de la
-Literatura}\label{ordenamiento-de-la-literatura-1}
-
-\section{Enlaces de la Literatura}\label{enlaces-de-la-literatura-1}
-
 \section{Análisis Estadístico}\label{anuxe1lisis-estaduxedstico}
 
 Como base para realizar este análisis estadístico, nos estamos guíando
@@ -1229,47 +1250,10 @@ las variables.
 \CommentTok{\# install.packages("kableExtra") }
 
 \FunctionTok{library}\NormalTok{(dplyr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-
-Adjuntando el paquete: 'dplyr'
-\end{verbatim}
-
-\begin{verbatim}
-The following objects are masked from 'package:stats':
-
-    filter, lag
-\end{verbatim}
-
-\begin{verbatim}
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(tidyr)}
 \FunctionTok{library}\NormalTok{(knitr)}
 \FunctionTok{library}\NormalTok{(kableExtra)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-
-Adjuntando el paquete: 'kableExtra'
-\end{verbatim}
-
-\begin{verbatim}
-The following object is masked from 'package:dplyr':
-
-    group_rows
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# Como nuestras variables no son del todo numéricas, hay que hacerlo para las variables que son numéricas y para las variables que son categóricas. }
 
 \CommentTok{\# Primero hacemos las variables numéricas.}
@@ -1594,15 +1578,7 @@ toman en los estudios de calificación de riesgo.
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(dplyr)}
 \FunctionTok{library}\NormalTok{(corrplot)}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-corrplot 0.94 loaded
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \CommentTok{\# Escogemos las variables que nos interesan para la matriz de correlación.}
 \NormalTok{Base\_correlacion }\OtherTok{\textless{}{-}}\NormalTok{ Base\_limpia }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{select}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{, Income, }\StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, Age, }\StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)}
@@ -1644,7 +1620,7 @@ Education Level   0.01934448      1.00000000
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-11-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-12-1.pdf}
 
 Ahora vamos a comenzar a ver los gráficos que se forman de nuestra base
 de datos. Para ello vamos analizar cómo es la distribución que siguen
@@ -1665,7 +1641,7 @@ realizar un gráfico de barras.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-12-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-13-1.pdf}
 
 Por otro lado, la variable ``Income'', es una variable continua, por lo
 que lo recomendado para visualizar la distribución de estos datos de una
@@ -1684,7 +1660,7 @@ gráfico correspondiente:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-13-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-14-1.pdf}
 
 Además decidimos realizar un facet en esta misma variable con respecto a
 la variable ``Education Level'', con el fin de visualizar la
@@ -1704,7 +1680,7 @@ variable objetivo, la cual es la calificación de riesgo.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-14-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-15-1.pdf}
 
 Adjuntamos un gráfico más de los ingresos, pero esta vez por género, con
 la misma curiosidad de observar cómo es la distribución de estos dada la
@@ -1722,7 +1698,7 @@ mencionada variable.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-15-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-16-1.pdf}
 
 Otras variables a tener en cuenta aparte de las anteriores mencionadas
 con respecto al riesgo de crédito, son el monto del préstamos y el
@@ -1746,7 +1722,7 @@ nos interesa ver qué distribución en general tiene.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-16-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-17-1.pdf}
 
 Haremos lo mismo, pero esta vez vamos a ver cómo se comportan los
 salarios cuando cambiamos la variable y utilizamos por ejemplo el grado
@@ -1769,7 +1745,7 @@ académico.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-17-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-18-1.pdf}
 
 Por otro lado, ahora queremos ver el gráfico de la variable propósito
 del préstamo en relación con el grado académico, al ser ambas variables
@@ -1800,7 +1776,7 @@ recurrimos al uso de colores, para identificar las variables.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-18-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-19-1.pdf}
 
 Para terminar esta sección, vamos a graficar con la variable objetivo de
 interés, la cual es la Calificación de riesgo, para ello, lo vamos a
@@ -1827,7 +1803,7 @@ Calificación de Riesgo, con respecto a la edad:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-19-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-20-1.pdf}
 
 Por otro lado, vamos a ver cómo se comporta la distribución de la
 calificación de riesgo, haciendo un facet con la categoría Nivel
@@ -1851,7 +1827,7 @@ lo recomendado es utilizar un gráfico de barras.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-20-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-21-1.pdf}
 
 A su vez, nos interesa observar cómo se ve el gráifco de la variable
 calificación de riesgo con la variable contra la variable ingreso. Para
@@ -1875,7 +1851,7 @@ comparar las distribuciones.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-21-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-22-1.pdf}
 
 Otra de las variables de interés, es la calificación de riesgo contra el
 propósito del préstamo.
@@ -1895,7 +1871,7 @@ propósito del préstamo.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-22-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-23-1.pdf}
 
 Por último, vamos a ver la distribución que existe de la variable
 calificación de riesgo cuando la comparamos contra el monto del
@@ -1917,7 +1893,7 @@ préstamo.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-23-1.pdf}
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-24-1.pdf}
 
 \section{Propuesta Metodológica}\label{propuesta-metodoluxf3gica}
 
@@ -1971,13 +1947,12 @@ Resultados}\label{construcciuxf3n-de-fichas-de-resultados}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Cargar la librería si no está instalada}
 \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
   \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
 \NormalTok{\}}
 \FunctionTok{library}\NormalTok{(kableExtra)}
 
-\CommentTok{\# Crear el data frame}
+
 \NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
   \AttributeTok{Encabezado =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nombre de Su hallazgo"}\NormalTok{, }
                  \StringTok{"Resumen en una Oración"}\NormalTok{, }
@@ -1989,16 +1964,16 @@ Resultados}\label{construcciuxf3n-de-fichas-de-resultados}
                 \StringTok{"Al utilizar el índice de correlación de Pearson, hay que utilizar variables numéricas, por lo que se utiliza una conversión de las variables categóricas a variables numéricas para poder realizar dicho cálculo, sin embargo se encuentra que las variables no están teniendo una relación, al menos de manera lineal que es lo que calcula dicho índice."}\NormalTok{)}
 \NormalTok{)}
 
-\CommentTok{\# Crear la tabla con la información, adaptándose al formato de salida}
+
 \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
-  \CommentTok{\# Si el formato es HTML}
+  \CommentTok{\# Si es HTML}
   \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
         \AttributeTok{format =} \StringTok{"html"}\NormalTok{, }
         \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 1"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
-  \CommentTok{\# Si el formato es PDF}
+  \CommentTok{\# Si es PDF}
   \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
         \AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }
         \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
@@ -2023,13 +1998,12 @@ Resumen en un párrafo & Al utilizar el índice de correlación de Pearson, hay 
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Cargar la librería si no está instalada}
 \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
   \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
 \NormalTok{\}}
 \FunctionTok{library}\NormalTok{(kableExtra)}
 
-\CommentTok{\# Crear el data frame con la información}
+
 \NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
   \AttributeTok{Encabezado =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nombre de Su hallazgo"}\NormalTok{, }
                  \StringTok{"Resumen en una Oración"}\NormalTok{, }
@@ -2041,16 +2015,16 @@ Resumen en un párrafo & Al utilizar el índice de correlación de Pearson, hay 
                 \StringTok{"Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias."}\NormalTok{)}
 \NormalTok{)}
 
-\CommentTok{\# Crear la tabla con la información, adaptándose al formato de salida}
+
 \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
-  \CommentTok{\# Si el formato es HTML}
+  \CommentTok{\# Si es HTML}
   \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
         \AttributeTok{format =} \StringTok{"html"}\NormalTok{, }
         \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 2"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
-  \CommentTok{\# Si el formato es PDF}
+  \CommentTok{\# Si es PDF}
   \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
         \AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }
         \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
@@ -2090,13 +2064,12 @@ continuación el cuadro del hallazgo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Cargar la librería si no está instalada}
 \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\FunctionTok{requireNamespace}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{, }\AttributeTok{quietly =} \ConstantTok{TRUE}\NormalTok{)) \{}
   \FunctionTok{install.packages}\NormalTok{(}\StringTok{"kableExtra"}\NormalTok{)}
 \NormalTok{\}}
 \FunctionTok{library}\NormalTok{(kableExtra)}
 
-\CommentTok{\# Crear el data frame con la información}
+
 \NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
   \AttributeTok{Encabezado =} \FunctionTok{c}\NormalTok{(}\StringTok{"Nombre de Su hallazgo"}\NormalTok{, }
                  \StringTok{"Resumen en una Oración"}\NormalTok{, }
@@ -2108,16 +2081,16 @@ continuación el cuadro del hallazgo:
                 \StringTok{"Durante el proceso de tratamiento de datos, hemos observado como los datos se comportan de maneras diferentes a las esperadas, esto se puede deber a un mal tratamiento de las variables categóricas."}\NormalTok{)}
 \NormalTok{)}
 
-\CommentTok{\# Crear la tabla con la información, adaptándose al formato de salida}
+
 \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
-  \CommentTok{\# Si el formato es HTML}
+  \CommentTok{\# Si es HTML}
   \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
         \AttributeTok{format =} \StringTok{"html"}\NormalTok{, }
         \AttributeTok{escape =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{full\_width =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
     \FunctionTok{add\_header\_above}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Hallazgo de Resultado 3"} \OtherTok{=} \DecValTok{2}\NormalTok{), }\AttributeTok{bold =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
-  \CommentTok{\# Si el formato es PDF}
+  \CommentTok{\# Si es PDF}
   \FunctionTok{kable}\NormalTok{(data, }\AttributeTok{col.names =} \FunctionTok{c}\NormalTok{(}\StringTok{"Encabezado"}\NormalTok{, }\StringTok{"Contenido"}\NormalTok{), }
         \AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }
         \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
