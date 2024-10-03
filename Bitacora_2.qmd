@@ -79,9 +79,17 @@ Metodológica & Correlación y Análisis de datos & Clasificación de perfiles b
 
 
 
+# Bitácora 2
+
+## Parte de Planificación 
+
+### Ordenamiento de la Literatura 
+
+## Enlaces de la Literatura
+
 ## Análisis Estadístico
 
-Como base para realizar este análisis estadístico, nos estamos guíando con la guía del curso de Herramientas de Ciencias de Datos, el cual adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y también estamos utilizando el libro escrito por Wickham, el cual también adjuntamos el link https://r4ds.hadley.nz/. 
+Como base para realizar este análisis estadístico, nos estamos guíando con la guía del curso de Herramientas de Ciencias de Datos, el cual adjuntamos el link a dicha guía [@maikol2024] y también estamos utilizando el libro escrito por Wickham, el cual también adjuntamos el link [@hadley2018]. 
 
 A modo de introducción, el análisis estadístico consiste en un conjunto de herramientas o técnias que se utilizan para la recolección, el análisis e interpretación de datos. Para este trabajo es imprescindible contar con este set de herramientas. 
 
@@ -91,11 +99,10 @@ La base de datos ya se encuentra en formato en tidy, recordemos que el formato t
 
 Vamos a llamar a nuestra base de datos, la cual vamos a utilizar durante el trabajo.
 
-```{r}
+```{r, echo=FALSE}
 library(readr)
 base_financial_risk_assessment <- read_delim("base-financial-risk-assessment.csv", 
     delim = ";", escape_double = FALSE, trim_ws = TRUE)
-View(base_financial_risk_assessment)
 ```
 
 ```{r}
@@ -109,73 +116,273 @@ Base_limpia <- na.omit(base_financial_risk_assessment)
 head(Base_limpia)
 ```
 
-Con la base de datos limpia, ya podemos hacer un análisis estadístico, para ello vamos a calcular estadísticos base, como lo son la media, la varianza, el mínimo, el máximo de las variable numéricas, además de calcular la moda, para las variables que no sean numéricas. 
+Ahora hacemos un análisis estadístico de nuestra base de datos, de todas las variables.
 
-```{r, echo= FALSE}
+```{r}
+# Instalar kableExtra si no lo tienes
+# install.packages("kableExtra") 
+
 library(dplyr)
-resultado <- Base_limpia %>% 
+library(tidyr)
+library(knitr)
+library(kableExtra)
+
+# Como nuestras variables no son del todo numéricas, hay que hacerlo para las variables que son numéricas y para las variables que son categóricas. 
+
+# Primero hacemos las variables numéricas.
+resumen_numericas <- Base_limpia %>%
   summarise(
-    
-    # calculamos los estadísticos de interés para la variable edad/Age
-    media_edad = mean(Age),
-    varianza_edad = var(Age),
-    min_edad = min(Age),
-    max_edad = max(Age),
-    
-    # Calculamos los estadísticos de interés para la variable ingreso/Income
-    media_ingresos = mean(Income),
-    varianza_ingresos = var(Income),
-    min_ingresos = min(Income),
-    max_ingresos = max(Income),
-    
-    # Calculamos los estadísticos de interés para la variable record_crediticio/ Credit Score
-    media_record_crediticio = mean(`Credit Score`),
-    varianza_record_crediticio = var(`Credit Score`),
-    min_record_crediticio = min(`Credit Score`),
-    max_record_crediticio = max(`Credit Score`),
-    
-    # Calculamos los estadísticos de interés para la variable monto del préstamo/ Loan Amount
-    media_monto_prestamo = mean(`Loan Amount`),
-    varianza_monto_prestamo = var(`Loan Amount`),
-    min_monto_prestamo = min(`Loan Amount`),
-    max_monto_prestamo = max(`Loan Amount`),
-    
-    # Calculamos los estadísticos de interés para variable anyos_trabajo / Years at current job
-    media_anyos_trabajo = mean(`Years at Current Job`),
-    varianza_anyos_trabajo = var(`Years at Current Job`),
-    min_anyos_trabajo = min(`Years at Current Job`),
-    max_anyos_trabajo = max(`Years at Current Job`),
+    Edad_Media = mean(Age, na.rm = TRUE),
+    Edad_Minima = min(Age, na.rm = TRUE),
+    Edad_Maxima = max(Age, na.rm = TRUE),
+    Ingreso_Medio = mean(Income, na.rm = TRUE),
+    Ingreso_Varianza = var(Income, na.rm = TRUE),
+    Ingreso_Minimo = min(Income, na.rm = TRUE),
+    Ingreso_Maximo = max(Income, na.rm = TRUE),
+    Prestamo_Medio = mean(`Loan Amount`, na.rm = TRUE),
+    Prestamo_Varianza = var(`Loan Amount`, na.rm = TRUE),
+    Prestamo_Minimo = min(`Loan Amount`, na.rm = TRUE),
+    Prestamo_Maximo = max(`Loan Amount`, na.rm = TRUE)
   )
+
+# Variables Categóricas
+resumen_categoricas <- tibble(
+  Variable = c("Nivel de Educación", "Género", "Estado Civil"),
+  Frecuencia = c(
+    paste(names(table(Base_limpia$`Education Level`)), collapse = ", "),
+    paste(names(table(Base_limpia$Gender)), collapse = ", "),
+    paste(names(table(Base_limpia$`Marital Status`)), collapse = ", ")
+  )
+)
+
+# Luego resumimos la información en un cuadro, para presentarlo mejor.
+tabla_resumen <- data.frame(
+  Variable = c("Edad", "Ingresos", "Monto del Préstamo", resumen_categoricas$Variable),
+  Media = c(resumen_numericas$Edad_Media, resumen_numericas$Ingreso_Medio, resumen_numericas$Prestamo_Medio, rep(NA, 3)),
+  Varianza = c(NA, resumen_numericas$Ingreso_Varianza, resumen_numericas$Prestamo_Varianza, rep(NA, 3)),
+  Mínimo = c(resumen_numericas$Edad_Minima, resumen_numericas$Ingreso_Minimo, resumen_numericas$Prestamo_Minimo, rep(NA, 3)),
+  Máximo = c(resumen_numericas$Edad_Maxima, resumen_numericas$Ingreso_Maximo, resumen_numericas$Prestamo_Maximo, rep(NA, 3)),
+  Frecuencia = c(rep(NA, 3), resumen_categoricas$Frecuencia)
+)
+
+# Mostrar la tabla con la descripción
+tabla_resumen_kable <- kable(tabla_resumen, caption = "Resumen de Variables Numéricas y Categóricas") %>%
+  kable_styling() %>%
+  add_header_above(c(" " = 1, "Resumen" = 5)) 
+tabla_resumen_kable <- tabla_resumen_kable %>%
+  kableExtra::footnote(general = "Fuente: Elaboración propia utilizando la base de datos de Kaggle")
+tabla_resumen_kable
 ```
 
-Estos son los datos resumidos de la variable edad.
+Presentamos las variables de más importancia en nuestro estudio
+
+```{r, echo= FALSE}
+# Instalar kableExtra si no lo tienes
+# install.packages("kableExtra") 
+
+library(dplyr)
+library(tidyr)
+library(knitr)
+library(kableExtra)
+
+# Como nuestras variables no son del todo numéricas, hay que hacerlo para las variables que son numéricas y para las variables que son categóricas. 
+
+# Primero hacemos las variables numéricas.
+resumen_numericas <- Base_limpia %>%
+  summarise(
+    Edad_Media = mean(Age, na.rm = TRUE),
+    Edad_Minima = min(Age, na.rm = TRUE),
+    Edad_Maxima = max(Age, na.rm = TRUE),
+    Ingreso_Medio = mean(Income, na.rm = TRUE),
+    Ingreso_Varianza = var(Income, na.rm = TRUE),
+    Ingreso_Minimo = min(Income, na.rm = TRUE),
+    Ingreso_Maximo = max(Income, na.rm = TRUE),
+    Prestamo_Medio = mean(`Loan Amount`, na.rm = TRUE),
+    Prestamo_Varianza = var(`Loan Amount`, na.rm = TRUE),
+    Prestamo_Minimo = min(`Loan Amount`, na.rm = TRUE),
+    Prestamo_Maximo = max(`Loan Amount`, na.rm = TRUE)
+  )
+
+# Variables Categóricas
+resumen_categoricas <- tibble(
+  Variable = c("Nivel de Educación", "Género", "Estado Civil"),
+  Frecuencia = c(
+    paste(names(table(Base_limpia$`Education Level`)), collapse = ", "),
+    paste(names(table(Base_limpia$Gender)), collapse = ", "),
+    paste(names(table(Base_limpia$`Marital Status`)), collapse = ", ")
+  )
+)
+
+# Luego resumimos la información en un cuadro, para presentarlo mejor.
+tabla_resumen <- data.frame(
+  Variable = c("Edad", "Ingresos", "Monto del Préstamo", resumen_categoricas$Variable),
+  Media = c(resumen_numericas$Edad_Media, resumen_numericas$Ingreso_Medio, resumen_numericas$Prestamo_Medio, rep(NA, 3)),
+  Varianza = c(NA, resumen_numericas$Ingreso_Varianza, resumen_numericas$Prestamo_Varianza, rep(NA, 3)),
+  Mínimo = c(resumen_numericas$Edad_Minima, resumen_numericas$Ingreso_Minimo, resumen_numericas$Prestamo_Minimo, rep(NA, 3)),
+  Máximo = c(resumen_numericas$Edad_Maxima, resumen_numericas$Ingreso_Maximo, resumen_numericas$Prestamo_Maximo, rep(NA, 3)),
+  Frecuencia = c(rep(NA, 3), resumen_categoricas$Frecuencia)
+)
+
+# Mostrar la tabla con la descripción
+tabla_resumen_kable <- kable(tabla_resumen, caption = "Resumen de Variables Numéricas y Categóricas") %>%
+  kable_styling() %>%
+  add_header_above(c(" " = 1, "Resumen" = 5)) 
+
+# Agregar la fuente de la tabla como pie de página
+tabla_resumen_kable <- tabla_resumen_kable %>%
+  kableExtra::footnote(general = "Fuente: Elaboración propia utilizando la base de datos de Kaggle")
+
+# Mostrar la tabla final
+tabla_resumen_kable
+
+```
+
+Con nuestra base de datos limpia, vanmos a proceder a calcular algunos estadísticos importantes, por separado. Estos son los datos resumidos de la variable edad.
+
+
+```{r}
+library(dplyr)
+
+# Calculamos las estadísticas de interés para las variables y las almacenamos en un solo data.frame
+resultado <- Base_limpia %>% 
+  summarise(
+    # Estadísticos para la variable edad/Age
+    media_edad = mean(Age, na.rm = TRUE),
+    varianza_edad = var(Age, na.rm = TRUE),
+    min_edad = min(Age, na.rm = TRUE),
+    max_edad = max(Age, na.rm = TRUE),
+    
+    # Estadísticos para la variable ingreso/Income
+    media_ingresos = mean(Income, na.rm = TRUE),
+    varianza_ingresos = var(Income, na.rm = TRUE),
+    min_ingresos = min(Income, na.rm = TRUE),
+    max_ingresos = max(Income, na.rm = TRUE),
+    
+    # Estadísticos para la variable record_crediticio/Credit Score
+    media_record_crediticio = mean(`Credit Score`, na.rm = TRUE),
+    varianza_record_crediticio = var(`Credit Score`, na.rm = TRUE),
+    min_record_crediticio = min(`Credit Score`, na.rm = TRUE),
+    max_record_crediticio = max(`Credit Score`, na.rm = TRUE),
+    
+    # Estadísticos para la variable monto del préstamo/Loan Amount
+    media_monto_prestamo = mean(`Loan Amount`, na.rm = TRUE),
+    varianza_monto_prestamo = var(`Loan Amount`, na.rm = TRUE),
+    min_monto_prestamo = min(`Loan Amount`, na.rm = TRUE),
+    max_monto_prestamo = max(`Loan Amount`, na.rm = TRUE),
+    
+    # Estadísticos para la variable años de trabajo/Years at Current Job
+    media_anyos_trabajo = mean(`Years at Current Job`, na.rm = TRUE),
+    varianza_anyos_trabajo = var(`Years at Current Job`, na.rm = TRUE),
+    min_anyos_trabajo = min(`Years at Current Job`, na.rm = TRUE),
+    max_anyos_trabajo = max(`Years at Current Job`, na.rm = TRUE)
+  )
+
+# Imprimimos el resultado
+print(resultado)
+
+```
+
+
+
+
 
 ```{r}
 resultado$media_edad
+
+resultado$varianza_edad
+
 resultado$min_edad
+
 resultado$max_edad
+
 ```
 
 Estos son los datos resumidos de la variable Ingresos 
 
 ```{r}
 resultado$media_ingresos
+
 resultado$varianza_ingresos
+
 resultado$min_ingresos
+
 resultado$max_ingresos
+
 ```
 
 Estos son los datos resumidos de la variable Monto del Préstamo
 
 ```{r}
+
 resultado$media_monto_prestamo
+
 resultado$varianza_monto_prestamo
+
 resultado$min_monto_prestamo
+
 resultado$max_monto_prestamo
+
+```
+
+Resumimos la información obtenida en un cuadro, para una mejor visualización de ellos.
+
+
+```{r}
+library(knitr)
+library(kableExtra)
+
+# Creamos una tabla para resumir la información obtenida
+tabla_resumen <- data.frame(
+  Variable = c("Edad", "Ingresos", "Monto del Préstamo"),
+  Media = c(resultado$media_edad, resultado$media_ingresos, resultado$media_monto_prestamo),
+  Varianza = c(NA, resultado$varianza_ingresos, resultado$varianza_monto_prestamo),
+  Mínimo = c(resultado$min_edad, resultado$min_ingresos, resultado$min_monto_prestamo),
+  Máximo = c(resultado$max_edad, resultado$max_ingresos, resultado$max_monto_prestamo)
+)
+
+# Mostramos la tabla con la descripción
+tabla_resumen_kable <- kable(tabla_resumen, caption = "Resumen de Variables: Edad, Ingresos y Monto del Préstamo") %>%
+  kable_styling()
+
+tabla_resumen_kable <- tabla_resumen_kable %>%
+  kableExtra::footnote(general = "Fuente: Elaboración propia utilizando la base de datos de Kaggle")
+
+tabla_resumen_kable
+
 ```
 
 
-Ahora vamos analizar cómo es la distribución que siguen los géneros de nuestra base de datos, esto es solamente por sondear cómo es nuestra población. Al ser una variable categórica, lo recomendado es realizar un gráfico de barras.
+Por último, vamos a realizar una matriz de correlación de los datos, esto porque queremos observar la relación que tienen las variables, solo tomaremos las variables de interés, la justificación de dicha escogencia viene del lado teórico, pues son las variables que históricamente más se toman en los estudios de calificación de riesgo. 
+
+
+```{r}
+library(dplyr)
+library(corrplot)
+
+# Escogemos las variables que nos interesan para la matriz de correlación.
+Base_correlacion <- Base_limpia %>%
+  select(`Risk Rating`, Income, `Loan Amount`, Age, `Loan Purpose`, `Education Level`)
+
+# Como hay variables categóricas, entonces vamos a convertir las variables a numérico, para poder hacer la correlación.
+Base_correlacion$`Risk Rating` <- as.numeric(as.factor(Base_correlacion$`Risk Rating`))
+Base_correlacion$`Loan Purpose` <- as.numeric(as.factor(Base_correlacion$`Loan Purpose`))
+Base_correlacion$`Education Level` <- as.numeric(as.factor(Base_correlacion$`Education Level`))
+
+# Calculamos la matriz de correlación
+matriz_correlacion <- cor(Base_correlacion, use = "complete.obs", method = "pearson")
+print(matriz_correlacion)
+
+# Creamos el gráfico de la matriz de correlación
+corrplot(matriz_correlacion, method = "color", addCoef.col = "black", tl.col = "black", tl.cex = 0.8)
+
+mtext("Fuente: Elaboración propia utilizando la base de datos de Kaggle", side = 1, line = 4, adj = 0.5, cex = 0.8, outer = TRUE)
+
+
+
+```
+
+
+Ahora vamos a comenzar a ver los gráficos que se forman de nuestra base de datos. Para ello vamos analizar cómo es la distribución que siguen los géneros de nuestra base de datos, esto es solamente por sondear cómo es nuestra población. Al ser una variable categórica, lo recomendado es realizar un gráfico de barras.
 
 ```{r}
 library(ggplot2)
@@ -183,7 +390,9 @@ library(ggplot2)
 ggplot(Base_limpia, aes(x = Gender, fill = Gender)) +
   geom_bar() +
   scale_fill_manual(values = c("Male" = "blue", "Female" = "pink", "Non-binary" = "gray")) +
-  labs(x = "Distribución de Géneros", y = "Frecuencia") + theme_minimal()
+  labs(x = "Distribución de Géneros", y = "Frecuencia") + theme_minimal() +
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 
 ```
 
@@ -194,7 +403,9 @@ library(ggplot2)
 ggplot(Base_limpia, aes(x = Income)) + 
   geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
   labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") +
- theme_minimal()
+ theme_minimal() +
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 ```
 
 Además decidimos realizar un facet en esta misma variable con respecto a la variable "Education Level", con el fin de visualizar la distribución en cada categoría, esto porque queremos descartar o validar que de alguna forma el nivel educativo tiene relación con nuestra variable objetivo, la cual es la calificación de riesgo.
@@ -205,7 +416,9 @@ library(ggplot2)
 ggplot(Base_limpia, aes(x = Income)) + 
   geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
   labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") + theme_minimal() +
-  facet_wrap(~ `Education Level`)  # Facet por nivel educativo
+  facet_wrap(~ `Education Level`) + # Facet por nivel educativo
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 ```
 
 Adjuntamos un gráfico más de los ingresos, pero esta vez por género, con la misma curiosidad de observar cómo es la distribución de estos dada la mencionada variable.
@@ -216,7 +429,9 @@ library(ggplot2)
 ggplot(Base_limpia, aes(x = Income)) + 
   geom_histogram(binwidth = 10000, fill = "lightblue", color = "black") + 
   labs(x = "Ingreso", y = "Frecuencia", title = "Distribución de Ingresos") + theme_minimal() +
-  facet_wrap(~ Gender)  # Facet Género
+  facet_wrap(~ Gender) + # Facet Género
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 ```
 
 
@@ -232,7 +447,9 @@ ggplot(Base_limpia, aes(x = `Loan Amount`, fill = Gender)) +
   labs(x = "Monto del Préstamo", y = "Frecuencia", title = "Distribución del Monto de Préstamo por Género") + 
   theme_minimal() +
   theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
-        axis.text.x = element_text(angle = 45, hjust = 1))  #Rotamos el texto
+        axis.text.x = element_text(angle = 45, hjust = 1)) + #Rotamos el texto
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 
 
 ```
@@ -249,7 +466,9 @@ ggplot(Base_limpia, aes(x = `Loan Amount`, fill = `Education Level`)) +
   labs(x = "Monto del Préstamo", y = "Frecuencia", title = "Distribución del Monto de Préstamo por Nivel Educativo") + 
   theme_minimal() +
   theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
-        axis.text.x = element_text(angle = 45, hjust = 1))  #Rotamos el texto
+        axis.text.x = element_text(angle = 45, hjust = 1)) + #Rotamos el texto
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 ```
 Por otro lado, ahora queremos ver el gráfico de la variable propósito del préstamo en relación con el grado académico, al ser ambas variables categóricas, lo recomendado es utilizar una geometría que se adapte a esto, Sin embargo, al ser medidas que están muy cercanas, casi no se aprecia la diferencia, por lo que se decide adaptarlo a un gráfico de barras y apreciar mejor la diferencias de manera visual, también recurrimos al uso de colores, para identificar las variables. 
 
@@ -267,7 +486,9 @@ ggplot(Base_count, aes(x = `Education Level`, y = Count, fill = `Loan Purpose`))
   geom_bar(stat = "identity", position = "dodge") +  # Usa barras para mostrar el conteo
   labs(x = "Nivel Educativo", y = "Conteo", title = "Conteo del Propósito del Préstamo por Nivel Educativo") +
   scale_fill_manual(values = c("Business" = "blue", "Personal" = "purple", "Home" = "green", "Auto" = "yellow")) +
-  theme_minimal()
+  theme_minimal() +
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 
 ```
 
@@ -281,7 +502,9 @@ ggplot(Base_limpia, aes(x = Age, fill = `Risk Rating`)) +
   geom_bar() +  
   labs(x = "Edad", y = "Conteo", title = "Distribución de Calificación de Riesgo por Edad") + 
   theme_minimal() +  
-  scale_fill_brewer(palette = "Set1")  
+  scale_fill_brewer(palette = "Set1")  +
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 ```
 
 
@@ -298,7 +521,9 @@ ggplot(Base_limpia, aes(x = `Risk Rating`, fill = `Education Level`)) +
   labs(x = "Calificación de Riesgo", y = "Frecuencia", title = "Distribución de la Calificación de Riesgo por Nivel Educativo") + 
   theme_minimal() +
   theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
-        axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto
+        axis.text.x = element_text(angle = 45, hjust = 1)) + # Rotamos el texto
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 
 
 ```
@@ -315,7 +540,9 @@ ggplot(Base_limpia, aes(x = `Risk Rating`, y = Income, fill = `Risk Rating`)) +
   labs(x = "Calificación de Riesgo", y = "Ingreso", title = "Comparación de la Calificación de Riesgo con el Ingreso") + 
   theme_minimal() +
   theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
-        axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto
+        axis.text.x = element_text(angle = 45, hjust = 1))  +# Rotamos el texto
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 
 ```
 
@@ -329,9 +556,114 @@ ggplot(Base_limpia, aes(x = `Loan Purpose`, fill = `Risk Rating`)) +
   scale_fill_manual(values = c("Low" = "green", "Medium" = "yellow", "High" = "red", "Very High" = "purple")) +  
   labs(x = "Propósito del Préstamo", y = "Proporción", title = "Distribución de la Calificación de Riesgo según el Propósito del Préstamo") + 
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto para mejorar la legibilidad
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + # Rotamos el texto para mejorar la legibilidad
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
 
 ```
+
+
+Por último, vamos a ver la distribución que existe de la variable calificación de riesgo cuando la comparamos contra el monto del préstamo. 
+
+
+
+```{r}
+library(ggplot2)
+
+ggplot(Base_limpia, aes(x = `Risk Rating`, y = `Loan Amount`, fill = `Risk Rating`)) +  
+  geom_boxplot(color = "black") +  
+  scale_fill_manual(values = c("Low" = "green", "Medium" = "yellow", "High" = "red", "Very High" = "purple")) +  
+  labs(x = "Calificación de Riesgo", y = "Monto del Préstamo", title = "Comparación de la Calificación de Riesgo con el Monto del Préstamo") + 
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 10), # Ajustamos el tamaño del texto
+        axis.text.x = element_text(angle = 45, hjust = 1))  + # Rotamos el texto 
+labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+theme(plot.caption = element_text(hjust = 0.5)) 
+
+
+```
+
+
+## Propuesta Metodológica
+
+se utilizan los gráficos, como ayuda en las distribuciones de las variables, con el fin de observar su comportamiento. Sin embargo, hay que hacer un análisis más a profundidad, para ello utilizamos el coeficiente de correlación de Pearson, que fue justo el que utilizamos para crear nuestra matriz de correlación, a continuación enunciamos el proceso teórico de dicho procedimiento.
+
+Como menciona el autor [@Edgar2022] "Los análisis de correlación son métodos estadísticos descriptivos utilizados en investigación de nivel relacional, con los que estima la magnitud y define la tendencia de la relación entre variables.". Como queremos encontrar alguna relación en nuestra variables de interés, entonces queremos utilizar esta metodología para encontrar dicha relación. Según este mismo autor "el método de correlación de Pearson es una técnica bivariada que emplea en circunstancia multivariada para la explicación de diversos fenómenos relacionados en el campo animal y vegetal. En la correlación de Pearson, los procedimientos guardan relación con la naturaleza de las variables utilizadas.". Como podemos observar el método nos sirve para este estudio, pues tenemos muchas variables, pero el índice sale de comparar dos a dos las variables, para obtener la correlación entre ellas, lo que luego acomodamos en una matriz para tener una mejor observación de ellas. 
+
+R ya posee una librería que calcula automáticamente este coeficiente, sin embargo, la manera teórica de hacerlo es mediante la fórmula:
+
+$\rho = \frac{\sigma_{XY}}{\sigma_X \sigma_Y}$
+
+En donde $\rho$ recibe el nombre de Coeficiente de correlación de Pearson y además tiene que ocurrir que $-1 \leq \rho \leq 1$. Según el autor [@Edgar2022] "... se deduce la magnitud de la relación lineal entre variables, los que pueden ser calificados como: Correlación Nula (0), Muy baja (0.01 a 0.1), Débil (0.11 a 0.5), Media (0.51 a 0.75), considerable (0.76 a 0.9), Muy fuerte (0.91 a 0.99) y Perfecta(1)". Otro aspecto importante a decir acerca de nuestro estudio y que tiene relación con lo que este mismo autor afirma y es que "\rho = 0.000, no necesariamente implica que no exista relación entre las varables, sino que la relación podría ser no lineal". Esto de hecho es un buen punto en vista de los resultados que arrojó nuestra matriz de correlación. Además, algo que deberíamos de tomar en cuenta, es que estamos trabajando con variables categóricas, a la hora de la conversión puede haber fuga de información, por ello hay que tener cuidado con solo ver una cifra y animarse a dar una conclusión, cuando en realidad hay que analizar a detalle qué es lo que está pasando. 
+
+## Construcción de Fichas de Resultados
+
+
+
+
+```{r}
+if (!require(kableExtra)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+# Creamos el data frame, donde vamos a poner la información.
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Poca Correlación entre las variables.", 
+                "Encontramos que las variables a utilizar no presentan una correlación fuerte, según el índice de Pearson.", 
+                "La conversión de variable categórica a variable numérica puede estar afectando al resultado. Además, podría ser que la relación entre las variables en realidad no es lineal.", 
+                "Al utilizar el índice de correlación de Pearson, hay que utilizar variables numéricas, por lo que se utiliza una conversión de las variables categóricas a variables numéricas para poder realizar dicho cálculo, sin embargo se encuentra que las variables no están teniendo una relación, al menos de manera lineal que es lo que calcula dicho índice.")
+)
+
+# Creamos la tabla con la información.
+kable(data, col.names = c("Encabezado", "Contenido"), 
+      format = "html", 
+      escape = FALSE) %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)  
+```
+
+
+```{r}
+if (!require(kableExtra)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+# Creamos el data frame, donde vamos a poner la información.
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Datos muy Iguales","A la hora de graficar las variables se puede observar que los datos tienen distribuciones muy similares","Este problema se puede estar ocasionando debido a que las variables de la base de datos se parecen mucho.","Al realizar las diferentes gráficas, con el objetivo de observar la distribución de los datos, sin embargo se nota que las gráficas no presentan muchas diferencias.")
+)
+
+# Creamos la tabla con la información.
+kable(data, col.names = c("Encabezado", "Contenido"), 
+      format = "html", 
+      escape = FALSE) %>%
+  kable_styling(full_width = FALSE) %>%
+  add_header_above(c("Hallazgo de Resultado 2" = 2), bold = TRUE)  
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
