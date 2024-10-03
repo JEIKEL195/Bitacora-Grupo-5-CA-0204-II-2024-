@@ -1,4 +1,4 @@
-# Bitacora 1
+# Bitacora 1 
 
 ## Parte de planificación
 
@@ -308,13 +308,3 @@ El estudio del análisis financiero es de suma importancia en la actualidad, ya 
 Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. En adición, haciendo referencia a esta misma autora “…la gestión de riesgos tiene un lugar cada vez que un inversor analiza e intenta cuantificar las pérdidas potenciales en una inversión y luego toma las medidas apropiadas, considerando sus objetivos de inversión y su tolerancia al riesgo.” Esto último viene de la mano con lo que son las proyecciones, pues le permite al inversionista hacer un mejor análisis y una gestión de riesgos adecuada, que podemos definir según Chicu como “El proceso de identificación, análisis e incorporación de la incertidumbre en las decisiones de inversión” [@chicu2020]. 
 Reforzando lo que menciona Chicu, la autora [@herrera2008], menciona en adición a la gestión de riesgos “el contexto de incertidumbre genera inevitablemente un riesgo, y es ahí cuando la institución financiera debe preservar su valor económico y la integridad de los recursos confiados por los depositantes y socios.” Y añadiendo la definición de esta misma autora tenemos que la gestión de riesgos es “la denominación que se utiliza para el conjunto de técnicas y herramientas que pretenden maximizar el valor económico de la institución financiera, en un contexto de incertidumbre”.  Concluyendo, la gestión de riesgos depende íntimamente de la calificación de riesgo, pues permite tener un parámetro ante la incertidumbre que representa invertir.
 
-## Referencias bibliográfica
-
-::: {#refs}
-:::
-
-{{< include CHANGELOG.md >}}
-
-## Anexo 2 (Participacion)
-
-Puedes descargar el resumen de cambios [aquí](resumen.txt).

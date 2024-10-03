@@ -1,13 +1,15 @@
-#Apendice
+# Apendice
 
 ## Correcciones Bitácora 1
+
 La correccion más relevantes se detalla a continuación:
 
 * **Corrección 1:**
 Se ha modificado la sección de definición de la idea para ajustarnos mejor a lo que se espera ser observado en la misma. Tal que, nos centramos más en definir claramente la idea de investigación, sin entrar en los detalles ni en dar el paso a paso de cómo se lleva la misma acabo. Por lo que, en esta sección, solo nos limitamos a exponer qué es lo que buscamos investigar y por qué es importante o relevante, dejando los aspectos metodológicos y el desarrollo de este para otras secciones.
 
 
-##Sugerencias Bitácora 1
+## Sugerencias Bitácora 1
+
 A partir del foro consideramos todas las sugerencias:
 
 1. *El grupo podría ser más explícito en la metodología que usará y como abordará el objetivo general, esto lo observé en la sección de principios y teorías donde me parece que no tienen muy claro una teoría con la cual construir ideas relacionadas a la investigación. Hacen un buen análisis de la relación del tema de Riesgos con la Probabilidad y algunas teorías de valoración de riesgos financieros, pero podrían ser más explícitos en cual usarán y como la usarán.*
@@ -26,3 +28,10 @@ A partir del foro consideramos todas las sugerencias:
 
 4. *Sentí que la bitácora les quedó muy corta, la leí en poco tiempo y no entendí muy bien a qué querían llegar con los objetivos planteados. También siento que les faltó un poco más de referencias. La ventaja es que gracias a la naturaleza del tema esto se puede mejorar bastante fácil en las siguientes bitácoras.*
 - **Respuesta:** Agradecemos sus comentarios. A lo largo de la segunda bitácora vamos a profundizar más en los objetivos planteados, además, talvez la extensión de la primer bitácora se optó que fuese lo más concisa posible, tratando de que quedase lo más claro posible lo planteado en la misma, talque no se llegara a caer en redundancias. También como se menciona en otro comentario añadiremos más referencias que sean de utilidad para respaldar mejor el análisis. 
+
+
+
+## Referencias bibliográfica
+
+::: {#refs}
+:::

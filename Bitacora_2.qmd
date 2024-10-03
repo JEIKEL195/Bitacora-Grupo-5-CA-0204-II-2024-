@@ -1,8 +1,4 @@
----
-format: pdf
----
-
-# Bitácora 2
+# Bitácora 2 
 
 ## Parte de Planificación 
 
@@ -336,6 +332,7 @@ ggplot(Base_limpia, aes(x = `Loan Purpose`, fill = `Risk Rating`)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))  # Rotamos el texto para mejorar la legibilidad
 
 ```
+
 
 
 

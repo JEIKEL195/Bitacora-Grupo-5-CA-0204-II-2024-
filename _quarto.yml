@@ -35,6 +35,7 @@ format:
   pdf:
     #documentclass: scrreprt
     toc: true          # Activa la TOC para PDF
+    number-sections: true
     
 execute:
   freeze: auto

@@ -240,8 +240,16 @@
 
 
 \title{Bitácoras Grupo \#5, CA-204 (II-2024)}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Análisis de las variables cualitativas en relación al riesgo
+crediticio alrededor del mundo}
 \author{Jeikel Navarro Solis, Gabriel Valverde, Erick Venegas}
-\date{2024-09-26}
+\date{2024-10-02}
 
 \begin{document}
 \maketitle
@@ -282,21 +290,21 @@ factores que solo la parte economica de los prestatarios.
 
 \subsection{Definión de la idea}\label{definiuxf3n-de-la-idea}
 
-La idea principal de este trabajo es analizar una tabla de datos y
-extraer información de utilidad de ésta, recordemos que este trabajo es
-acerca de un curso de herramientas de datos, por lo que el enfoque de
-este es saber aplicar técnicas al estudio. Sin embargo, por fines
-académicos, buscaremos relaciones entre las variables, haciendo usos de
-las librerías que posee R, el cual será nuestro lenguaje de programación
-y análisis de datos, con los que realizaremos el trabajo.
-
-El tema es de interés, pues tenemos una base de datos con una cantidad
-considerable de variables, que se prestan para hacer un análisis
-exhaustivo. En adición, los datos que posee la base de datos son datos
-financieros, que sin duda son de interés bajo el contexto de la carrera.
-Al realizar un análisis previo de la bibliografía, observamos quela
-información es realmente abundante, pues el tema de riesgos financieros
-es un tópico de suma importancia para las empresas.
+Cuando una persona quiere acceder a un préstamo bancario, es común que
+los bancos requieran información personal y profesional de la persona,
+por ejemplo su profesión, ingresos mensuales, edad, gastos mensuales,
+etc. Esto se debe a que los bancos necesitan saber si esta persona es
+apta para pagar el préstamo en un tiempo conveniente. Generalmente se
+piensa que, mientras más ingresos tenga la persona, es más probable que
+le acepten el crédito a financiar. Añadido a esto, también es frecuente
+escuchar que mientras la persona tenga un mayor grado académico, ésta
+tendrá un mejor salario o tendrá más formas de ingresar dinero a sus
+cuentas. Ante esta situación, nos surgió la idea de comprobar si estos
+estereotipos son ciertos ó no. Por lo que nuestra meta es lograr
+determinar si realmente el nivel de educación y el nivel de ingresos
+influye en la capacidad de pago de una persona en un préstamo, así como
+analizar si los factores cualitativos tienen cierta relevancia al
+momento de que haya un impago.
 
 \subsection{Conceptualización de la
 idea}\label{conceptualizaciuxf3n-de-la-idea}
@@ -669,6 +677,137 @@ de microfinanzas: estado del arte. }
   perfil.
 \end{itemize}
 
+\textbf{Título: Modelos para otorgamiento y seguimiento en la gestión
+del riesgo de crédito. }
+
+\begin{itemize}
+\item
+  Autor: Millán Solarte, Julio César; Cerezo, Edinson Caicedo.
+\item
+  Año: 2018.
+\item
+  Nombre del tema: Riesgo de crédito.
+\item
+  Cronología: 2018.
+\item
+  Metodología: Análisis cuantitativa.
+\item
+  Temática: Estudios económicos.
+\item
+  Teórica: Valoración de riesgos.
+\item
+  Resumen en una oración: Riesgos financieros y análisis en la gestión
+  del riesgo de crédito.
+\item
+  Argumento central: Explorar maneras de gestionar el riesgo financiero
+  a través del análisis de las solicitudes.
+\item
+  Problema con el argumento o el tema: Uno de los posibles problemas que
+  se destacan en este estudio es que no se llega a profundizar en las
+  posibles limitaciones que se pueden llegar a presentar a la hora de
+  usar las técnicas que se narran y exploran, así como no se toma en
+  cuenta que varias de las variables llegan a ser muy volátiles a lo
+  largo del tiempo, además de los comportamientos de mercado que puedan
+  incidir en el incumplimiento de pago.
+\item
+  Resumen en un párrafo: Este trabajo habla acerca del riesgo
+  financiero, más específicamente en el riesgo de crédito el cual se
+  refiere a las perdidas derivadas del incumplimiento de obligaciones
+  financieras, de manera que las instituciones financieras buscan
+  gestionar este tipo de riesgos a través del análisis de las
+  solicitudes por medio del sistema de scoring de crédito, dónde se
+  evalúan variables como la situación financiera e historial de pagos
+  del solicitante para diferenciar entre los buenos y malos clientes.
+\end{itemize}
+
+\textbf{Título: Variables determinantes de la probabilidad de
+incumplimiento de un microcrédito en una entidad microfinanciera del
+Perú, una aproximación bajo el modelo de regresión logística binaria. }
+
+\begin{itemize}
+\item
+  Autor: María Calixto, Luis Casaverde
+\item
+  Año: 2011.
+\item
+  Nombre del tema: Incumplimiento de un microcrédito.
+\item
+  Cronología: 2011.
+\item
+  Metodología: Recolección y comparación de datos.
+\item
+  Temática: Estudios económicos.
+\item
+  Teórica: Valoración de riesgos.
+\item
+  Resumen en una oración: Medición del riesgo de los microcréditos y el
+  incumplimiento de pago.
+\item
+  Argumento central: Explorar la probabilidad de incumplimiento de pago
+  de los clientes a través del modelo de la regresión logística binaria.
+\item
+  Problema con el argumento o el tema: La mayor problemática es que solo
+  se enfoca en el modelo predictivo, de manera que no se llegan a
+  abordar las posibles causas estructurales que al final terminan por
+  inducir que hayan morosidades, de tal forma que los modelos como lo
+  son la regresión logística binaria se va a ver muy limitada para
+  lograr el propósito de reducir las morosidades.
+\item
+  Resumen en un párrafo: Esta investigación gira entorno a los
+  microcréditos y el incumplimiento de pago en estos, de manera que se
+  busca identificar los factores que influyen en que exista mayor
+  probabilidad de incumplimiento de los clientes, donde se utilizan
+  modelos predictivos que permiten evaluar tanto variables cuantitativas
+  como cualitativas relacionadas con las personas prestatarias, para
+  ello se toman en cuenta factores socio-demográficos, económicos y
+  financieros que lleguen a ser determinantes para el incumplimiento de
+  pago.
+\end{itemize}
+
+\textbf{Título: Credit Scoring en Costa Rica y la probabilidad de
+clasificación de créditos personales basados en un modelo
+estadístico-matemático para aprobar o rechazar.}
+
+\begin{itemize}
+\item
+  Autor: Patricia Hernández, Pablo Montoya, Allan Villareal
+\item
+  Año: 2013.
+\item
+  Nombre del tema: Incumplimiento de un microcrédito.
+\item
+  Cronología: 2012-2013.
+\item
+  Metodología: Recolección y comparación de datos.
+\item
+  Temática: Estudios económicos.
+\item
+  Teórica: Valoración de riesgos.
+\item
+  Resumen en una oración: Analizar los riesgos en la designación de
+  créditos a través de los modelos de credit scoring, tomando en cuenta
+  variables cualitativas.
+\item
+  Argumento central: Explorar la probabilidad de incumplimiento de pago
+  de los clientes a través del modelo de la regresión logística binaria.
+\item
+  Problema con el argumento o el tema: La mayor problemática es que solo
+  se basa en los créditos personales para el consumo, y no toma en
+  cuenta otros propósitos que se les puedan dar a los mismos, además de
+  que en el estudio se menciona que no pudieron tener acceso a ciertas
+  políticas que toman en cuenta los bancos para aceptar o rechazar un
+  crédito.
+\item
+  Resumen en un párrafo: Esta investigación se basa en el análisis de
+  riesgos en la designación de créditos y el incumplimiento de pago a
+  través de los modelos de credit scoring , de manera que analizar como
+  a partir de estos se puede tratar de llegar a optimizar la asignación
+  de los créditos y minimizar los riesgos, de manera que se termina
+  analizando no solo el nivel de ingreso de una persona, sino también
+  otros factores cualitativos como son la edad, el estado civil, el
+  género, la escolaridad, entre otros.
+\end{itemize}
+
 \section{Construcción de la UVE de
 Gowin}\label{construcciuxf3n-de-la-uve-de-gowin}
 
@@ -771,27 +910,677 @@ la gestión de riesgos depende íntimamente de la calificación de riesgo,
 pues permite tener un parámetro ante la incertidumbre que representa
 invertir.
 
-\section{Referencias bibliográfica}\label{referencias-bibliogruxe1fica}
+\bookmarksetup{startatroot}
 
-\phantomsection\label{refs}
-\begin{CSLReferences}{1}{0}
-\bibitem[\citeproctext]{ref-chicu2020}
-Chicu, Dorina. 2020. {«La valoración del riesgo financiero»}. 2020.
-\url{https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf}.
+\chapter{Bitácora 2}\label{bituxe1cora-2}
 
-\bibitem[\citeproctext]{ref-herrera2008}
-Maria de los Ángeles Herrera, Juan Terán. 2024. {«Conceptualización del
-riesgo de los mercados financieros»}. 2024.
-\url{https://www.redalyc.org/pdf/900/90075920006.pdf}.
+\section{Parte de Planificación}\label{parte-de-planificaciuxf3n-1}
 
-\bibitem[\citeproctext]{ref-palacios2012}
-Palacios, Alberto. 2012. {«Calificación de riesgo: definición e
-influencia en la última década»}. 2012.
-\url{https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1}.
+\subsection{Ordenamiento de la
+Literatura}\label{ordenamiento-de-la-literatura}
 
-\end{CSLReferences}
+\textbf{Tabla de Organización y Literatura}
 
-\section{Anexo 1 (CHANGELOG)}\label{anexo-1-changelog}
+\begin{longtable*}{| p{2.5cm} | p{2cm} | p{2.5cm} | p{3cm} | p{0.8cm} | p{2.5cm} |}
+\hline
+\textbf{Tipo} & \textbf{Tema General} & \textbf{Tema Específico} & \textbf{Título} & \textbf{Año} & \textbf{Autor(es)} \\
+\hline
+\fontsize{8pt}{10pt}
+Metodológica & Correlación y Análisis de datos & Análisis del perfil de los prestatarios & La evaluación del riesgo de crédito en las instituciones de microfinanzas: estado del arte & 2017 & María Seijas, Milagro Vivel, Rubén Lado, Sara Fernández \\
+\hline
+Metodológica & Correlación y Análisis de datos & Relevancia del scoring de crédito & Modelos para el otorgamiento y seguimiento en la gestión del riesgo crediticio & 2018 & Millan Solarte, Julio Cesar, Edinson Caicedo \\
+\hline
+Metodológica & Correlación y Análisis de datos & Relación variables cuantitativas y cualitativas en el incumplimiento de pago & Variables determinantes de la probabilidad de incumplimiento de un microcrédito & 2011 & María Calixto, Luis Casaverde \\
+\hline
+Metodológica & Correlación y Análisis de datos & Clasificación de perfiles basándose en variables cualitativas & Credit Scoring en Costa Rica y la probabilidad de clasificación de créditos personales & 2013 & Patricia Hernández, José Montoya, Allan Villareal \\
+\hline
+\end{longtable*}
+
+\normalsize
+\newpage
+
+\section{Enlaces de la Literatura}\label{enlaces-de-la-literatura}
+
+\textbf{Título:} \emph{La valoración del riesgo financiero}.
+
+\textbf{Resumen:} El riesgo financiero es uno de los tipos de riesgo más
+importantes, por eso es de suma importancia entender su significado y
+qué herramientas se pueden utilizar para su debida gestión. En este caso
+se enfocan en tres métodos distintos: la desviación estándar, la beta
+del mercado y el valor en riesgo; así como comprender la rentabilidad
+ajustada con el ratio de Sharpe. Al utilizarlos en estrategias de
+cobertura de riesgo financiero se logra una reducción o mitigación del
+mismo en diferentes intrumentos financieros como las carteras de
+inversión.
+
+\textbf{Contraste:} Este trabajo, a comparación del artículo de Solarte
+J. y Caicedo E. titulado Modelos para otorgamiento y seguimiento en la
+gestión del riesgo de crédito, logra explicar de manera más amigable y
+general los conceptos del riesgo financiero, lo que hace que el artículo
+de Chicu sea más comprensible para todas las personas. Sin embargo, esta
+falta de rigurosidad puede generar fallas en los procesos más complejos
+del tema de investigación, ya que el mismo artículo de Solarte y Caicedo
+utiliza fórmulas y métodos más complejos que si bien no son tan fáciles
+de entender, logran una mejor recopilación de resultados.
+
+\textbf{Comentario Propio:} Si bien nos parece importante que una
+explicación sea comprensible para la mayor cantidad de personas, no
+tener la suficiente precisión en un tema tan complicado como lo es el
+riesgo financiero puede causar ignorancia en los conceptos avanzados,
+como por ejemplo los métodos paramétricos y no paramétricos y su
+metodología. Sin embargo, sentimos que esta investigación nos ayudó con
+la afinidad a la hora de seleccionar las palabras adecuadas en el
+desarrollo de nuestra investigación.
+
+\textbf{Título:} \emph{La evaluación del riesgo de crédito en las
+instituciones de microfinanzas: estado del arte}.
+
+\textbf{Resumen:} El análisis de los modelos de credit scoring muestra
+que estos pueden ser utilizados en diversas dimensiones, aunque hay una
+preferencia por predecir el riesgo de retrasos costosos en los
+microcréditos los cuales están bajo control de las instituciones
+financieras para mitigarlos. La literatura teórica destaca la
+importancia de la información estadística cualitativa en estos modelos,
+además de incluir variables relacionadas con el prestatario, su negocio
+y el préstamo. Existe una preferencia por las téncicas paramétricas como
+por ejemplo la regresión logística. Aún así, en los últimos años se
+registra un aumento en el uso de técnicas no paramétricas que logran un
+mayor poder predictivo en la detección de incumplimientos de
+microcréditos. Con esto, las instituciones están incorporando estas
+herramientas para convertirlas en una práctica estándar, como en las
+instituciones bancarias; las cuales mejoran la consistencia,
+transparencia, control de calidad y optimización de los procesos.
+
+\textbf{Contraste:} Éste trabajo, a diferencia del artículo de Chicu D.
+titulado La valoración del riesgo financiero, logra realizar no sólo un
+análisis del credit scoring por medio de teoría estadística, sino que
+también logra plantear un análisis macroeconómico y toma en cuenta las
+repercusiones que las fallas en los procesos de gestion de riesgos
+podría generar en el sistema financiero. Sin embargo, no es tan
+específico en la parte matemática a la hora de estimar probabilidades de
+que algo pase.
+
+\textbf{Comentario Propio:} Para nosotros es importante entender también
+la teoría desde la perspectiva economista ya que nos ayuda a entender a
+qué nos enfrentamos y cómo podemos aplicar diferentes metodologías de
+investigación.
+
+\textbf{Título:} \emph{Modelos para otorgamiento y seguimiento en la
+gestión del riesgo de crédito.}
+
+\textbf{Resumen:} El credit scoring es un método estadístico para
+estimar la probabilidad de inclumpimiento de un prestatario, usando su
+información histórica y estadística para obtener un indicador que
+permita distinguir la calidad de un deudor. Los modelos de scoring son
+muy importantes para los procesos de gestión del crédito, los cuales
+buscan explicar la composición y operatividad de estos modelos
+utilizando grandes bases de datos. La información que resulta de estos
+modelos permite el análisis de la toma de decisión de si se otorga ó no
+un crédito a una persona. Por medio de cuatro modelos distintos se logra
+un procedimiento multicapa para obtener información precisa para
+calificar a un cliente como bueno o malo para la empresa financiera.
+
+\textbf{Contraste:} Este trabajo logra ser más específico que los demás
+en cuanto a los métodos de gestión de riesgo se refiere. Además coincide
+con varios de los artículos recopilados respecto a la utilización del
+método de regresión logística como herramienta de calificación de
+crédito.
+
+\textbf{Comentario Propio:} Consideramos que este artículo es el más
+completo en cuanto a materia matemática se refiere, ya que logra
+explicar los métodos de manera clara y además los muestra con las
+gráficas y resultados obtenidos. De hecho, es de gran ayuda que las
+variables a trabajar sean similares a las que la investigación utiliza.
+
+\textbf{Título:} \emph{Variables determinantes de la probabilidad de
+incumplimiento de un microcrédito en una entidad microfinanciera del
+Perú, una aproximación bajo el modelo de regresión logística binaria.}
+
+\textbf{Resumen:} Después de realizar una estimación probabilística del
+incumplimiento de un microcrédito por medio de la aproximación de una
+función logística binaria, se determina que son las variables
+cualitativas como el estado civil, edad y tipo de vivienda junto con las
+variables de plazo, número de créditos con la entidad y el saldo deudor;
+las que generan un modelo correctamente ajustado bajo el modelo de
+regresión logística. La cual logra una capacidad predictiva aceptable
+medida por la curva ROC.
+
+\textbf{Contraste:} Este trabajo, a diferencia de ``La evaluación del
+riesgo de crédito en las instituciones de microfinanzas: estado del
+arte'', determina las variables necesarias para un estudio de
+microfinanzas. Sin embargo, coinciden en todo lo referente a las
+ventajas y deventajas del uso de la calificación crediticia, aunque si
+cabe mencionar que esta investigación tambien logra hacer conclusiones
+de los inversores y reguladores como parte de los responsables de la
+ineficiencia que ha dado el uso excesivo de ésta calificación.
+
+\textbf{Comentario Propio:} Fue de mucha ayuda entender la noción de qué
+variables utilizar y porqué son importantes para un estudio de
+calificación de crédito.
+
+\textbf{Título:} \emph{Calificación de riesgo: definición e influencia
+en la última década}.
+
+\textbf{Resumen:} Las agencias de calificación crediticia han crecido en
+las últimas décadas por su capacidad para reducir las asimetrías de
+información en los mercados, facilitando la liquidez y aumentando los
+participantes. Sin embargo, no han cumplido con los efectos positivos
+esperados en la última década, se han expuesto fallas en su
+funcionamiento, como su papel en la burbuja de deuda y la crisis
+económica, lo que ha generado inestabilidad y ralentizado la
+recuperación. La importancia que los inversores le dieron a las
+calificaciones crediticias para la toma de desiciones fue desmedida al
+no tomar en cuenta el nivel de riesgo, lo cual se relaciona a las causas
+de las últimas crisis financieras e hipotecarias.
+
+\textbf{Contraste:} En comparación de la investigación titulada ``La
+evaluación del riesgo de crédito en las instituciones de microfinanzas:
+estado del arte'', ambos logran concluir cosas muy similares en cuanto a
+la importancia del credit score, sus ventajas y desventajas. Sin
+embargo, logra aportar más en cuanto a las ineficiencias que ha tenido
+sobrevalorarlo y los momentos en los que ha generado una crisis.
+
+\textbf{Comentario Propio:} Este trabajo, de igual forma, es de suma
+importancia para entender la manera en que se realizan calificaciones
+crediticias y de qué formas analizarlas. Para así utilizarlas en
+nuestros estudios estadísticos y entender qué otras variables ó
+conceptos tomar en cuenta para los futuros resultados a obtener.
+
+\textbf{Título:} Conceptualización del riesgo de los mercados
+financieros.
+
+\textbf{Resumen:} El riesgo está inmerso en todas las actividades
+humanas y es entendido como la probabilidad de ocurrencia de un evento
+que podría inducir un perjuicio. Cuando se habla de riesgo financiero,
+se habla de una eventual pérdida de dinero que signifique una afectación
+al sistema financiero ó a alguna institución que sea parte del mismo.
+Este trabajo es una recopilación algunos de los riesgos en los mercados
+financieros y presenta algunos métodos válidos para su valoración.
+
+\textbf{Contraste:} Esta investigación, a diferencia de las demás
+investigaciones, logra tener un glosario completo de definiciones
+relacionadas al riesgo financiero, sin embargo no va más allá de ser
+sólamente un artículo de definiciones. Por lo que en materia teórica no
+tiene nada que aportar.
+
+\textbf{Comentario Propio:} Gracias a estas definiciones, hemos logrado
+definir mejor qué queremos estudiar de manera más específica y cómo
+utilizar ciertos conceptos de mejor manera.
+
+\section{Análisis Estadístico}\label{anuxe1lisis-estaduxedstico}
+
+Como base para realizar este análisis estadístico, nos estamos guíando
+con la guía del curso de Herramientas de Ciencias de Datos, el cual
+adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y
+también estamos utilizando el libro escrito por Wickham, el cual también
+adjuntamos el link https://r4ds.hadley.nz/.
+
+A modo de introducción, el análisis estadístico consiste en un conjunto
+de herramientas o técnias que se utilizan para la recolección, el
+análisis e interpretación de datos. Para este trabajo es imprescindible
+contar con este set de herramientas.
+
+\subsection{Análisis Descriptivo}\label{anuxe1lisis-descriptivo}
+
+La base de datos ya se encuentra en formato en tidy, recordemos que el
+formato tidy fue popularizado por el autor Hadley Wickham, donde indican
+que cada variable debe tener su propia columna y cada observación su
+propia fila. Nuestra base de datos cumple con estar en formato tidy.
+
+Vamos a llamar a nuestra base de datos, la cual vamos a utilizar durante
+el trabajo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\NormalTok{base\_financial\_risk\_assessment }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"base{-}financial{-}risk{-}assessment.csv"}\NormalTok{, }
+    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+Rows: 15000 Columns: 20
+-- Column specification --------------------------------------------------------
+Delimiter: ";"
+chr (10): Gender, Education Level, Marital Status, Loan Purpose, Employment ...
+dbl (10): Age, Income, Credit Score, Loan Amount, Years at Current Job, Debt...
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(base\_financial\_risk\_assessment)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(base\_financial\_risk\_assessment)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 6 x 20
+    Age Gender     `Education Level` `Marital Status` Income `Credit Score`
+  <dbl> <chr>      <chr>             <chr>             <dbl>          <dbl>
+1    49 Male       PhD               Divorced          72799            688
+2    57 Female     Bachelor's        Widowed              NA            690
+3    21 Non-binary Master's          Single            55687            600
+4    59 Male       Bachelor's        Single            26508            622
+5    25 Non-binary Bachelor's        Widowed           49427            766
+6    30 Non-binary PhD               Divorced             NA            717
+# i 14 more variables: `Loan Amount` <dbl>, `Loan Purpose` <chr>,
+#   `Employment Status` <chr>, `Years at Current Job` <dbl>,
+#   `Payment History` <chr>, `Debt-to-Income Ratio` <dbl>,
+#   `Assets Value` <dbl>, `Number of Dependents` <dbl>, City <chr>,
+#   State <chr>, Country <chr>, `Previous Defaults` <dbl>,
+#   `Marital Status Change` <dbl>, `Risk Rating` <chr>
+\end{verbatim}
+
+Antes de aplicar cualquier gráfico o análisis de datos a nuestra base de
+datos, es importante eliminar las variables que no aportan al estudio,
+por ello, vamos a eliminar los valores NA que vengan en nuestra base de
+datos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Base\_limpia }\OtherTok{\textless{}{-}} \FunctionTok{na.omit}\NormalTok{(base\_financial\_risk\_assessment)}
+\FunctionTok{head}\NormalTok{(Base\_limpia)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 6 x 20
+    Age Gender     `Education Level` `Marital Status` Income `Credit Score`
+  <dbl> <chr>      <chr>             <chr>             <dbl>          <dbl>
+1    49 Male       PhD               Divorced          72799            688
+2    21 Non-binary Master's          Single            55687            600
+3    59 Male       Bachelor's        Single            26508            622
+4    42 Non-binary Master's          Single           116212            707
+5    55 Male       High School       Married           70978            706
+6    56 Non-binary PhD               Married           21084            702
+# i 14 more variables: `Loan Amount` <dbl>, `Loan Purpose` <chr>,
+#   `Employment Status` <chr>, `Years at Current Job` <dbl>,
+#   `Payment History` <chr>, `Debt-to-Income Ratio` <dbl>,
+#   `Assets Value` <dbl>, `Number of Dependents` <dbl>, City <chr>,
+#   State <chr>, Country <chr>, `Previous Defaults` <dbl>,
+#   `Marital Status Change` <dbl>, `Risk Rating` <chr>
+\end{verbatim}
+
+Con la base de datos limpia, ya podemos hacer un análisis estadístico,
+para ello vamos a calcular estadísticos base, como lo son la media, la
+varianza, el mínimo, el máximo de las variable numéricas, además de
+calcular la moda, para las variables que no sean numéricas.
+
+\begin{verbatim}
+
+Adjuntando el paquete: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:stats':
+
+    filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+\end{verbatim}
+
+Estos son los datos resumidos de la variable edad.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{media\_edad}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 43.5817
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{min\_edad}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 18
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{max\_edad}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 69
+\end{verbatim}
+
+Estos son los datos resumidos de la variable Ingresos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{media\_ingresos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 70190.36
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{varianza\_ingresos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 849685113
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{min\_ingresos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 20014
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{max\_ingresos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 119978
+\end{verbatim}
+
+Estos son los datos resumidos de la variable Monto del Préstamo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{media\_monto\_prestamo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 27577.07
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{varianza\_monto\_prestamo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 168240584
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{min\_monto\_prestamo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 5001
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado}\SpecialCharTok{$}\NormalTok{max\_monto\_prestamo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 49978
+\end{verbatim}
+
+Ahora vamos analizar cómo es la distribución que siguen los géneros de
+nuestra base de datos, esto es solamente por sondear cómo es nuestra
+población. Al ser una variable categórica, lo recomendado es realizar un
+gráfico de barras.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\CommentTok{\# Gráfico con las distribuciones del género}
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Gender, }\AttributeTok{fill =}\NormalTok{ Gender)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"Female"} \OtherTok{=} \StringTok{"pink"}\NormalTok{, }\StringTok{"Non{-}binary"} \OtherTok{=} \StringTok{"gray"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Distribución de Géneros"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-8-1.pdf}
+
+Por otro lado, la variable ``Income'', es una variable continua, por lo
+que lo recomendado para visualizar la distribución de estos datos de una
+manera rápida es a través de los histogramas, por lo que adjuntamos el
+gráfico correspondiente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Income)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Ingresos"}\NormalTok{) }\SpecialCharTok{+}
+ \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-9-1.pdf}
+
+Además decidimos realizar un facet en esta misma variable con respecto a
+la variable ``Education Level'', con el fin de visualizar la
+distribución en cada categoría, esto porque queremos descartar o validar
+que de alguna forma el nivel educativo tiene relación con nuestra
+variable objetivo, la cual es la calificación de riesgo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Income)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Ingresos"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)  }\CommentTok{\# Facet por nivel educativo}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-10-1.pdf}
+
+Adjuntamos un gráfico más de los ingresos, pero esta vez por género, con
+la misma curiosidad de observar cómo es la distribución de estos dada la
+mencionada variable.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Income)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{10000}\NormalTok{, }\AttributeTok{fill =} \StringTok{"lightblue"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Ingresos"}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender)  }\CommentTok{\# Facet Género}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-11-1.pdf}
+
+Otras variables a tener en cuenta aparte de las anteriores mencionadas
+con respecto al riesgo de crédito, son el monto del préstamos y el
+propósito del préstamo. Vamos analizar primero el Monto del préstamo,
+nos interesa ver qué distribución en general tiene.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{fill =}\NormalTok{ Gender)) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5000}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Male"} \OtherTok{=} \StringTok{"darkblue"}\NormalTok{, }\StringTok{"Female"} \OtherTok{=} \StringTok{"purple"}\NormalTok{, }\StringTok{"Non{-}binary"} \OtherTok{=} \StringTok{"green"}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{ Gender) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Monto del Préstamo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución del Monto de Préstamo por Género"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\#Rotamos el texto}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-12-1.pdf}
+
+Haremos lo mismo, pero esta vez vamos a ver cómo se comportan los
+salarios cuando cambiamos la variable y utilizamos por ejemplo el grado
+académico.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Loan Amount}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_histogram}\NormalTok{(}\AttributeTok{binwidth =} \DecValTok{5000}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Bachelor\textquotesingle{}s"} \OtherTok{=} \StringTok{"darkblue"}\NormalTok{, }\StringTok{"High School"} \OtherTok{=} \StringTok{"purple"}\NormalTok{, }\StringTok{"Master\textquotesingle{}s"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"PhD"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Monto del Préstamo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución del Monto de Préstamo por Nivel Educativo"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\#Rotamos el texto}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-13-1.pdf}
+
+Por otro lado, ahora queremos ver el gráfico de la variable propósito
+del préstamo en relación con el grado académico, al ser ambas variables
+categóricas, lo recomendado es utilizar una geometría que se adapte a
+esto, Sin embargo, al ser medidas que están muy cercanas, casi no se
+aprecia la diferencia, por lo que se decide adaptarlo a un gráfico de
+barras y apreciar mejor la diferencias de manera visual, también
+recurrimos al uso de colores, para identificar las variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+
+\CommentTok{\# Contar las combinaciones de Education Level y Loan Purpose}
+\NormalTok{Base\_count }\OtherTok{\textless{}{-}}\NormalTok{ Base\_limpia }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{group\_by}\NormalTok{(}\StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{, }\StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{Count =} \FunctionTok{n}\NormalTok{(), }\AttributeTok{.groups =} \StringTok{\textquotesingle{}drop\textquotesingle{}}\NormalTok{)}
+
+\CommentTok{\# Gráfico de barras para visualizar el conteo}
+\FunctionTok{ggplot}\NormalTok{(Base\_count, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{y =}\NormalTok{ Count, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}  \CommentTok{\# Usa barras para mostrar el conteo}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Nivel Educativo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Conteo"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Conteo del Propósito del Préstamo por Nivel Educativo"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Business"} \OtherTok{=} \StringTok{"blue"}\NormalTok{, }\StringTok{"Personal"} \OtherTok{=} \StringTok{"purple"}\NormalTok{, }\StringTok{"Home"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"Auto"} \OtherTok{=} \StringTok{"yellow"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-14-1.pdf}
+
+Para terminar esta sección, vamos a graficar con la variable objetivo de
+interés, la cual es la Calificación de riesgo, para ello, lo vamos a
+comparar a través de diversos gráficos con las variables de nivel
+educativo, ingresos, monto del préstamo, edad y género. Es importante
+mencionar, que las variables en conjunto afectan a esta calificación, al
+menos así es de manera teórica. En este apartado nos vamos a centrar en
+estos gráficos, en secciones posteriores nos ecargaremos de hacer la
+conexión entre la teoría, nuestras hipótesis y los datos obtenidos.
+
+Para comenzar, nos interesa observar cómo se comporta la variable de
+Calificación de Riesgo, con respecto a la edad:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ Age, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Edad"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Conteo"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de Calificación de Riesgo por Edad"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_brewer}\NormalTok{(}\AttributeTok{palette =} \StringTok{"Set1"}\NormalTok{)  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-15-1.pdf}
+
+Por otro lado, vamos a ver cómo se comporta la distribución de la
+calificación de riesgo, haciendo un facet con la categoría Nivel
+Educativo. Al ser dos variables categóricas las que estamos comparando,
+lo recomendado es utilizar un gráfico de barras.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{, }\AttributeTok{position =} \StringTok{"identity"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Bachelor\textquotesingle{}s"} \OtherTok{=} \StringTok{"darkblue"}\NormalTok{, }\StringTok{"High School"} \OtherTok{=} \StringTok{"purple"}\NormalTok{, }\StringTok{"Master\textquotesingle{}s"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"PhD"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}} \StringTok{\textasciigrave{}}\AttributeTok{Education Level}\StringTok{\textasciigrave{}}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Calificación de Riesgo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Frecuencia"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de la Calificación de Riesgo por Nivel Educativo"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\# Rotamos el texto}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-16-1.pdf}
+
+A su vez, nos interesa observar cómo se ve el gráifco de la variable
+calificación de riesgo con la variable contra la variable ingreso. Para
+este gráfico, vamos a utilizar el recomendado en las notas del profesor
+Maikol Solís, el cual indica que usar diagramas de cajas es útil para
+comparar las distribuciones.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{y =}\NormalTok{ Income, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"Medium"} \OtherTok{=} \StringTok{"yellow"}\NormalTok{, }\StringTok{"High"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Very High"} \OtherTok{=} \StringTok{"purple"}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Calificación de Riesgo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Ingreso"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Comparación de la Calificación de Riesgo con el Ingreso"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{size =} \DecValTok{10}\NormalTok{), }\CommentTok{\# Ajustamos el tamaño del texto}
+        \AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\# Rotamos el texto}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-17-1.pdf}
+
+Otra de las variables de interés, es la calificación de riesgo contra el
+propósito del préstamo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{ggplot}\NormalTok{(Base\_limpia, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \StringTok{\textasciigrave{}}\AttributeTok{Loan Purpose}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{fill =} \StringTok{\textasciigrave{}}\AttributeTok{Risk Rating}\StringTok{\textasciigrave{}}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{position =} \StringTok{"fill"}\NormalTok{, }\AttributeTok{color =} \StringTok{"black"}\NormalTok{) }\SpecialCharTok{+}  
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low"} \OtherTok{=} \StringTok{"green"}\NormalTok{, }\StringTok{"Medium"} \OtherTok{=} \StringTok{"yellow"}\NormalTok{, }\StringTok{"High"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Very High"} \OtherTok{=} \StringTok{"purple"}\NormalTok{)) }\SpecialCharTok{+}  
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Propósito del Préstamo"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Proporción"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Distribución de la Calificación de Riesgo según el Propósito del Préstamo"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme\_minimal}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{45}\NormalTok{, }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{))  }\CommentTok{\# Rotamos el texto para mejorar la legibilidad}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{bitacora_2_files/figure-pdf/unnamed-chunk-18-1.pdf}
+
+\bookmarksetup{startatroot}
+
+\chapter{Anexo}\label{anexo}
+
+\section{Anexo 1 (CHANGELOG Bitacora
+1)}\label{anexo-1-changelog-bitacora-1}
 
 \subsection{Chore}\label{chore}
 
@@ -881,75 +1670,208 @@ influencia en la última década»}. 2012.
   Corrige error ortografico
 \end{itemize}
 
-\section{Anexo 2 (Participacion)}\label{anexo-2-participacion}
+\section{Anexo 2 (Participacion Bitacora
+1)}\label{anexo-2-participacion-bitacora-1}
 
-Puedes descargar el resumen de cambios \href{resumen.txt}{aquí}.
+\begin{figure}[H]
+
+{\centering \includegraphics{imagenes/summary_1.jpeg}
+
+}
+
+\caption{Summary Bitacora 1}
+
+\end{figure}%
+
+\section{Anexo 3 (CHANGELOG Bitacora
+2)}\label{anexo-3-changelog-bitacora-2}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{imagenes/chore_2.jpeg}
+
+}
+
+\caption{Chore Bitacora 2}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{imagenes/feat_2.jpeg}
+
+}
+
+\caption{Feat Bitacora 2}
+
+\end{figure}%%
+\begin{figure}[H]
+
+{\centering \includegraphics{imagenes/fix_2.jpeg}
+
+}
+
+\caption{Fix Bitacora 2}
+
+\end{figure}%
+
+\section{Anexo 4 (Participacion Bitacora
+2)}\label{anexo-4-participacion-bitacora-2}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{imagenes/summary_2.jpeg}
+
+}
+
+\caption{Summary Bitacora 2}
+
+\end{figure}%
 
 \bookmarksetup{startatroot}
 
-\chapter{Bitácora 2}\label{bituxe1cora-2}
+\chapter{Apendice}\label{apendice}
 
-\section{Parte de Planificación}\label{parte-de-planificaciuxf3n-1}
+\section{Correcciones Bitácora 1}\label{correcciones-bituxe1cora-1}
 
-\subsection{Ordenamiento de la
-Literatura}\label{ordenamiento-de-la-literatura}
+La correccion más relevantes se detalla a continuación:
 
-\section{Enlaces de la Literatura}\label{enlaces-de-la-literatura}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Corrección 1:} Se ha modificado la sección de definición de la
+  idea para ajustarnos mejor a lo que se espera ser observado en la
+  misma. Tal que, nos centramos más en definir claramente la idea de
+  investigación, sin entrar en los detalles ni en dar el paso a paso de
+  cómo se lleva la misma acabo. Por lo que, en esta sección, solo nos
+  limitamos a exponer qué es lo que buscamos investigar y por qué es
+  importante o relevante, dejando los aspectos metodológicos y el
+  desarrollo de este para otras secciones.
+\end{itemize}
 
-\section{Análisis Estadístico}\label{anuxe1lisis-estaduxedstico}
+\section{Sugerencias Bitácora 1}\label{sugerencias-bituxe1cora-1}
 
-Como base para realizar este análisis estadístico, nos estamos guíando
-con la guía del curso de Herramientas de Ciencias de Datos, el cual
-adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y
-también estamos utilizando el libro escrito por Wickham, el cual también
-adjuntamos el link https://r4ds.hadley.nz/.
+A partir del foro consideramos todas las sugerencias:
 
-A modo de introducción, el análisis estadístico consiste en un conjunto
-de herramientas o técnias que se utilizan para la recolección, el
-análisis e interpretación de datos. Para este trabajo es imprescindible
-contar con este set de herramientas.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{El grupo podría ser más explícito en la metodología que usará y
+  como abordará el objetivo general, esto lo observé en la sección de
+  principios y teorías donde me parece que no tienen muy claro una
+  teoría con la cual construir ideas relacionadas a la investigación.
+  Hacen un buen análisis de la relación del tema de Riesgos con la
+  Probabilidad y algunas teorías de valoración de riesgos financieros,
+  pero podrían ser más explícitos en cual usarán y como la usarán.}
+\end{enumerate}
 
-\subsection{Análisis Descriptivo}\label{anuxe1lisis-descriptivo}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Respuesta:} Gracias por la observación. Trataremos de que la
+  metodología a utilizar quede un poco más explícita en la sección de
+  principios y teorías, especialmente en relación con el análisis de la
+  valoración de riesgos.
+\end{itemize}
 
-La base de datos ya se encuentra en formato en tidy, recordemos que el
-formato tidy fue popularizado por el autor Hadley Wickham, donde indican
-que cada variable debe tener su propia columna y cada observación su
-propia fila. Nuestra base de datos cumple con estar en formato tidy.
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  \emph{Es crucial asegurar la validez de los datos utilizados, ya que
+  estos deben reflejar con precisión las características reales de las
+  personas con calificación crediticia. Aunque el enfoque del trabajo
+  esté en el uso de herramientas de análisis de datos, es fundamental
+  que la base de datos sea coherente con la realidad, dado que las
+  conclusiones dependerán de la calidad de la información analizada.
+  Además, sería recomendable incluir un título claro y descriptivo que
+  refleje el objetivo principal del análisis.}
+\end{enumerate}
 
-Vamos a llamar a nuestra base de datos, la cual vamos a utilizar durante
-el trabajo.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Respuesta:} Agradecemos la sugerencia. Creemos que la base de
+  datos que hemos escogido tiene una gran calidad o por lo menos visto
+  desde un punto de vista académico, ya que está respaldada por el
+  Instituto Tecnológico de Massachusetts (MIT). Adicional a eso, también
+  hemos hecho una limpie de la base de datos para tratar de asegurarnos
+  de aquellos datos tengan cierto grado de validez. A su vez, también
+  hemos dejado mas en claro el título de la investigación.
+\end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(readr)}
-\NormalTok{base\_financial\_risk\_assessment }\OtherTok{\textless{}{-}} \FunctionTok{read\_delim}\NormalTok{(}\StringTok{"base{-}financial{-}risk{-}assessment.csv"}\NormalTok{, }
-    \AttributeTok{delim =} \StringTok{";"}\NormalTok{, }\AttributeTok{escape\_double =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{trim\_ws =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \emph{Considero que el proceso de selección de la pregunta final se
+  pudo haber beneficiado de una argumentación más detallada para cada
+  una de las opciones preliminares, especialmente haciendo una
+  distinción más explícita entre los factores lógicos, éticos y
+  emocionales que respaldan o cuestionan cada posible interrogante.
+  Asimismo, es posible que la parte final de esta bitácora se pueda
+  enriquecer con una mayor diversidad de fuentes, lo que ofrecería una
+  perspectiva más amplia sobre los estudios que se han realizado
+  previamente sobre el tema.}\\
+\end{enumerate}
 
-\begin{verbatim}
-Rows: 15000 Columns: 20
--- Column specification --------------------------------------------------------
-Delimiter: ";"
-chr (10): Gender, Education Level, Marital Status, Loan Purpose, Employment ...
-dbl (10): Age, Income, Credit Score, Loan Amount, Years at Current Job, Debt...
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Respuesta:} Se tomará en cuenta su comentario. A la vez,
+  estamos de acuerdo en que tal vez no llegamos a abarcar una gran
+  variedad de fuentes, pero esto es debido a que la investigación se
+  quiere mantener lo más aterrizada posible, de manera que no haya
+  fuentes que sean innecesarias que a lo largo del trabajo no lleguen a
+  tener relevancia. No obstante, hemos decido ampliar un poco más las
+  fuentes, manteniendo el principio de no meter fuentes innecesarias.
+\end{itemize}
 
-i Use `spec()` to retrieve the full column specification for this data.
-i Specify the column types or set `show_col_types = FALSE` to quiet this message.
-\end{verbatim}
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  \emph{Sentí que la bitácora les quedó muy corta, la leí en poco tiempo
+  y no entendí muy bien a qué querían llegar con los objetivos
+  planteados. También siento que les faltó un poco más de referencias.
+  La ventaja es que gracias a la naturaleza del tema esto se puede
+  mejorar bastante fácil en las siguientes bitácoras.}
+\end{enumerate}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{View}\NormalTok{(base\_financial\_risk\_assessment)}
-\end{Highlighting}
-\end{Shaded}
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Respuesta:} Agradecemos sus comentarios. A lo largo de la
+  segunda bitácora vamos a profundizar más en los objetivos planteados,
+  además, talvez la extensión de la primer bitácora se optó que fuese lo
+  más concisa posible, tratando de que quedase lo más claro posible lo
+  planteado en la misma, talque no se llegara a caer en redundancias.
+  También como se menciona en otro comentario añadiremos más referencias
+  que sean de utilidad para respaldar mejor el análisis.
+\end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{View}\NormalTok{(base\_financial\_risk\_assessment)}
-\end{Highlighting}
-\end{Shaded}
+\section{Referencias bibliográfica}\label{referencias-bibliogruxe1fica}
 
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-chicu2020}
+Chicu, Dorina. 2020. {«La valoración del riesgo financiero»}. 2020.
+\url{https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf}.
+
+\bibitem[\citeproctext]{ref-herrera2008}
+Maria de los Ángeles Herrera, Juan Terán. 2024. {«Conceptualización del
+riesgo de los mercados financieros»}. 2024.
+\url{https://www.redalyc.org/pdf/900/90075920006.pdf}.
+
+\bibitem[\citeproctext]{ref-palacios2012}
+Palacios, Alberto. 2012. {«Calificación de riesgo: definición e
+influencia en la última década»}. 2012.
+\url{https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1}.
+
+\end{CSLReferences}
 
 
 

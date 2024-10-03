@@ -1,4 +1,4 @@
-#Anexos
+# Anexo
 
 ## Anexo 1 (CHANGELOG Bitacora 1)
 
@@ -47,15 +47,22 @@
 
 ## Anexo 2 (Participacion Bitacora 1)
 
- project     : Bitacora-Grupo-5-CA-0204-II-2024-
- repo age    : 7 days 
- branch:     : main
- last active : 40 minutes ago
- active on   : 4 days
- commits     : 36
- files       : 41
- uncommitted : 10
- authors     : 
-    26	Jeikel Navarro  72.2%
-     8	Erick Venegas   22.2%
-     2	Gara            5.6%
+![Summary Bitacora 1](imagenes/summary_1.jpeg)
+     
+## Anexo 3 (CHANGELOG Bitacora 2)
+
+
+
+![Chore Bitacora 2](imagenes/chore_2.jpeg)
+
+![Feat Bitacora 2](imagenes/feat_2.jpeg)
+
+![Fix Bitacora 2](imagenes/fix_2.jpeg)
+
+
+## Anexo 4 (Participacion Bitacora 2)
+
+![Summary Bitacora 2](imagenes/summary_2.jpeg)
+
+
+
