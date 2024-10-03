@@ -57,6 +57,32 @@ Metodológica & Correlación y Análisis de datos & Clasificación de perfiles b
 
 **Comentario Propio:** Consideramos que este artículo es el más completo en cuanto a materia matemática se refiere, ya que logra explicar los métodos de manera clara y además los muestra con las gráficas y resultados obtenidos. De hecho, es de gran ayuda que las variables a trabajar sean similares a las que la investigación utiliza.
 
+**Título:** *Variables determinantes de la probabilidad de incumplimiento de un microcrédito en una entidad microfinanciera del Perú, una aproximación bajo el modelo de regresión logística binaria.*
+
+**Resumen:** Después de realizar una estimación probabilística del incumplimiento de un microcrédito por medio de la aproximación de una función logística binaria, se determina que son las variables cualitativas como el estado civil, edad y tipo de vivienda junto con las variables de plazo, número de créditos con la entidad y el saldo deudor; las que generan un modelo correctamente ajustado bajo el modelo de regresión logística.  La cual logra una capacidad predictiva aceptable medida por la curva ROC.
+
+**Contraste:** Este trabajo, a diferencia de “La evaluación del riesgo de crédito en las instituciones de microfinanzas: estado del arte”, determina las variables necesarias para un estudio de microfinanzas. Sin embargo, coinciden en todo lo referente a las ventajas y deventajas del uso de la calificación crediticia, aunque si cabe mencionar que esta investigación tambien logra hacer conclusiones de los inversores y reguladores como parte de los responsables de la ineficiencia que ha dado el uso excesivo de ésta calificación.
+
+**Comentario Propio:** Fue de mucha ayuda entender la noción de qué variables utilizar y porqué son importantes para un estudio de calificación de crédito.
+
+**Título:** *Calificación de riesgo: definición e influencia en la última década*.
+
+**Resumen:** Las agencias de calificación crediticia han crecido en las últimas décadas por su capacidad para reducir las asimetrías de información en los mercados, facilitando la liquidez y aumentando los participantes. Sin embargo, no han cumplido con los efectos positivos esperados en la última década, se han expuesto fallas en su funcionamiento, como su papel en la burbuja de deuda y la crisis económica, lo que ha generado inestabilidad y ralentizado la recuperación. La importancia que los inversores le dieron a las calificaciones crediticias para la toma de desiciones fue desmedida al no tomar en cuenta el nivel de riesgo, lo cual se relaciona a las causas de las últimas crisis financieras e hipotecarias.
+
+**Contraste:** En comparación de la investigación titulada “La evaluación del riesgo de crédito en las instituciones de microfinanzas: estado del arte”, ambos logran concluir cosas muy similares en cuanto a la importancia del credit score, sus ventajas y desventajas. Sin embargo, logra aportar más en cuanto a las ineficiencias que ha tenido sobrevalorarlo y los momentos en los que ha generado una crisis. 
+
+**Comentario Propio:** Este trabajo, de igual forma, es de suma importancia para entender la manera en que se realizan calificaciones crediticias y de qué formas analizarlas. Para así utilizarlas en nuestros estudios estadísticos y entender qué otras variables ó conceptos tomar en cuenta para los futuros resultados a obtener.
+
+**Título:** Conceptualización del riesgo de los mercados financieros.
+
+**Resumen:** El riesgo está inmerso en todas las actividades humanas y es entendido como la probabilidad de ocurrencia de un evento que podría inducir un perjuicio. Cuando se habla de riesgo financiero, se habla de una eventual pérdida de dinero que signifique una afectación al sistema financiero ó a alguna institución que sea parte del mismo. Este trabajo es una recopilación algunos de los riesgos en los mercados financieros y presenta algunos métodos válidos para su valoración.
+
+**Contraste:** Esta investigación, a diferencia de las demás investigaciones, logra tener un glosario completo de definiciones relacionadas al riesgo financiero, sin embargo no va más allá de ser sólamente un artículo de definiciones. Por lo que en materia teórica no tiene nada que aportar. 
+
+**Comentario Propio:** Gracias a estas definiciones, hemos logrado definir mejor qué queremos estudiar de manera más específica y cómo utilizar ciertos conceptos de mejor manera.
+
+
+
 ## Análisis Estadístico
 
 Como base para realizar este análisis estadístico, nos estamos guíando con la guía del curso de Herramientas de Ciencias de Datos, el cual adjuntamos el link a dicha guía https://maikolsolis.com/libros/hpcd/ y también estamos utilizando el libro escrito por Wickham, el cual también adjuntamos el link https://r4ds.hadley.nz/. 
