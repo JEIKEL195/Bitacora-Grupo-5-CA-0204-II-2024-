@@ -260,6 +260,30 @@ Entre las posibles combinaciones de palabras clave se se pueden encontrar:
 
 * Resumen en un párrafo: Esta investigación gira entorno a los microcréditos y el incumplimiento de pago en estos, de manera que se busca identificar los factores que influyen en que exista mayor probabilidad de incumplimiento de los clientes, donde se utilizan modelos predictivos que permiten evaluar tanto variables cuantitativas como cualitativas relacionadas con las personas prestatarias, para ello se toman en cuenta factores socio-demográficos, económicos y financieros que lleguen a ser determinantes para el incumplimiento de pago.
 
+**Título: Credit Scoring en Costa Rica y la probabilidad de clasificación de créditos personales basados en un modelo estadístico-matemático para aprobar o rechazar.**
+
+* Autor: Patricia Hernández, Pablo Montoya, Allan Villareal
+
+* Año: 2013. 
+
+* Nombre del tema: Incumplimiento de un microcrédito.
+
+* Cronología: 2012-2013.
+
+* Metodología: Recolección y comparación de datos. 
+
+* Temática: Estudios económicos. 
+
+* Teórica: Valoración de riesgos. 
+
+* Resumen en una oración: Analizar los riesgos en la designación de créditos a través de los modelos de credit scoring, tomando en cuenta variables cualitativas.
+
+* Argumento central: Explorar la probabilidad de incumplimiento de pago de los clientes a través del modelo de la regresión logística binaria.
+
+* Problema con el argumento o el tema: La mayor problemática es que solo se basa en los créditos personales para el consumo, y no toma en cuenta otros propósitos que se les puedan dar a los mismos, además de que en el estudio se menciona que no pudieron tener acceso a ciertas políticas que toman en cuenta los bancos para aceptar o rechazar un crédito.
+
+* Resumen en un párrafo: Esta investigación se basa en el análisis de riesgos en la designación de créditos y el incumplimiento de pago a través de los modelos de credit scoring , de manera que analizar como a partir de estos se puede tratar de llegar a optimizar la asignación de los créditos y minimizar los riesgos, de manera que se termina analizando no solo el nivel de ingreso de una persona, sino también otros factores cualitativos como son la edad, el estado civil, el género, la escolaridad, entre otros.
+
 ## Construcción de la UVE de Gowin
 
 ![V de Gowin](imagenes/v-gowin.jpeg)
