@@ -12,6 +12,58 @@ DATA <- read_csv("C:/Users/Admin/Downloads/DATA.csv")
 View(DATA)
 ```
 
+Dicho eso, debemos verificar el comportamiento de esta base, por lo que hacemos un resumen rápido de cómo se comporta.
+
+Verificamos cuáles son los nombres de las columnas que tenemos en nuestro data set.
+```{r}
+# Con esta función vemos el nombre de nuestras variables
+names(DATA)
+```
+Verificamos qué tipo de datos poseemos.
+
+```{r}
+#Verificamos el tipo de datos de nuestras variables
+str(DATA)
+```
+Con esto ya tenemos una idea, de qué tipo de variable es cada columna del data set e ir preparando un análisis estadístico en base a ello.
+
+```{r}
+#Verificamos la cantidad de datos nulos que hay nuestro dataset
+sum(is.na(DATA))
+```
+```{r}
+#Verificamos la cantidad de datos nulos que hay en cada columna
+sapply(DATA, function(x) sum(is.na(x)))
+```
+Como en todo análisis de datos, debemos hacer limpieza de nuestra base de datos, ya que esta está muy "sucia", por ello, vamos a descartar todas las observaciones que poseen datos nulos y nos vamos a quedar con un nuevo dataset, al cual vamos a denominar "base_limpia" para el trabajo. 
+
+```{r}
+#Limpiamos la base de datos.
+base_limpia <- DATA %>% drop_na()
+```
+
+Además, vamos a cambiar los nombres de las variables.
+
+```{r}
+#cambiamos nombres de las columnas de nuestro data set
+colnames(base_limpia) <- c("incumplimiento", "monto_prestamo", "hipoteca", "valor_propiedad", "razon_prestamo", "trabajo", "años_trabajo", "informes_derogatorios", "mora", "edad_credito", "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
+```
+
+Verificamos que se haya hecho bien el proceso.
+
+```{r}
+names(base_limpia)
+```
+Dicho esto, verificamos que los datos que están sucio ya no se encuentren en nuestra base de datos, para proceder a trabajar con la base. 
+
+```{r}
+#Verificamos la cantidad de datos nulos que hay en cada columna
+sapply(base_limpia, function(x) sum(is.na(x)))
+```
+
+
+
+
 ### Análisis de modelación
 
 ### Construcción de fichas de resultados
