@@ -16,6 +16,7 @@ book:
     - "index.qmd"
     - "bitacora_1.qmd"
     - "bitacora_2.qmd"
+    - "bitacora_3.qmd"
     - "anexo.qmd"
     - "apendice.qmd"
     
@@ -36,6 +37,7 @@ format:
     #documentclass: scrreprt
     toc: true          # Activa la TOC para PDF
     number-sections: true
+    pdf-engine: xelatex
     
 execute:
   freeze: auto
