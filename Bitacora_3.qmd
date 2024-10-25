@@ -1,6 +1,16 @@
 # Bitácora 3 
 
 ## Parte de Planificación 
+Para este punto de la investigación, tuvimos que cargar una nueva base de datos y darle un nuevo rumbo a la investigación, sin desechar el trabajo que hemos venido construyendo. Sin embargo, haremos el análisis estadístico una vez más en esta bitácora, ya que no conocemos cómo se comportan nuestros datos. 
+
+Para ello cargamos nuestra base de datos.
+
+```{r}
+#Cargamos la base de datos.
+library(readr)
+DATA <- read_csv("C:/Users/Admin/Downloads/DATA.csv")
+View(DATA)
+```
 
 ### Análisis de modelación
 
