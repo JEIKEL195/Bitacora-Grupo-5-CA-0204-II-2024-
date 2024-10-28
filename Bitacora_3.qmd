@@ -38,6 +38,8 @@ sapply(DATA, function(x) sum(is.na(x)))
 Como en todo análisis de datos, debemos hacer limpieza de nuestra base de datos, ya que esta está muy "sucia", por ello, vamos a descartar todas las observaciones que poseen datos nulos y nos vamos a quedar con un nuevo dataset, al cual vamos a denominar "base_limpia" para el trabajo. 
 
 ```{r}
+library(dplyr)
+library(tidyr)
 #Limpiamos la base de datos.
 base_limpia <- DATA %>% drop_na()
 ```
@@ -60,6 +62,62 @@ Dicho esto, verificamos que los datos que están sucio ya no se encuentren en nu
 #Verificamos la cantidad de datos nulos que hay en cada columna
 sapply(base_limpia, function(x) sum(is.na(x)))
 ```
+Una vez que ya tenemos los valores con los que podemos trabajar, ya podemos realizar un trabajo estadístico sobre la base de datos, para saber cómo se comporta, para ello vamos a crear un cuadro resumen con algunas de los estadísticos más importantes.
+
+```{r, echo=FALSE}
+resumen_monto_prestamo <- c(mean(base_limpia$monto_prestamo), var(base_limpia$monto_prestamo), sd(base_limpia$monto_prestamo), max(base_limpia$monto_prestamo), min(base_limpia$monto_prestamo))
+resumen_hipoteca <- c(mean(base_limpia$hipoteca), var(base_limpia$hipoteca), sd(base_limpia$hipoteca), max(base_limpia$hipoteca), min(base_limpia$hipoteca))
+resumen_valor_propiedad <- c(mean(base_limpia$valor_propiedad), var(base_limpia$valor_propiedad), sd(base_limpia$valor_propiedad), max(base_limpia$valor_propiedad), min(base_limpia$valor_propiedad))
+resumen_años_trabajo <- c(mean(base_limpia$años_trabajo), var(base_limpia$años_trabajo), sd(base_limpia$años_trabajo), max(base_limpia$años_trabajo), min(base_limpia$años_trabajo))
+resumen_informes_derogatorios <- c(mean(base_limpia$informes_derogatorios), var(base_limpia$informes_derogatorios), sd(base_limpia$informes_derogatorios), max(base_limpia$informes_derogatorios), min(base_limpia$informes_derogatorios))
+resumen_mora <- c(mean(base_limpia$mora), var(base_limpia$mora), sd(base_limpia$mora), max(base_limpia$mora), min(base_limpia$mora))
+resumen_edad_credito <- c(mean(base_limpia$edad_credito), var(base_limpia$edad_credito), sd(base_limpia$edad_credito), max(base_limpia$edad_credito), min(base_limpia$edad_credito))
+resumen_credito_reciente <- c(mean(base_limpia$credito_reciente), var(base_limpia$credito_reciente), sd(base_limpia$credito_reciente), max(base_limpia$credito_reciente), min(base_limpia$credito_reciente))
+resumen_creditos_totales <- c(mean(base_limpia$creditos_totales), var(base_limpia$creditos_totales), sd(base_limpia$creditos_totales), max(base_limpia$creditos_totales), min(base_limpia$creditos_totales))
+resumen_relacion_deuda_ingreso <- c(mean(base_limpia$relacion_deuda_ingreso), var(base_limpia$relacion_deuda_ingreso), sd(base_limpia$relacion_deuda_ingreso), max(base_limpia$relacion_deuda_ingreso), min(base_limpia$relacion_deuda_ingreso))
+```
+
+```{r}
+#Como queremos un nuevo cuadro, entonces creamos un nuevo data frame, estas serán las columnas
+resultados <- data.frame(
+  Media = c(resumen_monto_prestamo[1], resumen_hipoteca[1], resumen_valor_propiedad[1],
+            resumen_años_trabajo[1], resumen_informes_derogatorios[1], resumen_mora[1],
+            resumen_edad_credito[1], resumen_credito_reciente[1], resumen_creditos_totales[1],
+            resumen_relacion_deuda_ingreso[1]),
+  
+  Varianza = c(resumen_monto_prestamo[2], resumen_hipoteca[2], resumen_valor_propiedad[2],
+               resumen_años_trabajo[2], resumen_informes_derogatorios[2], resumen_mora[2],
+               resumen_edad_credito[2], resumen_credito_reciente[2], resumen_creditos_totales[2],
+               resumen_relacion_deuda_ingreso[2]),
+  
+  Desviacion_Estandar = c(resumen_monto_prestamo[3], resumen_hipoteca[3], resumen_valor_propiedad[3],
+                          resumen_años_trabajo[3], resumen_informes_derogatorios[3], resumen_mora[3],
+                          resumen_edad_credito[3], resumen_credito_reciente[3], resumen_creditos_totales[3],
+                          resumen_relacion_deuda_ingreso[3]),
+  
+  Maximo = c(resumen_monto_prestamo[4], resumen_hipoteca[4], resumen_valor_propiedad[4],
+             resumen_años_trabajo[4], resumen_informes_derogatorios[4], resumen_mora[4],
+             resumen_edad_credito[4], resumen_credito_reciente[4], resumen_creditos_totales[4],
+             resumen_relacion_deuda_ingreso[4]),
+  
+  Minimo = c(resumen_monto_prestamo[5], resumen_hipoteca[5], resumen_valor_propiedad[5],
+             resumen_años_trabajo[5], resumen_informes_derogatorios[5], resumen_mora[5],
+             resumen_edad_credito[5], resumen_credito_reciente[5], resumen_creditos_totales[5],
+             resumen_relacion_deuda_ingreso[5])
+)
+
+# Agregamos los nombres de las variables, a la cual le pertenece cada estadísitco.
+rownames(resultados) <- c("monto_prestamo", "hipoteca", "valor_propiedad", "años_trabajo", 
+                          "informes_derogatorios", "mora", "edad_credito", 
+                          "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
+
+# Mostramos el resultado
+print(resultados)
+```
+
+
+
+
 
 
 
