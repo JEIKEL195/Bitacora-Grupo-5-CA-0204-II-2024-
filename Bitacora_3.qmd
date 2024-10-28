@@ -116,7 +116,60 @@ print(resultados)
 ```
 
 
+Una vez que tenemos estos datos, podemos hacer gráfica, y ver el comportamiento de los datos de la base de dato de manera gráfica, para ello, primero vamos a realizar una matriz de correlación, y a partir de este resultado, escoger cuáles son nuestras variables que vamos a tomar dada la correlación que representan. 
 
+```{r}
+library(ggplot2)
+library(reshape2)
+
+#Calculamos la correlación de las variables que sean numéricas
+variables_interes <- c("monto_prestamo", "hipoteca", "valor_propiedad", "años_trabajo", 
+                       "informes_derogatorios", "mora", "edad_credito", 
+                       "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
+
+#Crear una nueva base de datos con las variables de interés
+base_numerica <- base_limpia[variables_interes]
+
+#Calculamos la matriz de correlación
+matriz_correlacion <- cor(base_numerica, use = "pairwise.complete.obs")
+
+#Transformar la matriz a formato largo
+matriz_correlacion_larga <- melt(matriz_correlacion)
+
+#Creamos el gráfico de la matriz de correlación
+ggplot(matriz_correlacion_larga, aes(Var1, Var2, fill = value)) + 
+  geom_tile(color = "white") + 
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", 
+                       midpoint = 0, limit = c(-1, 1), name = "Correlación") +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  labs(title = "Matriz de Correlación", x = "Variables", y = "Variables")
+```
+Con este matriz gráfica, podemos observar con un código de colores como son las correlaciones que presentan nuestras variables en esta base de datos. Vamos agregar una matriz más, solo para hacer explícita la magnitud matemática de esta correlación, de la siguiente manera:
+
+```{r}
+library(ggplot2)
+library(reshape2)
+
+variables_interes <- c("monto_prestamo", "hipoteca", "valor_propiedad", "años_trabajo", 
+                       "informes_derogatorios", "mora", "edad_credito", 
+                       "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
+
+base_numerica <- base_limpia[variables_interes]
+
+matriz_correlacion <- cor(base_numerica, use = "pairwise.complete.obs")
+
+matriz_correlacion_larga <- melt(matriz_correlacion)
+
+ggplot(matriz_correlacion_larga, aes(Var1, Var2, fill = value)) + 
+  geom_tile(color = "white") + 
+  scale_fill_gradient2(low = "blue", mid = "white", high = "red", 
+                       midpoint = 0, limit = c(-1, 1), name = "Correlación") +
+  geom_text(aes(label = round(value, 2)), color = "black", size = 4) +  #Añadimos los porcentajes (nuevo)
+  theme_minimal() + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
+  labs(title = "Matriz de Correlación con Porcentajes", x = "Variables", y = "Variables")
+```
 
 
 
