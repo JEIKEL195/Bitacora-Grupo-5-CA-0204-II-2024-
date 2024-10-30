@@ -1,175 +1,65 @@
-# Bitácora 3 
-
-## Parte de Planificación 
-Para este punto de la investigación, tuvimos que cargar una nueva base de datos y darle un nuevo rumbo a la investigación, sin desechar el trabajo que hemos venido construyendo. Sin embargo, haremos el análisis estadístico una vez más en esta bitácora, ya que no conocemos cómo se comportan nuestros datos. 
-
-Para ello cargamos nuestra base de datos.
-
-```{r}
-#Cargamos la base de datos.
-library(readr)
-DATA <- read_csv("C:/Users/Admin/Downloads/DATA.csv")
-View(DATA)
-```
-
-Dicho eso, debemos verificar el comportamiento de esta base, por lo que hacemos un resumen rápido de cómo se comporta.
-
-Verificamos cuáles son los nombres de las columnas que tenemos en nuestro data set.
-```{r}
-# Con esta función vemos el nombre de nuestras variables
-names(DATA)
-```
-Verificamos qué tipo de datos poseemos.
-
-```{r}
-#Verificamos el tipo de datos de nuestras variables
-str(DATA)
-```
-Con esto ya tenemos una idea, de qué tipo de variable es cada columna del data set e ir preparando un análisis estadístico en base a ello.
-
-```{r}
-#Verificamos la cantidad de datos nulos que hay nuestro dataset
-sum(is.na(DATA))
-```
-```{r}
-#Verificamos la cantidad de datos nulos que hay en cada columna
-sapply(DATA, function(x) sum(is.na(x)))
-```
-Como en todo análisis de datos, debemos hacer limpieza de nuestra base de datos, ya que esta está muy "sucia", por ello, vamos a descartar todas las observaciones que poseen datos nulos y nos vamos a quedar con un nuevo dataset, al cual vamos a denominar "base_limpia" para el trabajo. 
-
-```{r}
-library(dplyr)
-library(tidyr)
-#Limpiamos la base de datos.
-base_limpia <- DATA %>% drop_na()
-```
-
-Además, vamos a cambiar los nombres de las variables.
-
-```{r}
-#cambiamos nombres de las columnas de nuestro data set
-colnames(base_limpia) <- c("incumplimiento", "monto_prestamo", "hipoteca", "valor_propiedad", "razon_prestamo", "trabajo", "años_trabajo", "informes_derogatorios", "mora", "edad_credito", "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
-```
-
-Verificamos que se haya hecho bien el proceso.
-
-```{r}
-names(base_limpia)
-```
-Dicho esto, verificamos que los datos que están sucio ya no se encuentren en nuestra base de datos, para proceder a trabajar con la base. 
-
-```{r}
-#Verificamos la cantidad de datos nulos que hay en cada columna
-sapply(base_limpia, function(x) sum(is.na(x)))
-```
-Una vez que ya tenemos los valores con los que podemos trabajar, ya podemos realizar un trabajo estadístico sobre la base de datos, para saber cómo se comporta, para ello vamos a crear un cuadro resumen con algunas de los estadísticos más importantes.
+Para esta parte de las bitácora, nos interes realizar más análisis estadístico entre las variables de la base, con el fin de determinar si existe relación o no entre ellas a través de pruebas estadísticas como lo son la prueba de chi cuadrado y realizar tablas de contingencia. 
 
 ```{r, echo=FALSE}
-resumen_monto_prestamo <- c(mean(base_limpia$monto_prestamo), var(base_limpia$monto_prestamo), sd(base_limpia$monto_prestamo), max(base_limpia$monto_prestamo), min(base_limpia$monto_prestamo))
-resumen_hipoteca <- c(mean(base_limpia$hipoteca), var(base_limpia$hipoteca), sd(base_limpia$hipoteca), max(base_limpia$hipoteca), min(base_limpia$hipoteca))
-resumen_valor_propiedad <- c(mean(base_limpia$valor_propiedad), var(base_limpia$valor_propiedad), sd(base_limpia$valor_propiedad), max(base_limpia$valor_propiedad), min(base_limpia$valor_propiedad))
-resumen_años_trabajo <- c(mean(base_limpia$años_trabajo), var(base_limpia$años_trabajo), sd(base_limpia$años_trabajo), max(base_limpia$años_trabajo), min(base_limpia$años_trabajo))
-resumen_informes_derogatorios <- c(mean(base_limpia$informes_derogatorios), var(base_limpia$informes_derogatorios), sd(base_limpia$informes_derogatorios), max(base_limpia$informes_derogatorios), min(base_limpia$informes_derogatorios))
-resumen_mora <- c(mean(base_limpia$mora), var(base_limpia$mora), sd(base_limpia$mora), max(base_limpia$mora), min(base_limpia$mora))
-resumen_edad_credito <- c(mean(base_limpia$edad_credito), var(base_limpia$edad_credito), sd(base_limpia$edad_credito), max(base_limpia$edad_credito), min(base_limpia$edad_credito))
-resumen_credito_reciente <- c(mean(base_limpia$credito_reciente), var(base_limpia$credito_reciente), sd(base_limpia$credito_reciente), max(base_limpia$credito_reciente), min(base_limpia$credito_reciente))
-resumen_creditos_totales <- c(mean(base_limpia$creditos_totales), var(base_limpia$creditos_totales), sd(base_limpia$creditos_totales), max(base_limpia$creditos_totales), min(base_limpia$creditos_totales))
-resumen_relacion_deuda_ingreso <- c(mean(base_limpia$relacion_deuda_ingreso), var(base_limpia$relacion_deuda_ingreso), sd(base_limpia$relacion_deuda_ingreso), max(base_limpia$relacion_deuda_ingreso), min(base_limpia$relacion_deuda_ingreso))
+library(readxl)
+data_risk <- read_excel("C:/Users/Admin/Downloads/data_risk.xlsx")
+View(data_risk)
 ```
+
+```{r, echo=FALSE}
+library(dplyr)
+library(tidyr)
+data_limpia <- data_risk %>% drop_na()
+```
+
+```{r, echo=FALSE}
+names(data_limpia)
+sapply(data_limpia, function(x) sum(is.na(x)))
+str(data_limpia)
+```
+
+Debido a la naturaleza de nuestra base de datos, que es categórica, evitaremos transformar los números a datos y graficar. En oposición utilizaremos tablas de contingencias, que son tablas que representan las distribución de datos categóricos en relación con otra variable categórica, por ello, queda de manera más natural hacer análisis estadístico. 
+
+
+Vamos a realizar una tabla de contingencia en relacion con el nivel educativo, y observar qué nivel educativo presenta el mayor porcentaje de caer en un cierto riesgo crediticio. 
 
 ```{r}
-#Como queremos un nuevo cuadro, entonces creamos un nuevo data frame, estas serán las columnas
-resultados <- data.frame(
-  Media = c(resumen_monto_prestamo[1], resumen_hipoteca[1], resumen_valor_propiedad[1],
-            resumen_años_trabajo[1], resumen_informes_derogatorios[1], resumen_mora[1],
-            resumen_edad_credito[1], resumen_credito_reciente[1], resumen_creditos_totales[1],
-            resumen_relacion_deuda_ingreso[1]),
-  
-  Varianza = c(resumen_monto_prestamo[2], resumen_hipoteca[2], resumen_valor_propiedad[2],
-               resumen_años_trabajo[2], resumen_informes_derogatorios[2], resumen_mora[2],
-               resumen_edad_credito[2], resumen_credito_reciente[2], resumen_creditos_totales[2],
-               resumen_relacion_deuda_ingreso[2]),
-  
-  Desviacion_Estandar = c(resumen_monto_prestamo[3], resumen_hipoteca[3], resumen_valor_propiedad[3],
-                          resumen_años_trabajo[3], resumen_informes_derogatorios[3], resumen_mora[3],
-                          resumen_edad_credito[3], resumen_credito_reciente[3], resumen_creditos_totales[3],
-                          resumen_relacion_deuda_ingreso[3]),
-  
-  Maximo = c(resumen_monto_prestamo[4], resumen_hipoteca[4], resumen_valor_propiedad[4],
-             resumen_años_trabajo[4], resumen_informes_derogatorios[4], resumen_mora[4],
-             resumen_edad_credito[4], resumen_credito_reciente[4], resumen_creditos_totales[4],
-             resumen_relacion_deuda_ingreso[4]),
-  
-  Minimo = c(resumen_monto_prestamo[5], resumen_hipoteca[5], resumen_valor_propiedad[5],
-             resumen_años_trabajo[5], resumen_informes_derogatorios[5], resumen_mora[5],
-             resumen_edad_credito[5], resumen_credito_reciente[5], resumen_creditos_totales[5],
-             resumen_relacion_deuda_ingreso[5])
-)
-
-# Agregamos los nombres de las variables, a la cual le pertenece cada estadísitco.
-rownames(resultados) <- c("monto_prestamo", "hipoteca", "valor_propiedad", "años_trabajo", 
-                          "informes_derogatorios", "mora", "edad_credito", 
-                          "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
-
-# Mostramos el resultado
-print(resultados)
+library(gmodels)
+CrossTable(data_limpia$`Education Level`, data_limpia$`Risk Rating`, prop.chisq = FALSE)
 ```
 
+De la tabla de contingencia anterior, podemos observar como hay una distribución más o menos similar de todas las categorías, esto se debe a la restricción de la base de datos, que posee una información simétrica, lo que sugiere que la base puede ser generada por IA, sin embargo, esto para el estudio no afecta en gran medida, ya que al tratarse de una investigación de herramientas de ciencias de datos, lo que nos interesa es saber aplicar las pruebas estadísticas y hacer un buen uso de las herramientas de Rstudio para el aprendizaje. 
 
-Una vez que tenemos estos datos, podemos hacer gráfica, y ver el comportamiento de los datos de la base de dato de manera gráfica, para ello, primero vamos a realizar una matriz de correlación, y a partir de este resultado, escoger cuáles son nuestras variables que vamos a tomar dada la correlación que representan. 
+Por otro lado, continuando el análisis, vamos hacer uso de otra tabla de contingencia para analizar la distribución entre las varibales de Loan Purpose y Risk Rating, ya que otro motivo por el cual las personas pueden caer un cierto riesgo crediticio puede ser por el motivo del préstamo, esto visto de manera teórica. 
 
 ```{r}
-library(ggplot2)
-library(reshape2)
-
-#Calculamos la correlación de las variables que sean numéricas
-variables_interes <- c("monto_prestamo", "hipoteca", "valor_propiedad", "años_trabajo", 
-                       "informes_derogatorios", "mora", "edad_credito", 
-                       "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
-
-#Crear una nueva base de datos con las variables de interés
-base_numerica <- base_limpia[variables_interes]
-
-#Calculamos la matriz de correlación
-matriz_correlacion <- cor(base_numerica, use = "pairwise.complete.obs")
-
-#Transformar la matriz a formato largo
-matriz_correlacion_larga <- melt(matriz_correlacion)
-
-#Creamos el gráfico de la matriz de correlación
-ggplot(matriz_correlacion_larga, aes(Var1, Var2, fill = value)) + 
-  geom_tile(color = "white") + 
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", 
-                       midpoint = 0, limit = c(-1, 1), name = "Correlación") +
-  theme_minimal() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  labs(title = "Matriz de Correlación", x = "Variables", y = "Variables")
+library(gmodels)
+CrossTable(data_limpia$`Loan Purpose`, data_limpia$`Risk Rating`, prop.chisq = FALSE)
 ```
-Con este matriz gráfica, podemos observar con un código de colores como son las correlaciones que presentan nuestras variables en esta base de datos. Vamos agregar una matriz más, solo para hacer explícita la magnitud matemática de esta correlación, de la siguiente manera:
+
+Una vez realizadas las tablas de contingencia, es bueno realizar una prueba de Chicuadrado, estoo porque queremos ver según esta prueba, el grado de relación que presentan las variables, como hemos mencionado antes, la evidencia teórica indica que existe una relación entre el nivel de estudios y el riesgo crediticio, sin embargo hacemos la prueba, para comprobar si nuestra base de datos sigue este patrón. 
 
 ```{r}
-library(ggplot2)
-library(reshape2)
-
-variables_interes <- c("monto_prestamo", "hipoteca", "valor_propiedad", "años_trabajo", 
-                       "informes_derogatorios", "mora", "edad_credito", 
-                       "credito_reciente", "creditos_totales", "relacion_deuda_ingreso")
-
-base_numerica <- base_limpia[variables_interes]
-
-matriz_correlacion <- cor(base_numerica, use = "pairwise.complete.obs")
-
-matriz_correlacion_larga <- melt(matriz_correlacion)
-
-ggplot(matriz_correlacion_larga, aes(Var1, Var2, fill = value)) + 
-  geom_tile(color = "white") + 
-  scale_fill_gradient2(low = "blue", mid = "white", high = "red", 
-                       midpoint = 0, limit = c(-1, 1), name = "Correlación") +
-  geom_text(aes(label = round(value, 2)), color = "black", size = 4) +  #Añadimos los porcentajes (nuevo)
-  theme_minimal() + 
-  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + 
-  labs(title = "Matriz de Correlación con Porcentajes", x = "Variables", y = "Variables")
+chisq.test(table(data_limpia$`Education Level`, data_limpia$`Risk Rating`))
 ```
+De la prueba anterior, entonces podemos observar que se rechaza la hipótesis nula, la cual es $H_0 =$ Existe relación entre las variables, y $H_1 =$ No existe relación entre las variables. Usamos como parámetro de tolerancia un $5%$, que es lo que sugiere la literatura que usemos en estas pruebas de hiótesis. Obtuvimos un valor $p$ de 0.2931, lo que sugiere que la hipótesis nula debe ser rechazada, indicando entonces que dada la evidencia empírica de nuestra base de datos, no hay suficiente información estadística para decir que obtuvimos una relación entre las variables. 
+
+Continuando con al análisis de las variables, ahora vamos a ver cómo se comporta
+
+```{r}
+chisq.test(table(data_limpia$`Loan Purpose`, data_limpia$`Risk Rating`))
+```
+
+
+
+
+```{r}
+chisq.test(table(data_limpia$`Payment History`, data_limpia$`Risk Rating`))
+```
+
+
+
+
 
 
 
