@@ -2,7 +2,7 @@ Para esta parte de las bitácora, nos interes realizar más análisis estadísti
 
 ```{r, echo=FALSE}
 library(readxl)
-data_risk <- read_excel("C:/Users/Admin/Downloads/data_risk.xlsx")
+data_risk <- read_excel("C:/Users/jeike/Downloads/ca-0204/Bitacora-Grupo-5-CA-0204-II-2024-/data_risk.xlsx")
 View(data_risk)
 ```
 
@@ -71,8 +71,62 @@ Según nuestra base de datos, podemos observar que los datos estadísticos indic
 
 ### Construcción de fichas de resultados
 
+**Título: Ficha de Resultados 1. **
+
+* Nombre de su hallazgo/resultado: Personas con Bachillerato presentan un mayor porcentaje en risk rating.
+
+* Resumen en una oración: Se encontró que las personas que solo posen Bachillerato concentran un mayor porcentaje de risk rating. 
+
+* Principal característica: A través de un análisis mediante tablas de contingencia a la categoría de nivel de educación, se ha hallado que las personas que solo tienen Bachillerato posen un mayor porcentaje de risk rating, lo cual desde el anteproyecto se esperaba que fuese así, ya que el nivel más bajo de educación que se considero es el Bachillerato.
+
+* Problemas o posibles desafíos: Una de las problemáticas es conocer si realmente el peso de risk rating que se llevan las personas que solo posen Bachillerato tiene gran relevancia a la hora de que se les otorgue un préstamo.
+
+* Resumen en un párrafo: Se utilizaron tablas de contingencia, las cuales como son frecuencias relativas, es decir, la suma final de todo debe dar 1, es fácil observar que la la frecuencia de la categoría de Bachillerato se lleva el mayor peso/porcentaje de risk rating. 
+
+
+
 ### Ordenamiento de los elementos de reporte
 
 ## Parte de escritura
 
+El problema que se va a tratar en el presente trabajo es de determinar la relación existente entre las variables de ingresos, nivel de educación y Monto del préstamo con la calificación de riesgo. Desde el punto de vista teórico, el autor (Palacios 2012), menciona que “La principal función que radica en las calificaciones crediticias es la evaluación de la mayor o menor probabilidad de pago de la deuda y los intereses, proporcionando indicadores que sirvan de referencia a los inversores con el fin de que puedan tener conocimiento del riesgo crediticio de una forma simple y accesible”. Desde este punto de vista, hay un apoyo en la investigación que tratamos de realizar, pues la calificación de riesgo es de suma importancia en el mundo financiero. Este mismo autor menciona que “Su importancia deriva de su implantación dentro de la regulación, lo que afecta a todo el entramado institucional, y sectores clave de la sociedad como son el bancario y las agencias de seguros y reaseguros”. 
+Inicialmente mencionamos que la teoría respaldaba nuestra conjetura pues no había un análisis de datos que afirmara lo antes explicado. Sin embargo, con los resultados encontrados en el último análisis.
+
+El estudio del análisis financiero es de suma importancia en la actualidad, ya que las transacciones de los flujos de dinero cada vez son mayores, es decir, vender deuda para obtener financiamiento en el corto plazo es una de las estrategias más aplicadas. Por ello tanto inversores como prestatarios, según (Palacios 2012), “hacen uso de las calificaciones crediticias como un indicador de la probabilidad de recuperar su dinero. Adicionalmente, los prestatarios pueden beneficiarse de tener calificada su deuda, con el objetivo de colocarla con mayor facilidad y eliminar las dudas que haya relación a ellos.” Asimismo, ambas parten obtienen beneficio de que exista este rating en el mundo de la información financiera. Y desde el punto de vista del inversor, como menciona la autora (Chicu 2020), “…a la hora de analizar una inversión, debemos valorar la rentabilidad esperada, así como la liquidez que perdemos y el riesgo que estamos dispuestos a asumir”. Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. 
+
+Incluso podríamos pensar que, según los resultados del análisis, mientras mejor calificación tenga una persona en su historial de crédito, las entidades tienden a ofrecer mejores condiciones de préstamo e inversión. Por eso, según la tabla de datos, podemos ver que algunos préstamos tienen un monto alto y tener un riesgo o probabilidad de impago relativamente baja. 
+
+En adición, haciendo referencia a esta misma autora “…la gestión de riesgos tiene un lugar cada vez que un inversor analiza e intenta cuantificar las pérdidas potenciales en una inversión y luego toma las medidas apropiadas, considerando sus objetivos de inversión y su tolerancia al riesgo.” Esto último viene de la mano con lo que son las proyecciones, pues le permite al inversionista hacer un mejor análisis y una gestión de riesgos adecuada, que podemos definir según Chicu como “El proceso de identificación, análisis e incorporación de la incertidumbre en las decisiones de inversión” (Chicu 2020). Reforzando lo que menciona Chicu, la autora (Maria de los Ángeles Herrera 2024), menciona en adición a la gestión de riesgos “el contexto de incertidumbre genera inevitablemente un riesgo, y es ahí cuando la institución financiera debe preservar su valor económico y la integridad de los recursos confiados por los depositantes y socios.” Y añadiendo la definición de esta misma autora tenemos que la gestión de riesgos es “la denominación que se utiliza para el conjunto de técnicas y herramientas que pretenden maximizar el valor económico de la institución financiera, en un contexto de incertidumbre”. Concluyendo, la gestión de riesgos depende íntimamente de la calificación de riesgo, pues permite tener un parámetro ante la incertidumbre que representa invertir.
+Por esta razón se decidió utilizar los gráficos como ayuda en las distribuciones de las variables con el fin de observar su comportamiento. Además de calcular el coeficiente de correlación de Pearson, para crear nuestra matriz de correlación.
+
+Según esta nueva matriz de correlación, podemos ver cómo se relacionan las diferentes variables. Por ejemplo, si bien parece obvio que el valor de una hipoteca está muy relacionado con el valor de una propiedad, la estadística es la que nos da esa certeza de que realmente hay una relación muy grande.
+
 ## Parte de reflexión
+
+Al tomar en cuenta el rumbo que lleva actualmente nuestro proyecto con lo que se habia propuesto al inicio, y habiendo revisado con detenimiento, se ha llegado a la conclusión de que los objetivosy el planteamiento del problema planteados, y en terminos generales todo lo planteado sigue siendo pertinente para nuestra investigacion, por tanto se ha optado por no cambiar nada y seguir ha como se ha hecho hasta el momento.
+
+## Fichas literarias nuevas
+
+**Título: Metodología para un scoring de clientes sin referencias crediticias. **
+
+* Autor: Osvaldo Espin García, Carlos Rodríguez
+
+* Año: 2013. 
+
+* Nombre del tema: Perfil de clientes crediticios.
+
+* Cronología: 2011-2013.
+
+* Metodología: Recolección y comparación de datos. 
+
+* Temática: Estudios económicos. 
+
+* Teórica: Valoración de riesgos. 
+
+* Resumen en una oración: El enfoque principal consiste en asignar un puntaje a cada solicitante, indicando la probabilidad de impago. 
+
+* Argumento central: Desarrollar un modelo predictivo que permita anticipar el comportamiento de impago de los clientes.
+
+* Problema con el argumento o el tema: La mayor problemática que existe es que al basarse en la información personal de las personas, la existencia de personas con poca información en la base de datos o que acaban de iniciar en el sistema de manera que no tengan un historial de crédito, puede generar un sesgo en la muestra, lo cual llevar a que existan resultados menos precisos, lo cual termina por afectar el modelo.
+
+* Resumen en un párrafo: Esta investigación gira en torno a desarrollar un modelo predictivo que permita de cierta manera lograr anticipar el comportamiento que pueda existir de impago en función de la información personal del cliente. De manera que las instituciones financieras como lo son los bancos o cooperativas puedan asignar cierto puntaje a cada solicitante donde se indique la probabilidad de impago. 

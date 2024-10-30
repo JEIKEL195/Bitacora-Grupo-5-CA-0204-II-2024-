@@ -34,10 +34,11 @@ format:
     toc: true          # Activa la TOC para HTML
     
   pdf:
-    #documentclass: scrreprt
-    toc: true          # Activa la TOC para PDF
-    number-sections: true
-    pdf-engine: xelatex
+    toc: true           # Activa la tabla de contenido para PDF
+    number-sections: true  # Numera las secciones en PDF
+    pdf-engine: xelatex     # Usa xelatex para la compilación
+    include-in-header: |
+      \usepackage[table,xcdraw]{xcolor}  # Soporte para colores en tablas
     
 execute:
   freeze: auto
