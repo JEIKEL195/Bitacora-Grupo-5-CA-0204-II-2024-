@@ -44,20 +44,22 @@ chisq.test(table(data_limpia$`Education Level`, data_limpia$`Risk Rating`))
 ```
 De la prueba anterior, entonces podemos observar que se rechaza la hipótesis nula, la cual es $H_0 =$ Existe relación entre las variables, y $H_1 =$ No existe relación entre las variables. Usamos como parámetro de tolerancia un $5%$, que es lo que sugiere la literatura que usemos en estas pruebas de hiótesis. Obtuvimos un valor $p$ de 0.2931, lo que sugiere que la hipótesis nula debe ser rechazada, indicando entonces que dada la evidencia empírica de nuestra base de datos, no hay suficiente información estadística para decir que obtuvimos una relación entre las variables. 
 
-Continuando con al análisis de las variables, ahora vamos a ver cómo se comporta
+Continuando con al análisis de las variables, ahora vamos a ver cómo se comporta la relación entre las variables de Propósito del negocio y riesgoo de crédito, de manera intuitiva podemos pensar que esto debería afectar, por el hecho de que, es más probable que una persona caiga en impago si el motivo del crédito es personal a que lo haga por negocios o estudio, donde es muy probable que se haga la cancelación de deudas. Sin embargo, analizando nuestra base de datos, obtenemos lo siguiente: 
 
 ```{r}
 chisq.test(table(data_limpia$`Loan Purpose`, data_limpia$`Risk Rating`))
 ```
 
+Dado lo anterior, podemos sugerir entonces que tenemos evidencia estadística para no rechazar nuestras hipótesis nula, esto quiere decir, que la evidencia nos dice que estadísticamente según estos datos, podemos decir que existe una relación entre las variables.
 
+Por último, viendo la historía de las personas que han caido antes en riesgo de crédito, es claro que debería existir una relación, que entre más veces haya caido la persona en impago, entonces el análisis de riesgo debería aumentar, o al menos esto es lo que sguiere la evidencia teórica.
 
 
 ```{r}
 chisq.test(table(data_limpia$`Payment History`, data_limpia$`Risk Rating`))
 ```
 
-
+Según nuestra base de datos, podemos observar que los datos estadísticos indican que debemos rechazar nuestra hipótesis nula, esto es, no existe evidencia estadística que relacione estas dos variables. 
 
 
 
