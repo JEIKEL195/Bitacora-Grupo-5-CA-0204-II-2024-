@@ -304,6 +304,29 @@ data_credit %>%
 
 Gracias a este gráfico, podemos observar que la gran mayoría de los datos se encuentran en los subvariables de Universidad. Secundaria y Posgrado.
 
+Ahora veamos como se distribuye la edad, con respecto a la variable de Estado Civil.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = AGE)) + 
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_vline(aes(xintercept = mean(AGE, na.rm = TRUE)), 
+             color = "red", 
+             linetype = "dashed", 
+             size = 1) +  # Línea roja punteada para la media
+  labs(title = "Histograma de las edades facet por Marriage",
+       x = "Edades",
+       y = "Frecuencia") + 
+  facet_wrap(~MARRIAGE, labeller = as_labeller(c("1" = "Casado", "2" = "Soltero", "3" = "Otros"))) + 
+  theme_minimal()
+
+```
+
+Conjeturando, podemos ver que la distribución de las edades de las personas que están casadas, sigue más o menos una distribución normal, mientras que las personas que están solteras lo hace como una distribución exponencial.
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
