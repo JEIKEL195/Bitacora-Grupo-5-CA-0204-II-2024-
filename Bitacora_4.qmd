@@ -833,18 +833,19 @@ ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX), color = as.factor(
 
 ```
 
-Con el gráfico anterior podemos ver la relación existente entre el nivel educativo, rl género y el monto del crédito otorgado, es decir, 3 variables graficadas. 
+Con el gráfico anterior podemos ver la relación existente entre el nivel educativo, el género y el monto del crédito otorgado, es decir, 3 variables graficadas. 
+
+### Análisis Matemático de las correlaciones
+
+Para esta sección, primero vamos analizar tablas de contingencias, esto con el fin de eencontrar relaciones entre las variables, utilizaremos las pruebas chi-cuadrado y la prueba " --- ", para determinar esta relaciones entre variables categóricas. 
+
+Posteriormente, utilizaremos los índices de correlación obtenidos en la matriz de correlación para el análisis de la base de datos y con ello apoyarnos en la evidencia teórica que existe. 
+
+#### Tablas de Contigencias y p-values
 
 
+#### Índices de Correlación
  
-
-
-
-
-
-
-
-
 
 ## 1. Parte de Planificación
 
