@@ -405,9 +405,28 @@ data_credit %>%
   theme_minimal()
 ```
 
-Las densidades que deben llamar nuestra atención son la de Secundaria, Universidad y Posgrado, esto por el hecho de que ellas son las que tienen la mayor concentración de datos.
+Las densidades que deben llamar nuestra atención son la de Secundaria, Universidad y Posgrado, esto por el hecho de que ellas son las que tienen la mayor concentración de datos.Además, veamos que las densidades tienen más o menos una distribución exponencial.
 
-Veamos que las densidades tienen más o menos una distribución exponencial.
+Por otro lado, observemos las densidades del límite de crédito con respecto al género.
+
+```{r}
+library(ggplot2)
+
+
+ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX))) +
+  geom_density(adjust = 2, alpha = 0.5) +
+  labs(
+    x = "Monto del crédito (NT$)",
+    y = "Densidad",
+    title = "Distribución de montos de crédito por género",
+    fill = "Género"
+  ) +
+  scale_fill_manual(values = c("1" = "blue", "2" = "pink")) + 
+  theme_minimal() 
+```
+Del gráfico anterior, podemos determinar que a menores montos las mujeres tienen más crédito.
+
+El siguiente gráfico es un histograma del límite de crédito con respecto al estado civil de las personas.
 
 ```{r}
 library(ggplot2)
@@ -494,6 +513,24 @@ data_credit %>%
 
 ```
 
+Ploteando los gráficos juntos, para una mejor visualización tenemos que:
+
+
+```{r}
+ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
+  geom_density(alpha = 0.6) +
+  labs(
+    x = "Monto del crédito (NT$)",
+    y = "Densidad",
+    title = "Distribución de Monto de Crédito por Impago",
+    fill = "Impago"
+  ) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+
+```
+
+
 Utilizando una gráfica de violín, veamos la distribución para compararlas visualmente.
 
 ```{r}
@@ -503,7 +540,25 @@ ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL
   scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
   theme_minimal()
 ```
-Por el gráfico de la izquierda, podemos observar como a menores límite de créditos hay una concentración de las personas que caen en impago, reduciendose conforme el límite de crédito es mayor.
+Por el gráfico de la izquierda, podemos observar como a menores límite de créditos hay una concentración de las personas que caen en impago, reduciendose conforme el límite de crédito es mayor. Note además que un gráfico de violín al final son las densidades reflejadas, podemos obtener la misma información de un gráfico de violín que de un gráfico de densidades. 
+
+luego utilizando un diagrama de cajas para hacer otra comparación.
+
+```{r}
+library(ggplot2)
+
+ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
+  geom_boxplot(alpha = 0.6) +
+  labs(
+    x = "Impago",
+    y = "Monto del crédito (NT$)",
+    title = "Distribución del Monto de Crédito según Impago",
+    fill = "Impago"
+  ) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+```
+Del gráfico anterior entonces podemos observar que en promedio las personas que pagan a tiempo según el monto de crédito es mayor que el de las personas que cae en impago, lo cual nos ayudará a determinar más adelante si este factor es de importancia a la hora del riesgo de pago. 
 
 Por último veamos cómo de distribuyen las variables AGE y LIMIT_BAL. Usaremos un gráfico de dispersión
 
@@ -607,23 +662,23 @@ ggplot(data = data_credit, aes(x = as.factor(default.payment.next.month), fill =
 
 Del gráfico anterior, podemos observar entonces que de las personas que cayeron en impago, la mayoría son mujeres, al menos más del 50%, sin embargo, veamos de manera aislada esto.
 
+
 ```{r}
 library(ggplot2)
 library(dplyr)
 
-# Crear un gráfico de barras apiladas para mostrar la proporción de impago entre las mujeres
 data_credit %>%
-  filter(SEX == 2) %>%  # Filtrar solo las mujeres
+  filter(SEX == 2) %>%  
   ggplot(aes(x = as.factor(default.payment.next.month), fill = as.factor(default.payment.next.month))) +
   geom_bar(stat = "count", color = "black") +
   labs(title = "Distribución de Impago entre Mujeres",
        x = "Impago",
        y = "Frecuencia",
        fill = "Impago") +
-  scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +  # Etiquetas personalizadas
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "tomato")) +  # Colores personalizados
+  scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +  
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "tomato")) +  
   theme_minimal() +
-  theme(legend.position = "none")  # Eliminar la leyenda si no es necesaria
+  theme(legend.position = "none")  
 
 ```
 
@@ -763,7 +818,6 @@ Observando las medias, inferimos que en promedio el límite de crédito otorgado
 ```{r}
 library(ggplot2)
 
-# Crear el gráfico de histograma con la variable LIMIT_BAL y clasificado por SEX y EDUCATION
 ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX), color = as.factor(EDUCATION))) +
   geom_histogram(binwidth = 50000, alpha = 0.5, position = "identity") +
   labs(
@@ -774,12 +828,17 @@ ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX), color = as.factor(
     color = "Nivel educativo"
   ) +
   scale_fill_manual(values = c("1" = "blue", "2" = "pink")) +  # Colores para sexo
-  scale_color_manual(values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black")) +  # Colores para EDUCATION
+  scale_color_manual(values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black")) + 
   theme_minimal()
 
 ```
 
 Con el gráfico anterior podemos ver la relación existente entre el nivel educativo, rl género y el monto del crédito otorgado, es decir, 3 variables graficadas. 
+
+
+ 
+
+
 
 
 
