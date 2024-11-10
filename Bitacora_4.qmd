@@ -2,6 +2,8 @@
 
 ## Introducción 
 
+### Visualización y Limpieza de la Nueva Base de Datos
+
 Queremos señalar que fue necesario cambiar la base de datos utilizada, ya que la anterior parecía haber sido generada artificialmente, sin provenir de datos reales. Para la presente bitácora, hemos optado por una base de datos auténtica que incluye información sobre pagos por defecto, factores demográficos, datos de crédito, historial de pagos y estados de cuenta de clientes de tarjetas de crédito en Taiwán, correspondiente al periodo de abril a septiembre de 2005.
 
 Empezamos el estudio de la base de datos, para ello lo primodiarla es cargarla.
@@ -78,6 +80,54 @@ sum(is.na(data_credit))
 #Verificamos la cantidad de datos nulos que hay en cada columna
 sapply(data_credit, function(x) sum(is.na(x)))
 ```
+
+Sin embargo, hay columnas que aunque no están vacías, contiene datos que no nos sirven, por eso hay que filtrar estos datos. Estos datos no sirven por el hecho de que no están definidos como parámetros significativos, es decir, si tenemos definidos la variable sexo como 1=hombre y 2=mujer, entonces aparecen números como el 3 y 0, por ello hay que filtrarlos, ya que afectan los análisis.
+
+Nos damos cuenta de ello, gracias a ver el cuadro resumen, que aparecen valores que no deberían aparecer.
+
+```{r}
+library(tidyverse)
+
+# Filtramos los datos que están definidos.
+data_credit <- data_credit %>%
+  filter(MARRIAGE %in% c(1, 2, 3))
+
+# Filtramos los datos que están definidos.
+data_credit <- data_credit %>%
+  filter(EDUCATION %in% c(1, 2, 3, 4, 5, 6))
+
+data_credit <- data_credit %>%
+  filter(PAY_0 %in% c(-1, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+
+data_credit <- data_credit %>%
+  filter(PAY_2 %in% c(-1, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+
+data_credit <- data_credit %>%
+  filter(PAY_3 %in% c(-1, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+
+data_credit <- data_credit %>%
+  filter(PAY_4 %in% c(-1, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+
+data_credit <- data_credit %>%
+  filter(PAY_5 %in% c(-1, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+
+data_credit <- data_credit %>%
+  filter(PAY_6 %in% c(-1, 1, 2, 3, 4, 5, 6, 7, 8, 9))
+```
+
+Realizamos de nuevo nuestro cuadro resumen después de esta filtración con el objetivo de observar las nuevas tendencias de la base.
+
+```{r}
+library(skimr)
+
+# Resumen del dataset.
+summary(data_credit)
+
+# Generamos un cuadro resumen, con la información anterior.
+skim(data_credit)
+```
+
+Gracias a todo lo anterior ya tenemos una base de datos limpia, lista para el análisis estadístico.
 
 ## 1. Parte de Planificación
 
