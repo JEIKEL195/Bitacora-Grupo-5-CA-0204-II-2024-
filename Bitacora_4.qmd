@@ -375,6 +375,38 @@ data_credit %>%
 
 ```
 
+Agregamos también un gráfico de densidades, esto con el objetivo de ver la distribución.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(ggridges)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL, y = as.factor(EDUCATION), fill = as.factor(EDUCATION), color = as.factor(EDUCATION))) +
+  geom_density_ridges(alpha = 0.5) +
+  labs(title = "Densidad de los límites de crédito por nivel educativo.",
+       x = "Límite de Crédito",
+       y = "Nivel Educativo") + 
+  scale_fill_manual(values = c("1" = "steelblue", "2" = "lightblue", "3" = "lightgreen", 
+                               "4" = "lightyellow", "5" = "lightcoral", "6" = "lightsalmon")) +  
+  scale_color_manual(values = c("1" = "blue", "2" = "darkblue", "3" = "darkgreen", 
+                                "4" = "darkorange", "5" = "darkred", "6" = "salmon")) +  
+  scale_y_discrete(labels = c(
+    "1" = "Posgrado", 
+    "2" = "Universidad", 
+    "3" = "Secundaria", 
+    "4" = "Otros", 
+    "5" = "Desconocido", 
+    "6" = "Desconocido"
+  )) +  
+  theme_minimal()
+```
+
+Las densidades que deben llamar nuestra atención son la de Secundaria, Universidad y Posgrado, esto por el hecho de que ellas son las que tienen la mayor concentración de datos.
+
+Veamos que las densidades tienen más o menos una distribución exponencial.
+
 ```{r}
 library(ggplot2)
 library(dplyr)
@@ -394,22 +426,69 @@ data_credit %>%
 
 ```
 
+Agregamos densidades de las respectivas variables.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(ggridges)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL, y = as.factor(MARRIAGE), fill = as.factor(MARRIAGE), color = as.factor(MARRIAGE))) +
+  geom_density_ridges(alpha = 0.5) +  
+  labs(title = "Densidad de los límites de crédito por estado civil.",
+       x = "Límite de Crédito",
+       y = "Estado Civil") + 
+  scale_fill_manual(values = c("1" = "steelblue", "2" = "lightblue", "3" = "lightgreen")) +  
+  scale_color_manual(values = c("1" = "blue", "2" = "darkblue", "3" = "darkgreen")) +  
+  scale_y_discrete(labels = c(
+    "1" = "Casado", 
+    "2" = "Soltero", 
+    "3" = "Otros"
+  )) +  
+  theme_minimal()  
+
+```
+
 ```{r}
 library(ggplot2)
 library(dplyr)
 
 data_credit %>%
   ggplot(aes(x = LIMIT_BAL)) + 
-  geom_histogram(binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) +  # Ajuste binwidth a 50000
+  geom_histogram(binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) +  
   geom_vline(aes(xintercept = mean(LIMIT_BAL, na.rm = TRUE)), 
              color = "red", 
              linetype = "dashed", 
-             size = 1) +  # Línea roja punteada para la media
+             size = 1) +  
   labs(title = "Histograma de los límites de crédito facet por Impago",
        x = "Límite de Crédito",
        y = "Frecuencia") + 
   facet_wrap(~default.payment.next.month, labeller = as_labeller(c("0" = "A tiempo", "1" = "Impago"))) + 
   theme_minimal()
+
+```
+
+Agregamos dicho gráfico de densidades para las anteriores variables.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(ggridges)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL, y = as.factor(default.payment.next.month), fill = as.factor(default.payment.next.month), color = as.factor(default.payment.next.month))) +
+  geom_density_ridges(alpha = 0.5) +  
+  labs(title = "Densidad de los límites de crédito por estado de impago.",
+       x = "Límite de Crédito",
+       y = "Estado de Impago") + 
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +  
+  scale_color_manual(values = c("0" = "blue", "1" = "darkred")) +  
+  scale_y_discrete(labels = c(
+    "0" = "A tiempo", 
+    "1" = "Impago"
+  )) +  
+  theme_minimal()  
 
 ```
 
