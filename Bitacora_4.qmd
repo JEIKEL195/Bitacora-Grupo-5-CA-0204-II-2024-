@@ -15,6 +15,48 @@ data_credit <- read_csv("C:/Users/Admin/Downloads/UCI_Credit_Card.csv")
 data_credit
 ```
 
+Una vez cargada la base de datos, es importante realizar algunas observaciones iniciales antes de comenzar a trabajar con ella. En primer lugar, queremos revisar los nombres de las variables y el tipo de datos que representan, ya que esto nos permite empezar a considerar qué técnicas estadísticas podríamos aplicar. Además, nos interesa verificar que la base de datos esté limpia; para ello, realizaremos un conteo de los valores faltantes en el dataset.
+
+```{r}
+# Verificamos los nombres de nuestro dataset
+names(data_credit)
+```
+
+Con los nombres hacemos un pequeño resumen de qué significa cada uno:
+
+-   ID: ID de cada cliente.
+-   LIMIT_BAL: Monto de crédito otorgado en dólares taiwaneses (NT) (incluye crédito individual y familiar/suplementario).
+-   SEX: Género (1=hombre, 2=mujer).
+-   EDUCATION: Nivel educativo (1=posgrado, 2=universidad, 3=preparatoria, 4=otros, 5=desconocido, 6=desconocido).
+-   MARRIAGE: Estado civil (1=casado, 2=soltero, 3=otros).
+-   AGE: Edad en años.
+-   PAY_0: Estado de reembolso en septiembre de 2005 (-1=pago puntual, 1=atraso de un mes, 2=atraso de dos meses, …, 8=atraso de ocho meses, 9=atraso de nueve meses o más).
+-   PAY_2: Estado de reembolso en agosto de 2005 (escala igual a la anterior).
+-   PAY_3: Estado de reembolso en julio de 2005 (escala igual a la anterior).
+-   PAY_4: Estado de reembolso en junio de 2005 (escala igual a la anterior).
+-   PAY_5: Estado de reembolso en mayo de 2005 (escala igual a la anterior).
+-   PAY_6: Estado de reembolso en abril de 2005 (escala igual a la anterior).
+-   BILL_AMT1: Monto del estado de cuenta en septiembre de 2005 (dólares taiwaneses, NT).
+-   BILL_AMT2: Monto del estado de cuenta en agosto de 2005 (dólares taiwaneses, NT).
+-   BILL_AMT3: Monto del estado de cuenta en julio de 2005 (dólares taiwaneses, NT).
+-   BILL_AMT4: Monto del estado de cuenta en junio de 2005 (dólares taiwaneses, NT).
+-   BILL_AMT5: Monto del estado de cuenta en mayo de 2005 (dólares taiwaneses, NT).
+-   BILL_AMT6: Monto del estado de cuenta en abril de 2005 (dólares taiwaneses, NT).
+-   PAY_AMT1: Monto del pago anterior en septiembre de 2005 (dólares taiwaneses, NT).
+-   PAY_AMT2: Monto del pago anterior en agosto de 2005 (dólares taiwaneses, NT).
+-   PAY_AMT3: Monto del pago anterior en julio de 2005 (dólares taiwaneses, NT).
+-   PAY_AMT4: Monto del pago anterior en junio de 2005 (dólares taiwaneses, NT).
+-   PAY_AMT5: Monto del pago anterior en mayo de 2005 (dólares taiwaneses, NT).
+-   PAY_AMT6: Monto del pago anterior en abril de 2005 (dólares taiwaneses, NT).
+-   default.payment.next.month: Pago en mora (1=sí, 0=no).
+
+Por otro lado, veamos con qué tipo de datos contamos.
+
+```{r}
+# Verificar el tipo de datos del dataset.
+str(data_credit)
+```
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
