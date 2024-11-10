@@ -193,6 +193,45 @@ ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+#### Gráficos relacionados a la Base de Datos
+
+Vamos a realizar algunos gráficos de la base, con el fin de observar cómo se comportan los datos, para ello, primero veamos algunos histogramas, recordemos que los histogramas están hechos para variables numéricas, por lo que trataremos de ir en orden a la hora de gráficarlas.
+
+Damos inicio con la variable de "LIMIT_BAL", la cual se refiere al crédito otorgado.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL)) + 
+  geom_histogram(binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_vline(aes(xintercept = mean(LIMIT_BAL)), linetype = "dashed", color = "red", size = 1) + # Línea punteada de la media
+  labs(title = "Histograma de la Cantidad de Crédito Otorgado",
+       x = "Crédito Otorgado",
+       y = "Frecuencia") + 
+  theme_minimal()
+
+```
+
+Agregamos un gráfico adicional, donde podemos observar como se comporta la densidad de esta variable.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL)) + 
+  geom_histogram(aes(y = after_stat(density)), binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) + 
+  geom_density(color = "red", size = 1) + # Densidad en línea roja
+  geom_vline(aes(xintercept = mean(LIMIT_BAL)), linetype = "dashed", color = "black", size = 1) + # Línea punteada de la media
+  labs(title = "Histograma y Densidad de la Cantidad de Crédito Otorgado",
+       x = "Crédito Otorgado",
+       y = "Densidad") + 
+  theme_minimal()
+
+```
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
