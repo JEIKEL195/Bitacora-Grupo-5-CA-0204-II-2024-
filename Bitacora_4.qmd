@@ -494,14 +494,25 @@ data_credit %>%
 
 ```
 
+Utilizando una gráfica de violín, veamos la distribución para compararlas visualmente.
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
+  geom_violin() +
+  labs(title = "Distribución del Límite de Crédito por Estado de Impago", x = "Estado de Impago", y = "Límite de Crédito") +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+```
+Por el gráfico de la izquierda, podemos observar como a menores límite de créditos hay una concentración de las personas que caen en impago, reduciendose conforme el límite de crédito es mayor.
+
 Por último veamos cómo de distribuyen las variables AGE y LIMIT_BAL. Usaremos un gráfico de dispersión
 
 ```{r}
 library(ggplot2)
 
 ggplot(data_credit, aes(x = AGE, y = LIMIT_BAL)) +
-  geom_point(color = "steelblue", alpha = 0.7) +  # Puntos azules con algo de transparencia
-  geom_smooth(method = "lm", color = "red", se = FALSE) +  # Línea de regresión lineal en rojo
+  geom_point(color = "steelblue", alpha = 0.7) +
+  geom_smooth(method = "lm", color = "red", se = FALSE) +  
   labs(title = "Gráfico de dispersión entre Edad y Límite de Crédito con regresión lineal",
        x = "Edad",
        y = "Límite de Crédito") +
@@ -511,17 +522,17 @@ ggplot(data_credit, aes(x = AGE, y = LIMIT_BAL)) +
 
 Cuando realizamos la matriz de correlación, vimos que la correlación entre estas dos variables es de 0.21, lo cual es algo bajo, podemos entonces ver esa tendencia en este gráfico, pues tenemos muchos puntos dispersos, al realizar una regresión lineal, podemos ver la linea que mejor se ajusta a estos puntos. Podemos inferir que hay una relación positiva débil entre las variables. Aunque un valor de 0.21 no ayuda a predecir qué pasaría cuando las variables aumenten.
 
-##### Gráficos de Variables Categóricas. 
+##### Gráficos de Variables Categóricas.
 
 Comenzaremos esta sección realizando gráficos de barras, con la intención de ver las frecuencias de las variables.
 
 ```{r}
 library(ggplot2)
 
-# Crear gráfico de barras de la variable SEX con etiquetas personalizadas
+
 ggplot(data = data_credit, aes(x = as.factor(SEX))) +
   geom_bar(fill = "skyblue", color = "black") +
-  labs(title = "Distribución de SEX", x = "Sexo", y = "Frecuencia") +
+  labs(title = "Distribución de la variable Sexo", x = "Sexo", y = "Frecuencia") +
   scale_x_discrete(labels = c("1" = "Hombre", "2" = "Mujer")) +
   theme_minimal()
 ```
@@ -552,7 +563,6 @@ Luego para la variable de estado civil.
 ```{r}
 library(ggplot2)
 
-# Crear gráfico de barras de la variable MARRIAGE con etiquetas personalizadas
 ggplot(data = data_credit, aes(x = as.factor(MARRIAGE))) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(title = "Distribución del Estado Civil", x = "Estado Civil", y = "Frecuencia") +
@@ -570,10 +580,9 @@ Por último vamos a ver la gráfica de barras de la variable de interés, la cua
 ```{r}
 library(ggplot2)
 
-# Crear gráfico de barras de la variable default.payment.next.month con etiquetas personalizadas
 ggplot(data = data_credit, aes(x = as.factor(default.payment.next.month))) +
   geom_bar(fill = "skyblue", color = "black") +
-  labs(title = "Distribución de Impagos del Mes Siguiente", x = "Impago", y = "Frecuencia") +
+  labs(title = "Distribución de Impagos", x = "Impago", y = "Frecuencia") +
   scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +
   theme_minimal()
 
@@ -585,15 +594,14 @@ Con esto terminamos los gráficos aislados de las variables categóricas y damos
 library(ggplot2)
 library(dplyr)
 
-# Crear gráfico de barras apiladas de la variable SEX en relación con default.payment.next.month
 ggplot(data = data_credit, aes(x = as.factor(default.payment.next.month), fill = as.factor(SEX))) +
-  geom_bar(position = "fill", color = "black") +  # posición "fill" para ver proporciones
+  geom_bar(position = "fill", color = "black") +
   labs(title = "Proporción de Hombres y Mujeres en Impago vs Pago a Tiempo", 
        x = "Estado de Pago", y = "Proporción") +
   scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +
   scale_fill_manual(labels = c("1" = "Hombre", "2" = "Mujer"), values = c("skyblue", "lightcoral")) + 
   theme_minimal() +
-  theme(legend.title = element_blank())  # Ocultar título de leyenda
+  theme(legend.title = element_blank()) 
 
 ```
 
@@ -644,7 +652,7 @@ library(ggplot2)
 library(dplyr)
 
 data_credit %>%
-  filter(SEX == 1) %>%  # Filtrar solo los hombres
+  filter(SEX == 1) %>%  
   ggplot(aes(x = as.factor(default.payment.next.month), fill = as.factor(default.payment.next.month))) +
   geom_bar(stat = "count", color = "black") +
   labs(title = "Distribución de Impago entre Hombres",
@@ -672,7 +680,6 @@ hombres_impago <- data_credit %>%
   mutate(porcentaje_impago = hombres_impago / total_hombres * 100)  
 
 hombres_impago
-
 ```
 
 Con esto observamos que el porcentaje de los hombres que cayeron en impago, aunque es por poco, es mayor que el de las mujeres que cayeron en impago. Esto lo hicimos porque anteriormente se estaban comparando magnitudes que no se podían comparar, con los porcentajes podemos determinar que relativamente, los hombres tienden a caer más en impago que las mujeres, al menos eso podemos inferrir gracias a la evidencia de los datos.
@@ -680,6 +687,8 @@ Con esto observamos que el porcentaje de los hombres que cayeron en impago, aunq
 Ahora vamos a visualizar el crédito con respecto a la variable de MARRIAGE.
 
 ```{r}
+library(ggplot2)
+
 ggplot(data_credit, aes(x = as.factor(MARRIAGE), y = LIMIT_BAL, color = as.factor(MARRIAGE))) +
   geom_jitter() +
   labs(title = "Límite de Crédito por Estado Civil", x = "Estado Civil", y = "Límite de Crédito") +
@@ -689,13 +698,94 @@ ggplot(data_credit, aes(x = as.factor(MARRIAGE), y = LIMIT_BAL, color = as.facto
 Después analizaremos la relación entre las variables, ya que son variables de diferente naturaleza, es decir una categórica y una numérica, por lo que utilizaremos un análisis ANOVA para clarificar si las diferencias se deben al azar o si la evidencia estadística indican que están relacionados. Por el momento, haremos una comparación con gráficos de cajas, para observar de manera gráfica, como se siguen comportando.
 
 ```{r}
+library(ggplot2)
+
 ggplot(data_credit, aes(x = as.factor(MARRIAGE), y = LIMIT_BAL, fill = as.factor(MARRIAGE))) +
   geom_boxplot() +
   labs(title = "Límite de Crédito por Estado Civil", x = "Estado Civil", y = "Límite de Crédito") +
   theme_minimal()
 ```
 
-Podemos observar gráficamente que las diferencias gráficamente no son tan significativas, sin embargo esto es una conjetura, nos ajustaremos a un análisis estadístico más riguroso en posteriores secciones. Por otro lado, podemos observar que el nivel 3 difiere de los otros niveles, esto se puede deber a las bajas observaciones que tenemos en este nivel.
+Podemos observar gráficamente que las diferencias no son tan significativas, sin embargo esto es una conjetura, nos ajustaremos a un análisis estadístico más riguroso en posteriores secciones. Por otro lado, podemos observar que el nivel 3 difiere de los otros niveles, esto se puede deber a las bajas observaciones que tenemos en este nivel.
+
+Por último para tener la relación entre estas variables, observemos el siguiente gráfico.
+```{r}
+library(ggplot2)
+
+ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(MARRIAGE))) +
+  geom_histogram(binwidth = 50000) +
+  facet_wrap(~MARRIAGE, nrow = 3) + 
+  labs(
+    x = "Monto del crédito otorgado (NT dólares)",
+    y = "Frecuencia",
+    title = "Distribución de montos de crédito por estado civil",
+    fill = "Estado civil"
+  ) +
+  scale_fill_manual(values = c("1" = "salmon", "2" = "green", "3" = "skyblue")) +
+  theme_minimal() +
+  theme(legend.position = "none") 
+```
+Como hemos mencionado, la distribución de las variables casado y soltero se parecen mucho visualmente, no podemos decir más del estado "otro".
+
+Analizamos ahora la frecuencia de impago en relación con el nivel educativo.
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
+  geom_bar(position = "dodge") +
+  labs(title = "Frecuencia de Impago por Nivel Educativo", x = "Nivel Educativo", y = "Frecuencia") +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+```
+
+Recordemos que la etiqueta 2 equivale a las personas que están en grado de haber terminado o concluido la universidad. Con este gráfico podemos interpretar que las personas que terminaron la universidad tienen una alta proporción de haber caido en impago, esto se puede deber a créditos estudiantiles y la dificultad de conseguir empleo, sin embargo esto es una conjetura y no vamos analizar esta consecuencia, ya que solo nos importa ver qué están diciendo nuestros datos.
+
+Con el siguiente gráfico queremos observar la proporción de las personas que caen en impago, según el nievl educativo. 
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
+  geom_bar(position = "fill") +
+  labs(title = "Proporción de Impagos por Nivel Educativo", x = "Nivel Educativo", y = "Proporción") +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+```
+Justamente, este gráfico refleja que las personas que están en el nivel de universidad presentan una mayor proporción de impago. 
+
+Por otro lado, vamos analizar gráficamente la relación de la variable educación con el límite de crédito.
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(EDUCATION), y = LIMIT_BAL, fill = as.factor(EDUCATION))) +
+  geom_boxplot() +
+  labs(title = "Distribución del Límite de Crédito por Nivel Educativo", x = "Nivel Educativo", y = "Límite de Crédito") +
+  theme_minimal()
+```
+Observando las medias, inferimos que en promedio el límite de crédito otorgado a las personas que están en un nivel de posgrado es mayor que las personas que tiene solo universidad o secundaria. A su vez, la media de Universidad es mayor que la media de secundaria. Por la calidad de los datos de la base de datos, no podemos analizar con lujo de detalle los niveles 3,4 y 5. 
+
+```{r}
+library(ggplot2)
+
+# Crear el gráfico de histograma con la variable LIMIT_BAL y clasificado por SEX y EDUCATION
+ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX), color = as.factor(EDUCATION))) +
+  geom_histogram(binwidth = 50000, alpha = 0.5, position = "identity") +
+  labs(
+    x = "Monto del crédito otorgado (NT dólares)",
+    y = "Frecuencia",
+    title = "Distribución de montos de crédito por género y nivel educativo",
+    fill = "Género",
+    color = "Nivel educativo"
+  ) +
+  scale_fill_manual(values = c("1" = "blue", "2" = "pink")) +  # Colores para sexo
+  scale_color_manual(values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black")) +  # Colores para EDUCATION
+  theme_minimal()
+
+```
+
+Con el gráfico anterior podemos ver la relación existente entre el nivel educativo, rl género y el monto del crédito otorgado, es decir, 3 variables graficadas. 
+
+
+
+
+
+
 
 ## 1. Parte de Planificación
 
