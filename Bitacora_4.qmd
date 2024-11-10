@@ -129,6 +129,70 @@ skim(data_credit)
 
 Gracias a todo lo anterior ya tenemos una base de datos limpia, lista para el análisis estadístico.
 
+### Análisis Estadístico de la Base de Datos
+
+Para esta sección, nuestro objetivo es explorar el comportamiento de nuestro conjunto de datos de manera más profunda. Para ello, aplicaremos algunas técnicas estadísticas que nos permitirán obtener información relevante.
+
+En primer lugar, vamos a construir una matriz de correlación. Esta herramienta nos ayudará a identificar las relaciones más fuertes entre las variables de nuestro dataset. Es importante recordar que la matriz de correlación solo tiene sentido cuando se aplica a variables numéricas, por lo que es esencial seleccionar adecuadamente las variables antes de proceder con este análisis.
+
+#### Matriz de Correlación
+
+Vamos a seleccionar solo las variables que sean de interés, es decir, vamos a quitar variables como el id, y el sexo, ya que el id es único para cada persona en el data set, y la variable sexo es una variable de tipo categórico, lo mismo pasa con la variable de defaul.payment, la cual a pesar de representarse con números, estos significan que son categóricos.
+
+```{r}
+library(tidyverse)
+# Seleccionamos las variables.
+data_credit_numerico <- data_credit %>% select(-ID, -SEX, -EDUCATION, -MARRIAGE, -PAY_0, -PAY_2, -PAY_3, -PAY_4, -PAY_5, -PAY_6, -default.payment.next.month)
+```
+
+Con los datos filtrados, podemos entonces realizar nuestra matriz de correlación.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+
+
+# Crear la matriz de correlación
+matriz_correlacion <- cor(data_credit_numerico, use = "complete.obs")
+
+# Creamos la variable para ver la matriz de correlación como un gráfico de calor
+base_matriz <- melt(matriz_correlacion)
+
+# Hacemos el plot de la base 
+ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
+  theme_minimal() +
+  labs(title = "Matriz de Correlación de Variables Numéricas",
+       x = "", y = "") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Agregamos la misma matriz, pero esta vez indicando los índices de correlación, para visualizar de manera gráfica y matemática la correlación existente.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+
+
+# Crear la matriz de correlación
+matriz_correlacion <- cor(data_credit_numerico, use = "complete.obs")
+
+# Creamos la variable para ver la matriz de correlación como un gráfico de calor
+base_matriz <- melt(matriz_correlacion)
+
+# Hacemos el plot de la base 
+ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
+  theme_minimal() + geom_text(aes(label = round(value, 2)), color = "black", size = 3) +
+  labs(title = "Matriz de Correlación de Variables Numéricas",
+       x = "", y = "") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
