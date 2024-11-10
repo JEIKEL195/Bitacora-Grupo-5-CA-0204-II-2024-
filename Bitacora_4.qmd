@@ -232,6 +232,49 @@ data_credit %>%
 
 ```
 
+Procedemos ahora con la variable de la edad, esto porque queremos visualizar la distribución de las edades de nuestro data set.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = AGE)) + 
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_vline(aes(xintercept = mean(AGE, na.rm = TRUE)), 
+             color = "red", 
+             linetype = "dashed", 
+             size = 1) +
+  labs(title = "Histograma de las edades por sexo.",
+       x = "Edades",
+       y = "Frecuencia") + 
+  facet_wrap(~SEX, labeller = as_labeller(c("1" = "Hombre", "2" = "Mujer"))) + 
+  theme_minimal()
+
+```
+
+Agregamos un gráfico adicional donde podemos observar la densidad de la variable.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = AGE)) + 
+  geom_histogram(aes(y = after_stat(density)), binwidth = 1, fill = "steelblue", color = "black", alpha = 0.7) + 
+  geom_density(aes(y = after_stat(density)), color = "red", size = 1) +  # Curva de densidad en verde
+  geom_vline(aes(xintercept = mean(AGE, na.rm = TRUE)), 
+             color = "black", 
+             linetype = "dashed", 
+             size = 1) +  # Línea roja punteada
+  labs(title = "Histograma de las edades por sexo.",
+       x = "Edades",
+       y = "Frecuencia") + 
+  facet_wrap(~SEX, labeller = as_labeller(c("1" = "Hombre", "2" = "Mujer"))) + 
+  theme_minimal()
+
+```
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
