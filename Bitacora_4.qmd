@@ -1,1 +1,32 @@
 # Bitácora 4
+
+## Introducción 
+
+Queremos señalar que fue necesario cambiar la base de datos utilizada, ya que la anterior parecía haber sido generada artificialmente, sin provenir de datos reales. Para la presente bitácora, hemos optado por una base de datos auténtica que incluye información sobre pagos por defecto, factores demográficos, datos de crédito, historial de pagos y estados de cuenta de clientes de tarjetas de crédito en Taiwán, correspondiente al periodo de abril a septiembre de 2005.
+
+Empezamos el estudio de la base de datos, para ello lo primodiarla es cargarla.
+
+```{r}
+# Cargamos nuestra nueva base de datos.
+library(readr)
+data_credit <- read_csv("C:/Users/Admin/Downloads/UCI_Credit_Card.csv")
+
+# Visualizamos nuestro dataset.
+data_credit
+```
+
+## 1. Parte de Planificación
+
+## 2. Parte de Escritura 
+
+### 2.1 Escribir, escribir, escribir
+
+### 2.2 Introducción 
+
+### 2.3 Resumen 
+
+### 2.4 Ordenamiento Final 
+
+### 2.5 Conclusión
+
+## 3. Revisiones Finales 
