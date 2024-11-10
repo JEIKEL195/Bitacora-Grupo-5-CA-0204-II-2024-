@@ -275,6 +275,35 @@ data_credit %>%
 
 ```
 
+Con estas dos variables es sufiente de gráficos aislados, debido a la naturaleza de las demás variables numéricas que tenemos en el dataset, en vez de eso, vamos a ver cómo se comportan los gráficos, cuando se plotean las relaciones entre ellos.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = AGE)) + 
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "black", alpha = 0.7) +
+  geom_vline(aes(xintercept = mean(AGE, na.rm = TRUE)), 
+             color = "red", 
+             linetype = "dashed", 
+             size = 1) +  
+  labs(title = "Histograma de las edades por nivel educativo.",
+       x = "Edades",
+       y = "Frecuencia") + 
+  facet_wrap(~EDUCATION, labeller = labeller(EDUCATION = c(
+    "1" = "Posgrado", 
+    "2" = "Universidad", 
+    "3" = "Secundaria", 
+    "4" = "Otros", 
+    "5" = "Desconocido", 
+    "6" = "Desconocido"
+  ))) + theme_minimal()
+
+```
+
+Gracias a este gráfico, podemos observar que la gran mayoría de los datos se encuentran en los subvariables de Universidad. Secundaria y Posgrado.
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
