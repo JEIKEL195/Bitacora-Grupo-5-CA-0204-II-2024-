@@ -57,6 +57,28 @@ Por otro lado, veamos con qué tipo de datos contamos.
 str(data_credit)
 ```
 
+Antes de hacer un pequeño conteo de la cantidad de missing value, vamos a realizar un pequeño resumen de la base de datos.
+
+```{r}
+library(skimr)
+
+# Resumen del dataset.
+summary(data_credit)
+
+# Generamos un cuadro resumen, con la información anterior.
+skim(data_credit)
+```
+
+Apesar de qué el cuadro resumen anterior ya nos indica que las variables no tienen missing value, nos parece pertinente verificarlo de manera aislada, para ello.
+
+```{r}
+#Verificamos la cantidad de datos nulos que hay nuestro dataset
+sum(is.na(data_credit))
+
+#Verificamos la cantidad de datos nulos que hay en cada columna
+sapply(data_credit, function(x) sum(is.na(x)))
+```
+
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura 
