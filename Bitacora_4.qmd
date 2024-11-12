@@ -934,8 +934,9 @@ t_test_result <- t.test(AGE ~ default.payment.next.month, data = data_credit)
 print(t_test_result)
 ```
 De la prueba anterior podemos inferir que la edad no influye en el incumplimiento de los pagos, obtuvimos un p-value de 0.915 lo que es mucho mayor que nuestro nivel de significancia del 5%, así no hay evidencia estadística suficiente para rechazar la hipótesis nula, entonces no rechazamos la hipótesis nula. Concluímos que la edad no influye dado los datos en la probabilidad de caer en impago. 
- 
 
+Con esto concluímos el análisis estadístico de la base de datos. 
+ 
 ## 1. Parte de Planificación
 
 ## 2. Parte de Escritura
