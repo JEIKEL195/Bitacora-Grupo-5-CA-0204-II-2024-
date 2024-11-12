@@ -916,7 +916,15 @@ Con esto terminamos la sección de las variables categóricas, procedemos entonc
 
 #### Variables Numéricas con la Variable de Riesgo de Pago
 
+Vamos a realizar una prueba de hipótesis entonces para las variables de LIMIT_BAL e Impago, para ello vamos a utilizar una prueba t no pareada, ya que estamos comparando poblaciones diferentes. 
 
+```{r}
+t_test_result <- t.test(LIMIT_BAL ~ default.payment.next.month, data = data_credit)
+
+print(t_test_result)
+
+```
+Este resultado no debería ser una sorpresa, pues gráficamente habíamos visto que a mayores límites de crédito, las personas tendían a incumplir menos que las personas que si lo hacían. Analicemos, el p-value tomó un valor demasiado pequeño en comparación con 0.05, por lo que hay evidencia estadística suficiente para rechazar la hipótesis nula. En conclusión, el límite de crédito tiene relación con la probabilidad de impago, en general, las personas con mayor límite de crédito tienen una menor porbabilidad de caer en impago. 
  
 
 ## 1. Parte de Planificación
