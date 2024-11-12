@@ -925,6 +925,15 @@ print(t_test_result)
 
 ```
 Este resultado no debería ser una sorpresa, pues gráficamente habíamos visto que a mayores límites de crédito, las personas tendían a incumplir menos que las personas que si lo hacían. Analicemos, el p-value tomó un valor demasiado pequeño en comparación con 0.05, por lo que hay evidencia estadística suficiente para rechazar la hipótesis nula. En conclusión, el límite de crédito tiene relación con la probabilidad de impago, en general, las personas con mayor límite de crédito tienen una menor porbabilidad de caer en impago. 
+
+Haremos un análisis similar, pero esta vez cambiando el límite de crédito por la variable de edad. 
+
+```{r}
+t_test_result <- t.test(AGE ~ default.payment.next.month, data = data_credit)
+
+print(t_test_result)
+```
+De la prueba anterior podemos inferir que la edad no influye en el incumplimiento de los pagos, obtuvimos un p-value de 0.915 lo que es mucho mayor que nuestro nivel de significancia del 5%, así no hay evidencia estadística suficiente para rechazar la hipótesis nula, entonces no rechazamos la hipótesis nula. Concluímos que la edad no influye dado los datos en la probabilidad de caer en impago. 
  
 
 ## 1. Parte de Planificación
