@@ -843,8 +843,80 @@ Posteriormente, utilizaremos los índices de correlación obtenidos en la matriz
 
 #### Tablas de Contigencias y p-values
 
+Para esta sección vamos hacer tablas de contigencias, esto con el objetivo de buscar las relaciones que tienen las variables categóricas. 
 
-#### Índices de Correlación
+```{r}
+library(gmodels)
+
+# Realizamos la tabla de contingencia
+CrossTable(data_credit$EDUCATION, data_credit$default.payment.next.month, prop.chisq = FALSE)
+```
+
+De la tabla anterior podemos ver entonces las relaciones que hay entre las variables, por ejemplo, podemos ver que de las personas de educación, que pertencen al nivel de posgrado, un 71% de esas personas no imcuplieron su pago, es decir pagaron a tiempo. Y un 29% de esas personas si cayeron en impago. 
+
+Haremos la prueba Exacta de Fisher para realizar una Prueba de Hipótesis donde nuestra hipótesis nula es. $H_0$, no existe correlación entre las variables, y donde nuestra hipótesis alternativa, $H_1$, es que hay relación entre las variables. 
+
+```{r}
+tabla_education <- table(data_credit$EDUCATION, data_credit$default.payment.next.month)
+
+# Realizar la prueba exacta de Fisher con simulación de Monte Carlo
+set.seed(2024)  # Fijamos la semilla
+fisher_test_education <- fisher.test(tabla_education, simulate.p.value = TRUE, B = 10000)
+
+print(fisher_test_education)
+
+```
+Gracias al test anterior podemos inferir entonces que existe una dependencia de las variables. Rechazamos la hipótesis nula, hay evidencia estadística suficiente para decir que las variables tienen una relación. 
+
+Más explicado aún, el p-value que obtuvimos fue de 0.0001, lo que es mucho más pequeño que el 5% del nivel de significancia, por lo que entonces podemos rechazar la hipótesis nula. 
+
+Por otro lado, ahora vamos a comparar las variables de sexo y de impago, esto con el objetivo de observar si el sexo influye o tiene relación con la probabilidad de caer en impago. 
+
+```{r}
+library(gmodels)
+
+# Realizamos la tabla de contingencia
+CrossTable(data_credit$SEX, data_credit$default.payment.next.month, prop.chisq = FALSE)
+```
+Con la tabla vemos la distribución de las variables entre ellas. Aplicamos la prueba de Fisher con simulación al igual que en el caso anterior. 
+
+```{r}
+tabla_sex <- table(data_credit$SEX, data_credit$default.payment.next.month)
+
+# Realizar la prueba exacta de Fisher con simulación de Monte Carlo
+set.seed(2024)
+fisher_test_sex <- fisher.test(tabla_sex, simulate.p.value = TRUE, B = 10000)
+
+print(fisher_test_sex)
+```
+Gracias a la prueba anterior, obtenemos que el p-value es de 0.0001387, siendo bastante menor que el valor de significancia, el cual es de 5%, por lo que hay suficiente evidencia estadística para rechazar la hipótesis nula, así decimos entonces que existe una cierta dependencia entre estas variables. 
+
+Vamos a ver ahora como se comporta la variable MARRIAGE con el impago. Veamos primero su tabla de contingencia. 
+
+```{r}
+library(gmodels)
+
+# Realizamos la tabla de contingencia
+CrossTable(data_credit$MARRIAGE, data_credit$default.payment.next.month, prop.chisq = FALSE)
+```
+Hagamos la misma prueba de hipótesis para determinar la relación de las variables. 
+
+```{r}
+tabla_marriage <- table(data_credit$MARRIAGE, data_credit$default.payment.next.month)
+
+# Realizar la prueba exacta de Fisher con simulación de Monte Carlo
+set.seed(2024)
+fisher_test_marriage <- fisher.test(tabla_marriage, simulate.p.value = TRUE, B = 10000)
+
+print(fisher_test_marriage)
+```
+En este caso, el valor de significancia que hemos estado utilizando es del 5%, es decir, un 0,05, como el p-value nos dió un valor de 0.1634, el p-value es mayor que el nivel de significancia, por lo que no hay evidencia estadística suficientes para rechazar la hipótesis nula, es decir, las diferencias que hemos encontrado en las categorías se pueden deber al azar. En conclusión, no podemos afirmar que el estado civil afecte al riesdo de impago. 
+
+Con esto terminamos la sección de las variables categóricas, procedemos entonces con las variables numéricas y la variable de impago. 
+
+#### Variables Numéricas con la Variable de Riesgo de Pago
+
+
  
 
 ## 1. Parte de Planificación
