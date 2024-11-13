@@ -6,7 +6,7 @@ lang: es
 
 book:
   title: "Bitácoras Grupo #5, CA-204 (II-2024)"
-  subtitle: "Análisis de las variables cualitativas en relación al riesgo crediticio alrededor del mundo"
+  subtitle: "Análisis de las variables cualitativas en relación al riesgo crediticio"
   author: "Jeikel Navarro Solis, Gabriel Valverde, Erick Venegas"
   date: today
   site-url: google.com # Vacío por el momento
@@ -16,7 +16,7 @@ book:
     - "index.qmd"
     - "bitacora_1.qmd"
     - "bitacora_2.qmd"
-    - "bitacora_3.qmd"
+    - "bitacora_4.qmd"
     - "anexo.qmd"
     - "apendice.qmd"
     
