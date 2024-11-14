@@ -1205,6 +1205,8 @@ Según la documentación de R, esta es una prueba para variables categóricas do
 
 En nuestro caso no hace falta utilizar simulaciones cuando hacemos la prueba para las variables de sexo y riesgo de pago, ya que hacen una tabla 2x2, entonces el cálculo da exacto, pues es para el tipo de tablas para las que fue creado el método. Sin embargo, cuando utilizamos la prueba en las tablas de Educación con Impago y de Estado Civil con Impago, hay que utilizar valores simulados, pues estas tablas no cumplen ser 2x2. 
 
+Para el caso de 2x2, el cálculo es exacto y para calcular el p-value se utiliza una distribución hipergeométrica, utilizando las observaciones de la tabla de contigencias. 
+
 ### Conclusion
 
 ### Introducción
