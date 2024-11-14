@@ -1222,7 +1222,15 @@ Primero el estadístico a utilizar, el cual es:
 $$
 t = \frac{\overline{X}_1 - \overline{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
 $$
+Este estadístico sigue una distribución t, es decir una distribución sin parámetros, lo cual es de mucha utilidad. 
 
+Posteriormente, para calcular el p-value se utiliza la siguiente fórmula:
+
+$$
+p\text{-valor} = 2 \times P(T > |t|)
+$$
+
+Así entonces hemos explicado las dos pruebas de hipótesis utilizadas en nuestro trabajo. Cabe recalcar que las funciones de R aplican otros procedimientos para ajustar los valores.
 
 
 ### Conclusion
