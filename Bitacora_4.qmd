@@ -1305,6 +1305,10 @@ El análisis buscó identificar patrones entre los clientes que caen en impago y
 
 Por otro lado, los hallazgos coinciden en gran medida con nuestras expectativas teóricas, dado que variables como el nivel educativo, el sexo y el límite de crédito sí influyen en la probabilidad de impago. Una limitación de este estudio es que no contamos con una metodología robusta de cálculo de probabilidades de impago o de evaluación del riesgo de crédito, ya que estas metodologías son conservadas de forma confidencial por las empresas y varían entre instituciones. No obstante, logramos responder a nuestra pregunta de investigación identificando correlaciones relevantes y descartando variables con menor impacto a través de pruebas de hipótesis.
 
+Para futuros estudios, recomendamos incluir variables adicionales, tales como el motivo del préstamo, los años del crédito, el salario actual del solicitante y su historial crediticio previo, ya que estos factores podrían enriquecer los resultados y permitir una caracterización más precisa de los perfiles de riesgo.
+
+Este trabajo resulta útil para instituciones financieras y casas de préstamo en sus etapas iniciales de operación, ya que pueden apoyarse en estos resultados para desarrollar un perfil de cliente con mayor probabilidad de pago. Al observar que variables como el sexo, el nivel educativo y el límite de crédito influyen en el riesgo de impago, estas entidades pueden empezar a construir criterios de préstamo más sólidos y orientados a la disminución del riesgo.
+
 #### Agradecimientos 
 
 
