@@ -1026,10 +1026,10 @@ data <- data.frame(
                  "Resumen en una Oración", 
                  "Problemas o Posibles Desafíos", 
                  "Resumen en un párrafo"),
-  Contenido = c("Relación entre la Cantidad de Crédito Otorgado con el Nivel educativo ", 
-                "Un mayor nivel educativo permite ó requiere créditos de mayor valor.", 
-                "No tener certeza de si el motivo del crédito es porque la persona pueda permitírselo ó lo necesite", 
-                "Al utilizar el Histograma de edades por nivel educativo, con el monto de crédito aprovado, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.")
+  Contenido = c("Relación entre la Frecuencia de Crédito o con el Nivel educativo.", 
+                "Un mayor nivel educativo permite ó requiere una mayor cantidad de créditos.", 
+                "No tener certeza de si el motivo del(los) crédito(s) es porque la persona pueda permitírselo ó lo necesite.", 
+                "Al utilizar el histograma de edades por nivel educativo con la frecuencia de créditos, podemos observar que las personas con posgrados tienen más créditos que las personas que no lo tienen. Esto puede ser dado que las personas con posgrado necesiten un crédito para pagar sus estudios de posgrado (los cuales generalmente son costosos) ó que puedan permitirse un crédito dados sus ingresos.")
 )
 
 
@@ -1049,6 +1049,41 @@ if (knitr::is_html_output()) {
 }
 ```
 
+```{r}
+
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Relación entre el nivel educativo y los límites de crédito.", 
+                "Mientras más alto sea el nivel educativo, más alto tienden a ser los límites de créditos aprobados.", 
+                "No tener certeza de si el motivo del(los) crédito(s) es porque la persona pueda permitírselo ó lo necesite.", 
+                "Al utilizar el gráfico de densidad por nivel educativo con el límite de crédito, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.")
+)
+
+
+if (knitr::is_html_output()) {
+  # Si es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
+```
 ## Parte de Escritura
 
 ### Escribir, escribir, escribir
