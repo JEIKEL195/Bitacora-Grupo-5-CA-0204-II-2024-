@@ -37,8 +37,13 @@ format:
     toc: true           # Activa la tabla de contenido para PDF
     number-sections: true  # Numera las secciones en PDF
     pdf-engine: xelatex     # Usa xelatex para la compilación
-    include-in-header: |
-      \usepackage[table,xcdraw]{xcolor}  # Soporte para colores en tablas
+    header-includes:
+      - \usepackage{amsmath} 
+      - \usepackage{xunicode}
+      - \usepackage{unicode-math}
+      - \setmathfont{Latin Modern Math}
+      - \usepackage{colortbl,xcolor}
+      - \usepackage[table,xcdraw]{xcolor}
     
 execute:
   freeze: auto
