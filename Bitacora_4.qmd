@@ -1212,6 +1212,10 @@ p = \frac{(a + b)! \times (c + d)! \times (a + c)! \times (b + d)!}{n!a!b!c!d!}
 $$
 La fórmula anterior es la manera en cómo se calcula para una tabla 2x2. Para tablas que no son de esta forma no tenemos la fórmula de manera explícita, pues es una función de R, donde indica que se simula varias veces la tabla, a saber un valor $b$, donde entre más grande sea este $b$ mejor aproximación del p valor vamos a tener. 
 
+#### Prueba T
+
+La siguiente prueba tomamos con referencia el método del libro de Probabilidad y Estadística de [@morris1988]. Esta prueba la utilizamos cuando queremos comparar la media de dos poblaciones, digamos que se utiliza cuando queremos ver la relación entre variables numéricas con variables categóricas, ya que dividimos entre las poblaciones, que viene siendo las poblaciones y las medias salen de la variable numérica. 
+
 
 
 
