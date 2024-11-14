@@ -1369,6 +1369,35 @@ data_credit %>%
 
 De lo anterior se entiende que al momento de estimar la cantidad de personas que llegan a adquirir un crédito, en su gran mayoria lo hacen por un monto relativamente pequeño, en comparacion con la cantidad de personas que adequieren un credito de mayor valor. Lo cual puede deberse a las necesidades de las personas ó al propio riesgo que viene intrinseco al adquirir un crédito de mayor valor.
 
+**Relación entre la Frecuencia de impago con el nivel educativo.**
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
+  geom_bar(position = "dodge") +
+  labs(title = "Frecuencia de Impago por Nivel Educativo", x = "Nivel Educativo", y = "Frecuencia") +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme_minimal()
+```
+
+Recordemos que la etiqueta 2 equivale a las personas que están en grado de haber terminado o concluido la universidad. Con este gráfico podemos interpretar que las personas que terminaron la universidad tienen una alta proporción de haber caido en impago, esto se puede deber a créditos estudiantiles y la dificultad de conseguir empleo, sin embargo esto es una conjetura y no vamos analizar esta consecuencia, ya que solo nos importa ver qué están diciendo nuestros datos.
+
+Al utilizar el histograma de edades por nivel educativo con la frecuencia de créditos, se puede observar que las personas con posgrados tienen una mayor frecuencia de caer en impago que las personas que no lo tienen. Esto puede ser dado que las personas con posgrado necesiten un crédito para pagar sus estudios de posgrado (los cuales generalmente son costosos) ó que puedan permitirse un crédito dados sus ingresos.
+
+
+**Relación entre el nivel educativo y los límites de crédito.**
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(EDUCATION), y = LIMIT_BAL, fill = as.factor(EDUCATION))) +
+  geom_boxplot() +
+  labs(title = "Distribución del Límite de Crédito por Nivel Educativo", x = "Nivel Educativo", y = "Límite de Crédito") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme_minimal()
+```
+
+Al utilizar el gráfico de boxplot por nivel educativo con el límite de crédito, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.
+
+Asimismo, observando las medias, se puede inferir que en promedio el límite de crédito otorgado a las personas que están en un nivel de posgrado es mayor que las personas que tiene solo universidad o secundaria. A su vez, la media de Universidad es mayor que la media de secundaria. Por la calidad de los datos de la base de datos, no podemos analizar con lujo de detalle los niveles 3,4 y 5. 
+
+
 
 #### Conclusiones 
 
