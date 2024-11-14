@@ -1282,6 +1282,8 @@ Para el análisis de los datos, se empleará el lenguaje de programación R, dad
 
 Posteriormente, se aplicará una matriz de correlación para identificar relaciones entre las variables numéricas. Para las variables categóricas, se utilizarán tablas de contingencia y, en caso de tablas mayores que 2x2, el método exacto de Fisher con simulación para obtener resultados precisos. Además, para explorar la dependencia entre variables numéricas y categóricas, se llevarán a cabo pruebas de hipótesis como la prueba t, evaluando si existen diferencias significativas en las medias de los distintos niveles de las variables categóricas.
 
+Finalmente, se realizará un análisis bibliográfico para contrastar los hallazgos empíricos con la teoría existente sobre el tema. Este análisis nos permitirá evaluar si nuestros resultados se alinean con lo documentado previamente en la literatura y aportar un criterio fundamentado sobre las relaciones encontradas en la base de datos.
+
 
 #### Resultados
 
