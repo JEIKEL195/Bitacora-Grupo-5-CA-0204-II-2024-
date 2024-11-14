@@ -1210,6 +1210,11 @@ Para el caso de 2x2, el cálculo es exacto y para calcular el p-value se utiliza
 $$
 p = \frac{(a + b)! \times (c + d)! \times (a + c)! \times (b + d)!}{n!a!b!c!d!}
 $$
+La fórmula anterior es la manera en cómo se calcula para una tabla 2x2. Para tablas que no son de esta forma no tenemos la fórmula de manera explícita, pues es una función de R, donde indica que se simula varias veces la tabla, a saber un valor $b$, donde entre más grande sea este $b$ mejor aproximación del p valor vamos a tener. 
+
+
+
+
 ### Conclusion
 
 ### Introducción
