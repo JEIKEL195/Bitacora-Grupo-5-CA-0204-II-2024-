@@ -1121,7 +1121,77 @@ if (knitr::is_html_output()) {
 }
 ```
 
+```{r}
 
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Relación entre el nivel educativo y los límites de crédito.", 
+                "Mientras más alto sea el nivel educativo, más alto tienden a ser los límites de créditos aprobados.", 
+                "No tener certeza de si el motivo del(los) crédito(s) es porque la persona pueda permitírselo ó lo necesite.", 
+                "Al utilizar el gráfico de densidad por nivel educativo con el límite de crédito, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.")
+)
+
+
+if (knitr::is_html_output()) {
+  # Si es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
+```
+
+```{r}
+
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Relación entre el sexo y la variable de impago.", 
+                "Las mujeres tienen más frecuencia de impago que los hombres.", 
+                "Esto no se puede generalizar a las demás bases de datos ni países del resto del mundo", 
+                "Al analizar la frecuecia de impago por sexo, podemos ver que la cantidad de mujeres en estado de impago supera a la cantidad de los hombres en ese mismo estado. Si bien no es una buena medida para todo el mundo, podemos ver que en el país de estudio, las mujeres pueden tener un peor historial crediticio que los hombres.")
+)
+
+
+if (knitr::is_html_output()) {
+  # Si es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
+```
 
 
 
