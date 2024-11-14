@@ -938,6 +938,33 @@ De la prueba anterior podemos inferir que la edad no influye en el incumplimient
 Con esto concluímos el análisis estadístico de la base de datos. 
  
 ## Parte de Planificación
+
+### Fichas literarias nuevas
+
+**Título: Metodología para un scoring de clientes sin referencias crediticias. **
+
+* Autor: Osvaldo Espin García, Carlos Rodríguez
+
+* Año: 2013. 
+
+* Nombre del tema: Perfil de clientes crediticios.
+
+* Cronología: 2011-2013.
+
+* Metodología: Recolección y comparación de datos. 
+
+* Temática: Estudios económicos. 
+
+* Teórica: Valoración de riesgos. 
+
+* Resumen en una oración: El enfoque principal consiste en asignar un puntaje a cada solicitante, indicando la probabilidad de impago. 
+
+* Argumento central: Desarrollar un modelo predictivo que permita anticipar el comportamiento de impago de los clientes.
+
+* Problema con el argumento o el tema: La mayor problemática que existe es que al basarse en la información personal de las personas, la existencia de personas con poca información en la base de datos o que acaban de iniciar en el sistema de manera que no tengan un historial de crédito, puede generar un sesgo en la muestra, lo cual llevar a que existan resultados menos precisos, lo cual termina por afectar el modelo.
+
+* Resumen en un párrafo: Esta investigación gira en torno a desarrollar un modelo predictivo que permita de cierta manera lograr anticipar el comportamiento que pueda existir de impago en función de la información personal del cliente. De manera que las instituciones financieras como lo son los bancos o cooperativas puedan asignar cierto puntaje a cada solicitante donde se indique la probabilidad de impago. 
+
 ### Construcción de las Fichas de Resultados
 
 ```{r}
