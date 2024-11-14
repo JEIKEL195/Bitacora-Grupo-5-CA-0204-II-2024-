@@ -1280,6 +1280,8 @@ Mediante esta metodología, buscamos analizar la correlación entre estas variab
 
 Para el análisis de los datos, se empleará el lenguaje de programación R, dada su facilidad de uso y compatibilidad con herramientas de análisis estadístico avanzadas. El procedimiento comienza con una limpieza de la base de datos, un paso esencial ya que las bases de datos suelen contener información que no aporta al análisis estadístico; por lo tanto, es necesario asegurar que los datos estén en una forma óptima para el análisis. Una vez limpia, se procede a un análisis gráfico, generando representaciones visuales de las variables tanto de manera individual como conjunta, con el fin de observar cómo se relacionan gráficamente y formular algunas hipótesis preliminares.
 
+Posteriormente, se aplicará una matriz de correlación para identificar relaciones entre las variables numéricas. Para las variables categóricas, se utilizarán tablas de contingencia y, en caso de tablas mayores que 2x2, el método exacto de Fisher con simulación para obtener resultados precisos. Además, para explorar la dependencia entre variables numéricas y categóricas, se llevarán a cabo pruebas de hipótesis como la prueba t, evaluando si existen diferencias significativas en las medias de los distintos niveles de las variables categóricas.
+
 
 #### Resultados
 
