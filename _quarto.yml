@@ -18,7 +18,7 @@ book:
     - "bitacora_2.qmd"
     - "bitacora_4.qmd"
     - "anexo.qmd"
-    - "apendice.qmd"
+    #- "apendice.qmd"
     
 
 bibliography: references.bib

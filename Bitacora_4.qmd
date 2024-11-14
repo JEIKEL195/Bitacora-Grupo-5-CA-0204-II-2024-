@@ -1317,7 +1317,7 @@ Finalmente, se realizará un análisis bibliográfico para contrastar los hallaz
 
 **Correlación de las variables**
 
-```{r fig1, fig.cap="Figura 1: Matriz de Correlación", fig.align='center'}
+```{r fig2, fig.cap="Figura 1: Matriz de Correlación", fig.align='center'}
 library(dplyr)
 library(ggplot2)
 library(reshape2)

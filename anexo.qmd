@@ -65,4 +65,9 @@
 ![Summary Bitacora 2](imagenes/summary_2.jpeg)
 
 
+## Referencias bibliográfica
+
+::: {#refs}
+:::
+
 
