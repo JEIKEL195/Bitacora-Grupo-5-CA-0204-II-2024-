@@ -956,7 +956,7 @@ data <- data.frame(
   Contenido = c("Correlación de las Variables", 
                 "Encontramos que algunas variables presentan una correlación alta entre sí pero otras no.", 
                 "Podría ser que la relación entre las variables en realidad no es lineal.", 
-                "Al utilizar el índice de correlación de Pearson, podemos observar que exoste una correlación entre las situaciones de reembolso y entre los estados de cuenta. Además, la edad podría tener una relación con el monto del préstamo.")
+                "Al utilizar el índice de correlación de Pearson, podemos observar que existe una correlación entre las situaciones de reembolso y entre los estados de cuenta. Además, la edad podría tener una relación con el monto del préstamo.")
 )
 
 
@@ -1322,6 +1322,53 @@ Finalmente, se realizará un análisis bibliográfico para contrastar los hallaz
 
 
 #### Resultados
+
+**Correlación de las variables**
+
+```{r fig1, fig.cap="Figura 1: Matriz de Correlación", fig.align='center'}
+library(dplyr)
+library(ggplot2)
+library(reshape2)
+
+
+# Crear la matriz de correlación
+matriz_correlacion <- cor(data_credit_numerico, use = "complete.obs")
+
+# Creamos la variable para ver la matriz de correlación como un gráfico de calor
+base_matriz <- melt(matriz_correlacion)
+
+# Hacemos el plot de la base 
+ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
+  theme_minimal() + geom_text(aes(label = round(value, 2)), color = "black", size = 3) +
+  labs(title = "Matriz de Correlación de Variables Numéricas",
+       x = "", y = "") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Al utilizar el índice de correlación de Pearson, se puede observar la correlacion que existe entre las distintas variables, más en especifico entre las situaciones de reembolso y entre los estados de cuenta. Además, se observa a simple vista como la edad podría llegar a tener algún tipo de relación con el monto del préstamo.
+
+**Relación entre la Densidad y la Cantidad de Crédito Otorgado**
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL)) + 
+  geom_histogram(aes(y = after_stat(density)), binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) + 
+  geom_density(color = "red", size = 1) + # Densidad en línea roja
+  geom_vline(aes(xintercept = mean(LIMIT_BAL)), linetype = "dashed", color = "black", size = 1) + # Línea punteada de la media
+  labs(title = "Histograma y Densidad de la Cantidad de Crédito Otorgado",
+       x = "Crédito Otorgado",
+       y = "Densidad") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme_minimal()
+
+```
+
+De lo anterior se entiende que al momento de estimar la cantidad de personas que llegan a adquirir un crédito, en su gran mayoria lo hacen por un monto relativamente pequeño, en comparacion con la cantidad de personas que adequieren un credito de mayor valor. Lo cual puede deberse a las necesidades de las personas ó al propio riesgo que viene intrinseco al adquirir un crédito de mayor valor.
+
 
 #### Conclusiones 
 
