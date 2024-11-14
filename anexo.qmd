@@ -2,7 +2,7 @@
 
 ## Anexo 1 (CHANGELOG Bitacora 1)
 
-### Chore
+**Chore Bitacora 1**
 
 - Agrega archivo configuracion pre-commit
 - Agrega configuracion repo-actions
@@ -11,7 +11,7 @@
 - Modifica la carpeta docs
 - Modifica la carpeta docs
 
-### Feat
+**Feat Bitacora 1**
 
 - Agrega documentos para quarto
 - Agrega carpeta docs
@@ -37,7 +37,7 @@
 - Se agrega a bitácora 1, la UVE de Gowin
 - Agrega imagen de la V de Gowin
 
-### Fix
+**Fix Bitacora 1**
 
 - Arregla una funcionalidad de .gitignore
 - Corrige la numeración de la bitacora 1
@@ -47,22 +47,52 @@
 
 ## Anexo 2 (Participacion Bitacora 1)
 
+**Summary Bitacora 1**
+
 ![Summary Bitacora 1](imagenes/summary_1.jpeg)
      
 ## Anexo 3 (CHANGELOG Bitacora 2)
 
-
+**Chore Bitacora 2**
 
 ![Chore Bitacora 2](imagenes/chore_2.jpeg)
 
+**Feat Bitacora 2**
+
 ![Feat Bitacora 2](imagenes/feat_2.jpeg)
+
+**Fix Bitacora 2**
 
 ![Fix Bitacora 2](imagenes/fix_2.jpeg)
 
 
+
 ## Anexo 4 (Participacion Bitacora 2)
 
+**Summary Bitacora 2**
+
 ![Summary Bitacora 2](imagenes/summary_2.jpeg)
+
+## Anexo 5 (CHANGELOG Bitacora 4)
+
+**Chore Bitacora 4**
+
+![Chore Bitacora 4](imagenes/chore_4.jpeg)
+
+**Feat Bitacora 4**
+
+![Feat Bitacora 4](imagenes/feat_4.jpeg)
+
+**Fix Bitacora 4**
+
+![Fix Bitacora 4](imagenes/fix_4.jpeg)
+
+
+## Anexo 6 (Participacion Bitacora 4)
+
+**Summary Bitacora 4**
+
+![Summary Bitacora 4](imagenes/summary_4.jpeg)
 
 
 ## Referencias bibliográfica

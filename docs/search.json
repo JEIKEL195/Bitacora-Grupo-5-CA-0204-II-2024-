@@ -174,7 +174,7 @@
     "href": "anexo.html",
     "title": "4  Anexo",
     "section": "",
-    "text": "4.1 Anexo 1 (CHANGELOG Bitacora 1)",
+    "text": "4.1 Anexo 1 (CHANGELOG Bitacora 1)\nChore Bitacora 1\nFeat Bitacora 1\nFix Bitacora 1",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
     ]
@@ -184,7 +184,7 @@
     "href": "anexo.html#anexo-1-changelog-bitacora-1",
     "title": "4  Anexo",
     "section": "",
-    "text": "4.1.1 Chore\n\nAgrega archivo configuracion pre-commit\nAgrega configuracion repo-actions\nAgrega cambios en docs/\nModifica la carpeta docs\nModifica la carpeta docs\nModifica la carpeta docs\n\n\n\n4.1.2 Feat\n\nAgrega documentos para quarto\nAgrega carpeta docs\nAgrego la base de datos en formato csv\nAgrego la base de datos en formato txt a manera de respaldo del archivo en formato csv. Cualquier cambio realizado al archivo original sera realizado en este tambien.\nAgrega documentos Bitacora_1\nAgrega comentario en Bitacora_1\nElimina la base de datos\nAgrega la base de datos\nAgrega la definición de la idea\nAgrega en bitácora 1 identificación de tensiones\nAgrega en bitácora 1, identificación de Tensiones\nAgrega en bitácora 1, Reformulación de la idea en modo pregunta\nAgrega en bitácora 1, argumentación de las preguntas\nAgrega en bitácora 1, argumentación a través de datos\nAgrega en Bitacora 1 avance de revisión bibliografica\nAgrega en bitácora 1, parte de escritura\nAgrega el archivo de references.bib\nAgrega las referencias bibliograficas\nAgrega en bitacora 1 principios y teorias\nAgrega en bitacora 1 busqueda bibliografica\nAgrega la introduccion\nSe agrega a bitácora 1, la UVE de Gowin\nAgrega imagen de la V de Gowin\n\n\n\n4.1.3 Fix\n\nArregla una funcionalidad de .gitignore\nCorrige la numeración de la bitacora 1\nArreglo de index\nRealiza correciones diversas en los documentos\nCorrige error ortografico",
+    "text": "Agrega archivo configuracion pre-commit\nAgrega configuracion repo-actions\nAgrega cambios en docs/\nModifica la carpeta docs\nModifica la carpeta docs\nModifica la carpeta docs\n\n\n\nAgrega documentos para quarto\nAgrega carpeta docs\nAgrego la base de datos en formato csv\nAgrego la base de datos en formato txt a manera de respaldo del archivo en formato csv. Cualquier cambio realizado al archivo original sera realizado en este tambien.\nAgrega documentos Bitacora_1\nAgrega comentario en Bitacora_1\nElimina la base de datos\nAgrega la base de datos\nAgrega la definición de la idea\nAgrega en bitácora 1 identificación de tensiones\nAgrega en bitácora 1, identificación de Tensiones\nAgrega en bitácora 1, Reformulación de la idea en modo pregunta\nAgrega en bitácora 1, argumentación de las preguntas\nAgrega en bitácora 1, argumentación a través de datos\nAgrega en Bitacora 1 avance de revisión bibliografica\nAgrega en bitácora 1, parte de escritura\nAgrega el archivo de references.bib\nAgrega las referencias bibliograficas\nAgrega en bitacora 1 principios y teorias\nAgrega en bitacora 1 busqueda bibliografica\nAgrega la introduccion\nSe agrega a bitácora 1, la UVE de Gowin\nAgrega imagen de la V de Gowin\n\n\n\nArregla una funcionalidad de .gitignore\nCorrige la numeración de la bitacora 1\nArreglo de index\nRealiza correciones diversas en los documentos\nCorrige error ortografico",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
     ]
@@ -194,7 +194,7 @@
     "href": "anexo.html#anexo-2-participacion-bitacora-1",
     "title": "4  Anexo",
     "section": "4.2 Anexo 2 (Participacion Bitacora 1)",
-    "text": "4.2 Anexo 2 (Participacion Bitacora 1)\n\n\n\nSummary Bitacora 1",
+    "text": "4.2 Anexo 2 (Participacion Bitacora 1)\nSummary Bitacora 1\n\n\n\nSummary Bitacora 1",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
     ]
@@ -204,7 +204,7 @@
     "href": "anexo.html#anexo-3-changelog-bitacora-2",
     "title": "4  Anexo",
     "section": "4.3 Anexo 3 (CHANGELOG Bitacora 2)",
-    "text": "4.3 Anexo 3 (CHANGELOG Bitacora 2)\n\n\n\nChore Bitacora 2\n\n\n\n\n\nFeat Bitacora 2\n\n\n\n\n\nFix Bitacora 2",
+    "text": "4.3 Anexo 3 (CHANGELOG Bitacora 2)\nChore Bitacora 2\n\n\n\nChore Bitacora 2\n\n\nFeat Bitacora 2\n\n\n\nFeat Bitacora 2\n\n\nFix Bitacora 2\n\n\n\nFix Bitacora 2",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
     ]
@@ -214,7 +214,27 @@
     "href": "anexo.html#anexo-4-participacion-bitacora-2",
     "title": "4  Anexo",
     "section": "4.4 Anexo 4 (Participacion Bitacora 2)",
-    "text": "4.4 Anexo 4 (Participacion Bitacora 2)\n\n\n\nSummary Bitacora 2",
+    "text": "4.4 Anexo 4 (Participacion Bitacora 2)\nSummary Bitacora 2\n\n\n\nSummary Bitacora 2",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
+    ]
+  },
+  {
+    "objectID": "anexo.html#anexo-5-changelog-bitacora-4",
+    "href": "anexo.html#anexo-5-changelog-bitacora-4",
+    "title": "4  Anexo",
+    "section": "4.5 Anexo 5 (CHANGELOG Bitacora 4)",
+    "text": "4.5 Anexo 5 (CHANGELOG Bitacora 4)\nChore Bitacora 4\n\n\n\nChore Bitacora 4\n\n\nFeat Bitacora 4\n\n\n\nFeat Bitacora 4\n\n\nFix Bitacora 4\n\n\n\nFix Bitacora 4",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
+    ]
+  },
+  {
+    "objectID": "anexo.html#anexo-6-participacion-bitacora-4",
+    "href": "anexo.html#anexo-6-participacion-bitacora-4",
+    "title": "4  Anexo",
+    "section": "4.6 Anexo 6 (Participacion Bitacora 4)",
+    "text": "4.6 Anexo 6 (Participacion Bitacora 4)\nSummary Bitacora 4\n\n\n\nSummary Bitacora 4",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
     ]
@@ -223,8 +243,8 @@
     "objectID": "anexo.html#referencias-bibliográfica",
     "href": "anexo.html#referencias-bibliográfica",
     "title": "4  Anexo",
-    "section": "4.5 Referencias bibliográfica",
-    "text": "4.5 Referencias bibliográfica\n\n\nChicu, Dorina. 2020. “La Valoración Del Riesgo Financiero.”\n2020. https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf.\n\n\nEdgar Apaza, César Condori, Samuel Cazorla. 2022. “La Correlación\nde Pearson o de Spearman En Caracteres Físicos y Textiles de La Fibra de\nAlpacas.” 2022. http://www.scielo.org.pe/pdf/rivep/v33n3/1609-9117-rivep-33-03-e22908.pdf.\n\n\nHadley Wickham, Garrett Grolemund. 2019. “R for Data Science (2nd\nEd.).” 2019. https://digitallibrary.tsu.ge/book/2019/september/books/R-for-Data-Science.pdf.\n\n\nMaria de los Ángeles Herrera, Juan Terán. 2024. “Conceptualización\nDel Riesgo de Los Mercados Financieros.” 2024. https://www.redalyc.org/pdf/900/90075920006.pdf.\n\n\nPalacios, Alberto. 2012. “Calificación de Riesgo: Definición e\nInfluencia En La Última Década.” 2012. https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1.\n\n\nPértega Díaz, S., and S. Pita Fernández. 2004. “Asociación de\nVariables Cualitativas: El Test Exacto de Fisher y El Test de\nMcNemar.” Cadernos de Atención Primaria 11: 304–8. https://www.agamfec.com/wp/wp-content/uploads/2015/07/14_Invest_N11_5.pdf.\n\n\nSolis, Maikol. 2024. “Guía Del Curso: Herramienta Para Ciencia de\nDatos.” 2024. https://maikolsolis.com/libros/hpcd/.\n\n\nWalpole, Ronald E., Raymond H. Myers, Sharon L. Myers, and Keying E. Ye.\n1999. Probabilidad y Estadística. Prentice Hall. https://books.google.co.cr/books/about/Probabilidad_y_estad%C3%ADstica.html?hl=es&id=kz1VAAAACAAJ&redir_esc=y.",
+    "section": "4.7 Referencias bibliográfica",
+    "text": "4.7 Referencias bibliográfica\n\n\nChicu, Dorina. 2020. “La Valoración Del Riesgo Financiero.”\n2020. https://openaccess.uoc.edu/bitstream/10609/150126/1/LaValoracionDelRiesgoFinanciero.pdf.\n\n\nEdgar Apaza, César Condori, Samuel Cazorla. 2022. “La Correlación\nde Pearson o de Spearman En Caracteres Físicos y Textiles de La Fibra de\nAlpacas.” 2022. http://www.scielo.org.pe/pdf/rivep/v33n3/1609-9117-rivep-33-03-e22908.pdf.\n\n\nHadley Wickham, Garrett Grolemund. 2019. “R for Data Science (2nd\nEd.).” 2019. https://digitallibrary.tsu.ge/book/2019/september/books/R-for-Data-Science.pdf.\n\n\nMaria de los Ángeles Herrera, Juan Terán. 2024. “Conceptualización\nDel Riesgo de Los Mercados Financieros.” 2024. https://www.redalyc.org/pdf/900/90075920006.pdf.\n\n\nPalacios, Alberto. 2012. “Calificación de Riesgo: Definición e\nInfluencia En La Última Década.” 2012. https://digibuo.uniovi.es/dspace/bitstream/handle/10651/4017/ACC-.pdf;jsessionid=723581A47435AFB6D2FEC05A70379F77?sequence=1.\n\n\nPértega Díaz, S., and S. Pita Fernández. 2004. “Asociación de\nVariables Cualitativas: El Test Exacto de Fisher y El Test de\nMcNemar.” Cadernos de Atención Primaria 11: 304–8. https://www.agamfec.com/wp/wp-content/uploads/2015/07/14_Invest_N11_5.pdf.\n\n\nSolis, Maikol. 2024. “Guía Del Curso: Herramienta Para Ciencia de\nDatos.” 2024. https://maikolsolis.com/libros/hpcd/.\n\n\nWalpole, Ronald E., Raymond H. Myers, Sharon L. Myers, and Keying E. Ye.\n1999. Probabilidad y Estadística. Prentice Hall. https://books.google.co.cr/books/about/Probabilidad_y_estad%C3%ADstica.html?hl=es&id=kz1VAAAACAAJ&redir_esc=y.",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Anexo</span>"
     ]
