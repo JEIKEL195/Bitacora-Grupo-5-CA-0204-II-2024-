@@ -938,6 +938,44 @@ De la prueba anterior podemos inferir que la edad no influye en el incumplimient
 Con esto concluímos el análisis estadístico de la base de datos. 
  
 ## Parte de Planificación
+### Construcción de las Fichas de Resultados
+
+```{r}
+
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Correlación de las Variables", 
+                "Encontramos que algunas variables presentan una correlación alta entre sí pero otras no.", 
+                "Podría ser que la relación entre las variables en realidad no es lineal.", 
+                "Al utilizar el índice de correlación de Pearson, podemos observar que exoste una correlación entre las situaciones de reembolso y entre los estados de cuenta. Además, la edad podría tener una relación con el monto del préstamo.")
+)
+
+
+if (knitr::is_html_output()) {
+  # Si es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
+```
+
 
 ## Parte de Escritura
 
