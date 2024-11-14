@@ -1205,7 +1205,7 @@ El problema que se va a tratar en el presente trabajo es de determinar la relaci
 
 Inicialmente mencionamos que la teoría respaldaba nuestra conjetura pues no había un análisis de datos que afirmara lo antes explicado. Después del cambio de base de datos y un nuevo análisis exploratorio y estadístico, podemos observar que realmente sí hay una relación como se planteaba en las Bitácoras 1 y 2. Si bien una variable no es determinante para las demás, si guardan una relación tal y como se pueden observar en las fichas de resultados.
 
-
+El estudio del análisis financiero es de suma importancia en la actualidad, ya que las transacciones de los flujos de dinero cada vez son mayores, es decir, vender deuda para obtener financiamiento en el corto plazo es una de las estrategias más aplicadas. Por ello tanto inversores como prestatarios, según [@palacios2012], “hacen uso de las calificaciones crediticias como un indicador de la probabilidad de recuperar su dinero. Adicionalmente, los prestatarios pueden beneficiarse de tener calificada su deuda, con el objetivo de colocarla con mayor facilidad y eliminar las dudas que haya relación a ellos.” Asimismo, ambas parten obtienen beneficio de que exista este rating en el mundo de la información financiera. Y desde el punto de vista del inversor, como menciona la autora [@chicu2020], “…a la hora de analizar una inversión, debemos valorar la rentabilidad esperada, así como la liquidez que perdemos y el riesgo que estamos dispuestos a asumir”. Por lo tanto, poseer la información de rating es de suma utilidad, pues ayuda a los inversores a realizar mejores proyecciones. 
 
 #### Prueba Exacta de Fisher para Datos de Conteo 
 
