@@ -1216,6 +1216,12 @@ La fórmula anterior es la manera en cómo se calcula para una tabla 2x2. Para t
 
 La siguiente prueba tomamos con referencia el método del libro de Probabilidad y Estadística de [@morris1988]. Esta prueba la utilizamos cuando queremos comparar la media de dos poblaciones, digamos que se utiliza cuando queremos ver la relación entre variables numéricas con variables categóricas, ya que dividimos entre las poblaciones, que viene siendo las poblaciones y las medias salen de la variable numérica. 
 
+De maneta teórica, el método para calcularlo es el siguiente:
+
+Primero el estadístico a utilizar, el cual es: 
+$$
+t = \frac{\overline{X}_1 - \overline{X}_2}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}
+$$
 
 
 
