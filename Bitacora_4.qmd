@@ -1299,6 +1299,12 @@ Finalmente, se realizará un análisis bibliográfico para contrastar los hallaz
 
 #### Conclusiones 
 
+Este trabajo tuvo como objetivo explorar la correlación entre diversas características de los perfiles de los clientes y su relación con la probabilidad de impago en el contexto de un banco de Taiwán. Para ello, se aplicaron técnicas estadísticas y funciones en R para abordar la pregunta de investigación: “¿Existe correlación entre las variables de Sexo, Edad, Estado Marital, Nivel Educativo y Límite de Crédito con la probabilidad de impago?”. La motivación detrás de esta pregunta radica en la importancia de identificar características que permitan a los bancos y entidades financieras perfilar a clientes con mayor probabilidad de caer en impago, dado que muchas de estas instituciones basan su negocio en el otorgamiento de créditos.
+
+El análisis buscó identificar patrones entre los clientes que caen en impago y determinar si tales patrones eran atribuibles al azar o si había una correlación estadísticamente significativa. Los resultados mostraron que, en el caso de las variables numéricas, solo la edad no presentaba relación con la probabilidad de impago, mientras que en las variables categóricas, el estado marital también resultó no estar relacionado. Esto indica que dichas variables no representan un factor significativo en el riesgo de crédito o probabilidad de impago.
+
+Por otro lado, los hallazgos coinciden en gran medida con nuestras expectativas teóricas, dado que variables como el nivel educativo, el sexo y el límite de crédito sí influyen en la probabilidad de impago. Una limitación de este estudio es que no contamos con una metodología robusta de cálculo de probabilidades de impago o de evaluación del riesgo de crédito, ya que estas metodologías son conservadas de forma confidencial por las empresas y varían entre instituciones. No obstante, logramos responder a nuestra pregunta de investigación identificando correlaciones relevantes y descartando variables con menor impacto a través de pruebas de hipótesis.
+
 #### Agradecimientos 
 
 
