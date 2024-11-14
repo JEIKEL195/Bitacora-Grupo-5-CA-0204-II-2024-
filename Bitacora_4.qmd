@@ -1084,6 +1084,48 @@ if (knitr::is_html_output()) {
     kable_styling(latex_options = c("striped", "hold_position"))
 }
 ```
+
+```{r}
+
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Relación de la variable de impago con los límites de crédito", 
+                "Un mejor historial crediticio, es decir, menor probabilidad de impago; permite un mayor límite de crédito.", 
+                "No necesariamente puede generalizarse a todas las bases de datos", 
+                "Al utilizar el histograma de límite de crédito por la variable de impago, pudimos observar que, mientras más alto sea el límite de crédito, entonces menos personas tienen el estado de cuenta ``impago''. Esto puede deberse a que las personas que tienen un mayor acceso a créditos de un monto alto tienden a tener un historial de crédito exitoso y por ello pueden optar por mejores opciones de financiamiento.")
+)
+
+
+if (knitr::is_html_output()) {
+  # Si es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
+```
+
+
+
+
+
+
 ## Parte de Escritura
 
 ### Escribir, escribir, escribir
