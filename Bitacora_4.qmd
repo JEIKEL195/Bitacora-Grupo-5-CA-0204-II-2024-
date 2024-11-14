@@ -1199,6 +1199,10 @@ if (knitr::is_html_output()) {
 ## Parte de Escritura
 
 ### Escribir, escribir, escribir
+#### Prueba Exacta de Fisher para Datos de Conteo 
+
+Según la documentación de R, esta es una prueba para variables categóricas donde hemos usado tablas de contingencias, de ahí nuestra escogencia de esta prueba. Si bien el método está pensando para que se realice a pruebas 2x2, donde la prueba chi-cuadrado falla, hemos decidio utilizar la de fisher para tablas más grandes, usando simulaciones. 
+
 
 ### Conclusion
 
