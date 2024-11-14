@@ -11,7 +11,7 @@ Empezamos el estudio de la base de datos, para ello lo primodiarla es cargarla.
 ```{r}
 # Cargamos nuestra nueva base de datos.
 library(readr)
-data_credit <- read_csv("C:/Users/Admin/Downloads/UCI_Credit_Card.csv")
+data_credit <- read_csv("UCI_Credit_Card.csv")
 
 # Visualizamos nuestro dataset.
 data_credit
