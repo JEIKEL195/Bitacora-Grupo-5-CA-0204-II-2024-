@@ -1134,42 +1134,6 @@ data <- data.frame(
                  "Resumen en una Oración", 
                  "Problemas o Posibles Desafíos", 
                  "Resumen en un párrafo"),
-  Contenido = c("Relación entre el nivel educativo y los límites de crédito.", 
-                "Mientras más alto sea el nivel educativo, más alto tienden a ser los límites de créditos aprobados.", 
-                "No tener certeza de si el motivo del(los) crédito(s) es porque la persona pueda permitírselo ó lo necesite.", 
-                "Al utilizar el gráfico de densidad por nivel educativo con el límite de crédito, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.")
-)
-
-
-if (knitr::is_html_output()) {
-  # Si es HTML
-  kable(data, col.names = c("Encabezado", "Contenido"), 
-        format = "html", 
-        escape = FALSE) %>%
-    kable_styling(full_width = FALSE) %>%
-    add_header_above(c("Hallazgo de Resultado 6" = 2), bold = TRUE)
-} else {
-  # Si es PDF
-  kable(data, col.names = c("Encabezado", "Contenido"), 
-        format = "latex", 
-        booktabs = TRUE) %>%
-    kable_styling(latex_options = c("striped", "hold_position"))
-}
-```
-
-```{r}
-
-if (!requireNamespace("kableExtra", quietly = TRUE)) {
-  install.packages("kableExtra")
-}
-library(kableExtra)
-
-
-data <- data.frame(
-  Encabezado = c("Nombre de Su hallazgo", 
-                 "Resumen en una Oración", 
-                 "Problemas o Posibles Desafíos", 
-                 "Resumen en un párrafo"),
   Contenido = c("Relación entre el sexo y la variable de impago.", 
                 "Las mujeres tienen más frecuencia de impago que los hombres.", 
                 "Esto no se puede generalizar a las demás bases de datos ni países del resto del mundo", 
@@ -1183,7 +1147,7 @@ if (knitr::is_html_output()) {
         format = "html", 
         escape = FALSE) %>%
     kable_styling(full_width = FALSE) %>%
-    add_header_above(c("Hallazgo de Resultado 7" = 2), bold = TRUE)
+    add_header_above(c("Hallazgo de Resultado 6" = 2), bold = TRUE)
 } else {
   # Si es PDF
   kable(data, col.names = c("Encabezado", "Contenido"), 
@@ -1372,14 +1336,29 @@ De lo anterior se entiende que al momento de estimar la cantidad de personas que
 **Relación entre la Frecuencia de impago con el nivel educativo.**
 
 ```{r}
-ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
-  geom_bar(position = "dodge") +
-  labs(title = "Frecuencia de Impago por Nivel Educativo", x = "Nivel Educativo", y = "Frecuencia") +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme_minimal()
-```
+library(ggplot2)
+library(dplyr)
 
-Recordemos que la etiqueta 2 equivale a las personas que están en grado de haber terminado o concluido la universidad. Con este gráfico podemos interpretar que las personas que terminaron la universidad tienen una alta proporción de haber caido en impago, esto se puede deber a créditos estudiantiles y la dificultad de conseguir empleo, sin embargo esto es una conjetura y no vamos analizar esta consecuencia, ya que solo nos importa ver qué están diciendo nuestros datos.
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL)) + 
+  geom_histogram(binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) +  
+  geom_vline(aes(xintercept = mean(LIMIT_BAL, na.rm = TRUE)), 
+             color = "red", 
+             linetype = "dashed", 
+             size = 1) +  
+  labs(title = "Histograma de los límites de crédito por nivel educativo.",
+       x = "Límite de Crédito",
+       y = "Frecuencia") + 
+  facet_wrap(~EDUCATION, labeller = labeller(EDUCATION = c(
+    "1" = "Posgrado", 
+    "2" = "Universidad", 
+    "3" = "Secundaria", 
+    "4" = "Otros", 
+    "5" = "Desconocido", 
+    "6" = "Desconocido"
+  ))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +theme_minimal()
+
+```
 
 Al utilizar el histograma de edades por nivel educativo con la frecuencia de créditos, se puede observar que las personas con posgrados tienen una mayor frecuencia de caer en impago que las personas que no lo tienen. Esto puede ser dado que las personas con posgrado necesiten un crédito para pagar sus estudios de posgrado (los cuales generalmente son costosos) ó que puedan permitirse un crédito dados sus ingresos.
 
@@ -1387,17 +1366,120 @@ Al utilizar el histograma de edades por nivel educativo con la frecuencia de cr�
 **Relación entre el nivel educativo y los límites de crédito.**
 
 ```{r}
-ggplot(data_credit, aes(x = as.factor(EDUCATION), y = LIMIT_BAL, fill = as.factor(EDUCATION))) +
-  geom_boxplot() +
-  labs(title = "Distribución del Límite de Crédito por Nivel Educativo", x = "Nivel Educativo", y = "Límite de Crédito") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+library(ggplot2)
+library(dplyr)
+library(ggridges)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL, y = as.factor(EDUCATION), fill = as.factor(EDUCATION), color = as.factor(EDUCATION))) +
+  geom_density_ridges(alpha = 0.5) +
+  labs(title = "Densidad de los límites de crédito por nivel educativo.",
+       x = "Límite de Crédito",
+       y = "Nivel Educativo") + 
+  scale_fill_manual(values = c("1" = "steelblue", "2" = "lightblue", "3" = "lightgreen", 
+                               "4" = "lightyellow", "5" = "lightcoral", "6" = "lightsalmon")) +  
+  scale_color_manual(values = c("1" = "blue", "2" = "darkblue", "3" = "darkgreen", 
+                                "4" = "darkorange", "5" = "darkred", "6" = "salmon")) +  
+  scale_y_discrete(labels = c(
+    "1" = "Posgrado", 
+    "2" = "Universidad", 
+    "3" = "Secundaria", 
+    "4" = "Otros", 
+    "5" = "Desconocido", 
+    "6" = "Desconocido"
+  )) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
-Al utilizar el gráfico de boxplot por nivel educativo con el límite de crédito, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.
+Al utilizar el gráfico de densidad por nivel educativo con el límite de crédito, podemos observar que las personas con un nivel de Posgrado tienen mayores niveles de crédito. Sin embargo, esto puede ser dado que las personas con mayores niveles educativos puedan permitirse los niveles de crédito dado su ingreso ó más bien que las personas necesiten ese crédito para pagar sus estudios de posgrado. Estudios que generalmente son muy costosos.
 
-Asimismo, observando las medias, se puede inferir que en promedio el límite de crédito otorgado a las personas que están en un nivel de posgrado es mayor que las personas que tiene solo universidad o secundaria. A su vez, la media de Universidad es mayor que la media de secundaria. Por la calidad de los datos de la base de datos, no podemos analizar con lujo de detalle los niveles 3,4 y 5. 
+Ademas, las densidades que m\'as llaman nuestra atención son las de secundaria, universidad y posgrado, esto por el hecho de que ellas son las que tienen la mayor concentración de datos.Además, veamos que las densidades tienen más o menos una distribución exponencial.
 
 
+**Relación de la variable de impago con los límites de crédito**
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL)) + 
+  geom_histogram(binwidth = 50000, fill = "steelblue", color = "black", alpha = 0.7) +  
+  geom_vline(aes(xintercept = mean(LIMIT_BAL, na.rm = TRUE)), 
+             color = "red", 
+             linetype = "dashed", 
+             size = 1) +  
+  labs(title = "Histograma de los límites de crédito facet por Impago",
+       x = "Límite de Crédito",
+       y = "Frecuencia") + 
+  facet_wrap(~default.payment.next.month, labeller = as_labeller(c("0" = "A tiempo", "1" = "Impago"))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme_minimal()
+
+```
+
+Agregamos dicho gráfico de densidades para las anteriores variables.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(ggridges)
+
+data_credit %>%
+  ggplot(aes(x = LIMIT_BAL, y = as.factor(default.payment.next.month), fill = as.factor(default.payment.next.month), color = as.factor(default.payment.next.month))) +
+  geom_density_ridges(alpha = 0.5) +  
+  labs(title = "Densidad de los límites de crédito por estado de impago.",
+       x = "Límite de Crédito",
+       y = "Estado de Impago") + 
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +  
+  scale_color_manual(values = c("0" = "blue", "1" = "darkred")) +  
+  scale_y_discrete(labels = c(
+    "0" = "A tiempo", 
+    "1" = "Impago"
+  )) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme_minimal()  
+
+```
+
+Ploteando los gráficos juntos, para una mejor visualización tenemos que:
+
+
+```{r}
+ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
+  geom_density(alpha = 0.6) +
+  labs(
+    x = "Monto del crédito (NT$)",
+    y = "Densidad",
+    title = "Distribución de Monto de Crédito por Impago",
+    fill = "Impago"
+  ) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+ labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") + theme_minimal()
+
+```
+
+Al utilizar el histograma de límite de crédito por la variable de impago, pudimos observar que, mientras más alto sea el límite de crédito, entonces menos personas tienen el estado de cuenta ``impago''. Esto puede deberse a que las personas que tienen un mayor acceso a créditos de un monto alto tienden a tener un historial de crédito exitoso y por ello pueden optar por mejores opciones de financiamiento.
+
+
+**Relación entre el sexo y la variable de impago.**
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+ggplot(data = data_credit, aes(x = as.factor(default.payment.next.month), fill = as.factor(SEX))) +
+  geom_bar(position = "fill", color = "black") +
+  labs(title = "Proporción de Hombres y Mujeres en Impago vs Pago a Tiempo", 
+       x = "Estado de Pago", y = "Proporción") +
+  scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +
+  scale_fill_manual(labels = c("1" = "Hombre", "2" = "Mujer"), values = c("skyblue", "lightcoral")) + 
+  theme_minimal() + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme(legend.title = element_blank()) 
+
+```
+
+Del gráfico anterior, podemos observar entonces que de las personas que cayeron en impago, la mayoría son mujeres, al menos más del 50%, sin embargo, veamos de manera aislada esto.
+
+De manera que al analizar la frecuecia de impago por sexo, podemos ver que la cantidad de mujeres en estado de impago supera a la cantidad de los hombres en ese mismo estado. Si bien no es una buena medida para todo el mundo, podemos ver que en el país de estudio, las mujeres pueden tener un peor historial crediticio que los hombres.
 
 #### Conclusiones 
 
