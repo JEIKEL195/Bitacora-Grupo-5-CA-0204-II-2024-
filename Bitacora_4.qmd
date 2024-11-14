@@ -1274,6 +1274,7 @@ Por lo cual, esta investigación se fundamenta en un marco teórico y empírico 
 
 
 #### Metodología 
+El presente trabajo es un estudio correlacional, cuyo objetivo es identificar las relaciones entre las variables seleccionadas en la base de datos de un banco de Taiwán correspondiente al año 2005, la cual contiene información sobre el riesgo crediticio de los clientes. En particular, el interés radica en determinar si existen relaciones significativas entre ciertas variables (edad, estado civil, nivel educativo y límite de crédito) y la probabilidad de caer en impago.
 
 #### Resultados
 
