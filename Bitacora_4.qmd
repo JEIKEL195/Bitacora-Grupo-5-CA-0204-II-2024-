@@ -1267,13 +1267,18 @@ Análisis de variables cualitativas en relación al riesgo crediticio
 
 
 Este estudio se enfoca en desarrollar un estudio en el cual se avale si variables como lo son la edad, el género, el estado marital y el nivel de educación, tienen algún peso o relevancia a la hora de medir el riesgo financiero de los prestatarios. De manera que lo que se busca es identificar patrones y con ello obtener una visión mas completa que no se limite únicamente a las características financieras de las personas, como lo es su nivel de ingresos, sino que también considera el contexto y características propias en las que se desenvuelve cada individuo.
+
 Por ello, es que este estudio comparar variables cuantitativas con variables cualitativas y tratar de ver la relación o correlación que pueda existir entre ellas, ya que al final todo ello se relaciona intrínsecamente con aspectos propios del prestatario, lo cual a su vez ayuda a generar una perspectiva mas robusta del riesgo que el mismo puede generar para alguna entidad financiera llamase banco u otra.
+
 Por lo cual, la presente investigación tiene como finalidad lograr determinar si variables cualitativas tienen una verdadera relevancia a la hora de estimar el riesgo de impago de las personas, lo cual ha su vez llega a ser pertinente en lo que es la carrera de ciencias actuariales, por lo que se pudieron usar herramientas que irán viendo a lo largo de los siguientes cursos, pero que llegan a ser muy útiles para el propósito de este trabajo.
+
 De manera que el objetivo principal de esta investigación es determinar si existe una correlación positiva entre algunas variables cualitativas y factores cuantitativos que se utilizan para determinar el riesgo de impago, esto a través del uso de una base de datos de un banco de Taiwán la cual brinda suficiente información para nuestro propósito.
+
 Por lo cual, esta investigación se fundamenta en un marco teórico y empírico con el que se busca lograr determinar a partir de varios métodos y pruebas la existencia o no de correlación entre nuestras variables. A su vez, el marco teórico que se maneja para esta investigación parece muy pertinente, esto debido a que los autores desean ir más allá de los modelos tradicionales y explorar factores adicionales al contexto económico de los prestatarios, lo cual da una mayor perspectiva que permite deslumbrar elementos de riesgo que podrían llegar a pasar desapercibidos en estudios un poco más convencionales. 
 
 
 #### Metodología 
+
 El presente trabajo es un estudio correlacional, cuyo objetivo es identificar las relaciones entre las variables seleccionadas en la base de datos de un banco de Taiwán correspondiente al año 2005, la cual contiene información sobre el riesgo crediticio de los clientes. En particular, el interés radica en determinar si existen relaciones significativas entre ciertas variables (edad, estado civil, nivel educativo y límite de crédito) y la probabilidad de caer en impago.
 
 Mediante esta metodología, buscamos analizar la correlación entre estas variables y la probabilidad de incumplimiento en el pago. La muestra utilizada es la base de datos mencionada, proveniente de un banco en Taiwán, que proporciona datos relevantes para este análisis de riesgo.
