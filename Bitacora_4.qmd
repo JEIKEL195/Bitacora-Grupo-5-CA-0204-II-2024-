@@ -977,6 +977,43 @@ if (knitr::is_html_output()) {
 ```
 
 
+```{r}
+
+if (!requireNamespace("kableExtra", quietly = TRUE)) {
+  install.packages("kableExtra")
+}
+library(kableExtra)
+
+
+data <- data.frame(
+  Encabezado = c("Nombre de Su hallazgo", 
+                 "Resumen en una Oración", 
+                 "Problemas o Posibles Desafíos", 
+                 "Resumen en un párrafo"),
+  Contenido = c("Relación entre la Densidad y la Cantidad de Crédito Otorgado", 
+                "Mientras más alta sea la cantidad de crédito otorgada, menor es la densidad que lo adquiere.", 
+                "Esto no siempre sería cierto para cantidades pequeñas ó no podría seguir la misma distribución en otra base de datos.", 
+                "Al estimar la cantidad de personas que adquieren un crédito, la mayor cantidad de personas adquieren créditos de pequeñas cantidades antes que uno grande. Esto puede ser dadas las necesidades de las personas ó el riesgo que puede obtenerse de adquirir un gran crédito.")
+)
+
+
+if (knitr::is_html_output()) {
+  # Si es HTML
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "html", 
+        escape = FALSE) %>%
+    kable_styling(full_width = FALSE) %>%
+    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+} else {
+  # Si es PDF
+  kable(data, col.names = c("Encabezado", "Contenido"), 
+        format = "latex", 
+        booktabs = TRUE) %>%
+    kable_styling(latex_options = c("striped", "hold_position"))
+}
+```
+
+
 ## Parte de Escritura
 
 ### Escribir, escribir, escribir
