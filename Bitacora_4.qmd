@@ -1147,7 +1147,7 @@ if (knitr::is_html_output()) {
         format = "html", 
         escape = FALSE) %>%
     kable_styling(full_width = FALSE) %>%
-    add_header_above(c("Hallazgo de Resultado 1" = 2), bold = TRUE)
+    add_header_above(c("Hallazgo de Resultado 6" = 2), bold = TRUE)
 } else {
   # Si es PDF
   kable(data, col.names = c("Encabezado", "Contenido"), 
