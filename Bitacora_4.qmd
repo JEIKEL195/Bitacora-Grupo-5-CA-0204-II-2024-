@@ -1199,9 +1199,10 @@ if (knitr::is_html_output()) {
 ## Parte de Escritura
 
 ### Escribir, escribir, escribir
+
 #### Prueba Exacta de Fisher para Datos de Conteo 
 
-Según la documentación de R, esta es una prueba para variables categóricas donde hemos usado tablas de contingencias, de ahí nuestra escogencia de esta prueba. Si bien el método está pensando para que se realice a pruebas 2x2, donde la prueba chi-cuadrado falla, hemos decidio utilizar la de fisher para tablas más grandes, usando simulaciones. 
+Según la documentación de R y las t\'ecnicas de pruebas de hip\'otesis vistas en el libro de [@pertega2004], esta es una prueba para variables categóricas donde hemos usado tablas de contingencias, de ahí nuestra escogencia de esta prueba. Si bien el método está pensando para que se realice a pruebas 2x2, donde la prueba chi-cuadrado falla, hemos decidio utilizar la de fisher para tablas más grandes, usando simulaciones. 
 
 En nuestro caso no hace falta utilizar simulaciones cuando hacemos la prueba para las variables de sexo y riesgo de pago, ya que hacen una tabla 2x2, entonces el cálculo da exacto, pues es para el tipo de tablas para las que fue creado el método. Sin embargo, cuando utilizamos la prueba en las tablas de Educación con Impago y de Estado Civil con Impago, hay que utilizar valores simulados, pues estas tablas no cumplen ser 2x2. 
 
@@ -1214,7 +1215,7 @@ La fórmula anterior es la manera en cómo se calcula para una tabla 2x2. Para t
 
 #### Prueba T
 
-La siguiente prueba tomamos con referencia el método del libro de Probabilidad y Estadística de [@morris1988]. Esta prueba la utilizamos cuando queremos comparar la media de dos poblaciones, digamos que se utiliza cuando queremos ver la relación entre variables numéricas con variables categóricas, ya que dividimos entre las poblaciones, que viene siendo las poblaciones y las medias salen de la variable numérica. 
+La siguiente prueba tomamos con referencia el método del libro de Probabilidad y Estadística de [@walpole1999]. Esta prueba la utilizamos cuando queremos comparar la media de dos poblaciones, digamos que se utiliza cuando queremos ver la relación entre variables numéricas con variables categóricas, ya que dividimos entre las poblaciones, que viene siendo las poblaciones y las medias salen de la variable numérica. 
 
 De maneta teórica, el método para calcularlo es el siguiente:
 
