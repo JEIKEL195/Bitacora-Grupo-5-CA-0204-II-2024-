@@ -1207,6 +1207,9 @@ En nuestro caso no hace falta utilizar simulaciones cuando hacemos la prueba par
 
 Para el caso de 2x2, el cálculo es exacto y para calcular el p-value se utiliza una distribución hipergeométrica, utilizando las observaciones de la tabla de contigencias. 
 
+$$
+p = \frac{(a + b)! \times (c + d)! \times (a + c)! \times (b + d)!}{n!a!b!c!d!}
+$$
 ### Conclusion
 
 ### Introducción
