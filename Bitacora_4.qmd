@@ -165,13 +165,13 @@ ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
   theme_minimal() +
   labs(title = "Matriz de Correlación de Variables Numéricas",
-       x = "", y = "") +
+       x = "", y = "") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 Agregamos la misma matriz, pero esta vez indicando los índices de correlación, para visualizar de manera gráfica y matemática la correlación existente.
 
-```{r}
+```{r fig1, fig.cap="Figura 1: Matriz de Correlación", fig.align='center'}
 library(dplyr)
 library(ggplot2)
 library(reshape2)
@@ -189,7 +189,7 @@ ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
   theme_minimal() + geom_text(aes(label = round(value, 2)), color = "black", size = 3) +
   labs(title = "Matriz de Correlación de Variables Numéricas",
-       x = "", y = "") +
+       x = "", y = "") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
@@ -211,7 +211,7 @@ data_credit %>%
   geom_vline(aes(xintercept = mean(LIMIT_BAL)), linetype = "dashed", color = "red", size = 1) + # Línea punteada de la media
   labs(title = "Histograma de la Cantidad de Crédito Otorgado",
        x = "Crédito Otorgado",
-       y = "Frecuencia") + 
+       y = "Frecuencia") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -229,7 +229,7 @@ data_credit %>%
   geom_vline(aes(xintercept = mean(LIMIT_BAL)), linetype = "dashed", color = "black", size = 1) + # Línea punteada de la media
   labs(title = "Histograma y Densidad de la Cantidad de Crédito Otorgado",
        x = "Crédito Otorgado",
-       y = "Densidad") + 
+       y = "Densidad") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -249,7 +249,7 @@ data_credit %>%
              size = 1) +
   labs(title = "Histograma de las edades por sexo.",
        x = "Edades",
-       y = "Frecuencia") + 
+       y = "Frecuencia") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   facet_wrap(~SEX, labeller = as_labeller(c("1" = "Hombre", "2" = "Mujer"))) + 
   theme_minimal()
 
@@ -272,7 +272,7 @@ data_credit %>%
   labs(title = "Histograma de las edades por sexo.",
        x = "Edades",
        y = "Frecuencia") + 
-  facet_wrap(~SEX, labeller = as_labeller(c("1" = "Hombre", "2" = "Mujer"))) + 
+  facet_wrap(~SEX, labeller = as_labeller(c("1" = "Hombre", "2" = "Mujer"))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -300,7 +300,7 @@ data_credit %>%
     "4" = "Otros", 
     "5" = "Desconocido", 
     "6" = "Desconocido"
-  ))) + theme_minimal()
+  ))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +theme_minimal()
 
 ```
 
@@ -322,7 +322,7 @@ data_credit %>%
   labs(title = "Histograma de las edades facet por Marriage",
        x = "Edades",
        y = "Frecuencia") + 
-  facet_wrap(~MARRIAGE, labeller = as_labeller(c("1" = "Casado", "2" = "Soltero", "3" = "Otros"))) + 
+  facet_wrap(~MARRIAGE, labeller = as_labeller(c("1" = "Casado", "2" = "Soltero", "3" = "Otros"))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -345,7 +345,7 @@ data_credit %>%
   labs(title = "Histograma de las edades facet por Impago",
        x = "Edades",
        y = "Frecuencia") + 
-  facet_wrap(~default.payment.next.month, labeller = as_labeller(c("0" = "A tiempo", "1" = "Impago"))) + 
+  facet_wrap(~default.payment.next.month, labeller = as_labeller(c("0" = "A tiempo", "1" = "Impago"))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -373,7 +373,7 @@ data_credit %>%
     "4" = "Otros", 
     "5" = "Desconocido", 
     "6" = "Desconocido"
-  ))) + theme_minimal()
+  ))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +theme_minimal()
 
 ```
 
@@ -401,7 +401,7 @@ data_credit %>%
     "4" = "Otros", 
     "5" = "Desconocido", 
     "6" = "Desconocido"
-  )) +  
+  )) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
@@ -421,7 +421,7 @@ ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX))) +
     title = "Distribución de montos de crédito por género",
     fill = "Género"
   ) +
-  scale_fill_manual(values = c("1" = "blue", "2" = "pink")) + 
+  scale_fill_manual(values = c("1" = "blue", "2" = "pink")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal() 
 ```
 Del gráfico anterior, podemos determinar que a menores montos las mujeres tienen más crédito.
@@ -442,7 +442,7 @@ data_credit %>%
   labs(title = "Histograma de los límites de crédito facet por estado civil",
        x = "Límite de Crédito",
        y = "Frecuencia") + 
-  facet_wrap(~MARRIAGE, labeller = as_labeller(c("1" = "Casado", "2" = "Soltero", "3" = "Otros"))) + 
+  facet_wrap(~MARRIAGE, labeller = as_labeller(c("1" = "Casado", "2" = "Soltero", "3" = "Otros"))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -466,7 +466,7 @@ data_credit %>%
     "1" = "Casado", 
     "2" = "Soltero", 
     "3" = "Otros"
-  )) +  
+  )) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()  
 
 ```
@@ -485,7 +485,7 @@ data_credit %>%
   labs(title = "Histograma de los límites de crédito facet por Impago",
        x = "Límite de Crédito",
        y = "Frecuencia") + 
-  facet_wrap(~default.payment.next.month, labeller = as_labeller(c("0" = "A tiempo", "1" = "Impago"))) + 
+  facet_wrap(~default.payment.next.month, labeller = as_labeller(c("0" = "A tiempo", "1" = "Impago"))) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -508,7 +508,7 @@ data_credit %>%
   scale_y_discrete(labels = c(
     "0" = "A tiempo", 
     "1" = "Impago"
-  )) +  
+  )) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()  
 
 ```
@@ -526,7 +526,7 @@ ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(default.payment.next.mon
     fill = "Impago"
   ) +
   scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
-  theme_minimal()
+ labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") + theme_minimal()
 
 ```
 
@@ -537,7 +537,7 @@ Utilizando una gráfica de violín, veamos la distribución para compararlas vis
 ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
   geom_violin() +
   labs(title = "Distribución del Límite de Crédito por Estado de Impago", x = "Estado de Impago", y = "Límite de Crédito") +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 Por el gráfico de la izquierda, podemos observar como a menores límite de créditos hay una concentración de las personas que caen en impago, reduciendose conforme el límite de crédito es mayor. Note además que un gráfico de violín al final son las densidades reflejadas, podemos obtener la misma información de un gráfico de violín que de un gráfico de densidades. 
@@ -555,7 +555,7 @@ ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL
     title = "Distribución del Monto de Crédito según Impago",
     fill = "Impago"
   ) +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 Del gráfico anterior entonces podemos observar que en promedio las personas que pagan a tiempo según el monto de crédito es mayor que el de las personas que cae en impago, lo cual nos ayudará a determinar más adelante si este factor es de importancia a la hora del riesgo de pago. 
@@ -570,7 +570,7 @@ ggplot(data_credit, aes(x = AGE, y = LIMIT_BAL)) +
   geom_smooth(method = "lm", color = "red", se = FALSE) +  
   labs(title = "Gráfico de dispersión entre Edad y Límite de Crédito con regresión lineal",
        x = "Edad",
-       y = "Límite de Crédito") +
+       y = "Límite de Crédito") +labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -588,7 +588,7 @@ library(ggplot2)
 ggplot(data = data_credit, aes(x = as.factor(SEX))) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(title = "Distribución de la variable Sexo", x = "Sexo", y = "Frecuencia") +
-  scale_x_discrete(labels = c("1" = "Hombre", "2" = "Mujer")) +
+  scale_x_discrete(labels = c("1" = "Hombre", "2" = "Mujer")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
@@ -607,7 +607,7 @@ ggplot(data = data_credit, aes(x = as.factor(EDUCATION))) +
                               "3" = "Secundaria", 
                               "4" = "Otros", 
                               "5" = "Desconocido", 
-                              "6" = "Desconocido")) +
+                              "6" = "Desconocido")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
@@ -623,7 +623,7 @@ ggplot(data = data_credit, aes(x = as.factor(MARRIAGE))) +
   labs(title = "Distribución del Estado Civil", x = "Estado Civil", y = "Frecuencia") +
   scale_x_discrete(labels = c("1" = "Casado", 
                               "2" = "Soltero", 
-                              "3" = "Otros")) +
+                              "3" = "Otros")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -638,7 +638,7 @@ library(ggplot2)
 ggplot(data = data_credit, aes(x = as.factor(default.payment.next.month))) +
   geom_bar(fill = "skyblue", color = "black") +
   labs(title = "Distribución de Impagos", x = "Impago", y = "Frecuencia") +
-  scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +
+  scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
@@ -655,7 +655,7 @@ ggplot(data = data_credit, aes(x = as.factor(default.payment.next.month), fill =
        x = "Estado de Pago", y = "Proporción") +
   scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +
   scale_fill_manual(labels = c("1" = "Hombre", "2" = "Mujer"), values = c("skyblue", "lightcoral")) + 
-  theme_minimal() +
+  theme_minimal() + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme(legend.title = element_blank()) 
 
 ```
@@ -677,7 +677,7 @@ data_credit %>%
        fill = "Impago") +
   scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +  
   scale_fill_manual(values = c("0" = "steelblue", "1" = "tomato")) +  
-  theme_minimal() +
+  theme_minimal() + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme(legend.position = "none")  
 
 ```
@@ -716,7 +716,7 @@ data_credit %>%
        fill = "Impago") +
   scale_x_discrete(labels = c("0" = "A tiempo", "1" = "Impago")) +  
   scale_fill_manual(values = c("0" = "steelblue", "1" = "tomato")) +
-  theme_minimal() +
+  theme_minimal() + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme(legend.position = "none") 
 
 ```
@@ -746,7 +746,7 @@ library(ggplot2)
 
 ggplot(data_credit, aes(x = as.factor(MARRIAGE), y = LIMIT_BAL, color = as.factor(MARRIAGE))) +
   geom_jitter() +
-  labs(title = "Límite de Crédito por Estado Civil", x = "Estado Civil", y = "Límite de Crédito") +
+  labs(title = "Límite de Crédito por Estado Civil", x = "Estado Civil", y = "Límite de Crédito") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
@@ -757,7 +757,7 @@ library(ggplot2)
 
 ggplot(data_credit, aes(x = as.factor(MARRIAGE), y = LIMIT_BAL, fill = as.factor(MARRIAGE))) +
   geom_boxplot() +
-  labs(title = "Límite de Crédito por Estado Civil", x = "Estado Civil", y = "Límite de Crédito") +
+  labs(title = "Límite de Crédito por Estado Civil", x = "Estado Civil", y = "Límite de Crédito") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
@@ -777,7 +777,7 @@ ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(MARRIAGE))) +
     fill = "Estado civil"
   ) +
   scale_fill_manual(values = c("1" = "salmon", "2" = "green", "3" = "skyblue")) +
-  theme_minimal() +
+  theme_minimal() + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme(legend.position = "none") 
 ```
 Como hemos mencionado, la distribución de las variables casado y soltero se parecen mucho visualmente, no podemos decir más del estado "otro".
@@ -788,7 +788,7 @@ Analizamos ahora la frecuencia de impago en relación con el nivel educativo.
 ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
   geom_bar(position = "dodge") +
   labs(title = "Frecuencia de Impago por Nivel Educativo", x = "Nivel Educativo", y = "Frecuencia") +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 
@@ -800,7 +800,7 @@ Con el siguiente gráfico queremos observar la proporción de las personas que c
 ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
   geom_bar(position = "fill") +
   labs(title = "Proporción de Impagos por Nivel Educativo", x = "Nivel Educativo", y = "Proporción") +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 Justamente, este gráfico refleja que las personas que están en el nivel de universidad presentan una mayor proporción de impago. 
@@ -810,7 +810,7 @@ Por otro lado, vamos analizar gráficamente la relación de la variable educaci�
 ```{r}
 ggplot(data_credit, aes(x = as.factor(EDUCATION), y = LIMIT_BAL, fill = as.factor(EDUCATION))) +
   geom_boxplot() +
-  labs(title = "Distribución del Límite de Crédito por Nivel Educativo", x = "Nivel Educativo", y = "Límite de Crédito") +
+  labs(title = "Distribución del Límite de Crédito por Nivel Educativo", x = "Nivel Educativo", y = "Límite de Crédito") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 Observando las medias, inferimos que en promedio el límite de crédito otorgado a las personas que están en un nivel de posgrado es mayor que las personas que tiene solo universidad o secundaria. A su vez, la media de Universidad es mayor que la media de secundaria. Por la calidad de los datos de la base de datos, no podemos analizar con lujo de detalle los niveles 3,4 y 5. 
@@ -828,7 +828,7 @@ ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX), color = as.factor(
     color = "Nivel educativo"
   ) +
   scale_fill_manual(values = c("1" = "blue", "2" = "pink")) +  # Colores para sexo
-  scale_color_manual(values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black")) + 
+  scale_color_manual(values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black")) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 
 ```
