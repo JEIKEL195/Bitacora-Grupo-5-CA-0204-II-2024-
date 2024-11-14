@@ -1200,6 +1200,9 @@ if (knitr::is_html_output()) {
 
 ### Escribir, escribir, escribir
 
+#### La valoración del riesgo en el sector financiero
+El problema que se va a tratar en el presente trabajo es de determinar la relación existente entre las variables de Monto de un crédito, nivel de educación y situaciones de pago con la calificación de riesgo. Desde el punto de vista teórico, el autor [@palacios2012], menciona que “La principal función que radica en las calificaciones crediticias es la evaluación de la mayor o menor probabilidad de pago de la deuda y los intereses, proporcionando indicadores que sirvan de referencia a los inversores con el fin de que puedan tener conocimiento del riesgo crediticio de una forma simple y accesible”. Desde este punto de vista, hay un apoyo en la investigación que tratamos de realizar, pues la calificación de riesgo es de suma importancia en el mundo financiero. Este mismo autor menciona que “Su importancia deriva de su implantación dentro de la regulación, lo que afecta a todo el entramado institucional, y sectores clave de la sociedad como son el bancario y las agencias de seguros y reaseguros”. 
+
 #### Prueba Exacta de Fisher para Datos de Conteo 
 
 Según la documentación de R y las t\'ecnicas de pruebas de hip\'otesis vistas en el libro de [@pertega2004], esta es una prueba para variables categóricas donde hemos usado tablas de contingencias, de ahí nuestra escogencia de esta prueba. Si bien el método está pensando para que se realice a pruebas 2x2, donde la prueba chi-cuadrado falla, hemos decidio utilizar la de fisher para tablas más grandes, usando simulaciones. 
