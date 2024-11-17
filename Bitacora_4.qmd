@@ -143,54 +143,100 @@ Vamos a seleccionar solo las variables que sean de interés, es decir, vamos a q
 library(tidyverse)
 # Seleccionamos las variables.
 data_credit_numerico <- data_credit %>% select(-ID, -SEX, -EDUCATION, -MARRIAGE, -PAY_0, -PAY_2, -PAY_3, -PAY_4, -PAY_5, -PAY_6, -default.payment.next.month)
+
+names(data_credit_numerico)
 ```
 
 Con los datos filtrados, podemos entonces realizar nuestra matriz de correlación.
 
 ```{r}
-library(dplyr)
 library(ggplot2)
 library(reshape2)
 
+# Cambiar los nombres de las columnas en el data frame
+colnames(data_credit_numerico) <- c(
+  "Límite de Crédito", 
+  "Edad", 
+  "Monto Factura Septiembre 2005", 
+  "Monto Factura Agosto 2005", 
+  "Monto Factura Julio 2005", 
+  "Monto Factura Junio 2005", 
+  "Monto Factura Mayo 2005", 
+  "Monto Factura Abril 2005", 
+  "Monto Pago Septiembre 2005", 
+  "Monto Pago Agosto 2005", 
+  "Monto Pago Julio 2005", 
+  "Monto Pago Junio 2005", 
+  "Monto Pago Mayo 2005", 
+  "Monto Pago Abril 2005"
+)
 
 # Crear la matriz de correlación
 matriz_correlacion <- cor(data_credit_numerico, use = "complete.obs")
 
-# Creamos la variable para ver la matriz de correlación como un gráfico de calor
+# Transformar la matriz en formato largo para graficar
 base_matriz <- melt(matriz_correlacion)
 
-# Hacemos el plot de la base 
+# Crear el gráfico de calor
 ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
   geom_tile(color = "white") +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
   theme_minimal() +
-  labs(title = "Matriz de Correlación de Variables Numéricas",
-       x = "", y = "") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  labs(
+    title = "Matriz de Correlación de Variables Numéricas",
+    x = "", y = "",
+    caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.y = element_text(angle = 0)
+  )
 ```
 
 Agregamos la misma matriz, pero esta vez indicando los índices de correlación, para visualizar de manera gráfica y matemática la correlación existente.
 
 ```{r fig1, fig.cap="Figura 1: Matriz de Correlación", fig.align='center'}
-library(dplyr)
 library(ggplot2)
 library(reshape2)
 
+# Cambiar los nombres de las columnas en el data frame
+colnames(data_credit_numerico) <- c(
+  "Límite de Crédito", 
+  "Edad", 
+  "Monto Factura Septiembre 2005", 
+  "Monto Factura Agosto 2005", 
+  "Monto Factura Julio 2005", 
+  "Monto Factura Junio 2005", 
+  "Monto Factura Mayo 2005", 
+  "Monto Factura Abril 2005", 
+  "Monto Pago Septiembre 2005", 
+  "Monto Pago Agosto 2005", 
+  "Monto Pago Julio 2005", 
+  "Monto Pago Junio 2005", 
+  "Monto Pago Mayo 2005", 
+  "Monto Pago Abril 2005"
+)
 
 # Crear la matriz de correlación
 matriz_correlacion <- cor(data_credit_numerico, use = "complete.obs")
 
-# Creamos la variable para ver la matriz de correlación como un gráfico de calor
+# Transformar la matriz en formato largo para graficar
 base_matriz <- melt(matriz_correlacion)
 
-# Hacemos el plot de la base 
+# Crear el gráfico de calor
 ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
   geom_tile(color = "white") +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
-  theme_minimal() + geom_text(aes(label = round(value, 2)), color = "black", size = 3) +
-  labs(title = "Matriz de Correlación de Variables Numéricas",
-       x = "", y = "") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme_minimal() + geom_text(aes(label = round(value, 2)), color = "black", size = 3)  +
+  labs(
+    title = "Matriz de Correlación de Variables Numéricas",
+    x = "", y = "",
+    caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.y = element_text(angle = 0)
+  ) 
 ```
 
 #### Gráficos relacionados a la Base de Datos
@@ -349,6 +395,18 @@ data_credit %>%
   theme_minimal()
 
 ```
+Por último utilizamos un diagrama de violín con las variables de edad y estado de impago, para visualizar la distribución de las variables. 
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = AGE, fill = as.factor(default.payment.next.month))) +
+  geom_violin() +
+  labs(title = "Relación entre Edad y Estado de Impago", x = "Estado de Impago", y = "Edad", fill = "Impago") +
+ labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+```
+
+
 
 Vamos a realizar las mismas gráficas, pero esta vez con la la variable de LIMIT_BAL, para observar su comportamiento.
 
@@ -536,31 +594,32 @@ Utilizando una gráfica de violín, veamos la distribución para compararlas vis
 ```{r}
 ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
   geom_violin() +
-  labs(title = "Distribución del Límite de Crédito por Estado de Impago", x = "Estado de Impago", y = "Límite de Crédito") +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  labs(
+    title = "Distribución del Límite de Crédito por Estado de Impago",
+    x = "Estado de Impago",
+    y = "Límite de Crédito",
+    fill = "Estado de Impago"  
+  ) +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
+
 ```
 Por el gráfico de la izquierda, podemos observar como a menores límite de créditos hay una concentración de las personas que caen en impago, reduciendose conforme el límite de crédito es mayor. Note además que un gráfico de violín al final son las densidades reflejadas, podemos obtener la misma información de un gráfico de violín que de un gráfico de densidades. 
 
 luego utilizando un diagrama de cajas para hacer otra comparación.
 
 ```{r}
-library(ggplot2)
-
 ggplot(data_credit, aes(x = as.factor(default.payment.next.month), y = LIMIT_BAL, fill = as.factor(default.payment.next.month))) +
-  geom_boxplot(alpha = 0.6) +
-  labs(
-    x = "Impago",
-    y = "Monto del crédito (NT$)",
-    title = "Distribución del Monto de Crédito según Impago",
-    fill = "Impago"
-  ) +
+  geom_boxplot() +
+  labs(title = "Distribución del Límite de Crédito por Estado de Impago", x = "Estado de Impago", y = "Límite de Crédito (NT dólares)", fill = "Impago") +
   scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
   theme_minimal()
 ```
 Del gráfico anterior entonces podemos observar que en promedio las personas que pagan a tiempo según el monto de crédito es mayor que el de las personas que cae en impago, lo cual nos ayudará a determinar más adelante si este factor es de importancia a la hora del riesgo de pago. 
 
 Por último veamos cómo de distribuyen las variables AGE y LIMIT_BAL. Usaremos un gráfico de dispersión
+
 
 ```{r}
 library(ggplot2)
@@ -737,7 +796,16 @@ hombres_impago <- data_credit %>%
 hombres_impago
 ```
 
-Con esto observamos que el porcentaje de los hombres que cayeron en impago, aunque es por poco, es mayor que el de las mujeres que cayeron en impago. Esto lo hicimos porque anteriormente se estaban comparando magnitudes que no se podían comparar, con los porcentajes podemos determinar que relativamente, los hombres tienden a caer más en impago que las mujeres, al menos eso podemos inferrir gracias a la evidencia de los datos.
+Con esto observamos que el porcentaje de los hombres que cayeron en impago, aunque es por poco, es mayor que el de las mujeres que cayeron en impago. Esto lo hicimos porque anteriormente se estaban comparando magnitudes que no se podían comparar, con los porcentajes podemos determinar que relativamente, los hombres tienden a caer más en impago que las mujeres, al menos eso podemos inferrir gracias a la evidencia de los datos. Visualicemos los gráficos una vez más, pero esta vez de manera conjunta. 
+
+
+```{r}
+ggplot(data_credit, aes(x = as.factor(SEX), fill = as.factor(default.payment.next.month))) +
+  geom_bar(position = "dodge") +
+  labs(title = "Relación entre Género y Estado de Impago", x = "Género (1=Hombre, 2=Mujer)", y = "Frecuencia", fill = "Impago") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) +
+  theme_minimal()
+```
 
 Ahora vamos a visualizar el crédito con respecto a la variable de MARRIAGE.
 
@@ -787,9 +855,29 @@ Analizamos ahora la frecuencia de impago en relación con el nivel educativo.
 ```{r}
 ggplot(data_credit, aes(x = as.factor(EDUCATION), fill = as.factor(default.payment.next.month))) +
   geom_bar(position = "dodge") +
-  labs(title = "Frecuencia de Impago por Nivel Educativo", x = "Nivel Educativo", y = "Frecuencia") +
-  scale_fill_manual(values = c("0" = "steelblue", "1" = "lightcoral")) + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme_minimal()
+  labs(
+    title = "Frecuencia de Impago por Nivel Educativo",
+    x = "Nivel Educativo",
+    y = "Frecuencia",
+    fill = "Estado de Impago"  
+  ) +
+  scale_fill_manual(
+    values = c("0" = "steelblue", "1" = "lightcoral"),
+    labels = c("0" = "No Impago", "1" = "Impago")  
+  ) +
+  scale_x_discrete(
+    labels = c(
+      "1" = "Posgrado",
+      "2" = "Universidad",
+      "3" = "Secundaria",
+      "4" = "Otros",
+      "5" = "Desconocido",
+      "6" = "Desconocido"
+    )
+  ) +
+  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
 Recordemos que la etiqueta 2 equivale a las personas que están en grado de haber terminado o concluido la universidad. Con este gráfico podemos interpretar que las personas que terminaron la universidad tienen una alta proporción de haber caido en impago, esto se puede deber a créditos estudiantiles y la dificultad de conseguir empleo, sin embargo esto es una conjetura y no vamos analizar esta consecuencia, ya que solo nos importa ver qué están diciendo nuestros datos.
@@ -809,28 +897,83 @@ Por otro lado, vamos analizar gráficamente la relación de la variable educaci�
 
 ```{r}
 ggplot(data_credit, aes(x = as.factor(EDUCATION), y = LIMIT_BAL, fill = as.factor(EDUCATION))) +
-  geom_boxplot() +
-  labs(title = "Distribución del Límite de Crédito por Nivel Educativo", x = "Nivel Educativo", y = "Límite de Crédito") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme_minimal()
+  geom_boxplot(outlier.colour = "red", outlier.shape = 1) +
+  labs(
+    title = "Distribución del Límite de Crédito por Nivel Educativo",
+    x = "Nivel Educativo",
+    y = "Límite de Crédito",
+    fill = "Nivel Educativo",
+    caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle"
+  ) +
+  scale_fill_manual(
+    values = c(
+      "1" = "lightblue",
+      "2" = "lightgreen",
+      "3" = "lightpink",
+      "4" = "lightyellow",
+      "5" = "lightsalmon",
+      "6" = "purple" 
+    ),
+    labels = c(
+      "1" = "Posgrado",
+      "2" = "Universidad",
+      "3" = "Secundaria",
+      "4" = "Otros",
+      "5" = "Desconocido",
+      "6" = "Desconocido"
+    )
+  ) +
+  scale_x_discrete(
+    labels = c(
+      "1" = "Posgrado",
+      "2" = "Universidad",
+      "3" = "Secundaria",
+      "4" = "Otros",
+      "5" = "Desconocido",
+      "6" = "Desconocido"
+    )
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1), 
+    legend.position = "top" # Comando para mover de lugar las etiquetas
+  )
+
 ```
 Observando las medias, inferimos que en promedio el límite de crédito otorgado a las personas que están en un nivel de posgrado es mayor que las personas que tiene solo universidad o secundaria. A su vez, la media de Universidad es mayor que la media de secundaria. Por la calidad de los datos de la base de datos, no podemos analizar con lujo de detalle los niveles 3,4 y 5. 
 
 ```{r}
-library(ggplot2)
-
 ggplot(data_credit, aes(x = LIMIT_BAL, fill = as.factor(SEX), color = as.factor(EDUCATION))) +
-  geom_histogram(binwidth = 50000, alpha = 0.5, position = "identity") +
+  geom_histogram(binwidth = 50000, alpha = 0.7, position = "identity", size = 0.3) +
   labs(
     x = "Monto del crédito otorgado (NT dólares)",
     y = "Frecuencia",
     title = "Distribución de montos de crédito por género y nivel educativo",
     fill = "Género",
-    color = "Nivel educativo"
+    color = "Nivel Educativo",
+    caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle"
   ) +
-  scale_fill_manual(values = c("1" = "blue", "2" = "pink")) +  # Colores para sexo
-  scale_color_manual(values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black")) +  labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme_minimal()
-
+  scale_fill_manual(
+    values = c("1" = "steelblue", "2" = "lightpink"),
+    labels = c("1" = "Hombre", "2" = "Mujer")
+  ) +
+  scale_color_manual(
+    values = c("1" = "darkblue", "2" = "green", "3" = "orange", "4" = "purple", "5" = "gray", "6" = "black"),
+    labels = c(
+      "1" = "Posgrado",
+      "2" = "Universidad",
+      "3" = "Secundaria",
+      "4" = "Otros",
+      "5" = "Desconocido",
+      "6" = "Desconocido"
+    )
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    legend.position = "top",
+    legend.box = "horizontal"
+  )
 ```
 
 Con el gráfico anterior podemos ver la relación existente entre el nivel educativo, el género y el monto del crédito otorgado, es decir, 3 variables graficadas. 
@@ -1318,25 +1461,47 @@ Finalmente, se realizará un análisis bibliográfico para contrastar los hallaz
 **Correlación de las variables**
 
 ```{r fig2, fig.cap="Figura 1: Matriz de Correlación", fig.align='center'}
-library(dplyr)
 library(ggplot2)
 library(reshape2)
 
+# Cambiar los nombres de las columnas en el data frame
+colnames(data_credit_numerico) <- c(
+  "Límite de Crédito", 
+  "Edad", 
+  "Monto Factura Septiembre 2005", 
+  "Monto Factura Agosto 2005", 
+  "Monto Factura Julio 2005", 
+  "Monto Factura Junio 2005", 
+  "Monto Factura Mayo 2005", 
+  "Monto Factura Abril 2005", 
+  "Monto Pago Septiembre 2005", 
+  "Monto Pago Agosto 2005", 
+  "Monto Pago Julio 2005", 
+  "Monto Pago Junio 2005", 
+  "Monto Pago Mayo 2005", 
+  "Monto Pago Abril 2005"
+)
 
 # Crear la matriz de correlación
 matriz_correlacion <- cor(data_credit_numerico, use = "complete.obs")
 
-# Creamos la variable para ver la matriz de correlación como un gráfico de calor
+# Transformar la matriz en formato largo para graficar
 base_matriz <- melt(matriz_correlacion)
 
-# Hacemos el plot de la base 
+# Crear el gráfico de calor
 ggplot(base_matriz, aes(Var1, Var2, fill = value)) +
   geom_tile(color = "white") +
   scale_fill_gradient2(low = "blue", high = "red", mid = "white", midpoint = 0, limit = c(-1, 1), space = "Lab") + 
-  theme_minimal() + geom_text(aes(label = round(value, 2)), color = "black", size = 3) +
-  labs(title = "Matriz de Correlación de Variables Numéricas",
-       x = "", y = "") + labs(caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle") +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  theme_minimal() +
+  labs(
+    title = "Matriz de Correlación de Variables Numéricas",
+    x = "", y = "",
+    caption = "Fuente: Elaboración propia utilizando la base de datos de Kaggle"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.text.y = element_text(angle = 0)
+  )
 ```
 
 Al utilizar el índice de correlación de Pearson, se puede observar la correlacion que existe entre las distintas variables, más en especifico entre las situaciones de reembolso y entre los estados de cuenta. Además, se observa a simple vista como la edad podría llegar a tener algún tipo de relación con el monto del préstamo.
